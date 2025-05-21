@@ -1,0 +1,6 @@
+@Lunamaroapi_HostAddress = http://localhost:5218
+
+GET {{Lunamaroapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
