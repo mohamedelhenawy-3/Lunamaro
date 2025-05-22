@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+}
+
+form {
+  background-color: transparent;
+  padding: 3rem;
+  border-radius: 10px;
+  color: white;
+  width: 400px;
+}
+
+form h2 {
+  text-align: center;
+  color: rgb(208, 209, 214);
+  margin-bottom: 1rem;
+}
+
+form label {
+  color: rgb(241, 241, 241);
+  display: block;
+  margin-top: 10px;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  border: 2px solid #0b2642;
+  border-radius: 10px;
+  background-color: #02213c;
+}
+
+form div {
+  color: #601818;
+  font-size: 1rem; /* adjusted from 3rem to be more reasonable */
+  margin-top: -8px;
+  margin-bottom: 30px;
+}
+
+form button {
+  width: 100%;
+  padding: 7px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+form button:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}

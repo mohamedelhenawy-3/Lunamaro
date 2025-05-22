@@ -1,0 +1,67 @@
+
+/* Center container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   min-height: 95vh;
+}
+
+/* Style the form */
+form {
+  background-color: transparent;
+  padding: 3rem;
+  border-radius: 10px;
+  color: white; /* All text white */
+  width: 400px;
+}
+
+/* Headings white */
+form h2 {
+  text-align: center;
+  color: rgb(208, 209, 214);
+  margin-bottom: 1rem;
+}
+
+/* Labels white */
+form label {
+  color: rgb(241, 241, 241);
+  display: block;
+  margin-top: 10px;
+}
+
+/* Inputs with blue border */
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  border: 2px solid #0b2642; /* Blue border */
+  border-radius: 10px;
+  background-color: #02213c;
+}
+
+/* Error messages */
+form div {
+  color: #601818;
+  font-size: 3rem;
+  margin-top: -8px;
+  margin-bottom: 30px;
+}
+
+/* Submit button */
+form button {
+  width: 100%;
+  padding: 7px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+form button:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
