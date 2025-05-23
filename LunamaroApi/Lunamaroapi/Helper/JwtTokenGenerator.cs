@@ -8,37 +8,35 @@ namespace Lunamaroapi.Helper
 {
     public class JwtTokenGenerator
     {
+
+
         private readonly IConfiguration _config;
 
-
-        public JwtTokenGenerator(IConfiguration configuration)
+        public JwtTokenGenerator(IConfiguration config)
         {
-            _config = configuration;
+            _config = config;
         }
-        public async Task<string> GenerateToken(ApplicationUser user)
+
+        public string GenerateToken(ClaimsIdentity claimsIdentity)
         {
-            var claims = new List<Claim>
+            var jwtSettings = _config.GetSection("JwtSettings");
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var key = Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                new Claim (ClaimTypes.NameIdentifier,user.Id),
-                new Claim(ClaimTypes.Name, user.UserName),
-                 new Claim(ClaimTypes.Role, "Customer")
+                Subject = claimsIdentity,
+                Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["DurationInMinutes"])),
+                Issuer = jwtSettings["Issuer"],
+                Audience = jwtSettings["Audience"],  // <- This is critical
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
+            var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwtSettings:SecretKey"]));
-            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-           var token = new JwtSecurityToken(
-           issuer: _config["Jwt:Issuer"],
-           audience: _config["Jwt:Audience"],
-           claims: claims,
-           expires: DateTime.Now.AddMinutes(30),
-           signingCredentials: cred
-           );
-
-            return await Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token));
-
-
+            return tokenHandler.WriteToken(token);
+            }
         }
-    }
 }

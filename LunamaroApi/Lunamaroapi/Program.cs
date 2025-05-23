@@ -30,6 +30,7 @@ namespace Lunamaroapi
 
             builder.Services.AddScoped<IAuth, AuthServices>();
             builder.Services.AddScoped<JwtTokenGenerator>();
+            builder.Services.AddScoped<ICategory,CategoryService>();
 
 
 
