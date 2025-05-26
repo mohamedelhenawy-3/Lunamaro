@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { AuthService } from '../../app/Service/auth.service';
+
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,18 +15,18 @@ export class NavbarComponent {
  isLoggedIn: boolean = false;
   userRole: string | null = null;
 
-  constructor(private authService: AuthService  ,private router:Router) {}
+  constructor(private auth: AuthService  ,private router:Router) {}
 
 ngOnInit(): void {
-  this.authService.isLoggedIn$.subscribe(isLogged => {
+  this.auth.isLoggedIn$.subscribe(isLogged => {
     this.isLoggedIn = isLogged;
-    this.userRole = this.authService.getUserRole(); // 'Admin' or 'User'
+    this.userRole = this.auth.getUserRole(); // 'Admin' or 'User'
   });
 }
 
 
   logout() {
-    this.authService.logout();
+    this.auth.logout();
     this.router.navigateByUrl('/login');
   }
 }
