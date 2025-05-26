@@ -7,45 +7,47 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']  // fix typo from styleUrl to styleUrls
 })
 export class LoginComponent {
-LoginrForm: FormGroup;
+  LoginrForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private router:Router,private auth: AuthService) {
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {
+    console.log("LoginComponent loaded");
 
-  console.log("LoginComponent loaded");
+    this.LoginrForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
-this.LoginrForm = this.fb.group({
-  email: ['', [Validators.required, Validators.email]],
-  password: ['', [Validators.required, Validators.minLength(6)]]
-});
-
-
-  
-}
-
-login(){
+  login() {
     if (this.LoginrForm.invalid) {
       this.LoginrForm.markAllAsTouched(); // show validation errors
       return;
     }
-    const formval=this.LoginrForm.value;;
 
-    const logindata={
-      Email:formval.email,
-      Password:formval.password
-    }
-  
-    this.auth.login(this.LoginrForm.value).subscribe({
+    const formval = this.LoginrForm.value;
+
+    const logindata = {
+      email: formval.email,    // be consistent with casing expected by backend
+      password: formval.password
+    };
+
+    this.auth.login(logindata).subscribe({
       next: (response) => {
         if (response.success) {
           this.auth.setToken(response.token);
+
+          // Correctly call the function to get role
+          const role = this.auth.getUserRole();
+          console.log('User Role:', role);
           console.log(response.token);
+
           alert('Login successful');
-          this.router.navigate(['/home']); // Redirect to home or dashboard
+          this.router.navigate(['/home']); // Redirect after login
         } else {
           alert('Login failed');
         }
@@ -54,5 +56,5 @@ login(){
         alert('Login error');
       }
     });
-}
+  }
 }

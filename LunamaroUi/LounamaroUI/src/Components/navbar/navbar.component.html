@@ -18,30 +18,44 @@
     </button>
 
     <!-- Navbar collapse: full width to center the nav links -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-center">
-        <li class="nav-item"><a class="nav-link text-white" href="#!">Offer</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#!">Features</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#!">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#!">Reference</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#!">About</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#!">Team</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#!">Contact</a></li>
-      </ul>
-    </div>
+   <!-- Navbar collapse: visible only if any user is logged in -->
+<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" *ngIf="isLoggedIn">
+  <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-center">
+    <!-- Common links for any logged-in user -->
+    <li class="nav-item"><a class="nav-link text-white" href="#!">Offer</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="#!">Features</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="#!">Portfolio</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="#!">Reference</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="#!">About</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="#!">Team</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="#!">Contact</a></li>
 
-    <!-- Icons -->
-    <ul class="navbar-nav d-flex flex-row align-items-center">
-      <li class="nav-item me-3">
-        <a class="nav-link text-white" href="#!"><i class="fas fa-shopping-cart"></i></a>
-      </li>
-  
-      <li class="nav-item me-3">
-        <a class="nav-link text-white" href="#!"><i class="fa-solid fa-user"></i></a>
+    <!-- Admin-only links -->
+    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/add-category">Add Category</a></li>
+    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/add-item">Add Item</a></li>
+  </ul>
+</div>
 
-      </li> 
-      <li class="nav-item"><a class="nav-link text-white" routerLink="/login" >Login</a></li>
-        <li class="nav-item"><a class="nav-link text-white" routerLink="/register">Register</a></li>
-    </ul>
+<!-- Right-side icons and actions -->
+<ul class="navbar-nav d-flex flex-row align-items-center">
+
+  <!-- Show only when logged in -->
+  <ng-container *ngIf="isLoggedIn">
+    <li class="nav-item me-3">
+      <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" (click)="logout()">Logout</a>
+    </li>
+  </ng-container>
+
+  <!-- Show only when not logged in -->
+  <ng-container *ngIf="!isLoggedIn">
+    <li class="nav-item me-3"><a class="nav-link text-white" routerLink="/login">Login</a></li>
+    <li class="nav-item"><a class="nav-link text-white" routerLink="/register">Register</a></li>
+  </ng-container>
+
+</ul>
+
   </div>
 </nav>
