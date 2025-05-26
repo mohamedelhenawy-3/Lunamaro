@@ -41,6 +41,7 @@ namespace Lunamaroapi.Services
                     Errors = result.Errors.Select(e => e.Description).ToList()
                 };
             }
+            await _userManager.AddToRoleAsync(user, "Customer");
             var token = await _jwt.GenerateToken(user);
             return new AuthResponse { Success = true };
 

@@ -1,6 +1,7 @@
 ﻿using Lunamaroapi.DTOs;
 using Lunamaroapi.Services;
 using Lunamaroapi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,8 @@ namespace Lunamaroapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
+
     public class ItemController : ControllerBase
     {
         private readonly IItem _IItemService;
@@ -18,7 +21,7 @@ namespace Lunamaroapi.Controllers
             _IItemService = itemsrvice;
         }
 
-        [HttpPost("CreateNote")]
+        [HttpPost("CreateItem")]
         public async Task<ActionResult> CreateItem([FromBody] ItemDTO itemdto)
         {
             await _IItemService.CreateItemAsync(itemdto);
