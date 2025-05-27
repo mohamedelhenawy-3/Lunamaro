@@ -31,7 +31,7 @@
     <li class="nav-item"><a class="nav-link text-white" href="#!">Contact</a></li>
 
     <!-- Admin-only links -->
-    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/Admin/AddCategory">Add Category</a></li>
+    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/Admin/category">Category</a></li>
     <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/add-item">Add Item</a></li>
   </ul>
 </div>

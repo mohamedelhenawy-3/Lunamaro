@@ -1,0 +1,36 @@
+
+
+<div class="d-flex justify-content-center mb-3" style="max-width: 800px; width: 100%;">
+  <input class="form-control me-2" placeholder="New Task" style="flex: 1 1 auto; max-width: 500px;"    [(ngModel)]="newcategory"/>
+  <button class="btn btn-primary" style="flex: 0 0 auto; min-width: 120px;"  (click)="addCategory()">New Category</button>
+</div>
+
+
+<div class="d-flex justify-content-center">
+  <div class="table-responsive" style="max-width: 800px; width: 100%;">
+    <table class="table table-hover table-dark text-center">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Category Name</th>
+          <th scope="col">Manage</th>
+        </tr>
+      </thead>
+<tbody>
+  <tr *ngFor="let cat of Categories; let i = index">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ cat?.name }}</td>
+    <td>
+      <button class="btn btn-sm btn-primary me-2">Update</button>
+      <!-- <button class="btn btn-sm btn-danger"  (click)="deleteCategory(cat.id)">Delete</button> -->
+      <button (click)="logCategory(cat)">Check</button>
+
+
+    </td>
+  </tr>
+</tbody>
+
+
+    </table>
+  </div>
+</div>

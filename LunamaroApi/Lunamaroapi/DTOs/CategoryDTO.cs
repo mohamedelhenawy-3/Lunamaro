@@ -2,9 +2,10 @@
 {
     public class CategoryDTO
     {
-        public string Name { get; set; } = string.Empty;
-
-     
+   
+        public int Id { get; set; }  // ✅ Add this for the frontend to use
+       public string Name { get; set; } = string.Empty;
         public List<ItemDTO>? Items { get; set; }
+
     }
 }

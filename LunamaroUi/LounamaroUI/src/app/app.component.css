@@ -1,38 +1,48 @@
-/* Make body take full height */
+/* GLOBAL STYLES */
 html, body {
-  height: 100%;
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  background-color: #130101; /* Consistent dark background */
+  overflow-x: hidden;
+   margin: 0;
+  padding: 0;
 }
 
-/* The root component fills the screen */
+/* FLEX LAYOUT FOR BODY */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 70px; /* Push content below fixed-top navbar */
+}
+
+/* ROOT COMPONENT FILLS AVAILABLE HEIGHT */
 app-root {
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-body {
-  padding-top: 70px; /* space so content starts below navbar */
+  flex-grow: 1;
 }
 
-/* Navbar and footer have fixed height */
+/* FIXED NAVBAR */
 app-navbar {
   height: 60px;
-  /* background-color: #cf4848; */
   color: rgb(255, 245, 245);
+  /* Set background in the actual navbar element */
 }
 
+/* PAGE CONTENT AREA */
+.page-content {
+  flex: 1;
+  padding: 1rem 0;
+  background-color: #130101;
+  overflow-y: auto;
+  min-height: calc(100vh - 75px);
+    margin-top: 60px;
+}
+
+/* FOOTER */
 app-footer {
   height: 50px;
   background-color: #250302;
   color: white;
-}
-
-/* This holds component content between nav and footer */
-.page-content {
-  flex: 1;
-  padding: 1rem;
-  overflow-y: auto;
-  background-color: #130101;
 }

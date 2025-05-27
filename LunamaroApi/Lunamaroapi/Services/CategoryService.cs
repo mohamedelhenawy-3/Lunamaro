@@ -20,6 +20,7 @@ namespace Lunamaroapi.Services
            
                 var category = new Category
                 {
+
                     Name = categoryDto.Name
                 };
                 await _dbcontext.AddAsync(category);
@@ -50,11 +51,13 @@ namespace Lunamaroapi.Services
         public async Task<IEnumerable<CategoryDTO>> GetAllAsync()
         {
             return await _dbcontext.Categories
-                          .Select(c => new CategoryDTO
-                          {
-                              Name = c.Name
-                          })
-                          .ToListAsync();
+                .Select(c => new CategoryDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    // Add other properties as needed
+                })
+                .ToListAsync();
         }
 
         public async Task<CategoryDTO?> GetByIdAsync(int id)

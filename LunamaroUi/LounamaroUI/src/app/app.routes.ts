@@ -4,6 +4,7 @@ import { RegisterComponent } from './Components/Auth/register/register.component
 import { HomeComponent } from './Components/home/home.component';
 import { AddCategoryComponent } from './Components/Admin/add-category/add-category.component';
 import { adminGuard } from './Components/Auth/admin.guard';
+import { CategoryComponent } from './Components/Admin/category/category.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -11,6 +12,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
    { path: 'home', component: HomeComponent },
    {path:'Admin/AddCategory',component:AddCategoryComponent,canActivate:[adminGuard]},
+  {path:'Admin/category',component:CategoryComponent,canActivate:[adminGuard]},
   // Fallback
   { path: '**', redirectTo: '' }
 ];
