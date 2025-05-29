@@ -3,7 +3,9 @@ using Lunamaroapi.DTOs;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using System.Security.Claims;
 
 namespace Lunamaroapi.Services
@@ -13,24 +15,28 @@ namespace Lunamaroapi.Services
     {
         private readonly AppDBContext _db;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IImageServices _imageService;
 
 
-        public ItemService(AppDBContext db, IHttpContextAccessor httpContextAccessor)
+        public ItemService(AppDBContext db, IHttpContextAccessor httpContextAccessor, IImageServices imageService)
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
-    
+            _imageService = imageService;
         }
 
         public async Task<ItemDTO> CreateItemAsync(ItemDTO itemdto)
         {
-         
+            if (itemdto.File == null || itemdto.File.Length == 0) throw new ArgumentException("Imge file required");
+            var imageUrl = await _imageService.UploadImage(itemdto.File);
+
             var item = new Item
             {
                 Name = itemdto.Name,
                 Description = itemdto.Description,
                 Price = itemdto.Price,
-                CategoryId = itemdto.CategoryId
+                CategoryId = itemdto.CategoryId,
+                ImageUrl = imageUrl
             };
             _db.Items.Add(item);
             await _db.SaveChangesAsync();
@@ -40,12 +46,13 @@ namespace Lunamaroapi.Services
             .FirstOrDefaultAsync(n => n.Id == item.Id);
 
             return new ItemDTO
-            {
-                Name = itemdto.Name,
-                Description = itemdto.Description,
-                Price = itemdto.Price,
-                CategoryId = itemdto.CategoryId
-            
+            { Id=item.Id,
+                Name = item.Name,
+                Description = item.Description,
+                Price = item.Price,
+                CategoryId = item.CategoryId,
+               ImageUrl = item.ImageUrl
+
             };
 
         }
@@ -58,9 +65,9 @@ namespace Lunamaroapi.Services
             await _db.SaveChangesAsync();
         }
 
-        public Task<bool> Exists(int id)
+        public async Task<bool> Exists(int id)
         {
-            throw new NotImplementedException();
+            return await _db.Items.AnyAsync(c => c.Id == id);
         }
 
         public async Task<IEnumerable<ItemDTO>> GetAllItemsAsync()
@@ -71,10 +78,14 @@ namespace Lunamaroapi.Services
 
             return items.Select(item => new ItemDTO
             {
+                Id=item.Id,
                 Name = item.Name,
                 Description = item.Description,
                 Price = item.Price,
-                CategoryId = item.CategoryId
+                CategoryId = item.CategoryId,
+                ImageUrl = item.ImageUrl
+        
+
             });
         }
 

@@ -6,6 +6,7 @@ using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -43,6 +44,8 @@ namespace Lunamaroapi
 
             builder.Services.AddScoped<IAuth, AuthServices>();
             builder.Services.AddScoped<JwtTokenGenerator>();
+            builder.Services.AddScoped<IImageServices, ImageService>();
+
             builder.Services.AddScoped<ICategory, CategoryService>();
             builder.Services.AddScoped<IItem, ItemService>();
 
@@ -101,6 +104,9 @@ namespace Lunamaroapi
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseStaticFiles(); // Already serves files in wwwroot
+
+         
 
             app.MapControllers();
 

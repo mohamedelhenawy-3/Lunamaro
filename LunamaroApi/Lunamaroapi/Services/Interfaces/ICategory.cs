@@ -6,7 +6,7 @@ namespace Lunamaroapi.Services.Interfaces
     {
         Task<IEnumerable<CategoryDTO>> GetAllAsync();
         Task<CategoryDTO?> GetByIdAsync(int id);
-        Task AddAsync(CategoryDTO categoryDto);
+        Task<CategoryDTO>AddSync(CategoryDTO categoryDto);
         Task UpdateAsync(int id, CategoryDTO categoryDto);
         Task DeleteAsync(int id);
         Task<bool> ExistsAsync(int id);

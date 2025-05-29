@@ -9,12 +9,12 @@ namespace Lunamaroapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
 
     public class ItemController : ControllerBase
     {
         private readonly IItem _IItemService;
-
+       
 
         public ItemController(IItem itemsrvice)
         {
@@ -22,10 +22,14 @@ namespace Lunamaroapi.Controllers
         }
 
         [HttpPost("CreateItem")]
-        public async Task<ActionResult> CreateItem([FromBody] ItemDTO itemdto)
+        [Consumes("multipart/form-data")]
+
+        public async Task<ActionResult> CreateItem([FromForm] ItemDTO itemdto)
         {
-            await _IItemService.CreateItemAsync(itemdto);
-            return StatusCode(201);
+            Console.WriteLine($"File Received: {itemdto.File?.FileName}, Length: {itemdto.File?.Length}");
+
+            var result = await _IItemService.CreateItemAsync(itemdto);
+            return Ok(result);
 
         }
         //ActionResult return a status code also

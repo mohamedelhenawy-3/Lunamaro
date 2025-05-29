@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Category } from '../../../Models/category';
 import { CategoryService } from '../../../Service/Category/category.service';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule,FormsModule],
   templateUrl: './category.component.html',
-  styleUrl: './category.component.css'
+  styleUrl: './category.component.css',
+    encapsulation: ViewEncapsulation.None  // <- Add this
 })
 export class CategoryComponent  implements OnInit{
 Categories:Category[] =[] as Category[];
@@ -38,33 +39,29 @@ loadCatgeories(){
 addCategory() {
   const newCategoryName = this.newcategory.trim();
   if (!newCategoryName) return;
-
-  this._apicat.createCategory({name: newCategoryName }).subscribe({
-    next: (createdCategory) => {
-      this.Categories.push(createdCategory);
-      this.newcategory = '';
-    },
-    error: (err) => {
-      console.error('Failed to add category', err);
-    }
-  });
+   this._apicat.createCategory({name:newCategoryName}).subscribe({
+  next: (createdCategory) => {
+    this.Categories.push(createdCategory); // includes Id
+    this.newcategory = '';
+  }
+});
 }
 logCategory(cat: any) {
   console.log(cat);
 }
 
-// deleteCategory(id: number) {
-//   this._apicat.deleteCategory(id).subscribe({
-//     next: () => {
+deleteCategory(id: number) {
+  this._apicat.deleteCategory(id).subscribe({
+    next: () => {
       
-//       // Remove deleted category from the list without refreshing the page
-//       this.Categories = this.Categories.filter(cat => cat.id !== id);
-//     },
-//     error: (err) => {
-//       console.error('Failed to delete category', err);
-//     }
-//   });
-// }
+      // Remove deleted category from the list without refreshing the page
+      this.Categories = this.Categories.filter(cat => cat.id !== id);
+    },
+    error: (err) => {
+      console.error('Failed to delete category', err);
+    }
+  });
+}
 
 
 

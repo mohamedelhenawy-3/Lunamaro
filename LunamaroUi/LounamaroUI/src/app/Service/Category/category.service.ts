@@ -22,7 +22,7 @@ export class CategoryService {
   }
 
 
-  createCategory(category:Category):Observable<Category>{
+  createCategory(category:Partial<Category>):Observable<Category>{
       return this.HttpClient.post<Category>(`${environment.baseurl}/Category/CreateCategory`, category);
   }
 deleteCategory(id: number): Observable<void> {

@@ -28,11 +28,12 @@ namespace Lunamaroapi.Controllers
         }
 
         [HttpPost("CreateCategory")]
-        public async Task<ActionResult> CreateCategory([FromBody] CategoryDTO catdto)
+        public async Task<ActionResult> Add([FromBody] CategoryDTO catdto)
         {
-            await _categoryService.AddAsync(catdto);
-            return StatusCode(201);
+            var createdCategory = await _categoryService.AddSync(catdto);
+            return CreatedAtAction(nameof(GetById), new { id = createdCategory.Id }, createdCategory);
         }
+
 
 
         [HttpGet("{id}")]

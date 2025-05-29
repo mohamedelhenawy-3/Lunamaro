@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-0" style="
     background-color: #180101;
     color: #ffffff;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    padding: 0.80rem 1.5rem;
+    font-size: 1.4rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 ">
   <div class="container d-flex justify-content-between align-items-center">
     <!-- Brand -->
     <a class="navbar-brand" href="#!" style="color: #ffffff;">
-      <span style="color: #642b2b;">Lunamaro</span>
+      <span style="color: #642b2b; font-size: 2rem;">Lunamaro</span>
     </a>
 
     <!-- Toggler -->
@@ -32,7 +32,7 @@
 
     <!-- Admin-only links -->
     <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/Admin/category">Category</a></li>
-    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/add-item">Add Item</a></li>
+    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="Admin/item">Item</a></li>
   </ul>
 </div>
 

@@ -1,0 +1,18 @@
+<div class="item-container">
+  <div class="item-row">
+    <div class="item-card" *ngFor="let item of Items">
+      <img [src]=" 'http://localhost:5218'+ item.imageUrl" alt="Product Image" class="item-image" />
+      <div class="item-body">
+        <h5 class="item-title">{{ item.name }}</h5>
+        <p class="item-description">{{ item.description }}</p>
+        <p class="item-price">Price: ${{ item.price }}</p>
+        <div class="item-actions">
+          <a href="#" class="item-btn">Update</a>
+      
+            <button  class="btn  btn-danger me-2"(click)="deleteItem(item.id)">Delete</button>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
