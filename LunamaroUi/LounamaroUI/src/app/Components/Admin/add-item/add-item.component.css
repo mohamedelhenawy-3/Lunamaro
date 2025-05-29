@@ -1,0 +1,107 @@
+/* Make container full viewport height and center content */
+.container {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  height: 100vh;           /* full viewport height */
+  background-color:non; /* light background */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Style the form */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 600px;             /* fixed width */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+title{
+    color: white;
+}
+/* Space between each form control */
+label {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  padding: 8px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* File input styling */
+input[type="file"] {
+  margin-top: 12px;
+}
+
+/* Validation error messages */
+div[ngIf] {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* Add some spacing between sections */
+hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Submit button */
+/* button[type="submit"] {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+button[type="submit"]:not(:disabled):hover {
+  background-color: #0056b3;
+} */
+form button {
+  width: 100%;
+  padding: 7px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+form button:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
+
+textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: vertical; /* user can resize vertically */
+  font-family: Arial, sans-serif;
+  margin-top: 5px;
+}

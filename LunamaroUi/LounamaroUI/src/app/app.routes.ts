@@ -6,6 +6,7 @@ import { AddCategoryComponent } from './Components/Admin/add-category/add-catego
 import { adminGuard } from './Components/Auth/admin.guard';
 import { CategoryComponent } from './Components/Admin/category/category.component';
 import { ItemComponent } from './Components/Admin/item/item.component';
+import { AddItemComponent } from './Components/Admin/add-item/add-item.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -15,6 +16,7 @@ export const routes: Routes = [
    {path:'Admin/AddCategory',component:AddCategoryComponent,canActivate:[adminGuard]},
   {path:'Admin/category',component:CategoryComponent,canActivate:[adminGuard]},
    {path:'Admin/item',component:ItemComponent,canActivate:[adminGuard]},
+      {path:'Admin/additem',component:AddItemComponent,canActivate:[adminGuard]},
   // Fallback
   { path: '**', redirectTo: '' }
 ];

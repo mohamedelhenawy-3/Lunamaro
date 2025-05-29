@@ -17,5 +17,8 @@ export class ItemService {
 deleteItem(id: number): Observable<void> {
   return this._HttpClient.delete<void>(`${environment.baseurl}/Item/${id}`);
 }
+addtem(item:FormData):Observable<Item>{
+  return this._HttpClient.post<Item>(`${environment.baseurl}/Item/CreateItem`,item);
+}
   
 }

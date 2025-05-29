@@ -1,0 +1,40 @@
+<div class="container">
+  <form [formGroup]="Itemform" (ngSubmit)="AddItem()">
+    <h2 style="color: white;">Add Item</h2>
+
+
+    <label>Item Name:</label>
+    <input type="text" formControlName="name" />
+    <div *ngIf="Itemform.get('name')?.invalid && Itemform.get('name')?.touched">
+      Item Name is required
+    </div>
+   
+<label>Description:</label>
+<textarea formControlName="description" rows="4"></textarea>
+
+    <label>Price:</label>
+    <input type="number" formControlName="price" />
+    <div *ngIf="Itemform.get('price')?.invalid && Itemform.get('price')?.touched">
+      Price is required
+    </div>
+      <!-- ✅ File input, NOT using formControlName -->
+    <label>Image:</label>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    <div *ngIf="!selectedFile" style="color: brown;">
+      Image file is required
+    </div>
+
+
+    <label>Category:</label>
+    <select formControlName="categoryId" class="form-control">
+      <option value="">-- Select Category --</option>
+      <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+    </select>
+    <div *ngIf="Itemform.get('categoryId')?.invalid && Itemform.get('categoryId')?.touched">
+      Category is required
+    </div>
+    <hr/>
+
+    <button type="submit" [disabled]="Itemform.invalid || !selectedFile">Add Item</button>
+  </form>
+</div>
