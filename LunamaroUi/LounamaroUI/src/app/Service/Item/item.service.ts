@@ -20,5 +20,9 @@ deleteItem(id: number): Observable<void> {
 addtem(item:FormData):Observable<Item>{
   return this._HttpClient.post<Item>(`${environment.baseurl}/Item/CreateItem`,item);
 }
+
+getItemsByCategoryId(catId:number):Observable<Item[]>{
+  return this._HttpClient.get<Item[]>(`${environment.baseurl}/Item/GetItemsByCategory/${catId}`)
+}
   
 }

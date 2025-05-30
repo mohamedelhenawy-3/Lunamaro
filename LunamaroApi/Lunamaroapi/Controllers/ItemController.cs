@@ -14,7 +14,7 @@ namespace Lunamaroapi.Controllers
     public class ItemController : ControllerBase
     {
         private readonly IItem _IItemService;
-       
+
 
         public ItemController(IItem itemsrvice)
         {
@@ -32,6 +32,13 @@ namespace Lunamaroapi.Controllers
             return Ok(result);
 
         }
+        [HttpGet("GetItemsByCategory/{catId}")]
+        public async Task<ActionResult<IEnumerable<ItemDTO>>> GetItemsByCategory(int catId)
+        {
+            var items = await _IItemService.GetItemByCatId(catId);
+            return Ok(items);
+        }
+
         //ActionResult return a status code also
         [HttpGet("AllNote")]
         public async Task<ActionResult<IEnumerable<ItemDTO>>> GetAllItems()
@@ -48,6 +55,9 @@ namespace Lunamaroapi.Controllers
 
             return Ok(item);
         }
+
+
+     
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateNote(ItemDTO itemdto, int id)

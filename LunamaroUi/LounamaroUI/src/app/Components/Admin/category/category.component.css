@@ -1,2 +1,96 @@
 
 
+/* Wrapper to center everything vertically and horizontally */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #3B6790;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Form input section */
+.category-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.category-input-container input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.category-input-container button {
+  padding: 10px 20px;
+  background-color: #4C7B8B;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-input-container button:hover {
+  background-color: #EFB036;
+}
+
+/* Table section */
+.table-wrapper {
+  width: 100%;
+  max-width: 800px;
+  overflow-x: auto;
+}
+
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #23486A;
+  color: #f8f9fa;
+  text-align: center;
+}
+
+.category-table thead tr {
+  background-color: #23486A;
+}
+
+.category-table th,
+.category-table td {
+  padding: 12px;
+  border: 1px solid #061c32;
+}
+
+.category-table button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.category-table button:hover {
+  opacity: 0.9;
+}
+
+.category-table .update-btn {
+  background-color: #4C7B8B;
+}
+
+.category-table .delete-btn {
+  background-color: #8E1616;
+}

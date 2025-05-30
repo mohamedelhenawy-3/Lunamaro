@@ -1,4 +1,5 @@
 ﻿using Lunamaroapi.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Lunamaroapi.Services.Interfaces
 {
@@ -9,6 +10,9 @@ namespace Lunamaroapi.Services.Interfaces
         Task<ItemDTO> CreateItemAsync(ItemDTO itemdto);
         Task UpdateItemAsync(ItemDTO itemdto, int id);
         Task DeleteItemAsync(int id);
+
+
+         Task<IEnumerable<ItemDTO>> GetItemByCatId(int catId);
 
         Task<bool> Exists(int id);
     }

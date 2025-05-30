@@ -26,7 +26,7 @@ app-root {
 /* FIXED NAVBAR */
 app-navbar {
   height: 60px;
-  color: rgb(255, 245, 245);
+  color: rgb(255, 255, 255);
   /* Set background in the actual navbar element */
 }
 
@@ -34,7 +34,7 @@ app-navbar {
 .page-content {
   flex: 2;
   padding: 1rem 0;
-  background-color: #130101;
+  background-color:#3B6790;
   overflow-y: auto;
   min-height: calc(100vh - 75px);
     margin-top: 60px;

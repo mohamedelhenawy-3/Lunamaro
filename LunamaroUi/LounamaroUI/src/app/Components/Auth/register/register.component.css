@@ -19,7 +19,7 @@ form {
 /* Headings white */
 form h2 {
   text-align: center;
-  color: rgb(208, 209, 214);
+  color: rgb(255, 255, 255);
   margin-bottom: 1rem;
 }
 
@@ -36,9 +36,9 @@ form input {
   padding: 8px;
   margin-top: 4px;
   margin-bottom: 10px;
-  border: 2px solid #0b2642; /* Blue border */
+  border: 2px solid #ffffff; /* Blue border */
   border-radius: 10px;
-  background-color: #02213c;
+  background-color: #ffffff;
 }
 
 /* Error messages */
@@ -50,10 +50,11 @@ form div {
 }
 
 /* Submit button */
+
 form button {
   width: 100%;
   padding: 7px;
-  background-color: red;
+  background-color:#4C7B8B;
   color: white;
   border: none;
   border-radius: 20px;
@@ -65,3 +66,8 @@ form button:disabled {
   background-color: #a9a9a9;
   cursor: not-allowed;
 }
+form button:hover {
+  background-color: #EFB036;
+  cursor: not-allowed;
+}
+

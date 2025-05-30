@@ -1,107 +1,104 @@
-/* Make container full viewport height and center content */
+/* Container to center the form */
 .container {
   display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center;     /* center vertically */
-  height: 100vh;           /* full viewport height */
-  background-color:non; /* light background */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #3B6790; /* Soft warm background */
   padding: 20px;
   box-sizing: border-box;
 }
 
-/* Style the form */
+/* Form Styling */
 form {
   display: flex;
   flex-direction: column;
-  width: 600px;             /* fixed width */
+  width: 600px;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background-color: #23486A; /* Professional soft beige form background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
 }
-title{
-    color: white;
+
+/* Form Heading */
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white; /* Darker text for contrast */
 }
-/* Space between each form control */
+
+/* Label Styling */
 label {
   margin-top: 15px;
-  font-weight: 600;
-  color: #ccc;
+  font-weight: bold;
+  color: #ffffff;
 }
 
+/* Inputs and Select Styling */
 input[type="text"],
 input[type="number"],
-select {
-  padding: 8px;
+select,
+textarea {
+  padding: 10px;
   margin-top: 5px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #ba8a3d; /* Richer border */
+  border-radius: 6px;
+  background-color: #ffffff; /* Darker input background */
+  color: #2D2D2D;
 }
 
-/* File input styling */
+/* File Input Styling */
 input[type="file"] {
   margin-top: 12px;
+  color: #ffffff;
 }
 
-/* Validation error messages */
+/* Textarea Styling */
+textarea {
+  width: 100%;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+}
+
+/* Validation/Error Messages */
 div[ngIf] {
-  color: red;
+  color: #8E1616; /* Red for error */
   font-size: 13px;
   margin-top: 5px;
 }
 
-/* Add some spacing between sections */
+/* Horizontal Rule */
 hr {
   margin: 20px 0;
   border: none;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #C8A978;
 }
 
-/* Submit button */
-/* button[type="submit"] {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
-}
-
-button[type="submit"]:not(:disabled):hover {
-  background-color: #0056b3;
-} */
+/* Submit Button */
 form button {
   width: 100%;
-  padding: 7px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-form button:disabled {
-  background-color: #a9a9a9;
-  cursor: not-allowed;
-}
-
-textarea {
-  width: 100%;
-  padding: 8px;
+  padding: 10px;
+  background-color: #4C7B8B; /* Deep red */
+  color: #FAF4ED;
+  font-weight: bold;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  resize: vertical; /* user can resize vertically */
-  font-family: Arial, sans-serif;
-  margin-top: 5px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 20px;
+}
+
+/* Hover effect for button */
+form button:hover:not(:disabled) {
+  background-color: #EFB036; /* Matches input border */
+  color: #2D2D2D;
+}
+
+/* Disabled Button Styling */
+form button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
 }
