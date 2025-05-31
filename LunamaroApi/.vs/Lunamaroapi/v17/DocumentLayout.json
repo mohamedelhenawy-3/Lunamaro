@@ -126,12 +126,11 @@
               "Title": "ItemService.cs",
               "DocumentMoniker": "F:\\Full Stack Projects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\ItemService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\ItemService.cs",
-              "ToolTip": "F:\\Full Stack Projects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\ItemService.cs*",
-              "RelativeToolTip": "Lunamaroapi\\Services\\ItemService.cs*",
+              "ToolTip": "F:\\Full Stack Projects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\ItemService.cs",
+              "RelativeToolTip": "Lunamaroapi\\Services\\ItemService.cs",
               "ViewState": "AgIAAGoAAAAAAAAAAAAUwIQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T13:44:55.522Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T13:44:55.522Z"
             },
             {
               "$type": "Document",
@@ -156,8 +155,7 @@
               "RelativeToolTip": "Lunamaroapi\\DTOs\\ItemDTO.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T13:07:39.561Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T13:07:39.561Z"
             },
             {
               "$type": "Document",
@@ -181,8 +179,7 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\CategoryService.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAuwDMAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T13:28:24.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T13:28:24.523Z"
             },
             {
               "$type": "Document",
@@ -206,8 +203,7 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\Interfaces\\IItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T13:21:43.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T13:21:43.526Z"
             },
             {
               "$type": "Document",
@@ -219,8 +215,7 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\ImageService.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAAABMAAACDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T12:40:28.045Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T12:40:28.045Z"
             },
             {
               "$type": "Document",
