@@ -14,6 +14,7 @@ namespace Lunamaroapi.Data
        public  DbSet<ApplicationUser> Users { get; set; }
       public   DbSet<Item> Items { get; set; }
       public   DbSet<Category> Categories { get; set; }
+        public DbSet<UserCart> UserCarts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,6 +24,7 @@ namespace Lunamaroapi.Data
             // Apply Fluent API configurations
             modelBuilder.ApplyConfiguration(new itemConfig());
             modelBuilder.ApplyConfiguration(new categoryConfig());
+            modelBuilder.ApplyConfiguration(new UserCartConfig());
         }
         
 

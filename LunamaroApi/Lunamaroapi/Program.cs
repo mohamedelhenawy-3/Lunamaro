@@ -45,9 +45,10 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IAuth, AuthServices>();
             builder.Services.AddScoped<JwtTokenGenerator>();
             builder.Services.AddScoped<IImageServices, ImageService>();
-
+        
             builder.Services.AddScoped<ICategory, CategoryService>();
             builder.Services.AddScoped<IItem, ItemService>();
+            builder.Services.AddScoped<IUserCart, UserCartService>();
 
             builder.Services.AddAuthentication(options =>
             {
