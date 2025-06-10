@@ -7,6 +7,7 @@ using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Lunamaroapi.Controllers
@@ -50,6 +51,13 @@ namespace Lunamaroapi.Controllers
             await _cartService.RemoveFromCartAsync(cartItemId);
             return Ok(new { message = "Item removed from cart successfully." });
         }
+        [HttpGet("count/{userId}")]
+        public async Task<IActionResult> GetCartItemCount(string userId)
+        {
+            var count = await _cartService.GetItemsCartCount(userId);
+            return Ok(count); // e.g., returns 3
+        }
+        [HttpGet("CartCount")]
 
         [Authorize]
         [HttpPost("add")]

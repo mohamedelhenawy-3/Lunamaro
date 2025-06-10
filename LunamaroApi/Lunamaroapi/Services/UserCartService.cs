@@ -76,7 +76,12 @@ namespace Lunamaroapi.Services
                 .ToListAsync();
         }
 
-
+        public async Task<int> GetItemsCartCount(string userId)
+        {
+            return await _db.UserCarts
+                .Where(c => c.UserId == userId)
+                .SumAsync(c => c.Quantity);
+        }
         public async Task RemoveFromCartAsync(int cartItemId)
         {
             var item = await _db.UserCarts.FindAsync(cartItemId);

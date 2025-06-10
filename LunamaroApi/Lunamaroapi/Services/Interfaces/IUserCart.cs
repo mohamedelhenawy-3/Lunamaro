@@ -10,7 +10,7 @@ namespace Lunamaroapi.Services.Interfaces
         Task<List<UserCartDTO>> GetCartItemsAsync(string userId);
         Task RemoveFromCartAsync(int cartItemId);
         Task UpdateQuantityAsync(int cartItemId, int newQuantity);
-
+        Task<int> GetItemsCartCount(string userId);
         Task ClearCartAsync(string userId);
     }
 }
