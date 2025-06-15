@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lunamaroapi.Services
 {
-    public class UserCartService : IUserCart
+    public class UserCartService : 
+        IUserCart
     {
 
         private readonly AppDBContext _db;
@@ -22,16 +23,29 @@ namespace Lunamaroapi.Services
 
         public async Task AddToCartAsync(string userId, int itemId, int quantity)
         {
-            var itemExists = await _db.Items.FindAsync(itemId);
-            Console.WriteLine(itemExists);
+            if (string.IsNullOrWhiteSpace(userId))
+                throw new ArgumentException("User ID is required.");
 
+            if (quantity <= 0)
+                throw new ArgumentException("Quantity must be greater than zero.");
+
+            var item = await _db.Items.FindAsync(itemId);
+            if (item == null)
+                throw new ArgumentException("Item not found.");
+
+            if (quantity > item.quantity)
+                throw new ArgumentException("Requested quantity exceeds available stock.");
 
             var existingCart = await _db.UserCarts
                 .FirstOrDefaultAsync(x => x.ItemId == itemId && x.UserId == userId);
 
             if (existingCart != null)
             {
-                existingCart.Quantity += quantity;
+                int newQuantity = existingCart.Quantity + quantity;
+                if (newQuantity > item.quantity)
+                    throw new ArgumentException("Cannot add more than available stock.");
+
+                existingCart.Quantity = newQuantity;
                 _db.UserCarts.Update(existingCart);
             }
             else
@@ -50,13 +64,9 @@ namespace Lunamaroapi.Services
         }
 
 
-        public async Task ClearCartAsync(string userId)
+        public Task ClearCartAsync(string userId)
         {
-            {
-                var cartItems = _db.UserCarts.Where(c => c.UserId == userId);
-                _db.UserCarts.RemoveRange(cartItems);
-                await _db.SaveChangesAsync();
-            }
+            throw new NotImplementedException();
         }
 
         public async Task<List<UserCartDTO>> GetCartItemsAsync(string userId)
@@ -80,8 +90,11 @@ namespace Lunamaroapi.Services
         {
             return await _db.UserCarts
                 .Where(c => c.UserId == userId)
-                .SumAsync(c => c.Quantity);
+                .Select(c => c.ItemId) // or ProductId depending on your model
+                .Distinct()
+                .CountAsync();
         }
+
         public async Task RemoveFromCartAsync(int cartItemId)
         {
             var item = await _db.UserCarts.FindAsync(cartItemId);

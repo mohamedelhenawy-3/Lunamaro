@@ -36,6 +36,7 @@ namespace Lunamaroapi.Services
                 Name = itemdto.Name,
                 Description = itemdto.Description,
                 Price = itemdto.Price,
+                quantity=itemdto.quantity,
                 CategoryId = itemdto.CategoryId,
                 ImageUrl = imageUrl
             };
@@ -51,6 +52,7 @@ namespace Lunamaroapi.Services
                 Name = item.Name,
                 Description = item.Description,
                 Price = item.Price,
+                quantity=item.quantity,
                 CategoryId = item.CategoryId,
                ImageUrl = item.ImageUrl
 
@@ -83,6 +85,7 @@ namespace Lunamaroapi.Services
                 Name = item.Name,
                 Description = item.Description,
                 Price = item.Price,
+                quantity=item.quantity,
                 CategoryId = item.CategoryId,
                 ImageUrl = item.ImageUrl
         
@@ -103,6 +106,7 @@ namespace Lunamaroapi.Services
                 Name = item.Name,
                 Description = item.Description,
                 Price = item.Price,
+                quantity=item.quantity,
                 CategoryId = item.CategoryId
             };
         }
@@ -123,6 +127,7 @@ namespace Lunamaroapi.Services
                    Name = item.Name,
                    Description = item.Description,
                    Price = item.Price,
+                   quantity=item.quantity,
                    CategoryId = item.CategoryId,
                    ImageUrl = item.ImageUrl
                })

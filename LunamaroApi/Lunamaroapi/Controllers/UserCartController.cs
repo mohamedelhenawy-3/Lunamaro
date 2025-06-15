@@ -51,41 +51,45 @@ namespace Lunamaroapi.Controllers
             await _cartService.RemoveFromCartAsync(cartItemId);
             return Ok(new { message = "Item removed from cart successfully." });
         }
-        [HttpGet("count/{userId}")]
-        public async Task<IActionResult> GetCartItemCount(string userId)
+        [HttpGet("count")]
+        public async Task<IActionResult> GetCartItemCount()
         {
-            var count = await _cartService.GetItemsCartCount(userId);
-            return Ok(count); // e.g., returns 3
-        }
-        [HttpGet("CartCount")]
+            string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-        [Authorize]
+            if (userId == null)
+                return Unauthorized();
+
+            var count = await _cartService.GetItemsCartCount(userId);
+            return Ok(count);
+        }
+
+
         [HttpPost("add")]
         public async Task<IActionResult> AddToCart([FromBody] AddToCartDTO request)
         {
             string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-
             if (userId == null)
-                return Unauthorized();
+                return Unauthorized(new { message = "User not authenticated." });
+
             if (request == null || request.Quantity <= 0)
-            {
-                return BadRequest("Invalid request.");
-            }
+                return BadRequest(new { message = "Invalid request data." });
+
             try
             {
-                await _cartService.AddToCartAsync(request.UserId, request.ItemId, request.Quantity);
-                return Ok("Item added to cart.");
+                await _cartService.AddToCartAsync(userId, request.ItemId, request.Quantity);
+                return Ok(new { message = "Item successfully added to cart." }); // ✅ Valid JSON
             }
             catch (ArgumentException ex)
             {
-                return NotFound(ex.Message);
+                return BadRequest(new { message = ex.Message }); // e.g., "Item not found."
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, new { message = $"Internal server error: {ex.Message}" });
             }
         }
+
         [HttpPost("update-quantity")]
         public async Task<IActionResult> UpdateQuantity([FromBody] UpdateQuantityDTO dto)
         {
@@ -96,6 +100,20 @@ namespace Lunamaroapi.Controllers
 
             return Ok(new { message = "Quantity updated successfully." });
         }
+
+
+        //[HttpGet("CartItemCount")]
+        //public async Task<int> CartItemCount(string UserId)
+        //{
+        //    string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        //   var number= await _cartService.GetItemsCartCount(userId);
+        //    return number;
+
+        //}  
+
+
+
 
     }
 }

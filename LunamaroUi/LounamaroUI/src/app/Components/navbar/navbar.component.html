@@ -25,10 +25,7 @@
     <li class="nav-item"><a class="nav-link text-white"  routerLink="/Home">Home</a></li>
     <li class="nav-item"><a class="nav-link text-white" href="#!">Features</a></li>
     <li class="nav-item"><a class="nav-link text-white" routerLink="/menu">menu</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="#!">Reference</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="#!">About</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="#!">Team</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="#!">Contact</a></li>
+
 
     <!-- Admin-only links -->
     <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/Admin/category">Category</a></li>
@@ -42,9 +39,18 @@
 
   <!-- Show only when logged in -->
   <ng-container *ngIf="isLoggedIn">
-    <li class="nav-item me-3">
-      <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart"></i></a>
-    </li>
+<li class="nav-item me-3">
+  <a class="nav-link text-white" routerLink="/cart">
+    <i class="fas fa-shopping-cart position-relative">
+      <span 
+        *ngIf="cartCount > 0" 
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ cartCount }}
+      </span>
+    </i>
+  </a>
+</li>
+
     <li class="nav-item">
       <a class="nav-link text-white" (click)="logout()">Logout</a>
     </li>

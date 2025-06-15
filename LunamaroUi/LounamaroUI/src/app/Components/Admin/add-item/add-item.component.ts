@@ -24,6 +24,7 @@ export class AddItemComponent implements OnInit {
     this.Itemform = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
+      quantity:['',Validators.required],
       price: ['', Validators.required],
       categoryId: ['', Validators.required]
     });
@@ -50,6 +51,7 @@ export class AddItemComponent implements OnInit {
       formData.append('name', this.Itemform.get('name')?.value);
       formData.append('description', this.Itemform.get('description')?.value);
       formData.append('price', this.Itemform.get('price')?.value);
+       formData.append('quantity', this.Itemform.get('quantity')?.value);
       formData.append('categoryId', this.Itemform.get('categoryId')?.value);
       formData.append('file', this.selectedFile);  // ✅ must be 'file' to match backend
 

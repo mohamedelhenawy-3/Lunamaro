@@ -8,7 +8,7 @@ namespace Lunamaroapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    
 
 
 
@@ -26,7 +26,7 @@ namespace Lunamaroapi.Controllers
             var categories = await _categoryService.GetAllAsync();
             return Ok(categories);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost("CreateCategory")]
         public async Task<ActionResult> Add([FromBody] CategoryDTO catdto)
         {
@@ -45,7 +45,7 @@ namespace Lunamaroapi.Controllers
 
             return Ok(category);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, CategoryDTO dto)
         {
@@ -57,6 +57,7 @@ namespace Lunamaroapi.Controllers
             return NoContent(); // 204
 
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

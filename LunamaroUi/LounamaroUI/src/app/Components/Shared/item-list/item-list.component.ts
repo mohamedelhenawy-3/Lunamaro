@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 import { Item } from '../../../Models/item';
 import { CommonModule } from '@angular/common';
 
@@ -11,5 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class ItemListComponent {
    @Input() items: Item[] = [];
+   @Output() AddToCartClick= new EventEmitter<number>();
 
+
+
+    onAddToCart(itemId: number) {
+    this.AddToCartClick.emit(itemId);
+  }
 }
