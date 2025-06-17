@@ -49,6 +49,7 @@ namespace Lunamaroapi
             builder.Services.AddScoped<ICategory, CategoryService>();
             builder.Services.AddScoped<IItem, ItemService>();
             builder.Services.AddScoped<IUserCart, UserCartService>();
+            builder.Services.AddScoped<IOrder, OrderServices>();
 
             builder.Services.AddAuthentication(options =>
             {

@@ -15,7 +15,8 @@ namespace Lunamaroapi.Data
       public   DbSet<Item> Items { get; set; }
       public   DbSet<Category> Categories { get; set; }
         public DbSet<UserCart> UserCarts { get; set; }
-
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +26,10 @@ namespace Lunamaroapi.Data
             modelBuilder.ApplyConfiguration(new itemConfig());
             modelBuilder.ApplyConfiguration(new categoryConfig());
             modelBuilder.ApplyConfiguration(new UserCartConfig());
+            modelBuilder.Entity<OrderItem>()
+           .HasOne(oi => oi.Order)
+           .WithMany(o => o.OrderItems)
+           .HasForeignKey(oi => oi.OrderId);
         }
         
 
