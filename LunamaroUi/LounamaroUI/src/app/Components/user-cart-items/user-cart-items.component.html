@@ -1,0 +1,68 @@
+<section class="h-100 cart-wrapper">
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 cart-container">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0" style="color: white;">Shopping Cart</h3>
+          <div>
+            <p class="mb-0">
+              <span class="text-muted">Sort by:</span>
+              <a href="#" class="text-body">price 
+                <i class="fas fa-angle-down mt-1"></i>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div *ngIf="order && order.length > 0; else emptyCart">
+          <div *ngFor="let item of order" class="card rounded-3 mb-4 cart-item-card text-white">
+            <div class="card-body p-4">
+              <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-md-2">
+                  <img [src]="'http://localhost:5218' + item.imageUrl" class="img-fluid rounded-3" alt="{{ item.itemName }}">
+                </div>
+                <div class="col-md-3">
+                  <p class="lead fw-normal mb-2">{{ item.itemName }}</p>
+                  <p>{{ item.description }}</p>
+                </div>
+                <div class="col-md-3 d-flex">
+                  <button class="btn btn-link px-2">
+                    <i class="fas fa-minus"></i>
+                  </button>
+
+            <input type="number" min="1" class="form-control form-control-sm quantity-input" [(ngModel)]="item.quantity" />
+
+
+                  <button class="btn btn-link px-2">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <div class="col-md-3 text-end">
+                  <h5 class="mb-0">{{ item.total | currency }}</h5>
+                  <a href="#" class="text-danger ms-3">
+                    <i class="fas fa-trash fa-lg"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+   
+
+          
+       <div class="card-body d-flex justify-content-center">
+ <button type="button" class="btn btn-warning btn-lg" (click)="goToOrderPreview()">Checkout</button>
+
+</div>
+
+        </div>
+
+        <ng-template #emptyCart>
+          <p class="text-center">Your cart is empty.</p>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</section>

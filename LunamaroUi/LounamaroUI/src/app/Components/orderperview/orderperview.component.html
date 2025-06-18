@@ -1,0 +1,29 @@
+<div *ngIf="order">
+  <h2>Order #{{ order?.orderId
+   }}</h2>
+  <p><strong>Name:</strong> {{ order?.fullName }}</p>
+  <p><strong>Email:</strong> {{ order?.email }}</p>
+  <p><strong>Address:</strong> {{ order?.shippingAddress }}</p>
+  <p><strong>Date:</strong> {{ order?.orderDate  }}</p>
+
+  <h4>Items:</h4>
+  <div *ngFor="let item of order.items" class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <img [src]="'http://localhost:5218' + item.imageUrl" class="img-fluid rounded-start" alt="{{ item.itemName }}">
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.itemName }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <p class="card-text">
+            Price: {{ item.unitPrice  }} × {{ item.quantity }} = 
+            <strong>{{ item.total  }}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4>Total: {{ order.totalAmount | currency }}</h4>
+</div>

@@ -1,0 +1,56 @@
+/* Limit max width for the entire cart container */
+.cart-container {
+  max-width: auto;
+  margin: 0 auto;
+ 
+}
+
+/* Prevent cart from becoming too small or large */
+.cart-wrapper {
+  min-height: 100vh;
+  background-color: #3B6790;
+}
+.quantity-input {
+  background-color: #e0e0e098; /* light gray background */
+  color: #000;   
+  max-width: 50px;           /* black text */
+  border: 1px solid #ccc;
+
+       /* black text */
+
+
+
+}
+
+
+/* Optional: Fix image size inside the cart */
+img.img-fluid {
+  max-height: 100px;
+  object-fit: contain;
+}
+.cart-item-card {
+  background-color: #23486A;
+  border: none;
+}
+
+/* Prevent Apply button and discount input from wrapping */
+.card-body.d-flex {
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .card-body.d-flex {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cart-container {
+    padding: 0 1rem;
+  }
+
+  .text-end {
+    text-align: left !important;
+  }
+}

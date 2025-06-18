@@ -62,7 +62,14 @@ getPayload():JwtPayload | null {
     return payload.exp > currentTime;
   }
 
-  
+  getUserId(): string | null {
+  const payload = this.getPayload();
+  if (!payload) return null;
+
+  const userIdClaim = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier';
+  return (payload as any)[userIdClaim] || null;
+}
+
   
   isLoggedIn(): boolean {
     return this.checkIsLoggedIn();

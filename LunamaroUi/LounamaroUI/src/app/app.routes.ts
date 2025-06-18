@@ -8,6 +8,8 @@ import { CategoryComponent } from './Components/Admin/category/category.componen
 import { ItemComponent } from './Components/Admin/item/item.component';
 import { AddItemComponent } from './Components/Admin/add-item/add-item.component';
 import { MenuComponent } from './Components/menu/menu.component';
+import { OrderperviewComponent } from './Components/orderperview/orderperview.component';
+import { UserCartItemsComponent } from './Components/user-cart-items/user-cart-items.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -19,6 +21,8 @@ export const routes: Routes = [
    {path:'Admin/item',component:ItemComponent,canActivate:[adminGuard]},
       {path:'Admin/additem',component:AddItemComponent,canActivate:[adminGuard]},
        {path:'menu',component:MenuComponent},
+          {path:'orderpervew',component:OrderperviewComponent},
+           {path:'usercartitempervew',component:UserCartItemsComponent},
 
 
 
