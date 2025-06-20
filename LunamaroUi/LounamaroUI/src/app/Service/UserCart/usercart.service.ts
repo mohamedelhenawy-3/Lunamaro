@@ -16,9 +16,9 @@ export class UsercartService {
   constructor(private _HttpClient:HttpClient) { }
 
 
-
+  
   getCartItems():Observable<Usercart[]>{
-    return this._HttpClient.get<Usercart[]>(`${environment}/UserCart/mycart`)
+    return this._HttpClient.get<Usercart[]>(`${environment.baseurl}/UserCart/mycart`)
   }
 
   deleteCart(cartItemId: number): Observable<void> {

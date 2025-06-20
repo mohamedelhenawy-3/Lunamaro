@@ -1,4 +1,4 @@
 export interface Updatequantity {
-cartItemId:number;
-NewQuantity:number
+  cartItemId: number;
+  newQuantity: number;
 }

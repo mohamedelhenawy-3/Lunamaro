@@ -6,7 +6,4 @@ export interface Usercart {
     description:string;
     quantity:number;
     totalPrice: number;
-
-
-   
 }

@@ -4,6 +4,9 @@ import { OrderItem } from '../../Models/order-item';
 import { OrderService } from '../../Service/Order/order.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsercartService } from '../../Service/UserCart/usercart.service';
+import { Usercart } from '../../Models/usercart';
+import { Updatequantity } from '../../Models/updatequantity';
 
 @Component({
   selector: 'app-user-cart-items',
@@ -13,13 +16,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-cart-items.component.css']
 })
 export class UserCartItemsComponent implements OnInit {
-  order?: OrderItem[];
+  cartitems?: Usercart[];
 
-  constructor(private orderService: OrderService,private router: Router) {}
+  constructor(private usercart: UsercartService,private router: Router) {}
 
   ngOnInit(): void {
-    this.orderService.GetUserCartItems().subscribe({
-      next: (data) =>{this.order = data
+    this.usercart.getCartItems().subscribe({
+      next: (data) =>{this.cartitems = data
         console.log(data);
       } ,
 
@@ -28,6 +31,31 @@ export class UserCartItemsComponent implements OnInit {
   }
   goToOrderPreview() {
   this.router.navigate(['/orderpervew']);
-}
+} 
+  updateQuantity(item: Usercart) {
+    const updatedto: Updatequantity = {
+      cartItemId: item.userCartId,
+      newQuantity: item.quantity
+    };
+
+    this.usercart.updatequantity(updatedto).subscribe({
+      next: () => console.log('Quantity updated'),
+      error: (err) => console.error('Failed to update quantity', err)
+    });
+  }
+
+  increaseQuantity(item: Usercart) {
+    if (item.quantity < 10) {
+      item.quantity++;
+      this.updateQuantity(item);
+    }
+  }
+
+  decreaseQuantity(item: Usercart) {
+    if (item.quantity > 1) {
+      item.quantity--;
+      this.updateQuantity(item);
+    }
+  }
 
 }
