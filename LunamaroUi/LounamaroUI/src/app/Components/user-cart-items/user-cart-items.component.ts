@@ -57,5 +57,16 @@ export class UserCartItemsComponent implements OnInit {
       this.updateQuantity(item);
     }
   }
+Remove(userCartId: number): void {
+  this.usercart.deleteCart(userCartId).subscribe({
+    next: () => {
+      // Remove item from cartitems list after deletion
+      this.cartitems = this.cartitems?.filter(item => item.userCartId !== userCartId);
+    },
+    error: (err) => {
+      console.error('Error removing item from cart:', err);
+    }
+  });
+}
 
 }

@@ -1,29 +1,71 @@
-<div *ngIf="order">
-  <h2>Order #{{ order?.orderId
-   }}</h2>
-  <p><strong>Name:</strong> {{ order?.fullName }}</p>
-  <p><strong>Email:</strong> {{ order?.email }}</p>
-  <p><strong>Address:</strong> {{ order?.shippingAddress }}</p>
-  <p><strong>Date:</strong> {{ order?.orderDate  }}</p>
+<div class="wrapper">
+  <!-- Top Row: Shipping Address (left) + Review Order (right) -->
+  <div class="row-container">
+    <!-- Shipping Address Panel -->
+    <div class="panel shipping-panel">
+      <h2>Shipping Address</h2>
 
-  <h4>Items:</h4>
-  <div *ngFor="let item of order.items" class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-2">
-        <img [src]="'http://localhost:5218' + item.imageUrl" class="img-fluid rounded-start" alt="{{ item.itemName }}">
-      </div>
-      <div class="col-md-10">
-        <div class="card-body">
-          <h5 class="card-title">{{ item.itemName }}</h5>
-          <p class="card-text">{{ item.description }}</p>
-          <p class="card-text">
-            Price: {{ item.unitPrice  }} × {{ item.quantity }} = 
-            <strong>{{ item.total  }}</strong>
-          </p>
+      <div class="form-group"><label>Country</label><input type="text" name="country" /></div>
+      <div class="form-group"><label>First Name</label><input type="text" name="first_name" /></div>
+      <div class="form-group"><label>Last Name</label><input type="text" name="last_name" /></div>
+      <div class="form-group"><label>Address</label><input type="text" name="address" /></div>
+      <div class="form-group"><label>City</label><input type="text" name="city" /></div>
+      <div class="form-group"><label>State</label><input type="text" name="state" /></div>
+      <div class="form-group"><label>Zip / Postal Code</label><input type="text" name="zip" /></div>
+      <div class="form-group"><label>Phone Number</label><input type="text" name="phone" /></div>
+      <div class="form-group"><label>Email Address</label><input type="text" name="email" /></div>
+    </div>
+
+    <!-- Review Order Panel -->
+    <div class="panel order-review-panel">
+      <h2>Review Order</h2>
+
+      <div class="order-item" *ngFor="let item of order?.items">
+        <img class="cart-img" [src]="'http://localhost:5218' + item.imageUrl" alt="{{ item.itemName }}" />
+        <div class="cart-details">
+          <strong>{{ item.itemName }}</strong><br />
+          <small>Quantity: {{ item.quantity }}</small><br />
+          <small>{{ item.description }}</small>
         </div>
+        <div class="cart-price">
+          <strong>{{ item.total | currency: 'EGP' }}</strong>
+        </div>
+      </div>
+
+      <hr />
+      <div class="total-row">
+        <span>Order Total:</span>
+        <span>{{ order?.totalAmount | currency: 'EGP' }}</span>
       </div>
     </div>
   </div>
 
-  <h4>Total: {{ order.totalAmount | currency }}</h4>
+  <!-- Payment Info Panel (Bottom Full Width) -->
+  <div class="panel payment-panel">
+    <h2>Payment Info</h2>
+
+    <div class="form-group"><label>Card Type</label>
+      <select>
+        <option>Visa</option>
+        <option>MasterCard</option>
+        <option>American Express</option>
+        <option>Discover</option>
+      </select>
+    </div>
+
+    <div class="form-group"><label>Card Number</label><input type="text" name="card_number" /></div>
+    <div class="form-group"><label>CVV</label><input type="text" name="cvv" /></div>
+
+    <div class="form-group">
+      <label>Expiration Date</label>
+      <div class="date-row">
+        <select><option>Month</option></select>
+        <select><option>Year</option></select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit">Place Order</button>
+    </div>
+  </div>
 </div>
