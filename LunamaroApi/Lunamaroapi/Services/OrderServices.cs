@@ -1,5 +1,6 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
+using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,80 +15,55 @@ namespace Lunamaroapi.Services
             _db = db;
         }
 
-        public async Task<List<OrderItemDTO>> GetCartPerview(string userId)
-        {
-            // Get the user
-            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            if (user == null)
-                return null;
 
-            // Get user's cart with item info
-            var userCart = await _db.UserCarts
-                .Include(uc => uc.Item)
-                .Where(uc => uc.UserId == userId)
-                .ToListAsync();
-
-            if (userCart == null || !userCart.Any())
-                return null;
-
-            var dtoList = userCart.Select(uc => new OrderItemDTO
-            {
-                OrderItemId = 0,
-                ItemId = uc.ItemId,
-                ItemName = uc.Item.Name,
-                ImageUrl = uc.Item.ImageUrl,
-                Description = uc.Item.Description,
-                UnitPrice = uc.Item.Price,
-                Quantity = uc.Quantity
-            }).ToList();
-
-            return dtoList;
-           
-
-        }
 
         public async Task<OrderDetailsDTO> GetOrderPerview(string userId)
         {
-            // Get the user
-            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            if (user == null)
-                return null;
-
-            // Get user's cart with item info
-            var userCart = await _db.UserCarts
+            // Get cart items with related Item data
+            var userCartList = await _db.UserCarts
                 .Include(uc => uc.Item)
                 .Where(uc => uc.UserId == userId)
+                .Select(uc => new UserCartDTO
+                {
+                    UserCartId = uc.Id,
+                    ItemName = uc.Item.Name,
+                    price = uc.Item.Price,
+                    Description = uc.Item.Description,
+                    ImageUrl = uc.Item.ImageUrl,
+                    Quantity = uc.Quantity
+                })
                 .ToListAsync();
 
-            if (userCart == null || !userCart.Any())
-                return null;
+            // ✅ Calculate total cart value
+            double totalAmount = userCartList.Sum(c => c.TotalPrice);
 
-            // Calculate total price
-            double totalPrice = userCart.Sum(uc => uc.Item.Price * uc.Quantity);
+            // Get user details
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
 
-            // Build the DTO
+            // Prepare order header
+            var orderHeader = new UserOrderHeader
+            {
+                UserId = userId,
+                DateOfOrder = DateTime.Now,
+                TotalAmount = totalAmount,
+                PhoneNumber = user?.PhoneNumber ?? "",
+                DeliveryStreetAddress = user?.Address ?? "",
+                City = user?.City ?? "",
+                PostalCode = user?.PostalCode ?? 0,
+                Name = user?.FullName ?? ""
+            };
+
+            // Return DTO
             var dto = new OrderDetailsDTO
             {
-                OrderId = 0, // This is a preview, no actual order placed
-                FullName = user.FullName,
-                Email = user.Email,
-                ShippingAddress = "To be filled during checkout",
-                OrderDate = DateTime.Now,
-                TotalAmount = totalPrice,
-                Items = userCart.Select(uc => new OrderItemDTO
-                {
-                    OrderItemId = 0, // No real ID yet
-                    ItemId = uc.ItemId,
-                    ItemName = uc.Item.Name,
-                    ImageUrl = uc.Item.ImageUrl,
-                    Description = uc.Item.Description,
-                    UnitPrice = uc.Item.Price,
-                    Quantity = uc.Quantity
-                }).ToList()
+                OrderId = 0,
+                UserCartList = userCartList,
+                UserOrderHeader = orderHeader
             };
 
             return dto;
         }
+
 
     }
 }

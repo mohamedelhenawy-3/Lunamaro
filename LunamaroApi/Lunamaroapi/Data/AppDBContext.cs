@@ -17,6 +17,7 @@ namespace Lunamaroapi.Data
         public DbSet<UserCart> UserCarts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<UserOrderHeader> UserOrderHeaders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

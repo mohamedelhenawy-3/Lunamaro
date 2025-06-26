@@ -6,6 +6,9 @@ namespace Lunamaroapi.Models
     {
         public string FullName { get; set; }
         public string? Address { get; set; }
+
+        public string? City { get; set; }
+        public int? PostalCode { get; set; }
         public DateTime? CreatedAt { get; set; }
         public ICollection<UserCart> CartItems { get; set; } 
     }

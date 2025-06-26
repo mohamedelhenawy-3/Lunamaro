@@ -37,21 +37,7 @@ namespace Lunamaroapi.Controllers
 
             return Ok(result);
         }
-        [HttpGet("preview-cart")]
-        public async Task<ActionResult<List<OrderItemDTO>>> GetCartPreview()
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized();
-
-            var result = await _orderService.GetCartPerview(userId);
-
-            if (result == null || !result.Any())
-                return NoContent();
-
-            return Ok(result);
-        }
 
 
     }

@@ -7,7 +7,7 @@ namespace Lunamaroapi.Services.Interfaces
     {
         //Task<object?> GetOrderDetailsAsync(int orderId);
         Task<OrderDetailsDTO> GetOrderPerview(string userId);
-        Task<List<OrderItemDTO>> GetCartPerview(string userId);
+
 
     }
 }

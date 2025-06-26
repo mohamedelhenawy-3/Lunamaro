@@ -1,11 +1,9 @@
 import { OrderItem } from "./order-item";
+import { UserOrderHeader } from "./user-order-header";
+import { Usercart } from "./usercart";
 
 export interface OrderDetails {
-orderId: number;
-  fullName: string;
-  email: string;
-  shippingAddress: string;
-  orderDate: string;
-  totalAmount: number;
-  items: OrderItem[];
+ orderId: number;
+  userCartList: Usercart[];
+ userOrderHeader:UserOrderHeader
 }
