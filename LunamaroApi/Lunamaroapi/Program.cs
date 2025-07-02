@@ -50,6 +50,7 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IItem, ItemService>();
             builder.Services.AddScoped<IUserCart, UserCartService>();
             builder.Services.AddScoped<IOrder, OrderServices>();
+           builder.Services.AddHostedService<ReservationCheckerService>();
 
             builder.Services.AddAuthentication(options =>
             {
