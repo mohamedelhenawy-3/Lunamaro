@@ -1,6 +1,5 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
-using Lunamaroapi.Migrations;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services;
 using Lunamaroapi.Services.Interfaces;

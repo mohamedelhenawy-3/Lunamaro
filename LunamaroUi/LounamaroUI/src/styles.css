@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+app-root, app-home {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.home-item-style .item-card {
+  background-color: #fff8dc;
+  border: 2px solid rgb(138, 128, 109);
+  transform: scale(1.02);
+}
+
+.home-item-style .item-title {
+  color: darkblue;
+}

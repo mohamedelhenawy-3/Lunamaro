@@ -1,5 +1,58 @@
-<section class="hero-section text-white text-center"
-         style="background: url('assets/Lunamori.jpg') no-repeat center center / cover;">
-  <div class="content-wrapper">
+<header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
+  <div class="hero-content">
+    <h2>Welcome to My Restaurant</h2>
+    <p>Enjoy delicious meals made with love</p>
+  </div>
+</header>
+<!-- Section 1: About Us -->
+<section class="about-section">
+  <!-- LEFT SIDE: About Us content -->
+  <div class="aboutus">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p class="intro">Welcome to Restoran</p>
+      <p>
+        Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.
+        Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet.
+      </p>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE: Gallery images -->
+  <div class="leftofabout">
+    <div class="gallery">
+      <img src="assets/aboutus/about1.jpg" alt="Restaurant image 1">
+      <img src="assets/aboutus/about2.jpg" alt="Restaurant image 2">
+      <img src="assets/aboutus/about3.jpg" alt="Restaurant image 3">
+      <img src="assets/aboutus/about4.jpg" alt="Restaurant image 4">
+    </div>
+  </div>
+</section>
+
+
+<!-- Section 2: Our Menu -->
+<section class="menu-section" style="background-color: aquamarine;">
+  <h2>Our Menu</h2>
+  <p>nd delicious desserts.</p>
+  
+</section>
+
+<section class="reservation-section">
+  <h2>Ready to dine with us?</h2>
+  <p>Reserve your table in just a few clicks!</p>
+  <button routerLink="/reservation" class="btn btn-primary">Make a Reservation</button>
+</section>
+<!-- Section 4: Contact or Visit -->
+<section class="contact-section">
+  <h2>Visit Us</h2>
+  <p>We’re located in the heart of the city — perfect for family dinners, romantic evenings, and celebrations. Come and taste the experience!</p>
+</section>
+
+<!-- 🌸 Final Section: Welcome (image + message) -->
+<section class="welcome-section">
+  <img src="assets/background/restaurant-table.jpg" alt="Restaurant interior" class="welcome-image">
+  <div class="welcome-message">
+    <h2>Welcome to Lunamaro</h2>
+    <p>We invite you to relax, enjoy, and experience the true flavor of our kitchen. Our restaurant is not just a place to eat — it’s a place to feel at home.</p>
   </div>
 </section>

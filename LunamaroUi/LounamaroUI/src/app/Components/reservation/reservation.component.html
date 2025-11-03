@@ -1,0 +1,36 @@
+<div class="reservation-wrapper">
+  <div class="reservation-card">
+    <h2 class="title">Book a Table</h2>
+
+    <form [formGroup]="reservationForm" (ngSubmit)="onsubmit()">
+      <div class="form-group">
+        <label>Table Number</label>
+        <input type="number" formControlName="tableId" class="form-control" placeholder="Enter table number">
+      </div>
+
+      <div class="form-group">
+        <label>Start Time</label>
+        <input type="datetime-local" formControlName="startTime" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>End Time</label>
+        <input type="datetime-local" formControlName="endTime" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Guests</label>
+        <input type="number" formControlName="guests" class="form-control" min="1" placeholder="Number of guests">
+      </div>
+
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea formControlName="notes" class="form-control" rows="3" placeholder="Special requests or notes"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Reserve Now</button>
+    </form>
+
+    <p class="message text-success mt-3">{{ message }}</p>
+  </div>
+</div>

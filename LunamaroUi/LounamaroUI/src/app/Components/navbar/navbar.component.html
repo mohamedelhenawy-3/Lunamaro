@@ -1,68 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-0" style="
-    background-color: #EFB036;
-    color: #ffffff;
-    padding: 0.80rem 1.5rem;
-    font-size: 1.4rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-">
-  <div class="container d-flex justify-content-between align-items-center">
+<nav class="main-navbar" [class.scrolled]="isScrolled"  >
+  <div class="navbar-container">
+
     <!-- Brand -->
-    <a class="navbar-brand" href="#!" style="color: #ffffff;">
-      <span style="color: #23486A; font-size: 2.3rem; font-weight: bold;">Lunamaro</span>
+    <a class="brand-link" href="#!">
+      <span class="brand-name">Lunamaro</span>
     </a>
 
-    <!-- Toggler -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!-- Navbar Links (only if user is logged in) -->
+    <div class="nav-links" *ngIf="isLoggedIn">
+      <ul>
+        <li><a routerLink="/Home">Home</a></li>
+        <li><a href="#!">Features</a></li>
+        <li><a routerLink="/menu">Menu</a></li>
+       <li><a routerLink="/Table">Tables</a></li>
+        <!-- Admin-only links -->
+        <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/category">Category</a></li>
+        <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/item">Item</a></li>
+        <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/additem">Add Item</a></li>
+        <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/reservation">Reservations</a></li>
+        <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/table">Tables</a></li>
 
-    <!-- Navbar collapse: full width to center the nav links -->
-   <!-- Navbar collapse: visible only if any user is logged in -->
-<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" *ngIf="isLoggedIn">
-  <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-center">
-    <!-- Common links for any logged-in user -->
-    <li class="nav-item"><a class="nav-link text-white"  routerLink="/Home">Home</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="#!">Features</a></li>
-    <li class="nav-item"><a class="nav-link text-white" routerLink="/menu">menu</a></li>
+                
 
+      </ul>
+    </div>
 
-    <!-- Admin-only links -->
-    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="/Admin/category">Category</a></li>
-    <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="Admin/item">Item</a></li>
-     <li *ngIf="userRole === 'Admin'" class="nav-item"><a class="nav-link text-white" routerLink="Admin/additem">Add Item</a></li>
-  </ul>
-</div>
+    <!-- Right Side Icons -->
+    <ul class="right-actions">
 
-<!-- Right-side icons and actions -->
-<ul class="navbar-nav d-flex flex-row align-items-center">
+      <!-- Logged in -->
+      <ng-container *ngIf="isLoggedIn">
+        <li class="cart-item">
+          <a routerLink="/usercartitempervew" class="cart-link">
+            <i class="fas fa-shopping-cart">
+              <span *ngIf="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
+            </i>
+          </a>
+        </li>
 
-  <!-- Show only when logged in -->
-  <ng-container *ngIf="isLoggedIn">
-<li class="nav-item me-3">
-  <a class="nav-link text-white" routerLink="/usercartitempervew">
-    <i class="fas fa-shopping-cart position-relative">
-      <span 
-        *ngIf="cartCount > 0" 
-        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        {{ cartCount }}
-      </span>
-    </i>
-  </a>
-</li>
+        <li><a class="logout-link" (click)="logout()">Logout</a></li>
+      </ng-container>
 
-    <li class="nav-item">
-      <a class="nav-link text-white" (click)="logout()">Logout</a>
-    </li>
-  </ng-container>
+      <!-- Not logged in -->
+      <ng-container *ngIf="!isLoggedIn">
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      </ng-container>
 
-  <!-- Show only when not logged in -->
-  <ng-container *ngIf="!isLoggedIn">
-    <li class="nav-item me-3"><a class="nav-link text-white" routerLink="/login">Login</a></li>
-    <li class="nav-item"><a class="nav-link text-white" routerLink="/register">Register</a></li>
-  </ng-container>
-
-</ul>
+    </ul>
 
   </div>
 </nav>

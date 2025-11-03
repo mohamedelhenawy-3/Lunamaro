@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization; // <-- Add this at the top
 
 namespace Lunamaroapi
 {
@@ -22,13 +23,23 @@ namespace Lunamaroapi
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAngularApp",
-                    policy =>
-                    {
-                        policy.WithOrigins("http://localhost:4200", "https://localhost:4200") // Angular frontend URL
-                              .AllowAnyHeader()
-                              .AllowAnyMethod()
-                              .AllowCredentials();
-                    });
+policy =>
+{
+    policy.SetIsOriginAllowed(origin => true)
+      .AllowAnyHeader()
+      .AllowAnyMethod()
+      .AllowCredentials();
+
+});
+
+                //policy =>
+                //{
+                //    policy.WithOrigins("http://localhost:4200", "https://localhost:4200") // Angular frontend URL
+                //          .AllowAnyHeader()
+                //          .AllowAnyMethod()
+                //          .AllowCredentials();
+                //});
+
             });
 
             // 2. Add other services
@@ -50,7 +61,16 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IItem, ItemService>();
             builder.Services.AddScoped<IUserCart, UserCartService>();
             builder.Services.AddScoped<IOrder, OrderServices>();
-           builder.Services.AddHostedService<ReservationCheckerService>();
+            builder.Services.AddScoped<ITable, TableServices>();
+            builder.Services.AddScoped<IReservation, ReservationServices>();
+
+            builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // This converts enums (like ReservationStatus) to strings in JSON responses
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
 
             builder.Services.AddAuthentication(options =>
             {

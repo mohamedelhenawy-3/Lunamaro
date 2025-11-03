@@ -1,4 +1,4 @@
-<div class="item-container">
+<div class="item-container" [ngClass]="ClassMenu">
   <div class="item-row">
     <div class="item-card" *ngFor="let item of items">
       <img [src]="'http://localhost:5218' + item.imageUrl" alt="Product Image" class="item-image" />

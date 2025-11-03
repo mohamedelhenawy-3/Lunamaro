@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
@@ -11,12 +11,17 @@ import { ItemService } from '../../Service/Item/item.service';
 import { UsercartService } from '../../Service/UserCart/usercart.service';
 import { AddToCart } from '../../Models/add-to-cart';
 
+
+
+ 
 @Component({
   selector: 'app-menu',
   standalone: true,
   imports: [CommonModule, CategoryListComponent, ItemListComponent],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrl: './menu.component.css',
+    encapsulation: ViewEncapsulation.None  // 👈 Add this line
+
 })
 export class MenuComponent implements OnInit {
  
@@ -27,7 +32,9 @@ constructor( private categoryApi:CategoryService ,private  itemsapi:ItemService,
 }
 ngOnInit(): void {
   this.categoryApi.getallCategories().subscribe(
-    data => this.categories = data);
+    data => {this.categories = data
+      console.log(data);
+    });
   this.itemsapi.getallItems().subscribe(data => this.items = data); // ← FIXED
   console.log(this.categories);
 }

@@ -1,43 +1,60 @@
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  text-align: center;
+.cat-bar {
+  width: 80%; /* keeps it centered and not too wide */
+  margin: 20px auto; /* centers the bar horizontally */
+  background-color: #23486A;
+  border-radius: 20px;
+  padding: 10px 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* allows wrapping to next line on small screens */
-  gap: 15px; /* space between items */
 }
 
-li {
-  cursor: pointer;
-  color: #007bff;
-  text-decoration: underline;
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
-
-li:hover {
-  color: #0056b3;
-}
-
-ul {
+.cat-bar ul {
   list-style: none;
   display: flex;
-  gap: 15px;
-  padding: 0;
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+  justify-content: center;
+  gap: 30px;
   margin: 0;
-  flex-wrap: wrap;
+  padding: 0;
 }
 
-li {
+.cat-bar li {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
   cursor: pointer;
-  color: #ffff;
-  text-decoration: none; /* ✅ remove underline */
-  font-size: 1rem;
-  transition: color 0.3s;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-li:hover {
-  color: #b67b05;
+/* Hover effect (restaurant-style highlight) */
+.cat-bar li:hover {
+  background-color: #EFB036;
+  color: #23486A;
+  transform: scale(1.05);
+}
+
+/* Active category (optional highlight) */
+.cat-bar li.active {
+  background-color: #EFB036;
+  color: #23486A;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cat-bar {
+    width: 95%;
+    padding: 8px;
+  }
+
+  .cat-bar ul {
+    gap: 20px;
+  }
+
+  .cat-bar li {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
 }

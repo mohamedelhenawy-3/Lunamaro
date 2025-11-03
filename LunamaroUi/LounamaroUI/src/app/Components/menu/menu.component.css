@@ -1,75 +1,11 @@
-/* Container holding the menu banner, logo, etc. */
-.menu-container {
+.page-container{
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  flex-direction: column;
+
 }
 
-.menu-banner {
-  height: 100px;
-}
 
-/* Category Bar Container */
-.category-bar {
-  margin-top: 40px;
-  padding: 20px 0;
-  background-color: #3B6790;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  display: flex;
-  justify-content: center;
-}
 
-/* Category Buttons (assumed inside app-category-list) */
-.category-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-}
 
-.category-buttons button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #3B6790;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.category-buttons button:hover {
-  background-color: #2f5677;
-}
-
-.item-card {
-  background-color:#23486A;
-  border: 2px solid #0d4f99;
-  border-radius: 20px;
-  overflow: hidden;
-
-  /* 3 items per row with 20px gap */
-  width: calc(33.333% - 13.33px);
-
-  box-shadow: 0 4px 8px rgba(0, 0, 255, 0.1);
-  transition: transform 0.2s;
-}
-
-/* Items */
-
-/* Logo Styling */
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: #3B6790;
-}
-
-.logo-img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}

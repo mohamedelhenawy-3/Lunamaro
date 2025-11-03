@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from '../../../Models/item';
 import { ItemService } from '../../../Service/Item/item.service';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class ItemComponent implements OnInit {
 Items:Item[] =[] as Item[];
+
+
 
 
 constructor(private _apiItem:ItemService){

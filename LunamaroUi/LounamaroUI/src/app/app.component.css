@@ -1,48 +1,47 @@
-/* GLOBAL STYLES */
-html, body {
-  margin: 0;
-  height: 100%;
-  background-color: #130101; /* Consistent dark background */
-  overflow-x: hidden;
-   margin: 0;
-  padding: 0;
-}
 
-/* FLEX LAYOUT FOR BODY */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding-top: 70px; /* Push content below fixed-top navbar */
-}
-
-/* ROOT COMPONENT FILLS AVAILABLE HEIGHT */
-app-root {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-/* FIXED NAVBAR */
 app-navbar {
-  height: 60px;
-  color: rgb(255, 255, 255);
-  /* Set background in the actual navbar element */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* stay above content */
 }
 
-/* PAGE CONTENT AREA */
 .page-content {
-  flex: 2;
-  padding: 1rem 0;
-  background-color:#3B6790;
-  overflow-y: auto;
-  min-height: calc(100vh - 75px);
-    margin-top: 60px;
+  padding-top: 80px; 
+  background-color:  #3B6790;
+  min-height: 100vh;/* pushes content below navbar */
 }
 
-/* FOOTER */
-app-footer {
-  height: 50px;
+
+/* Ensure the page takes full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Wrapper ensures footer stays at the bottom */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content takes all available space except footer */
+.page-content {
+  flex: 1; /* makes content fill remaining space */
+  background-color: #3B6790;
+  padding-top: 80px;   /* space for fixed navbar */
+  padding-bottom: 30px; /* breathing space above footer */
+  box-sizing: border-box;
+}
+
+/* Footer styling */
+footer {
   background-color: #250302;
   color: white;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  bottom: 0;
 }

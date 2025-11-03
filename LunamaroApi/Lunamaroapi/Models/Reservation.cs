@@ -3,15 +3,21 @@
     public class Reservation
     {
         public int Id { get; set; }
-        public string FullName { get; set; }
-        public string Phone { get; set; }
 
+        public string UserId { get; set; }
         public int TableId { get; set; }
-        public Table Table { get; set; }
 
-        public DateTime ReservationStart { get; set; }
-        public DateTime ReservationEnd { get; set; }
+        // User-selected times
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
 
-        public string Status { get; set; } = "Pending";
+        public int Guests { get; set; }
+        public string? Notes { get; set; }
+        public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        // Navigation properties
+        public ApplicationUser? User { get; set; }
+        public Table? Table { get; set; }
     }
 }

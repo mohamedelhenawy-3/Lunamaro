@@ -1,8 +1,133 @@
+.main-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
 
-  .navbar .nav-link {
-    color: #ffffff !important;
+  /* image appearance */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* default (image) state */
+  background-color:  #EFB036; ;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  padding: 0.8rem 1.5rem;
+  transition: background-color 0.4s ease, background-image 0.4s ease;
+}
+
+.main-navbar.scrolled {
+  /* remove image when scrolled */
+  background-image: none;
+  /* your fixed color */
+  background-color: #EFB036;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.navbar-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-link {
+  text-decoration: none;
+}
+
+.brand-name {
+  color: #23486A;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+
+.nav-links ul{
+  display: flex;
+  list-style: none;
+  gap: 25px;
+    margin: 0;
+  padding: 0;
+  align-content: center;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: #23486A;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.right-actions {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+
+.cart-link {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.cart-link i {
+  font-size: 1.3rem;
+}
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0 5px;
+  border-radius: 10px;
+}
+
+.logout-link, 
+.right-actions a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logout-link:hover,
+.right-actions a:hover {
+  color: #23486A;
+}
+
+
+@media (max-width: 768px) {
+  .nav-links ul {
+    flex-direction: column;
+    background-color: #EFB036;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    display: none;
   }
 
-  .navbar .nav-link:hover {
-    color: #b67b05 !important; /* optional hover color */
+  .main-navbar.open .nav-links ul {
+    display: flex;
   }
+}

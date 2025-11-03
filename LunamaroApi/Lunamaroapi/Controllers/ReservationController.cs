@@ -1,6 +1,7 @@
 ﻿using Lunamaroapi.Data;
-using Lunamaroapi.DTOs;
+using Lunamaroapi.DTOs.ReservationDTO;
 using Lunamaroapi.Models;
+using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,55 +14,79 @@ namespace Lunamaroapi.Controllers
     [Authorize]
     public class ReservationController : ControllerBase
     {
-        private readonly AppDBContext _context;
-
-        public ReservationController(AppDBContext context)
+        private readonly IReservation _reservationService;
+        public ReservationController(IReservation reservationService)
         {
-            _context = context;
+            _reservationService = reservationService;
         }
 
-        [HttpPost("Make")]
-        public async Task<IActionResult> MakeReservation([FromBody] ReservationRequest request)
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
-            var nowUtc = DateTime.UtcNow;
-
-            if (request.ReservationStart >= request.ReservationEnd)
-            {
-                return BadRequest("Start time must be before end time.");
-            }
-
-            if (request.ReservationStart.ToUniversalTime() <= nowUtc)
-            {
-                return BadRequest("Reservation start time must be in the future.");
-            }
-
-            bool conflict = await _context.Reservations.AnyAsync(r => r.TableId == request.TableId && r.Status == "reserved" &&
-                (
-                    (request.ReservationStart < r.ReservationEnd && request.ReservationStart >= r.ReservationStart) ||
-                    (request.ReservationEnd > r.ReservationStart && request.ReservationEnd <= r.ReservationEnd) ||
-                    (request.ReservationStart <= r.ReservationStart && request.ReservationEnd >= r.ReservationEnd)
-                ));
-
-            if (conflict)
-            {
-                return Conflict("This table is already reserved in the selected time.");
-            }
-
-            var reservation = new Reservation
-            {
-                FullName = request.FullName,
-                Phone = request.Phone,
-                TableId = request.TableId,
-                ReservationStart = request.ReservationStart.ToUniversalTime(),
-                ReservationEnd = request.ReservationEnd.ToUniversalTime(),
-                Status = "reserved"
-            };
-
-            _context.Reservations.Add(reservation);
-            await _context.SaveChangesAsync();
-
-            return Ok("Reservation successful.");
+            var reservations = await _reservationService.GetAllAsync();
+            return Ok(reservations);
         }
+
+        [HttpGet("get/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var resarvation = await _reservationService.GetByIdAsync(id);
+            return Ok(resarvation);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] ReservationDto dto)
+        {
+            try
+            {
+                var reservation = await _reservationService.Add(dto);
+                return Ok(new { message = "Reservation created successfully", reservation });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+        [HttpPut("approve/{id}")]
+        public async Task<IActionResult> Approve(int id)
+        {
+            var success = await _reservationService.ApproveAsync(id);
+            if(!success) return NotFound(new { message = "Reservation not found" });
+            return Ok(new { message = "Reservation approved successfully" });
+
+        }
+        [HttpPut("reject/{id}")]
+        public async Task<IActionResult> Reject(int id)
+        {
+            var success = await _reservationService.RejectAsync(id);
+
+            if (!success)
+                return NotFound(new { message = "Reservation not found" });
+
+            return Ok(new { message = "Reservation Reject successfully" });
+        }
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteReservation(int id)
+        {
+            try
+            {
+                await _reservationService.DeleteAsync(id);
+                return Ok("Reservation deleted successfully");
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusDto dto)
+        {
+            await _reservationService.UpdateStatusAsync(dto, id);
+            return Ok(new { message = "Status updated successfully" });
+        }
+
 
     }
 }

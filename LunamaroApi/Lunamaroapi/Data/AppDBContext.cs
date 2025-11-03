@@ -35,30 +35,37 @@ namespace Lunamaroapi.Data
            .HasForeignKey(oi => oi.OrderId);
 
 
+
         
 
-            var tables = new List<Table>();
+            modelBuilder.Entity<Reservation>().HasOne(r => r.User)
+                .WithMany(x => x.Reservations)
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.Table)
+                .WithMany(t => t.Reservations)
+                .HasForeignKey(r => r.TableId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            for (int i = 1; i <= 50; i++)
-            {
-                tables.Add(new Table
-                {
-                    Id = i,
-                    Capacity = (i % 3 == 0) ? 6 : (i % 2 == 0) ? 4 : 2,
-                    Location = (int)(i <= 15
-          ? LocationType.Terrace
-          : i <= 35
-              ? LocationType.Indoor
-              : LocationType.WindowArea)
-                });
+            modelBuilder.Entity<Reservation>().HasIndex(r => new { r.TableId, r.StartTime }).IsUnique();
+            modelBuilder.Entity<Reservation>().Property(x => x.Status).HasConversion<string>();
+            modelBuilder.Entity<Table>().Property(x => x.IsAvailable).HasConversion<string>();
 
-            }
 
-            modelBuilder.Entity<Table>().HasData(tables);
+
+ //           modelBuilder.Entity<Table>().HasData(
+ //    new Table { Id = 1, TableNumber = "T1", Capacity = 2, Location = "Indoor",Status. },
+ //    new Table { Id = 2, TableNumber = "T2", Capacity = 4, Location = "Indoor", IsAvailable = true },
+ //    new Table { Id = 3, TableNumber = "T3", Capacity = 6, Location = "Outdoor", IsAvailable = true },
+ //    new Table { Id = 4, TableNumber = "T4", Capacity = 4, Location = "Window Side",
+ //);
+
+
         }
 
-      
-        
+
+
 
     }
 }

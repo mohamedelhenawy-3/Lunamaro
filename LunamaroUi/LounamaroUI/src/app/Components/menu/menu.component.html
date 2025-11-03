@@ -1,18 +1,18 @@
-<!-- Navbar (if you have one above) -->
-<!-- <div class="logo-container">
-  <img src="assets/KingMo.png" alt="Restaurant Logo" class="logo-img" />
-</div> -->
+<div class="page-container">
+  <div class="category-bar">
+    <app-category-list
+      [categories]="categories"
+      (categorySelected)="onCategorySelected($event)">
+    </app-category-list>
+  </div>
+
+  <div class="item-cards">
+    <app-item-list 
+    [items]="items"
+    (AddToCartClick)="addtocart($event)"
+    [ClassMenu]="'home-item-style'">
+    </app-item-list>
+  </div>
 
 
-<!-- Categories Bar -->
-<div class="category-bar">
-  <app-category-list
-    [categories]="categories"
-    (categorySelected)="onCategorySelected($event)">
-  </app-category-list>
-</div>
-
-
-<div class="item-cards">
-  <app-item-list [items]="items"      (AddToCartClick)="addtocart($event)"></app-item-list>
 </div>

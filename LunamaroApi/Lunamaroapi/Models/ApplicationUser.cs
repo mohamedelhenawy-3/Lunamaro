@@ -10,6 +10,11 @@ namespace Lunamaroapi.Models
         public string? City { get; set; }
         public int? PostalCode { get; set; }
         public DateTime? CreatedAt { get; set; }
-        public ICollection<UserCart> CartItems { get; set; } 
+        public ICollection<UserCart> CartItems { get; set; }
+        public string? Phone { get; set; }
+
+        public ICollection<Reservation>? Reservations { get; set; }
+
+
     }
 }

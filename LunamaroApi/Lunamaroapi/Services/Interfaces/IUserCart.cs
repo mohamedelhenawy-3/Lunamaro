@@ -1,5 +1,4 @@
 ﻿using Lunamaroapi.DTOs;
-using Lunamaroapi.Migrations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lunamaroapi.Services.Interfaces

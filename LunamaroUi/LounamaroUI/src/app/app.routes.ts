@@ -10,7 +10,10 @@ import { AddItemComponent } from './Components/Admin/add-item/add-item.component
 import { MenuComponent } from './Components/menu/menu.component';
 import { OrderperviewComponent } from './Components/orderperview/orderperview.component';
 import { UserCartItemsComponent } from './Components/user-cart-items/user-cart-items.component';
-
+import { ReservationComponent } from './Components/reservation/reservation.component';
+import { ControlledRecervationsComponent } from './Components/Admin/ControlledRecervations/controlled-recervations/controlled-recervations.component';
+import { ControlledtableComponent } from './Components/Admin/controlledtable/controlledtable.component';
+import { TableComponent } from './Components/table/table.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -23,6 +26,10 @@ export const routes: Routes = [
        {path:'menu',component:MenuComponent},
           {path:'orderpervew',component:OrderperviewComponent},
            {path:'usercartitempervew',component:UserCartItemsComponent},
+                      {path:'Table',component:TableComponent},
+           {path:'reservation',component:ReservationComponent},
+             {path:'Admin/reservation',component:ControlledRecervationsComponent,canActivate:[adminGuard]},
+             {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},
 
 
 

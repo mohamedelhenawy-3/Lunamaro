@@ -81,3 +81,15 @@ coverage/
 TestResults/
 *.coverage
 *.coveragexml
+
+# Ignore Visual Studio and build folders
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.log
+*.vsidx
+*.db
+*.db-shm
+*.db-wal

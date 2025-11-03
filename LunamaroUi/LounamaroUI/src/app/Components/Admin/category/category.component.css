@@ -1,4 +1,11 @@
 
+:host {
+  display: flex;        /* host element becomes the flex container */
+  gap: 20px;            /* space between direct children (category items) */
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 
 /* Wrapper to center everything vertically and horizontally */
 .page-container {

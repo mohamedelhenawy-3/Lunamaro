@@ -44,11 +44,10 @@ export class LoginComponent {
 
           // Correctly call the function to get role
           const role = this.auth.getUserRole();
-          console.log('User Role:', role);
-          console.log(response.token);
+
 
           alert('Login successful');
-          this.router.navigate(['/home']); // Redirect after login
+          this.router.navigate(['/Home']); // Redirect after login
         } else {
           alert('Login failed');
         }

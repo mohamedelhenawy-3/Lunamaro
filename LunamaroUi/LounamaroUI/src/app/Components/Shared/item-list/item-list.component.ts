@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class ItemListComponent {
    @Input() items: Item[] = [];
    @Output() AddToCartClick= new EventEmitter<number>();
-
+  @Input() ClassMenu:string ='';
 
 
     onAddToCart(itemId: number) {

@@ -1,0 +1,42 @@
+<div class="table-container">
+  <h2>Manage Tables</h2>
+  <button class="refresh-btn" (click)="refresh()">🔄 Refresh</button>
+
+  <div *ngIf="Table.length > 0; else noTables">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Table Number</th>
+          <th>Capacity</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of Table; trackBy: trackByIndex">
+          <td>{{ t.id }}</td>
+          <td>{{ t.tableNumber }}</td>
+          <td>{{ t.capacity }}</td>
+          <td>{{ t.location }}</td>
+          <td>
+            {{ t.isAvailable }}
+          </td>
+          <td>
+<select class="form-select" [(ngModel)]="t.isAvailable"
+                  (change)="onStatusChange(t)">
+    <option value="Available">Available</option>
+    <option value="UnAvailable">UnAvailable</option>
+  </select>
+</td>
+        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noTables>
+    <p>No tables found.</p>
+  </ng-template>
+</div>

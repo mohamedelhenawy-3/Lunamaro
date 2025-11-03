@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Category } from '../../../Models/category';
 import { CategoryService } from '../../../Service/Category/category.service';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 export class CategoryComponent  implements OnInit{
 Categories:Category[] =[] as Category[];
  newcategory: string = '';
+
+
 constructor(private _apicat:CategoryService){
 
 }
