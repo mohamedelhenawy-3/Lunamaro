@@ -6,11 +6,11 @@ public class UserOrderHeader
 {
     public int Id { get; set; }
 
-    [Required]
-    public string UserId { get; set; }
+    // ✅ Not required from client
+    public string? UserId { get; set; }
 
     [ForeignKey("UserId")]
-    public ApplicationUser User { get; set; }
+    public ApplicationUser? User { get; set; }  // ✅ Must be nullable
 
     [Required]
     public DateTime DateOfOrder { get; set; }
@@ -49,6 +49,6 @@ public class UserOrderHeader
 
     public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
-    // ✅ New: directly link to OrderItems
-    public ICollection<OrderItem> OrderItems { get; set; }
+    // ✅ IMPORTANT: initialize to avoid null errors
+    public ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
 }

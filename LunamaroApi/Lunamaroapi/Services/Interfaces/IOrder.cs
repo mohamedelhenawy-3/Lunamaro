@@ -8,6 +8,9 @@ namespace Lunamaroapi.Services.Interfaces
         //Task<object?> GetOrderDetailsAsync(int orderId);
         Task<OrderDetailsDTO> GetOrderPerview(string userId);
 
+        Task<OrderDto> OrderDone(OrderDto orderDto);
+        Task<bool> OrderSuccess(string sessionId);
+        Task<bool> OrderCancel(string sessionId);
 
     }
 }

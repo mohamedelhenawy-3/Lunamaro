@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Stripe;
 using System.Text;
 using System.Text.Json.Serialization; // <-- Add this at the top
 
@@ -18,6 +19,7 @@ namespace Lunamaroapi
         public static async Task Main(string[] args) // Make Main async
         {
             var builder = WebApplication.CreateBuilder(args);
+            StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
             // 1. Add CORS BEFORE Build
             builder.Services.AddCors(options =>
@@ -45,7 +47,6 @@ policy =>
             // 2. Add other services
             builder.Services.AddDbContext<AppDBContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;

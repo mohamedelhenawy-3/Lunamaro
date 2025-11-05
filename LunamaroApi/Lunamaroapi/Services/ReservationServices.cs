@@ -156,5 +156,34 @@ namespace Lunamaroapi.Services
             await _db.SaveChangesAsync(); // ✅ Use async version
         }
 
+        public async Task<IEnumerable<UserReservationDTO>> GetReservationByUser(string UserId)
+        {
+            string UserID = GetCurrentUserId();
+            var reservation = await _db.Reservations.Where(r => r.UserId == UserId).Include(r => r.Table).Select(r => new UserReservationDTO
+            {
+                Id = r.Id,
+                TableNumber = r.Table.TableNumber,
+                StartTime = r.StartTime,
+                EndTime = r.EndTime,
+                Status= r.Status
+                
+            }
+                ).ToListAsync();
+            return reservation;
+        }
+
+        public async Task<bool> CancelReservation(int ReservationId, string userid)
+        {
+             var reservation = await _db.Reservations
+        .FirstOrDefaultAsync(r => r.Id == ReservationId && r.UserId == userid);
+
+            if (reservation == null)
+                return false; // ❌ Reservation not found or doesn’t belong to the user
+
+            _db.Reservations.Remove(reservation);
+            await _db.SaveChangesAsync();
+
+            return true; // ✅ Reservation removed
+        }
     }
 }

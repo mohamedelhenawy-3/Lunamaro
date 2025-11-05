@@ -30,13 +30,14 @@ namespace Lunamaroapi.Data
             modelBuilder.ApplyConfiguration(new categoryConfig());
             modelBuilder.ApplyConfiguration(new UserCartConfig());
             modelBuilder.Entity<OrderItem>()
-           .HasOne(oi => oi.Order)
-           .WithMany(o => o.OrderItems)
-           .HasForeignKey(oi => oi.OrderId);
+                .HasOne(oi => oi.UserOrderHeader)
+                .WithMany(o => o.OrderItems)
+                .HasForeignKey(oi => oi.UserOrderHeaderId);
 
 
 
-        
+
+
 
             modelBuilder.Entity<Reservation>().HasOne(r => r.User)
                 .WithMany(x => x.Reservations)

@@ -16,10 +16,10 @@ namespace Lunamaroapi.Services.Interfaces
         Task<bool> ApproveAsync(int id); // Admin
         Task<bool> RejectAsync(int id);  // Admin
         //vIEWaVALIBLEtABLE
-
         Task UpdateStatusAsync(UpdateStatusDto dto, int id);
-
-
+        //User
+        Task<IEnumerable<UserReservationDTO>> GetReservationByUser(string UserId);
+        Task<bool> CancelReservation(int ReservationId, string userid);
         
      
     }

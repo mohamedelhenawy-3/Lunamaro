@@ -38,7 +38,20 @@ namespace Lunamaroapi.Controllers
             return Ok(result);
         }
 
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateOrder([FromBody] OrderDto orderDto)
+        {
+            var result = await _orderService.OrderDone(orderDto);
 
+            if (result == null)
+                return BadRequest("Could not create order.");
+
+            return Ok(new
+            {
+                orderId = result.UserOrderHeader.Id,
+                paymentUrl = result.StripeUrl
+            });
+        }
 
     }
 }

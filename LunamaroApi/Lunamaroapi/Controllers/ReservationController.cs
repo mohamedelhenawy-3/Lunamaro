@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Lunamaroapi.Controllers
 {
@@ -86,6 +87,42 @@ namespace Lunamaroapi.Controllers
             await _reservationService.UpdateStatusAsync(dto, id);
             return Ok(new { message = "Status updated successfully" });
         }
+
+  
+[Authorize] // ✅ Make sure user is logged in
+    [HttpGet("myreservations")]
+    public async Task<IActionResult> GetUserReservations()
+    {
+        // Get user ID from the JWT token
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrEmpty(userId))
+            return Unauthorized(new { message = "User not authorized" });
+
+        var reservations = await _reservationService.GetReservationByUser(userId);
+
+        if (!reservations.Any())
+            return NotFound(new { message = "No reservations found for this user." });
+
+        return Ok(reservations);
+    }
+
+        [HttpDelete("cancel")]
+        public async Task<IActionResult> CancelReservation([FromBody] CancelReservationDTO dto)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized(new { message = "User not authorized" });
+
+            var success = await _reservationService.CancelReservation(dto.ReservationId, userId);
+
+            if (!success)
+                return NotFound(new { message = "Reservation not found or does not belong to this user." });
+
+            return Ok(new { message = "Reservation canceled successfully." });
+        }
+
 
 
     }
