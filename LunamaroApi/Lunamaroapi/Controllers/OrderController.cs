@@ -39,19 +39,26 @@ namespace Lunamaroapi.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateOrder([FromBody] OrderDto orderDto)
+        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderdto dto)
         {
-            var result = await _orderService.OrderDone(orderDto);
+            var result = await _orderService.OrderDone(dto);
 
             if (result == null)
                 return BadRequest("Could not create order.");
 
-            return Ok(new
-            {
-                orderId = result.UserOrderHeader.Id,
-                paymentUrl = result.StripeUrl
-            });
+            return Ok(result);
         }
+        [HttpGet("success")]
+        public async Task<IActionResult> PaymentSuccess([FromQuery] string sessionId)
+        {
+            var result = await _orderService.OrderSuccess(sessionId);
+
+            if (!result)
+                return BadRequest("Order not found or already processed.");
+
+            return Ok("Payment Completed");
+        }
+
 
     }
 }

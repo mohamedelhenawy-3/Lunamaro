@@ -1,0 +1,58 @@
+<div class="order-container">
+
+  <!-- ✅ Left side: user info form -->
+  <div class="left-panel">
+    <h2>User Information</h2>
+
+    <form (ngSubmit)="placeOrder()">
+
+      <label>Name</label>
+      <input type="text" class="input-box" [(ngModel)]="orderInfo.name" name="name"/>
+
+      <label>Phone</label>
+      <input type="text" class="input-box" [(ngModel)]="orderInfo.phoneNumber" name="phone"/>
+
+      <label>Address</label>
+      <input type="text" class="input-box" [(ngModel)]="orderInfo.deliveryStreetAddress" name="address"/>
+
+      <label>City</label>
+      <input type="text" class="input-box" [(ngModel)]="orderInfo.city" name="city"/>
+
+      <label>State</label>
+      <input type="text" class="input-box" [(ngModel)]="orderInfo.state" name="state"/>
+
+      <label>Postal Code</label>
+      <input type="number" class="input-box" [(ngModel)]="orderInfo.postalCode" name="postal"/>
+
+      <button class="confirm-btn" type="submit">Confirm Order</button>
+    </form>
+  </div>
+
+  <!-- ✅ Right side: Order preview -->
+  <div class="right-panel">
+    <h2>Order Summary</h2>
+
+    <div class="order-item" *ngFor="let item of order?.userCartList">
+      <img class="cart-img" [src]="'http://localhost:5218' + item.imageUrl" alt="{{ item.itemName }}" />
+
+      <div class="cart-details">
+        <strong>{{ item.itemName }}</strong>
+        <p>{{ item.description }}</p>
+        <span>Qty: {{ item.quantity }}</span>
+      </div>
+
+      <div class="cart-price">
+        <strong>{{ item.totalPrice | currency: 'EGP' }}</strong>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="total-row">
+      <span>Total:</span>
+      <span class="total-amount">{{ order?.userOrderHeader?.totalAmount | currency: 'EGP' }}</span>
+    </div>
+
+  </div>
+
+</div>

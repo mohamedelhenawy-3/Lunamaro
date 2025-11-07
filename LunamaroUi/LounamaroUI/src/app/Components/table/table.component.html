@@ -1,1 +1,28 @@
-<p>table works!</p>
+<div class="available-tables-container">
+  <h2 class="title">Available Tables</h2>
+
+  <div *ngIf="tables.length > 0; else noTables">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Id Number</th>
+          <th>Table Number</th>
+          <th>Capacity</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tables; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ t.tableNumber }}</td>
+          <td>{{ t.capacity }}</td>
+          <td>{{ t.location }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noTables>
+    <p class="no-tables">No available tables found.</p>
+  </ng-template>
+</div>

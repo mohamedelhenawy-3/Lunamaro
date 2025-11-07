@@ -36,7 +36,6 @@ ngOnInit(): void {
       console.log(data);
     });
   this.itemsapi.getallItems().subscribe(data => this.items = data); // ← FIXED
-  console.log(this.categories);
 }
 
 

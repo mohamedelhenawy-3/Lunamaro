@@ -1,10 +1,13 @@
+import { Item } from "./item";
+import { UserOrderHeader } from "./user-order-header";
+
 export interface OrderItem {
   orderItemId: number;
+  userOrderHeaderId: number;
+  userOrderHeader?: UserOrderHeader;
   itemId: number;
-  itemName: string;
-  imageUrl: string;
-  description: string;
-  unitPrice: number;
+  item?: Item;
   quantity: number;
-  total: number;
+  unitPrice: number;
+  totalPrice: number;
 }

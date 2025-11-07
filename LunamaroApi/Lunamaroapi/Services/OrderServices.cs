@@ -71,7 +71,7 @@ namespace Lunamaroapi.Services
             return dto;
         }
 
-        public async Task<OrderDto?> OrderDone(OrderDto orderDto)
+        public async Task<OrderResDTO?> OrderDone(CreateOrderdto dto)
         {
             var userId = GetCurrentUserId();
             if (string.IsNullOrEmpty(userId))
@@ -81,37 +81,32 @@ namespace Lunamaroapi.Services
             if (currentUser == null)
                 return null;
 
-            // ✅ Load cart
             var userCart = await _db.UserCarts
                 .Include(c => c.Item)
                 .Where(c => c.UserId == userId)
                 .ToListAsync();
 
-            if (userCart == null || !userCart.Any())
+            if (!userCart.Any())
                 return null;
 
             double total = userCart.Sum(c => (double)c.Item.Price * c.Quantity);
-            if (total <= 0)
-                return null;
 
-            // ✅ Create Order
             var orderHeader = new UserOrderHeader
             {
                 UserId = userId,
                 DateOfOrder = DateTime.Now,
                 TotalAmount = total,
-                PhoneNumber = orderDto.UserOrderHeader.PhoneNumber,
-                DeliveryStreetAddress = orderDto.UserOrderHeader.DeliveryStreetAddress,
-                City = orderDto.UserOrderHeader.City,
-                State = orderDto.UserOrderHeader.State,
-                PostalCode = orderDto.UserOrderHeader.PostalCode,
-                Name = orderDto.UserOrderHeader.Name,
+                PhoneNumber = dto.PhoneNumber,
+                DeliveryStreetAddress = dto.DeliveryStreetAddress,
+                City = dto.City,
+                State = dto.State,
+                PostalCode = dto.PostalCode,
+                Name = dto.Name,
                 OrderStatus = OrderStatus.Pending,
                 PaymentStatus = "Not Paid",
                 OrderItems = new List<OrderItem>()
             };
 
-            // ✅ Add items to Order
             foreach (var cart in userCart)
             {
                 orderHeader.OrderItems.Add(new OrderItem
@@ -122,16 +117,14 @@ namespace Lunamaroapi.Services
                 });
             }
 
-            // ✅ Save order
             await _db.UserOrderHeaders.AddAsync(orderHeader);
             await _db.SaveChangesAsync();
 
-            // ✅ Stripe Session
             var options = new SessionCreateOptions
             {
                 Mode = "payment",
-                SuccessUrl = $"https://localhost:4200/payment-success/{orderHeader.Id}",
-                CancelUrl = $"https://localhost:4200/payment-failed/{orderHeader.Id}",
+                SuccessUrl = "http://localhost:4200/payment-success/{CHECKOUT_SESSION_ID}",
+                CancelUrl = "http://localhost:4200/payment-failed/{CHECKOUT_SESSION_ID}",
                 LineItems = new List<SessionLineItemOptions>()
             };
 
@@ -152,24 +145,25 @@ namespace Lunamaroapi.Services
                 });
             }
 
+            // ✅ Create Stripe session AFTER setting urls
             var sessionService = new SessionService();
-            Session session = await sessionService.CreateAsync(options);
+            var session = await sessionService.CreateAsync(options);
 
-            // ✅ Save Stripe info
+            // ✅ Save generated Stripe IDs
             orderHeader.StripeSessionId = session.Id;
             orderHeader.StripePaymentIntentId = session.PaymentIntentId;
 
             _db.UserOrderHeaders.Update(orderHeader);
             await _db.SaveChangesAsync();
 
-            // ✅ Return URL to Angular
-            return new OrderDto
+            return new OrderResDTO
             {
-                UserOrderHeader = orderHeader,
-                UserCartList = userCart,
-                StripeUrl = session.Url
+                OrderId = orderHeader.Id,
+                PaymentUrl = session.Url
             };
         }
+
+
         public async Task<bool> OrderSuccess(string sessionId)
         {
             var order = await _db.UserOrderHeaders

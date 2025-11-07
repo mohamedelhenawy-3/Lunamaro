@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Table } from '../../Models/tables';
 import { environment } from '../../../environments/environment.development';
 import { updatetablestatus } from '../../Models/updatetablestatus';
+import { AvTable } from '../../Models/usersTables';
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,9 @@ export class TableService {
     UpdatetTableStatus(id: number, dto:updatetablestatus):Observable<any>{
       return this.http.put(`${environment.baseurl}/table/${id}/status`,dto);
     }
+
+  getAllAvailableTables():Observable<AvTable[]>{
+     return this.http.get<AvTable[]>(`${environment.baseurl}/table/available`);
+  }
+
 }

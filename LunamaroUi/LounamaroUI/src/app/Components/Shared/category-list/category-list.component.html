@@ -2,6 +2,8 @@
 
 <div class="cat-bar">
 <ul>
+
+  <li (click)="onCategoryClick(0)">All</li>
   <li *ngFor="let cat of categories" (click)="onCategoryClick(cat.id)">
     {{ cat.name }}
   </li>

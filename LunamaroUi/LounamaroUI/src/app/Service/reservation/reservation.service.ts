@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { RecievedReservation } from '../../Models/Reseviedreservations';
 import { UpdateStatus } from '../../Models/updateStatus';
+import { userrecervation } from '../../Models/User/userreciervation';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,15 @@ export class ReservationService {
   }
   UpdateReservation(id: number, dto:UpdateStatus):Observable<any>{
     return this.httpclient.put(`${environment.baseurl}/Reservation/${id}/status`,dto);
+  }
+
+
+  UserReservation():Observable<userrecervation[]>{
+    return this.httpclient.get<userrecervation[]>(`${environment.baseurl}/Reservation/myreservations`)
+  }
+    cancelReservation(reservationId: number): Observable<any> {
+    return this.httpclient.delete(`${environment.baseurl}/Reservation/cancel`, {
+      body: { reservationId },
+    });
   }
 }
