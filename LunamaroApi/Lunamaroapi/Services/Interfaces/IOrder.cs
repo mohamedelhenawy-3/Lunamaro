@@ -7,10 +7,13 @@ namespace Lunamaroapi.Services.Interfaces
     {
         //Task<object?> GetOrderDetailsAsync(int orderId);
         Task<OrderDetailsDTO> GetOrderPerview(string userId);
-
         Task<OrderResDTO?> OrderDone(CreateOrderdto dto);
         Task<bool> OrderSuccess(string sessionId);
         Task<bool> OrderCancel(string sessionId);
+
+
+
+        Task<IEnumerable<UserOrdersHistory>> UserOrderHistory();
 
     }
 }

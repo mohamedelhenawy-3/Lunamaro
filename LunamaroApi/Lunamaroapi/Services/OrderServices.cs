@@ -156,6 +156,10 @@ namespace Lunamaroapi.Services
             _db.UserOrderHeaders.Update(orderHeader);
             await _db.SaveChangesAsync();
 
+            var cartItems = _db.UserCarts.Where(x => x.UserId == userId);
+            _db.UserCarts.RemoveRange(cartItems);
+            await _db.SaveChangesAsync();
+
             return new OrderResDTO
             {
                 OrderId = orderHeader.Id,
@@ -195,6 +199,25 @@ namespace Lunamaroapi.Services
             return true;
         }
 
+        public async Task<IEnumerable<UserOrdersHistory>> UserOrderHistory()
+        {
+            var userId = GetCurrentUserId();
 
+
+
+            return await _db.OrderItems.Include(x => x.UserOrderHeader).Where(x => x.UserOrderHeader.UserId == userId).Select(s => new UserOrdersHistory
+            {
+                OrderId = s.OrderItemId,
+                DateOfOrder = s.UserOrderHeader.DateOfOrder,
+                OrderStatus = s.UserOrderHeader.OrderStatus,
+                TotalAmount = s.UserOrderHeader.TotalAmount
+
+            }).ToListAsync();
+
+
+               
+
+
+        }
     }
 }

@@ -54,7 +54,7 @@ namespace Lunamaroapi.Data
             modelBuilder.Entity<Table>().Property(x => x.IsAvailable).HasConversion<string>();
 
 
-
+            modelBuilder.Entity<UserOrderHeader>().Property(x => x.OrderStatus).HasConversion<string>();
  //           modelBuilder.Entity<Table>().HasData(
  //    new Table { Id = 1, TableNumber = "T1", Capacity = 2, Location = "Indoor",Status. },
  //    new Table { Id = 2, TableNumber = "T2", Capacity = 4, Location = "Indoor", IsAvailable = true },

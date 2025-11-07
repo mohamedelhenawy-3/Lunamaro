@@ -59,6 +59,16 @@ namespace Lunamaroapi.Controllers
             return Ok("Payment Completed");
         }
 
+        [HttpGet("history")]
+        [Authorize] 
+        public async Task<IActionResult> GetOrderHistory()
+        {
+            var history = await _orderService.UserOrderHistory();
 
+            if (history == null || !history.Any())
+                return Ok(new List<UserOrdersHistory>()); // return empty list
+
+            return Ok(history);
+        }
     }
 }
