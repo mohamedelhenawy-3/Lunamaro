@@ -70,5 +70,18 @@ namespace Lunamaroapi.Controllers
 
             return Ok(history);
         }
+
+        [HttpGet("history/{orderId}")]
+        public async Task<IActionResult> OrderHistoryDetails(int orderId)
+        {
+            var result = await _orderService.UserOrderHistoryDetails(orderId);
+
+            if (result == null)
+                return NotFound("Order not found or not allowed");
+
+            return Ok(result);
+        }
+
+
     }
 }

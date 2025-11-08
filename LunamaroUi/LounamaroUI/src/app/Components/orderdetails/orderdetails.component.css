@@ -1,0 +1,29 @@
+/* Card styling */
+.card {
+  border-radius: 12px;
+}
+
+/* Product images in table */
+.product-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Badge spacing */
+.badge {
+  font-size: 0.9rem;
+  padding: 0.4em 0.6em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-md-end {
+    text-align: left !important;
+  }
+  .product-img {
+    width: 60px;
+    height: 60px;
+  }
+}

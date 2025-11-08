@@ -17,6 +17,8 @@ import { TableComponent } from './Components/table/table.component';
 import { UserRescervationsComponent } from './Components/user-rescervations/user-rescervations.component';
 import { OrderComponent } from './Components/order/order.component';
 import { PaymentsuccessComponent } from './Components/paymentsuccess/paymentsuccess.component';
+import { UserorderhistoryComponent } from './Components/userorderhistory/userorderhistory.component';
+import { OrderdetailsComponent } from './Components/orderdetails/orderdetails.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -30,7 +32,10 @@ export const routes: Routes = [
           {path:'orderpervew',component:OrderComponent},
    {path:'usercartitempervew',component:UserCartItemsComponent},
   {path:'Table',component:TableComponent},
-           {path:'reservation',component:ReservationComponent},
+    {path:'ordershistory',component:UserorderhistoryComponent},
+
+  {path:'details/:id',component:OrderdetailsComponent},
+  {path:'reservation',component:ReservationComponent},
                     {path:'MyReservations',component:UserRescervationsComponent},
              {path:'Admin/reservation',component:ControlledRecervationsComponent,canActivate:[adminGuard]},
              {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},

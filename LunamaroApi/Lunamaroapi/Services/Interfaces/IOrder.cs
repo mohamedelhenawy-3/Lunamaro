@@ -14,6 +14,7 @@ namespace Lunamaroapi.Services.Interfaces
 
 
         Task<IEnumerable<UserOrdersHistory>> UserOrderHistory();
+        Task<orderhistorydetails> UserOrderHistoryDetails(int orderId);
 
     }
 }

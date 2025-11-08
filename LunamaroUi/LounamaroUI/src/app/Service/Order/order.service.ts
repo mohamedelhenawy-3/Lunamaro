@@ -7,6 +7,8 @@ import { OrderItem } from '../../Models/order-item';
 import { OrderDto } from '../../Models/orderDto';
 import { OrderInfo } from '../../Models/User/orderUserInfo';
 import { OrderRes } from '../../Models/User/orderres';
+import { userorderhostory } from '../../Models/userorderhistory';
+import { OrderHistoryDetails } from '../../Models/orderdetails';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,13 @@ constructor(private _HttpClient:HttpClient) {
 }
 paymentSuccess(sessionId: string) {
   return this._HttpClient.get(`${environment.baseurl}/Order/success?sessionId=${sessionId}`);
+}
+orderhistory():Observable<userorderhostory[]>{
+    return this._HttpClient.get<userorderhostory[]>(`${environment.baseurl}/Order/history`)
+}
+getOrderHistoryDetails(orderId: number) {
+ return this._HttpClient.get<OrderHistoryDetails>(`${environment.baseurl}/Order/history/${orderId}`);
+
 }
 
 }
