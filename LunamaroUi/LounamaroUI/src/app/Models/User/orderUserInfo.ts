@@ -5,4 +5,5 @@ export interface OrderInfo {
   state: string;
   postalCode: number;
   name: string;
+IsPayOnDelivery: boolean;
 }

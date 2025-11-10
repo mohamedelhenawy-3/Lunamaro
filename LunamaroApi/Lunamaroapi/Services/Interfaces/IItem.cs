@@ -1,4 +1,5 @@
 ﻿using Lunamaroapi.DTOs;
+using Lunamaroapi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lunamaroapi.Services.Interfaces
@@ -13,7 +14,8 @@ namespace Lunamaroapi.Services.Interfaces
 
 
          Task<IEnumerable<ItemDTO>> GetItemByCatId(int catId);
-
+        Task <IEnumerable<ExplorePopItems>>  ExploreItemMenu();
+        Task<IEnumerable<ExplorePopItems>> ExplorePopularItems();
         Task<bool> Exists(int id);
     }
 }

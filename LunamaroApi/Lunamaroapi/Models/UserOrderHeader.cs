@@ -47,6 +47,7 @@ public class UserOrderHeader
     public string? TrackingNumber { get; set; }
     public string? Carrier { get; set; }
 
+    public PaymentType paymentType { set; get; }
     public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
     // ✅ IMPORTANT: initialize to avoid null errors

@@ -53,7 +53,7 @@ export class LoginComponent {
         }
       },
       error: () => {
-        alert('Login error');
+        alert('Email or Password Invalid');
       }
     });
   }

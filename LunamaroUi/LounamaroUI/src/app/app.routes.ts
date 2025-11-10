@@ -19,6 +19,7 @@ import { OrderComponent } from './Components/order/order.component';
 import { PaymentsuccessComponent } from './Components/paymentsuccess/paymentsuccess.component';
 import { UserorderhistoryComponent } from './Components/userorderhistory/userorderhistory.component';
 import { OrderdetailsComponent } from './Components/orderdetails/orderdetails.component';
+import { ControlledOrderHistoryComponent } from './Components/Admin/controlled-order-history/controlled-order-history.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -42,6 +43,8 @@ export const routes: Routes = [
 
 { path: 'payment-success/:sessionId', component:PaymentsuccessComponent },
 
+
+      {path:'Admin/ordershistory',component:ControlledOrderHistoryComponent,canActivate:[adminGuard]},
 
 
   // Fallback

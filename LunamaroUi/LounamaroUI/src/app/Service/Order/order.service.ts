@@ -9,6 +9,8 @@ import { OrderInfo } from '../../Models/User/orderUserInfo';
 import { OrderRes } from '../../Models/User/orderres';
 import { userorderhostory } from '../../Models/userorderhistory';
 import { OrderHistoryDetails } from '../../Models/orderdetails';
+import { orderhistory } from '../../Models/Admin/Orders/orderhistory';
+import { OrderStatus } from '../../Models/orderStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +42,12 @@ getOrderHistoryDetails(orderId: number) {
 
 }
 
+
+//Admin
+getOrders():Observable<orderhistory[]>{
+  return this._HttpClient.get<orderhistory[]>(`${environment.baseurl}/Order/AllOrders`)
+}
+updateOrderStatus(orderId: number, status: OrderStatus) {
+  return this._HttpClient.post(`${environment.baseurl}/Order/${orderId}/update-status`, { status });
+}
 }

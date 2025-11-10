@@ -135,5 +135,51 @@ namespace Lunamaroapi.Services
 
             return items;
         }
+
+
+
+        public async Task<IEnumerable<ExplorePopItems>> ExploreItemMenu()
+        {
+            var items = await _db.Items
+                .OrderByDescending(x => x.Id)
+                .Take(6)
+                .Select(x => new ExplorePopItems
+                {
+                   
+                    Name = x.Name,
+                    Description=x.Description,
+                    Price = x.Price,
+                    ImageUrl = x.ImageUrl
+                })
+                .ToListAsync();
+
+            return items;
+        }
+
+        public async Task<IEnumerable<ExplorePopItems>> ExplorePopularItems()
+        {
+            var popularItems = await _db.OrderItems
+       .GroupBy(oi => new { oi.ItemId, oi.Item.Name, oi.Item.Description, oi.Item.Price, oi.Item.ImageUrl })
+       .Select(g => new
+       {
+           Name = g.Key.Name,
+           Description = g.Key.Description,
+           Price = g.Key.Price,
+           ImageUrl = g.Key.ImageUrl,
+           TotalOrdered = g.Sum(x => x.Quantity)
+       })
+       .OrderByDescending(x => x.TotalOrdered)
+       .Take(6)
+       .Select(x => new ExplorePopItems
+       {
+           Name = x.Name,
+           Description = x.Description,
+           Price = x.Price,
+           ImageUrl = x.ImageUrl
+       })
+       .ToListAsync();
+
+            return popularItems;
+        }
     }
 }

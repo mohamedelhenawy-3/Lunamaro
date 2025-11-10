@@ -1,4 +1,5 @@
 ﻿using Lunamaroapi.DTOs;
+using Lunamaroapi.DTOs.Admin;
 using Lunamaroapi.Services;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -20,6 +21,17 @@ namespace Lunamaroapi.Controllers
         {
             _orderService = orderServices;
         }
+        [HttpGet("AllOrders")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            var orders = await _orderService.ListOfOrders();
+
+            if (orders == null || !orders.Any())
+                return NotFound("No orders found.");
+
+            return Ok(orders);
+        }
+        
 
         // Controller Method
         [HttpGet("preview")]
@@ -81,7 +93,20 @@ namespace Lunamaroapi.Controllers
 
             return Ok(result);
         }
+        [HttpPost("{orderId}/update-status")]
+        public async Task<IActionResult> UpdateStatus(int orderId, [FromBody] UpdateStatusOrderDTO dto)
+        {
+           
 
+            bool updated = await _orderService.UpdateStatusAsync(dto, orderId);
+
+            if (!updated)
+                return BadRequest("Failed to update order status");
+            return Ok(new { message = "Order status updated successfully" });
+
+        }
+
+      
 
     }
 }

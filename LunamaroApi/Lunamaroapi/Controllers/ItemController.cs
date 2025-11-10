@@ -4,6 +4,7 @@ using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stripe.Climate;
 
 namespace Lunamaroapi.Controllers
 {
@@ -86,5 +87,21 @@ namespace Lunamaroapi.Controllers
 
 
 
+
+        // GET: api/items/menu-preview
+        [HttpGet("menu-preview")]
+        public async Task<IActionResult> GetMenuPreview()
+        {
+            // Call your existing service/repository method
+            var items = await _IItemService.ExploreItemMenu(); 
+
+            return Ok(items);
+        }
+        [HttpGet("popular")]
+        public async Task<IActionResult> GetPopularItems()
+        {
+            var items = await _IItemService.ExplorePopularItems();
+            return Ok(items);
+        }
     }
 }

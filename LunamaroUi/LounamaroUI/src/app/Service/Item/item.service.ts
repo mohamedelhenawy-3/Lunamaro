@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Item } from '../../Models/item';
 import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
+import { ExploreItem } from '../../Models/item/exploreItem';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,12 @@ addtem(item:FormData):Observable<Item>{
 getItemsByCategoryId(catId:number):Observable<Item[]>{
   return this._HttpClient.get<Item[]>(`${environment.baseurl}/Item/GetItemsByCategory/${catId}`)
 }
-  
+getBestSelerItems():Observable<ExploreItem[]>{
+    return this._HttpClient.get<ExploreItem[]>(`${environment.baseurl}/Item/popular`)
+
+}
+getNewestItems():Observable<ExploreItem[]>{
+    return this._HttpClient.get<ExploreItem[]>(`${environment.baseurl}/Item/menu-preview`)
+
+}
 }

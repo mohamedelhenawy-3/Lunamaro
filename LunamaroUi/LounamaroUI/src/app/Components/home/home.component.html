@@ -28,14 +28,104 @@
     </div>
   </div>
 </section>
+<section class="best-seller-section py-6">
+  <div class="container text-center">
+
+    <h2 class="fw-bold mb-4 text-gold">Best Sellers</h2>
+
+    <div class="row justify-content-center g-4">
+
+      <div class="col-6 col-md-4 col-lg-2" *ngFor="let item of bestSellerItems">
+        
+        <div class="card seller-card shadow-sm position-relative border-0">
+
+          <!-- Ribbon -->
+          <span class="badge best-badge position-absolute">
+            ★ Best Seller
+          </span>
+
+          <!-- Food Image -->
+          <img [src]="'http://localhost:5218' + item.imageUrl"
+               class="card-img-top rounded">
+
+          <div class="card-body text-center">
+
+            <!-- Item Name -->
+            <h6 class="fw-bold text-gold mb-1">{{ item.name }}</h6>
+
+            <!-- Price -->
+            <p class="text-gold fw-bold mb-1">{{ item.price | currency }}</p>
+
+            <!-- Optional Description -->
+            <small class="text-white" *ngIf="item.description">
+              {{ item.description | slice:0:35 }}...
+            </small>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 
 
 <!-- Section 2: Our Menu -->
-<section class="menu-section" style="background-color: aquamarine;">
-  <h2>Our Menu</h2>
-  <p>nd delicious desserts.</p>
+<<!-- Section 2: Our Menu -->
+<div class="container-xxxl popular-menu" 
+     style="background-color: white; width: 100%; height: 100vh; overflow-y: auto;">
   
-</section>
+  <div class="container py-5">
+
+    <div class="text-center">
+      <h5 class="section-title ff-secondary text-center fw-normal" style="color: black;">Food Menu</h5>
+      <h1 class="mb-5" style="color: black;">Our Menu</h1>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-lg-6" *ngFor="let item of newestItems">
+        <div class="d-flex align-items-center">
+
+          <img
+            class="flex-shrink-0 img-fluid rounded"
+            [src]="'http://localhost:5218' + item.imageUrl"
+            alt="{{ item.name }}"
+            style="width: 80px; height: 80px; object-fit: cover;"
+          >
+
+          <div class="w-100 d-flex flex-column text-start ps-4">
+            
+            <h5 class="d-flex justify-content-between border-bottom pb-2" style="color: black;">
+              <span>{{ item.name }}</span>
+              <span style="color: black;">{{ item.price | currency }}</span>
+            </h5>
+
+            <small class="fst-italic" style="color: black;">
+              {{ item.description ? (item.description | slice:0:60) + '...' : 'No description available' }}
+            </small>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Button -->
+      <div class="text-center mt-4">
+        <button class="btn btn-primary px-4 py-2">
+          Explore Our Menu
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
 
 <section class="reservation-section">
   <h2>Ready to dine with us?</h2>
@@ -43,16 +133,3 @@
   <button routerLink="/reservation" class="btn btn-primary">Make a Reservation</button>
 </section>
 <!-- Section 4: Contact or Visit -->
-<section class="contact-section">
-  <h2>Visit Us</h2>
-  <p>We’re located in the heart of the city — perfect for family dinners, romantic evenings, and celebrations. Come and taste the experience!</p>
-</section>
-
-<!-- 🌸 Final Section: Welcome (image + message) -->
-<section class="welcome-section">
-  <img src="assets/background/restaurant-table.jpg" alt="Restaurant interior" class="welcome-image">
-  <div class="welcome-message">
-    <h2>Welcome to Lunamaro</h2>
-    <p>We invite you to relax, enjoy, and experience the true flavor of our kitchen. Our restaurant is not just a place to eat — it’s a place to feel at home.</p>
-  </div>
-</section>

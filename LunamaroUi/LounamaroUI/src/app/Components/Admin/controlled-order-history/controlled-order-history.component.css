@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table thead {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+td, th {
+  vertical-align: middle;
+}
+
+h3 {
+  font-weight: 600;
+}

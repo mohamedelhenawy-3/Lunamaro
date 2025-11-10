@@ -1,4 +1,5 @@
 ﻿using Lunamaroapi.DTOs;
+using Lunamaroapi.DTOs.Admin;
 using Lunamaroapi.Models;
 
 namespace Lunamaroapi.Services.Interfaces
@@ -16,5 +17,14 @@ namespace Lunamaroapi.Services.Interfaces
         Task<IEnumerable<UserOrdersHistory>> UserOrderHistory();
         Task<orderhistorydetails> UserOrderHistoryDetails(int orderId);
 
+
+        Task<IEnumerable<ordersListDTO>> ListOfOrders();
+        Task<bool> UpdateStatusAsync(UpdateStatusOrderDTO dto, int orderId);
+
+
+
+
+
+       
     }
 }

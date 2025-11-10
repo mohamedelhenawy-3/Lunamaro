@@ -1,116 +1,84 @@
+/* ===== HERO SECTION ===== */
 .hero-section {
-  height: 90vh;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   text-align: center;
+  color: #EFB036; /* Gold accent for headings */
+  padding: 0;
+  margin: 0;
 }
+
+.hero-section h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #EFB036;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* ===== ABOUT US ===== */
 .about-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: white;
+  align-items: stretch;
   height: 400px;
   padding: 40px;
-}
-
-/* Left Side (Text) */
-/* Ensure consistent box sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Parent section — controls the height */
-.about-section {
-  display: flex;
-  gap: 20px;                  /* space between left & right */
-  align-items: stretch;       /* make children match height */
-  height: 400px;              /* your chosen height */
-  padding: 20px;
-  background: #fff;
-}
-
-/* LEFT: text column */
-.aboutus {
-  flex: 1;                    /* take half (with right) */
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  background: aquamarine;     /* debug color — remove if you want */
-  overflow: auto;             /* prevents overflow if text grows */
-}
-
-/* Make text paragraph look nice */
-.about-text h2 { margin: 0 0 10px 0; font-size: 1.8rem; }
-.about-text .intro { font-weight: 700; margin-bottom: 10px; }
-.about-text p { line-height: 1.5; color: #333; }
-
-.about-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;  /* both sies equal height */
-  height: 400px;
   background-color: white;
-  padding: 40px;
+  gap: 20px;
   box-sizing: border-box;
 }
 
-/* LEFT PART */
 .aboutus {
-  flex: 1; /* take equal width with the right side */
+  flex: 1;
   display: flex;
   align-items: center;
   padding: 20px;
-  background-color: #ffffff;
-  box-sizing: border-box;
 }
 
 .about-text h2 {
   font-size: 2rem;
+  color: #23486A; /* Primary blue */
   margin-bottom: 10px;
-  color: #091156;
 }
 
 .about-text .intro {
   font-weight: bold;
   font-size: 1.2rem;
+  color: #1a3350; /* Dark navy */
   margin-bottom: 10px;
 }
 
 .about-text p {
-  color: #333;
+  color: #1a3350; /* Dark navy */
   line-height: 1.6;
 }
 
-/* RIGHT PART */
 .leftofabout {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  box-sizing: border-box;
   padding: 10px;
 }
 
-/* Gallery container using flexbox */
 .gallery {
   display: flex;
-  flex-wrap: wrap; /* allow multiple rows */
+  flex-wrap: wrap;
   justify-content: center;
-  align-content: center;
+  gap: 10px;
   width: 100%;
   height: 100%;
-  gap: 10px;
 }
 
 .gallery img {
-  width: calc(50% - 10px); /* two per row with spacing */
+  width: calc(50% - 10px);
   height: calc(50% - 10px);
   object-fit: cover;
   border-radius: 10px;
@@ -121,15 +89,105 @@
   transform: scale(1.05);
 }
 
+/* ===== BEST SELLERS ===== */
+/* ===== BEST SELLERS SECTION ===== */
+.best-seller-section {
+  background-color: #1a3350; /* Dark navy background */
+  min-height: 76vh;
+  padding: 50px 0;
+}
 
+.best-seller-section h2.text-gold {
+  color: #EFB036; /* Gold heading */
+  font-weight: bold;
+}
 
-/* home.component.css */
+/* ===== CARD STYLING ===== */
+.seller-card {
+  border-radius: 12px;
+  background-color: #23486A; /* Dark card background */
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.seller-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Ribbon Badge */
+.best-badge {
+  background-color: #EFB036; /* Gold badge */
+  color: #1a3350; /* Dark text inside badge */
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  top: 8px;
+  left: 8px;
+}
+
+/* Card Image */
+.seller-card .card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Card Text */
+.seller-card h6.text-gold,
+.seller-card p.text-gold {
+  color: #EFB036;
+}
+
+.seller-card small.text-white {
+  color: #fff;
+  font-size: 12px;
+}
+
+/* ===== OUR MENU ===== */
+.popular-menu {
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.popular-menu h1,
+.popular-menu h5,
+.popular-menu span,
+.popular-menu small {
+  color: #1a3350; /* Dark navy */
+}
+
+.popular-menu button {
+  background-color: #23486A;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.popular-menu button:hover {
+  background-color: #EFB036;
+  color: #23486A;
+}
+
+/* ===== RESERVATION BUTTON ===== */
 .reservation-section {
   text-align: center;
   margin: 50px 0;
 }
 
-button {
+.reservation-section h2 {
+  color: #23486A;
+}
+
+.reservation-section p {
+  color: #1a3350;
+}
+
+.reservation-section button {
   background-color: #23486A;
   color: white;
   border: none;
@@ -137,6 +195,15 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
-button:hover {
-  background-color: #1a3350;
+
+.reservation-section button:hover {
+  background-color: #EFB036;
+  color: #23486A;
+}
+
+/* ===== BUTTON & CARD HOVER EFFECTS ===== */
+.menu-card:hover,
+.seller-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
 }

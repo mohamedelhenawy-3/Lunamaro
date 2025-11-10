@@ -1,19 +1,19 @@
-<div class="container mt-4" *ngIf="orderDetails">
+<div class="order-details-container" *ngIf="orderDetails">
 
-  <div class="card mb-4 shadow-sm">
-    <div class="card-header bg-primary text-white">
+  <div class="order-card">
+    <div class="order-card-header">
       <h4>Order #{{ orderDetails.orderId }}</h4>
     </div>
 
-    <div class="card-body">
-      <div class="row mb-3">
+    <div class="order-card-body">
+      <div class="row order-info mb-3">
         <div class="col-md-6">
           <p><strong>Date:</strong> {{ orderDetails.dateOfOrder | date:'medium' }}</p>
-          <p><strong>Status:</strong> 
-            <span class="badge" [ngClass]="{
-              'bg-warning': orderDetails.orderStatus === 'Pending',
-              'bg-success': orderDetails.orderStatus === 'Delivered',
-              'bg-danger': orderDetails.orderStatus === 'Cancelled'
+          <p><strong>Status:</strong>
+            <span class="status-badge" [ngClass]="{
+              'status-pending': orderDetails.orderStatus === 'Pending',
+              'status-delivered': orderDetails.orderStatus === 'Delivered',
+              'status-cancelled': orderDetails.orderStatus === 'Cancelled'
             }">
               {{ orderDetails.orderStatus }}
             </span>
@@ -24,22 +24,20 @@
         </div>
       </div>
 
-      <h5>Items</h5>
-      <table class="table table-bordered table-hover align-middle">
-        <thead class="table-dark">
+      <h5 class="items-title">Items</h5>
+      <table class="order-items-table">
+        <thead>
           <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Product</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Unit Price</th>
-            <th scope="col">Total</th>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of orderDetails.orderItems">
-            <td>
-              <img [src]="'http://localhost:5218' + item.imgUrl" alt="{{ item.productName }}" class="product-img">
-            </td>
+            <td><img [src]="'http://localhost:5218' + item.imgUrl" alt="{{ item.productName }}" class="product-img"></td>
             <td>{{ item.productName }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ item.price | currency:'EGP':'symbol':'1.0-0' }}</td>
@@ -50,12 +48,12 @@
     </div>
   </div>
 
-  <button class="btn btn-secondary" routerLink="/user/orders">
+  <button class="btn-back" routerLink="/user/orders">
     ← Back to Order History
   </button>
 </div>
 
 <div *ngIf="!orderDetails" class="text-center mt-5">
-  <div class="spinner-border text-primary" role="status"></div>
-  <p class="mt-2">Loading order details...</p>
+  <div class="spinner-border text-warning" role="status"></div>
+  <p class="mt-2" style="color:#fff;">Loading order details...</p>
 </div>

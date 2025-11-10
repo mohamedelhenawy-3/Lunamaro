@@ -6,6 +6,7 @@ import { OrderRes } from '../../Models/User/orderres';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { OrderInfo } from '../../Models/User/orderUserInfo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -25,10 +26,12 @@ export class OrderComponent implements OnInit {
     deliveryStreetAddress: '',
     city: '',
     state: '',
-    postalCode: 0
+    postalCode: 0,
+      IsPayOnDelivery: true  // default Cash
+
   };
 
-  constructor(private orderservice: OrderService) {}
+  constructor(private orderservice: OrderService,private router:Router) {}
 
   ngOnInit(): void {
     this.orderservice.GetOrderPerview().subscribe({
@@ -43,8 +46,14 @@ export class OrderComponent implements OnInit {
   placeOrder() {
     this.orderservice.placeOrder(this.orderInfo).subscribe({
       next: (res: OrderRes) => {
-        console.log("Order Created ✅", res);
+      if(res.paymentUrl){
+          console.log("Order Created ✅", res);
         window.location.href = res.paymentUrl;
+      }else{
+              alert("Order placed successfully! Pay on delivery.");
+               this.router.navigate(['/Home']);
+
+      }
       },
       error: (err) => console.log(err)
     });

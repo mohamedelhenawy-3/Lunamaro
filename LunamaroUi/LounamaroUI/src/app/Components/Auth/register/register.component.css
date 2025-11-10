@@ -1,73 +1,98 @@
+/* Full page background */
+body {
+  margin: 0;
+  background-color: #23486A;
+  font-family: Arial, sans-serif;
+}
 
 /* Center container */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-   min-height: 95vh;
+  min-height: 95vh;
 }
 
-/* Style the form */
+/* FORM CARD */
 form {
-  background-color: transparent;
-  padding: 3rem;
-  border-radius: 10px;
-  color: white; /* All text white */
-  width: 400px;
+  background: #23486A;
+  padding: 2.5rem;
+  border-radius: 25px;
+  width: 380px;
+  color: #23486A;
+
+  /* Professional shadow */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+
+  transition: 0.3s ease-in-out;
 }
 
-/* Headings white */
+/* Slight hover pop effect */
+form:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(0,0,0,0.35);
+}
+
+/* Headings */
 form h2 {
   text-align: center;
-  color: rgb(255, 255, 255);
   margin-bottom: 1rem;
+  color:white;
+  font-weight: bold;
 }
 
-/* Labels white */
+/* Labels */
 form label {
-  color: rgb(241, 241, 241);
-  display: block;
   margin-top: 10px;
+  display: block;
+  color: white;
 }
 
-/* Inputs with blue border */
+/* Inputs */
 form input {
   width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  margin-bottom: 10px;
-  border: 2px solid #ffffff; /* Blue border */
-  border-radius: 10px;
-  background-color: #ffffff;
+  padding: 10px;
+  border: 2px solid #4C7B8B;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  transition: 0.2s;
+}
+
+/* Focus border */
+form input:focus {
+  border-color: #EFB036;
+  outline: none;
 }
 
 /* Error messages */
 form div {
-  color: #601818;
-  font-size: 3rem;
-  margin-top: -8px;
-  margin-bottom: 30px;
+  color: #c0392b;
+  font-size: 14px;
+  margin-top: -5px;
+  margin-bottom: 10px;
 }
 
-/* Submit button */
-
+/* Button */
 form button {
   width: 100%;
-  padding: 7px;
-  background-color:#4C7B8B;
-  color: white;
+  padding: 10px;
+  background-color: #EFB036;
+  color: #23486A;
   border: none;
-  border-radius: 20px;
+  font-weight: bold;
+  border-radius: 25px;
   cursor: pointer;
   margin-top: 15px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: #EFB036;
+  color: white;
 }
 
 form button:disabled {
-  background-color: #a9a9a9;
+  background-color: #bdbdbd;
   cursor: not-allowed;
 }
-form button:hover {
-  background-color: #EFB036;
-  cursor: not-allowed;
-}
-

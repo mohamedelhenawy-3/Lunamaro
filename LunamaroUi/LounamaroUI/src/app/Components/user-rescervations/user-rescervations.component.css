@@ -1,23 +1,25 @@
 .reservations-container {
   max-width: 900px;
   margin: 40px auto;
-  background: #f9f9f9;
+  background-color: #1a3350; /* dark background */
   padding: 25px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  color: #fff;
 }
 
-h2 {
+.reservations-container h2 {
   text-align: center;
-  color: #23486a;
-  font-weight: 600;
-  margin-bottom: 20px;
+  color: #ffffff; /* gold accent */
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
+/* Table styling */
 .reservations-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
+  background-color: #23486A; /* navy table background */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -26,55 +28,62 @@ h2 {
 .reservations-table td {
   padding: 12px 15px;
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
 }
 
 .reservations-table th {
-  background-color: #23486a;
-  color: white;
+  background-color: #1a3350; /* darker navy header */
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
+/* Status badges */
 .status {
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 5px 12px;
+  border-radius: 12px;
   font-weight: 500;
   text-transform: capitalize;
+  display: inline-block;
 }
 
 .status-pending {
-  background-color: #fff4cc;
-  color: #b58900;
+  background-color: #EFB036; /* gold */
+  color: #1a3350;
 }
 
 .status-approved {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: #00ff99; /* green accent */
+  color: #1a3350;
 }
 
 .status-cancelled {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: #dc3545; /* red */
+  color: #fff;
 }
 
+/* Cancel button */
 .cancel-btn {
-  background-color: #dc3545;
-  color: white;
+  background-color: #EFB036; /* gold */
+  color: #1a3350;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 6px 14px;
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.2s ease-in-out;
 }
 
 .cancel-btn:hover {
-  background-color: #b52a36;
+  background-color: #fff;
+  color: #1a3350;
+  transform: translateY(-2px);
 }
 
+/* No reservations message */
 .no-reservations {
   text-align: center;
   font-size: 1.1rem;
-  color: #555;
+  color: #EFB036; /* gold accent */
   margin-top: 20px;
 }

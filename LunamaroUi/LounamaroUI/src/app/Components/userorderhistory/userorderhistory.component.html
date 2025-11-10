@@ -1,34 +1,45 @@
-<div class="container mt-4">
+<div class="order-history-container">
 
+  <h2>My Order History</h2>
 
+  <div *ngIf="orderhistroy.length > 0; else noOrders">
+    <table class="order-history-table">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderhistroy; let i = index">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.dateOfOrder | date:'short' }}</td>
+          <td>
+            <span class="status-badge"
+                  [ngClass]="{
+                    'status-pending': order.orderStatus === 'Pending',
+                    'status-delivered': order.orderStatus === 'Delivered',
+                    'status-cancelled': order.orderStatus === 'Cancelled'
+                  }">
+              {{ order.orderStatus }}
+            </span>
+          </td>
+          <td>{{ order.totalAmount | currency:'EGP':'symbol':'1.0-0' }}</td>
+          <td>
+            <button class="btn-view" (click)="viewDetails(order.orderId)">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- Table -->
-  <table *ngIf="orderhistroy.length > 0" class="table table-bordered table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th>order</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Total</th>
-        <th>Details</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let order of orderhistroy; let i = index">
-        <td>{{ order.orderId }}</td>
-        <td>{{ order.dateOfOrder | date: 'short' }}</td>
-        <td>
-          <span class="badge text-bg-primary">{{ order.orderStatus }}</span>
-        </td>
-        <td>{{ order.totalAmount | currency }}</td>
-        <td>
-          <button class="btn btn-sm btn-primary"  (click)="viewDetails(order.orderId)">
-            View
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ng-template #noOrders>
+    <p class="no-orders">No orders found.</p>
+  </ng-template>
 
 </div>

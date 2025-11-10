@@ -23,6 +23,12 @@
 
       <label>Postal Code</label>
       <input type="number" class="input-box" [(ngModel)]="orderInfo.postalCode" name="postal"/>
+<select [(ngModel)]="orderInfo.IsPayOnDelivery" name="IsPayOnDelivery">
+  <option [ngValue]="true">Cash on Delivery</option>
+  <option [ngValue]="false">Visa / Online Payment</option>
+</select>
+
+
 
       <button class="confirm-btn" type="submit">Confirm Order</button>
     </form>

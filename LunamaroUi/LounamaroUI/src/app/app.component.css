@@ -8,7 +8,6 @@ app-navbar {
 }
 
 .page-content {
-  padding-top: 80px; 
   background-color:  #3B6790;
   min-height: 100vh;/* pushes content below navbar */
 }
@@ -31,7 +30,7 @@ html, body {
 .page-content {
   flex: 1; /* makes content fill remaining space */
   background-color: #3B6790;
-  padding-top: 80px;   /* space for fixed navbar */
+  padding-top: 60px;   /* space for fixed navbar */
   padding-bottom: 30px; /* breathing space above footer */
   box-sizing: border-box;
 }

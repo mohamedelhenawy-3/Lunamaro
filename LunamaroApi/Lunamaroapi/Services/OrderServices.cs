@@ -1,5 +1,6 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
+using Lunamaroapi.DTOs.Admin;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -102,8 +103,10 @@ namespace Lunamaroapi.Services
                 State = dto.State,
                 PostalCode = dto.PostalCode,
                 Name = dto.Name,
+                paymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
+
                 OrderStatus = OrderStatus.Pending,
-                PaymentStatus = "Not Paid",
+                PaymentStatus = dto.IsPayOnDelivery ? "Pending Payment" : "Not Paid" ,
                 OrderItems = new List<OrderItem>()
             };
 
@@ -119,6 +122,19 @@ namespace Lunamaroapi.Services
 
             await _db.UserOrderHeaders.AddAsync(orderHeader);
             await _db.SaveChangesAsync();
+
+            if (dto.IsPayOnDelivery)
+            {
+                _db.UserCarts.RemoveRange(userCart);
+                await _db.SaveChangesAsync();
+
+                return new OrderResDTO
+                {
+                    OrderId = orderHeader.Id,
+                    PaymentUrl = null   // No Stripe URL
+                };
+            }
+
 
             var options = new SessionCreateOptions
             {
@@ -152,7 +168,7 @@ namespace Lunamaroapi.Services
             // ✅ Save generated Stripe IDs
             orderHeader.StripeSessionId = session.Id;
             orderHeader.StripePaymentIntentId = session.PaymentIntentId;
-
+            orderHeader.PaymentStatus = "Paid";
             _db.UserOrderHeaders.Update(orderHeader);
             await _db.SaveChangesAsync();
 
@@ -175,6 +191,9 @@ namespace Lunamaroapi.Services
 
             if (order == null)
                 return false;
+
+
+            
 
             order.PaymentStatus = "Paid";
             order.OrderStatus = OrderStatus.Processing;
@@ -249,5 +268,49 @@ namespace Lunamaroapi.Services
                 }).ToList()
             };
         }
+
+        public async Task<IEnumerable<ordersListDTO>> ListOfOrders()
+        {
+            var order = await _db.UserOrderHeaders.Include(x => x.OrderItems).Select(x => new ordersListDTO
+            {
+                OrderId = x.Id,
+                CustomerName = x.Name,
+                PhoneNumber = x.PhoneNumber,
+                totalAmount = x.TotalAmount,
+
+                orderStatus = x.OrderStatus,
+                OrderDate = x.DateOfOrder
+                ,paymentType=x.paymentType
+            }).ToListAsync();
+
+
+            return order;
+
+        }
+
+
+        public async Task<bool> UpdateStatusAsync(UpdateStatusOrderDTO dto, int orderId)
+        {
+            // Find order by id
+            var order = await _db.UserOrderHeaders.FindAsync(orderId);
+            if (order == null) return false;
+
+            // Update order status
+            order.OrderStatus = dto.Status;
+
+            // Optional: if you want to handle Cash on Delivery -> mark Paid when Delivered
+            if (order.paymentType == PaymentType.Cash && dto.Status == OrderStatus.Delivered)
+            {
+                order.PaymentStatus = "Paid";
+            }
+
+            // Save changes to database
+            await _db.SaveChangesAsync();
+
+            return true;
+        }
+
+        
+
     }
 }

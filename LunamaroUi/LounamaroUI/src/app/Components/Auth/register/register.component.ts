@@ -16,7 +16,7 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
 this.registerForm = this.fb.group({
-  fullName: ['', Validators.required], // ✅ fix spelling from fulName
+  fullName: ['', [Validators.required,Validators.minLength(10)]], // ✅ fix spelling from fulName
   userName: ['', [Validators.required, Validators.minLength(4)]],
   email: ['', [Validators.required, Validators.email]],
   password: ['', [Validators.required, Validators.minLength(6)]],
@@ -53,7 +53,7 @@ register() {
       },
       error: (err) => {
         console.error("Registration error:", err);
-        alert('Error during registration');
+        alert('Enter Valid Data');
       }
     });
   }

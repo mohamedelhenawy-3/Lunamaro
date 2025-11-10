@@ -1,63 +1,105 @@
+/* Full page background */
+body {
+  margin: 0;
+  background-color: #23486A;
+  font-family: Arial, sans-serif;
+}
+
+/* Center container */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 95vh;
+  min-height: 100vh;
 }
 
+/* FORM CARD */
+/* FORM CARD */
 form {
-  background-color: transparent;
-  padding: 3rem;
-  border-radius: 10px;
-  color: white;
-  width: 400px;
+  background: #23486A;        /* dark blue card */
+  padding: 2.5rem;
+  border-radius: 15px;
+  width: 380px;
+  min-height: 50vh;
+  color: white;               /* white text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* center items vertically */
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+  transition: 0.3s ease-in-out;
 }
 
+/* Slight hover pop effect */
+form:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px rgba(0,0,0,0.4);
+}
+
+/* Headings */
 form h2 {
   text-align: center;
-  color: rgb(255, 255, 255);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  color: white;   /* gold text looks premium */
+  font-weight: bold;
 }
 
+/* Labels */
 form label {
-  color: rgb(255, 255, 255);
+  font-weight: 600;
+  margin-top: 12px;
   display: block;
-  margin-top: 10px;
+  color: white;
 }
 
+/* Inputs */
 form input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
+  border: 2px solid #EFB036;
+  border-radius: 8px;
+  background-color: #fdfdfd;
   margin-top: 4px;
-  margin-bottom: 10px;
-  border: 2px solid #ffffff;
-  border-radius: 10px;
-  background-color: #ffffff;
+  margin-bottom: 12px;
+
+  transition: 0.2s;
 }
 
+/* Input focus style */
+form input:focus {
+  border-color: #4C7B8B;
+  outline: none;
+}
+
+/* Error messages */
 form div {
-  color: #601818;
-  font-size: 1rem; /* adjusted from 3rem to be more reasonable */
+  color: #ff8c8c;
+  font-size: 13px;
   margin-top: -8px;
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
+/* Submit Button */
 form button {
   width: 100%;
-  padding: 7px;
-  background-color:#4C7B8B;
-  color: white;
+  padding: 12px;
+  background-color: #EFB036;
+  color: #23486A;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   cursor: pointer;
   margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color:  #EFB036;;
+  color: white;
 }
 
 form button:disabled {
-  background-color: #a9a9a9;
-  cursor: not-allowed;
-}
-form button:hover {
-  background-color: #EFB036;
+  background-color: #bdbdbd;
   cursor: not-allowed;
 }

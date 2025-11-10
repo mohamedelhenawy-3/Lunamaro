@@ -1,0 +1,51 @@
+<table class="table table-hover table-bordered shadow-sm">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Customer</th>
+      <th>Phone</th>
+      <th>Total</th>
+      <th>Payment</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of OrdersHistory">
+      <td>{{ order.orderId }}</td>
+      <td>{{ order.customerName }}</td>
+      <td>{{ order.phoneNumber }}</td>
+      <td>{{ order.totalAmount }} EGP</td>
+
+      <!-- Payment -->
+      <td>
+        <span class="badge bg-warning text-dark" *ngIf="order.paymentType === paymentType.Cash">Cash</span>
+        <span class="badge bg-primary" *ngIf="order.paymentType === paymentType.Visa">Online</span>
+      </td>
+
+      <!-- Status Badge -->
+      <td>
+        <span class="badge bg-secondary" *ngIf="order.orderStatus === orderStatus.Pending">Pending</span>
+        <span class="badge bg-primary" *ngIf="order.orderStatus === orderStatus.Accepted">Accepted</span>
+        <span class="badge bg-info" *ngIf="order.orderStatus === orderStatus.Processing">Processing</span>
+        <span class="badge bg-warning text-dark" *ngIf="order.orderStatus === orderStatus.OutForDelivery">On Delivery</span>
+        <span class="badge bg-success" *ngIf="order.orderStatus === orderStatus.Delivered">Delivered</span>
+        <span class="badge bg-danger" *ngIf="order.orderStatus === orderStatus.Cancelled">Cancelled</span>
+      </td>
+
+      <td>{{ order.orderDate | date: 'short' }}</td>
+
+      <!-- Action Button -->
+<td>
+  <button *ngIf="getNextStatus(order) as next"
+          class="btn btn-sm btn-success"
+          (click)="updateStatus(order.orderId, next.value)">
+    {{ next.text }}
+  </button>
+</td>
+
+
+    </tr>
+  </tbody>
+</table>

@@ -1,7 +1,6 @@
 <div class="reservations-container">
   <h2>My Reservations</h2>
 
-  <!-- If reservations exist -->
   <div *ngIf="userrecervation.length > 0; else noReservations">
     <table class="reservations-table">
       <thead>
@@ -16,15 +15,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let r of userrecervation; index as i">
-          <td>{{ r.id}}</td>
+          <td>{{ i + 1 }}</td>
           <td>{{ r.tableNumber }}</td>
           <td>{{ r.startTime | date: 'short' }}</td>
           <td>{{ r.endTime | date: 'short' }}</td>
           <td>
-            <span
-              class="status"
-
-            >
+            <span class="status" [ngClass]="'status-' + r.status.toLowerCase()">
               {{ r.status }}
             </span>
           </td>
@@ -38,7 +34,6 @@
     </table>
   </div>
 
-  <!-- If no reservations -->
   <ng-template #noReservations>
     <p class="no-reservations">You have no active reservations.</p>
   </ng-template>
