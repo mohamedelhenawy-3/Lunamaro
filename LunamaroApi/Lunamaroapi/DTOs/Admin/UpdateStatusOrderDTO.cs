@@ -4,6 +4,6 @@ namespace Lunamaroapi.DTOs.Admin
 {
     public class UpdateStatusOrderDTO
     {
-        public OrderStatus Status;
+        public OrderStatus Status { set; get; }
     }
 }

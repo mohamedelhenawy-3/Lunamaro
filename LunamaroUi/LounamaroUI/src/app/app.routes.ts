@@ -21,6 +21,7 @@ import { UserorderhistoryComponent } from './Components/userorderhistory/userord
 import { OrderdetailsComponent } from './Components/orderdetails/orderdetails.component';
 import { ControlledOrderHistoryComponent } from './Components/Admin/controlled-order-history/controlled-order-history.component';
 import { customerGuard } from './Components/Auth/customer.guard';
+import { ControlleddetailsComponent } from './Components/Admin/controlleddetails/controlleddetails.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -40,12 +41,15 @@ export const routes: Routes = [
   {path:'reservation',component:ReservationComponent},
  {path:'MyReservations',component:UserRescervationsComponent,canActivate:[customerGuard]},
   {path:'Admin/reservation',component:ControlledRecervationsComponent,canActivate:[adminGuard]},
-             {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},
+  {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},
+
+  
 
 { path: 'payment-success/:sessionId', component:PaymentsuccessComponent },
 
 
-      {path:'Admin/ordershistory',component:ControlledOrderHistoryComponent,canActivate:[adminGuard]},
+  {path:'Admin/ordershistory',component:ControlledOrderHistoryComponent,canActivate:[adminGuard]},
+{ path: 'Admin/details/:id', component: ControlleddetailsComponent, canActivate: [adminGuard] },
 
 
   // Fallback

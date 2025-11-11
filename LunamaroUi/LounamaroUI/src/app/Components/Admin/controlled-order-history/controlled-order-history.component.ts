@@ -5,19 +5,21 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PaymentType } from '../../../Models/Admin/PaymentType';
 import { OrderStatus } from '../../../Models/orderStatus';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-controlled-order-history',
   standalone: true,
   imports: [CommonModule,FormsModule],
   templateUrl: './controlled-order-history.component.html',
-  styleUrl: './controlled-order-history.component.css'
+  styleUrls: ['./controlled-order-history.component.css'] // plural "styleUrls"
+
 })
 export class ControlledOrderHistoryComponent implements OnInit {
  OrdersHistory:orderhistory[]= [];
 paymentType=PaymentType;
 orderStatus=OrderStatus;
- constructor(private service:OrderService){
+ constructor(private service:OrderService ,private router:Router){
 
  }
   ngOnInit(): void {
@@ -48,6 +50,7 @@ updateStatus(orderId: number, nextStatus: OrderStatus) {
   });
 }
 
+
   
 getNextStatus(order: orderhistory): { text: string; value: OrderStatus } | null {
   switch(order.orderStatus) {
@@ -59,4 +62,10 @@ getNextStatus(order: orderhistory): { text: string; value: OrderStatus } | null 
   }
 }
 
+
+
+viewDetails(orderId: number) {
+this.router.navigate(['Admin/details', orderId]);
+
+}
 }

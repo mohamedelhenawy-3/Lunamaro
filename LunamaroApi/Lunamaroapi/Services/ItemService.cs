@@ -111,9 +111,19 @@ namespace Lunamaroapi.Services
             };
         }
 
-        public Task UpdateItemAsync(ItemDTO itemdto, int id)
+        public async Task UpdateItemAsync(ItemDTO itemdto, int id)
         {
-            throw new NotImplementedException();
+            var item =await  _db.Items.FindAsync(id);
+            if (item == null) Console.WriteLine("nOTHING");
+
+            item.Name = itemdto.Name;
+            item.Price = itemdto.Price;
+            item.ImageUrl = itemdto.ImageUrl;
+            item.Description = itemdto.Description;
+
+
+            await _db.SaveChangesAsync();
+            
         }
 
  

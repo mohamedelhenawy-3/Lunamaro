@@ -43,23 +43,22 @@ namespace Lunamaroapi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTable(int id, [FromBody] Table updated)
+        public async Task<IActionResult> UpdateTable(int id, [FromBody] UpdateTableDTO updated)
         {
+            if (updated == null)
+                return BadRequest("Invalid table data");
 
-            var existing =await _tablerepo.GetTableByIdAsync(id);
-            if (existing == null) return NotFound();
-
-
-            existing.TableNumber = updated.TableNumber;
-            existing.Capacity = updated.Capacity;
-            existing.Location = updated.Location;
-            existing.IsAvailable = updated.IsAvailable;
-
-            await _tablerepo.UpdateTableAsync(existing);
-            return Ok(existing);
-
-
+            try
+            {
+                await _tablerepo.UpdateTableAsync(updated, id);
+                return Ok(updated); // or return NoContent() if you don't want to return data
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message); // if table not found
+            }
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTable(int id)

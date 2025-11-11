@@ -310,7 +310,33 @@ namespace Lunamaroapi.Services
             return true;
         }
 
-        
+     
 
+        public async Task<orderhistorydetails> OrderHistoryDetailsAd(int orderId)
+        {
+            var order = await _db.UserOrderHeaders
+                   .Where(x => x.Id == orderId)
+                   .Include(x => x.OrderItems)
+                       .ThenInclude(oi => oi.Item)
+                   .FirstOrDefaultAsync();
+
+            if (order == null)
+                return null;
+
+            return new orderhistorydetails
+            {
+                OrderId = order.Id,
+                DateOfOrder = order.DateOfOrder,
+                OrderStatus = order.OrderStatus,
+                TotalAmount = order.TotalAmount,
+                orderItems = order.OrderItems.Select(i => new OrderitemshistoryDTO
+                {
+                    ProductName = i.Item.Name,
+                    ImgUrl = i.Item.ImageUrl,
+                    Quantity = i.Quantity,
+                    Price = i.UnitPrice,
+                }).ToList()
+            };
+        }
     }
 }

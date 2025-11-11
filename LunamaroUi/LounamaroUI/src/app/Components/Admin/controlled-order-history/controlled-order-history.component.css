@@ -104,3 +104,19 @@
   color: #1a3350;
   transform: translateY(-2px);
 }
+.view-btn {
+  background-color: #17a2b8; /* blue */
+  color: #fff;
+}
+
+.view-btn:hover {
+  background-color: #fff;
+  color: #17a2b8;
+  transform: translateY(-2px);
+}
+/* Make buttons appear side by side with some spacing */
+.action-buttons {
+  display: flex;
+  justify-content: center; /* center in the cell */
+  gap: 8px;               /* space between buttons */
+}

@@ -41,6 +41,10 @@ getOrderHistoryDetails(orderId: number) {
  return this._HttpClient.get<OrderHistoryDetails>(`${environment.baseurl}/Order/history/${orderId}`);
 
 }
+getOrderHistoryDetailsAd(orderId: number) {
+ return this._HttpClient.get<OrderHistoryDetails>(`${environment.baseurl}/Order/historyAd/${orderId}`);
+
+}
 
 
 //Admin

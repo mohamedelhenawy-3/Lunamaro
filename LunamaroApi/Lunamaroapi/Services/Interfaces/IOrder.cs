@@ -18,6 +18,9 @@ namespace Lunamaroapi.Services.Interfaces
         Task<orderhistorydetails> UserOrderHistoryDetails(int orderId);
 
 
+        //admin
+        Task<orderhistorydetails> OrderHistoryDetailsAd(int orderId);
+
         Task<IEnumerable<ordersListDTO>> ListOfOrders();
         Task<bool> UpdateStatusAsync(UpdateStatusOrderDTO dto, int orderId);
 

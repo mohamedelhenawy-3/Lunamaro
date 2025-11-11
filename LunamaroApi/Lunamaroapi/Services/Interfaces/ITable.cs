@@ -10,7 +10,7 @@ namespace Lunamaroapi.Services.Interfaces
         Task<Table?> GetTableByIdAsync(int id);
         Task AddTableAsync(TablesDTO newTable);
 
-        Task UpdateTableAsync(Table table);
+        Task UpdateTableAsync(UpdateTableDTO table,int id);
         Task DeleteTableAsync(int id);
         Task SetAvailabilityAsync(int id, bool isAvailable);
 

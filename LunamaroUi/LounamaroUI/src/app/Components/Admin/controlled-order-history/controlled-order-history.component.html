@@ -40,14 +40,21 @@
 
         <td>{{ order.orderDate | date: 'short' }}</td>
 
-        <!-- Action Button -->
-        <td>
-          <button *ngIf="getNextStatus(order) as next"
-                  class="action-btn"
-                  (click)="updateStatus(order.orderId, next.value)">
-            {{ next.text }}
-          </button>
-        </td>
+<td class="action-buttons">
+  <!-- Status update button -->
+  <button *ngIf="getNextStatus(order) as next"
+          class="action-btn"
+          (click)="updateStatus(order.orderId, next.value)">
+    {{ next.text }}
+  </button>
+
+  <!-- View Details button -->
+  <button class="action-btn view-btn"
+          (click)="viewDetails(order.orderId)">
+    View Details
+  </button>
+</td>
+
       </tr>
     </tbody>
   </table>

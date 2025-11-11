@@ -60,11 +60,26 @@ namespace Lunamaroapi.Services
         }
 
 
-        public async Task UpdateTableAsync(Table table)
+        public async Task UpdateTableAsync(UpdateTableDTO updated, int id)
         {
-            _db.Tables.Update(table);
+            // Await the async find
+            var existing = await _db.Tables.FindAsync(id);
+
+            if (existing == null)
+            {
+                throw new Exception("Table not found");
+            }
+
+            // Update properties
+            existing.TableNumber = updated.TableNumber;
+            existing.Capacity = updated.Capacity;
+            existing.Location = updated.Location;
+            existing.IsAvailable = updated.IsAvailable;
+
+            // Save changes
             await _db.SaveChangesAsync();
         }
+
         public async Task UpdateStatusAsync(UpdateTableStatusDTO dto, int id)
         {
             var table = await _db.Tables.FindAsync(id);

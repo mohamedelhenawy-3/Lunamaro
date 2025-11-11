@@ -61,7 +61,7 @@ namespace Lunamaroapi.Controllers
      
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateNote(ItemDTO itemdto, int id)
+        public async Task<ActionResult> UpdateItem(ItemDTO itemdto, int id)
         {
             var exists = await _IItemService.Exists(id);
 
@@ -103,5 +103,9 @@ namespace Lunamaroapi.Controllers
             var items = await _IItemService.ExplorePopularItems();
             return Ok(items);
         }
+
+
+
+  
     }
 }
