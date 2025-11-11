@@ -1,15 +1,17 @@
 <div class="item-container" [ngClass]="ClassMenu">
   <div class="item-row">
     <div class="item-card" *ngFor="let item of items">
-      <img [src]="'http://localhost:5218' + item.imageUrl" alt="Product Image" class="item-image" />
+      
+      <img [src]="'http://localhost:5218' + item.imageUrl" class="item-image" alt="Product Image">
 
       <div class="item-body">
         <h5 class="item-title">{{ item.name }}</h5>
         <p class="item-description">{{ item.description }}</p>
-        <p class="item-price">Price: ${{ item.price }}</p>
-        
+        <p class="item-price">$ {{ item.price }}</p>
       </div>
-     <button (click)="onAddToCart(item.id)">Add to Cart</button>
+
+      <button class="add-btn" (click)="onAddToCart(item.id)">Add to Cart</button>
+
     </div>
   </div>
 </div>

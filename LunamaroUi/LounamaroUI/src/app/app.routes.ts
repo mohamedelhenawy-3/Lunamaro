@@ -20,6 +20,7 @@ import { PaymentsuccessComponent } from './Components/paymentsuccess/paymentsucc
 import { UserorderhistoryComponent } from './Components/userorderhistory/userorderhistory.component';
 import { OrderdetailsComponent } from './Components/orderdetails/orderdetails.component';
 import { ControlledOrderHistoryComponent } from './Components/Admin/controlled-order-history/controlled-order-history.component';
+import { customerGuard } from './Components/Auth/customer.guard';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -33,12 +34,12 @@ export const routes: Routes = [
           {path:'orderpervew',component:OrderComponent},
    {path:'usercartitempervew',component:UserCartItemsComponent},
   {path:'Table',component:TableComponent},
-    {path:'ordershistory',component:UserorderhistoryComponent},
+    {path:'ordershistory',component:UserorderhistoryComponent,canActivate:[customerGuard]},
 
   {path:'details/:id',component:OrderdetailsComponent},
   {path:'reservation',component:ReservationComponent},
-                    {path:'MyReservations',component:UserRescervationsComponent},
-             {path:'Admin/reservation',component:ControlledRecervationsComponent,canActivate:[adminGuard]},
+ {path:'MyReservations',component:UserRescervationsComponent,canActivate:[customerGuard]},
+  {path:'Admin/reservation',component:ControlledRecervationsComponent,canActivate:[adminGuard]},
              {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},
 
 { path: 'payment-success/:sessionId', component:PaymentsuccessComponent },

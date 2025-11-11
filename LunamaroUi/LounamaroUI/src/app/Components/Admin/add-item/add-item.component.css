@@ -1,104 +1,114 @@
-/* Container to center the form */
+/* Background and center container */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #3B6790; /* Soft warm background */
+  min-height: 100vh;
+  background-color: #3B6790;
   padding: 20px;
   box-sizing: border-box;
 }
 
-/* Form Styling */
+/* Form */
 form {
+  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  width: 600px;
   padding: 30px;
   border-radius: 20px;
-  background-color: #23486A; /* Professional soft beige form background */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  background-color: #23486A;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.4s ease;
 }
 
-/* Form Heading */
+/* Form title */
 form h2 {
   text-align: center;
+  color: white;
   margin-bottom: 20px;
-  color: white; /* Darker text for contrast */
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-/* Label Styling */
+/* Labels */
 label {
-  margin-top: 15px;
+  margin-top: 12px;
+  font-size: 15px;
   font-weight: bold;
   color: #ffffff;
 }
 
-/* Inputs and Select Styling */
+/* Inputs + select + textarea */
 input[type="text"],
 input[type="number"],
 select,
 textarea {
   padding: 10px;
-  margin-top: 5px;
-  font-size: 16px;
-  border: 1px solid #ba8a3d; /* Richer border */
-  border-radius: 6px;
-  background-color: #ffffff; /* Darker input background */
-  color: #2D2D2D;
+  margin-top: 6px;
+  font-size: 15px;
+  border: 1px solid #EFB036;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #23486A;
+  outline: none;
+  transition: 0.3s;
 }
 
-/* File Input Styling */
-input[type="file"] {
-  margin-top: 12px;
-  color: #ffffff;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #4C7B8B;
+  box-shadow: 0 0 6px rgba(255,255,255,0.4);
 }
 
-/* Textarea Styling */
-textarea {
-  width: 100%;
-  resize: vertical;
-  font-family: Arial, sans-serif;
-}
-
-/* Validation/Error Messages */
-div[ngIf] {
-  color: #8E1616; /* Red for error */
-  font-size: 13px;
-  margin-top: 5px;
-}
-
-/* Horizontal Rule */
-hr {
-  margin: 20px 0;
-  border: none;
-  border-top: 1px solid #C8A978;
-}
-
-/* Submit Button */
-form button {
-  width: 100%;
+/* File input */
+.file-input {
+  margin-top: 10px;
   padding: 10px;
-  background-color: #4C7B8B; /* Deep red */
-  color: #FAF4ED;
-  font-weight: bold;
+  background-color: white;
+  border-radius: 6px;
+}
+
+/* Error messages */
+.error {
+  color: #ff4d4d;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Submit button */
+button {
+  margin-top: 25px;
+  padding: 12px;
   font-size: 16px;
+  font-weight: bold;
+  background-color: #4C7B8B;
+  color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: 20px;
+  transition: 0.3s;
 }
 
-/* Hover effect for button */
-form button:hover:not(:disabled) {
-  background-color: #EFB036; /* Matches input border */
-  color: #2D2D2D;
+button:hover:not(:disabled) {
+  background-color: #EFB036;
+  color: #23486A;
 }
 
-/* Disabled Button Styling */
-form button:disabled {
-  background-color: #aaa;
+button:disabled {
+  background-color: #8a8a8a;
   cursor: not-allowed;
+}
+
+/* Divider line */
+hr {
+  margin: 25px 0;
+  border-top: 1px solid #EFB036;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

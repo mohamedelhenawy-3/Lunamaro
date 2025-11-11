@@ -1,19 +1,106 @@
-table {
+.orders-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background-color: #1a3350;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  color: #fff;
+}
+
+.orders-container h2 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.orders-table {
   width: 100%;
-  background: #fff;
+  border-collapse: collapse;
+  background-color: #23486A;
   border-radius: 10px;
   overflow: hidden;
 }
 
-table thead {
-  font-size: 15px;
+.orders-table th,
+.orders-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.orders-table th {
+  background-color: #1a3350;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-td, th {
-  vertical-align: middle;
+/* Status + Payment Badges */
+.status {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  display: inline-block;
+  text-transform: capitalize;
 }
 
-h3 {
-  font-weight: 600;
+/* Payment Types */
+.payment-cash {
+  background-color: #EFB036;
+  color: #1a3350;
+}
+
+.payment-online {
+  background-color: #00ff99;
+  color: #1a3350;
+}
+
+/* Order Status Colors */
+.status-pending {
+  background-color: #EFB036;
+  color: #1a3350;
+}
+
+.status-accepted {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.status-processing {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.status-delivery {
+  background-color: #ffc107;
+  color: #1a3350;
+}
+
+.status-delivered {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.status-cancelled {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Action Button */
+.action-btn {
+  background-color: #EFB036;
+  color: #1a3350;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+.action-btn:hover {
+  background-color: #fff;
+  color: #1a3350;
+  transform: translateY(-2px);
 }

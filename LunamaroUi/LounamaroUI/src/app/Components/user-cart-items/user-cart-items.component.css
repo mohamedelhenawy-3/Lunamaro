@@ -1,53 +1,94 @@
-/* Limit max width for the entire cart container */
-.cart-container {
-  max-width: auto;
-  margin: 0 auto;
- 
-}
-
-/* Prevent cart from becoming too small or large */
+/* Full page background */
 .cart-wrapper {
   min-height: 100vh;
   background-color: #3B6790;
-}
-.quantity-input {
-  background-color: #e0e0e098; /* light gray background */
-  color: #000;   
-  max-width: 50px;           /* black text */
-  border: 1px solid #ccc;
-
-       /* black text */
-
-
-
+  padding-top: 60px;
 }
 
+/* Main cart container */
+.cart-container {
+  max-width: 900px;
+  background-color: #23486A;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
 
-/* Optional: Fix image size inside the cart */
-img.img-fluid {
+/* Cart title */
+.cart-container h3 {
+  font-weight: bold;
+  font-size: 28px;
+  color: #fff;
+}
+
+/* Cart item card */
+.cart-item-card {
+  background-color: #2f5b87;
+  border-radius: 15px;
+  border: none;
+  color: #fff;
+}
+
+.cart-item-card img {
   max-height: 100px;
   object-fit: contain;
-}
-.cart-item-card {
-  background-color: #23486A;
-  border: none;
+  border-radius: 10px;
 }
 
-/* Prevent Apply button and discount input from wrapping */
-.card-body.d-flex {
-  gap: 1rem;
-  flex-wrap: nowrap;
+/* Quantity control */
+.quantity-input {
+  background-color: #e0e0e0;
+  max-width: 50px;
+  color: #000;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #ccc;
 }
 
-/* Mobile responsiveness */
+.btn-link i {
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Remove button */
+.text-danger i {
+  color: #ff4747;
+  transition: 0.3s;
+}
+.text-danger i:hover {
+  transform: scale(1.2);
+}
+
+/* Checkout button centered */
+.checkout-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.checkout-btn-wrapper .btn {
+  background-color: #ffcc00;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 200px;
+}
+
+/* Empty Cart */
+.empty-cart {
+  color: white;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 20px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .card-body.d-flex {
-    flex-direction: column;
-    gap: 0.5rem;
+  .cart-container {
+    padding: 15px;
   }
 
-  .cart-container {
-    padding: 0 1rem;
+  .cart-item-card {
+    padding: 10px;
   }
 
   .text-end {

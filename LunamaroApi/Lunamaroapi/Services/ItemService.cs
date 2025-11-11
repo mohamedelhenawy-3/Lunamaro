@@ -142,7 +142,7 @@ namespace Lunamaroapi.Services
         {
             var items = await _db.Items
                 .OrderByDescending(x => x.Id)
-                .Take(6)
+                .Take(5)
                 .Select(x => new ExplorePopItems
                 {
                    
@@ -169,7 +169,7 @@ namespace Lunamaroapi.Services
            TotalOrdered = g.Sum(x => x.Quantity)
        })
        .OrderByDescending(x => x.TotalOrdered)
-       .Take(6)
+       .Take(5)
        .Select(x => new ExplorePopItems
        {
            Name = x.Name,

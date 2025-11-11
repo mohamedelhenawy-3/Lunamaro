@@ -10,11 +10,8 @@
     <div class="nav-links" *ngIf="isLoggedIn">
       <ul>
         <li><a routerLink="/Home">Home</a></li>
-        <li><a href="#!">Features</a></li>
         <li><a routerLink="/menu">Menu</a></li>
        <li><a routerLink="/Table">Tables</a></li>
-        <li><a routerLink="/MyReservations">Reservations</a></li>
-        <li><a routerLink="/ordershistory">ordershistory</a></li>
         <!-- Admin-only links -->
         <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/category">Category</a></li>
         <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/item">Item</a></li>
@@ -23,7 +20,8 @@
         <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/table">Tables</a></li>
         <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/ordershistory">Orders</a></li>
 
-
+ <li><a routerLink="/MyReservations" *ngIf="userRole === 'Customer'">Reservations</a></li>
+  <li><a routerLink="/ordershistory"  *ngIf="userRole === 'Customer'">ordershistory</a></li>
                 
 
       </ul>

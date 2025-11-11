@@ -1,68 +1,98 @@
-.table-container {
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
-  background: #fdfdfd;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.tables-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background-color: #1a3350;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  color: #fff;
 }
 
-h2 {
+.tables-container h2 {
   text-align: center;
-  margin-bottom: 15px;
-  color: #23486A;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-.styled-table {
+.tables-table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
-}
-
-.styled-table th,
-.styled-table td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-}
-
-.styled-table th {
   background-color: #23486A;
-  color: white;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.available {
-  color: green;
-  font-weight: bold;
+.tables-table th,
+.tables-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
 }
 
-.unavailable {
-  color: red;
-  font-weight: bold;
+.tables-table th {
+  background-color: #1a3350;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-.toggle-btn {
-  background-color: #23486A;
-  color: white;
+/* Status Badges */
+.status {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.status-available {
+  background-color: #00ff99;
+  color: #1a3350;
+}
+
+.status-unavailable {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Styled select dropdown */
+.status-select {
+  background-color: #EFB036;
+  color: #1a3350;
   border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
+  border-radius: 8px;
+  padding: 6px 10px;
   cursor: pointer;
+  outline: none;
+  font-weight: 500;
 }
 
-.toggle-btn:hover {
-  background-color: #1b3650;
+.status-select:hover {
+  background-color: #fff;
+  color: #1a3350;
 }
 
+/* Refresh button */
 .refresh-btn {
-  margin-bottom: 10px;
-  background: #4a90e2;
-  color: white;
+  background: #EFB036;
+  color: #1a3350;
   border: none;
   padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 .refresh-btn:hover {
-  background: #357abd;
+  background: #fff;
+  color: #1a3350;
+  transform: translateY(-2px);
+}
+
+.no-data {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  color: #EFB036;
 }

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  headerImage = '/assets/OurRes.jpg';
+  headerImage = '/assets/Intro/stayTund.jfif';
 
   newestItems: ExploreItem[] = [];
   bestSellerItems: ExploreItem[] = [];

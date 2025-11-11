@@ -1,27 +1,27 @@
-/* Container */
+/* Main Card Container */
 .order-history-container {
   max-width: 900px;
   margin: 40px auto;
+  background-color: #1a3350; /* same container color as reservations */
   padding: 25px;
-  background-color: #23486A; /* dark navy */
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   color: #fff;
 }
 
 /* Title */
 .order-history-container h2 {
   text-align: center;
-  color: #ffffff; /* gold accent */
-  font-weight: 600;
-  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
 /* Table */
 .order-history-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #1a3350; /* darker table background */
+  background-color: #23486A; /* same table bg as reservations */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -30,53 +30,55 @@
 .order-history-table td {
   padding: 12px 15px;
   text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   color: #fff;
 }
 
-.order-history-table thead {
-  background-color: #23486A; /* navy header */
-  color: #EFB036; /* gold text */
+.order-history-table th {
+  background-color: #1a3350; /* matching reservations table header */
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-/* Status badges */
+/* Status badges - SAME as reservations */
 .status-badge {
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 5px 12px;
+  border-radius: 12px;
   font-weight: 500;
   text-transform: capitalize;
+  display: inline-block;
 }
 
 .status-pending {
-  background-color: #fff4cc;
-  color: #b58900;
+  background-color: #EFB036; /* gold */
+  color: #1a3350;
 }
 
 .status-delivered {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: #00ff99; /* green */
+  color: #1a3350;
 }
 
 .status-cancelled {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: #dc3545; /* red */
+  color: #fff;
 }
 
-/* View button */
+/* View Details button (same style as cancel button) */
 .btn-view {
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
   background-color: #EFB036; /* gold */
-  color: #23486A; /* dark text */
+  color: #1a3350;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.2s ease-in-out;
 }
 
 .btn-view:hover {
   background-color: #fff;
-  color: #23486A;
+  color: #1a3350;
   transform: translateY(-2px);
 }
 
@@ -84,16 +86,16 @@
 .no-orders {
   text-align: center;
   font-size: 1.1rem;
-  color: #fff;
+  color: #EFB036; /* gold */
   margin-top: 20px;
 }
 
-/* Alternating row shading */
+/* Alternating row effect */
 .order-history-table tbody tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
   .order-history-table th, .order-history-table td {
     padding: 10px 8px;

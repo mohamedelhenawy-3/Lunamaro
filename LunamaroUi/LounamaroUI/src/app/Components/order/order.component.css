@@ -1,100 +1,141 @@
-
-.order-container {
+.checkout-container {
   display: flex;
   gap: 30px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 50px auto;
+  flex-wrap: wrap;
+  background-color: #1a3350; /* main container background */
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+/* Left Panel */
+.checkout-left {
+  flex: 1 1 45%;
+  background-color: #23486A;
   padding: 25px;
-
-  border-radius: 10px;
-  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-/* Left Panel (Form) */
-.left-panel {
-  width: 40%;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+.checkout-left h2 {
+  margin-bottom: 20px;
+  color: #ffffff; /* gold heading */
+  font-weight: 700;
+  text-align: center;
 }
 
-.left-panel h2 {
-  margin-bottom: 15px;
-  font-size: 22px;
-}
-
+/* Inputs */
 .input-box {
   width: 100%;
   padding: 10px;
-  margin: 8px 0 15px 0;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #EFB036;
+  background-color: #fff;
+  color: #000;
   font-size: 14px;
 }
 
+/* Confirm Button */
 .confirm-btn {
   width: 100%;
-  background: #007bff;
-  color: white;
-  padding: 10px;
+  padding: 12px;
+  margin-top: 10px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  background-color: #EFB036; /* gold */
+  color: #1a3350;
   cursor: pointer;
-  font-weight: bold;
+  transition: all 0.2s ease-in-out;
 }
 .confirm-btn:hover {
-  background: #005cbf;
+  background-color: #fff;
+  color: #1a3350;
+  transform: translateY(-2px);
 }
 
-/* Right Panel (Order Preview) */
-.right-panel {
-  width: 30%;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  align-self: flex-start; /* keeps it top aligned */
+/* Right Panel */
+.checkout-right {
+  flex: 1 1 45%;
+  background-color: #23486A;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  align-self: flex-start;
 }
 
-.right-panel h2 {
-  margin-bottom: 15px;
-  font-size: 22px;
+.checkout-right h2 {
+  margin-bottom: 20px;
+  color: #ffffff; /* gold heading */
+  font-weight: 700;
+  text-align: center;
 }
 
-/* Individual Item Card */
+/* Order Items */
 .order-item {
   display: flex;
   align-items: center;
   padding: 12px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .cart-img {
   width: 70px;
   height: 70px;
-  border-radius: 6px;
+  border-radius: 8px;
   object-fit: cover;
   margin-right: 15px;
 }
 
 .cart-details {
   flex-grow: 1;
+  color: #fff;
+}
+
+.cart-details strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.cart-details p {
+  font-size: 13px;
+  margin: 2px 0;
+  color: #e7e7e7;
 }
 
 .cart-price {
+  font-weight: 700;
   font-size: 16px;
-  font-weight: bold;
-  color: #333;
+  color: #EFB036;
 }
 
-/* Total */
+/* Total Row */
 .total-row {
   display: flex;
   justify-content: space-between;
+  font-weight: 700;
   font-size: 18px;
-  margin-top: 10px;
-  font-weight: bold;
+  margin-top: 15px;
 }
 
 .total-amount {
   color: #28a745;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .checkout-left, .checkout-right {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
 }

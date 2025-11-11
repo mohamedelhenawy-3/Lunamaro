@@ -1,55 +1,80 @@
-.container {
-  background-color: #f8f9fa;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.reservations-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: #1a3350;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  color: #fff;
 }
 
-h2 {
+.reservations-container h2 {
   text-align: center;
-  color: #23486A;
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 700;
   margin-bottom: 25px;
 }
 
-.table {
-  background-color: white;
-  border-radius: 15px;
+.reservations-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #23486A;
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.table th {
-  background-color: #23486A;
-  color: white;
+.reservations-table th,
+.reservations-table td {
+  padding: 12px 15px;
   text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.reservations-table th {
+  background-color: #1a3350;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Status Badges */
+.status {
+  padding: 5px 12px;
+  border-radius: 12px;
   font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
 }
 
-.table td {
-  text-align: center;
-  vertical-align: middle;
-  color: #333;
+.status-pending {
+  background-color: #EFB036;
+  color: #1a3350;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f2f6fa;
+.status-approved {
+  background-color: #00ff99;
+  color: #1a3350;
 }
 
-.table-bordered {
-  border: 1px solid #dee2e6;
+.status-rejected,
+.status-cancelled {
+  background-color: #dc3545;
+  color: #fff;
 }
 
-.table tbody tr:hover {
-  background-color: #e9f0fa;
-  transition: background-color 0.3s ease;
+/* Styled select */
+.status-select {
+  background-color: #EFB036;
+  color: #1a3350;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 500;
+  outline: none;
 }
 
-@media (max-width: 768px) {
-  .table {
-    font-size: 14px;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
+.status-select:hover {
+  background-color: #fff;
+  color: #1a3350;
 }

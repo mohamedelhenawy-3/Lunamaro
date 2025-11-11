@@ -1,6 +1,7 @@
-<div class="container mt-4">
+<div class="reservations-container">
   <h2>All Reservations</h2>
-  <table class="table table-bordered table-striped">
+
+  <table class="reservations-table">
     <thead>
       <tr>
         <th>ID</th>
@@ -15,6 +16,7 @@
         <th>Update Status</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let r of recervations">
         <td>{{ r.id }}</td>
@@ -24,17 +26,25 @@
         <td>{{ r.endTime | date: 'short' }}</td>
         <td>{{ r.guests }}</td>
         <td>{{ r.notes }}</td>
-        <td>{{ r.status }}</td>
-        <td>{{ r.createdAt | date: 'short' }}</td>
-   
+
+        <!-- Status Badge -->
         <td>
-  <select class="form-select" [(ngModel)]="r.status"
+          <span class="status" [ngClass]="'status-' + r.status.toLowerCase()">
+            {{ r.status }}
+          </span>
+        </td>
+
+        <td>{{ r.createdAt | date: 'short' }}</td>
+
+        <!-- Status Select -->
+        <td>
+          <select class="status-select" [(ngModel)]="r.status"
                   (change)="onStatusChange(r)">
-    <option value="Pending">Pending</option>
-    <option value="Approved">Approved</option>
-    <option value="Rejected">Rejected</option>
-  </select>
-</td>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </td>
       </tr>
     </tbody>
   </table>
