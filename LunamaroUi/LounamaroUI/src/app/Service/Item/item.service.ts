@@ -4,6 +4,8 @@ import { Item } from '../../Models/item';
 import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { ExploreItem } from '../../Models/item/exploreItem';
+import { UpdateItem } from '../../Models/item/UpdateItem';
+import { ReturnedItem } from '../../Models/item/returnedItem';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,14 @@ getBestSelerItems():Observable<ExploreItem[]>{
 }
 getNewestItems():Observable<ExploreItem[]>{
     return this._HttpClient.get<ExploreItem[]>(`${environment.baseurl}/Item/menu-preview`)
+}
+getitembyid(Id:number):Observable<ReturnedItem>{
+    return this._HttpClient.get<ReturnedItem>(`${environment.baseurl}/Item/${Id}`)
+
+}
+
+updateItem(id:number,itemData:UpdateItem):Observable<void>{
+      return this._HttpClient.put<void>(`${environment.baseurl}/Item/:id`,itemData);
 
 }
 }

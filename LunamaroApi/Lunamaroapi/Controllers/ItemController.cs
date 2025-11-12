@@ -27,7 +27,7 @@ namespace Lunamaroapi.Controllers
 
         public async Task<ActionResult> CreateItem([FromForm] ItemDTO itemdto)
         {
-            Console.WriteLine($"File Received: {itemdto.File?.FileName}, Length: {itemdto.File?.Length}");
+            //Console.WriteLine($"File Received: {itemdto.File?.FileName}, Length: {itemdto.File?.Length}");
 
             var result = await _IItemService.CreateItemAsync(itemdto);
             return Ok(result);

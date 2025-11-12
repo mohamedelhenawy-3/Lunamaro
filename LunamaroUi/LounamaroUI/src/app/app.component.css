@@ -9,14 +9,15 @@ app-navbar {
 
 .page-content {
   background-color:  #3B6790;
-  min-height: 100vh;/* pushes content below navbar */
+  min-height: calc(100vh - 120px); /* 120px = header + footer height */
 }
 
 
 /* Ensure the page takes full height */
 html, body {
-  height: 100%;
   margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 /* Wrapper ensures footer stays at the bottom */
@@ -31,7 +32,6 @@ html, body {
   flex: 1; /* makes content fill remaining space */
   background-color: #3B6790;
   padding-top: 60px;   /* space for fixed navbar */
-  padding-bottom: 30px; /* breathing space above footer */
   box-sizing: border-box;
 }
 
@@ -43,4 +43,5 @@ footer {
   padding-bottom: 10px;
   text-align: center;
   bottom: 0;
+  height: 50vh;
 }

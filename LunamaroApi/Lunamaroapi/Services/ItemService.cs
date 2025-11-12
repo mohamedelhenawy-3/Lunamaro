@@ -1,5 +1,6 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
+using Lunamaroapi.DTOs.Item;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -97,17 +98,17 @@ namespace Lunamaroapi.Services
 
 
 
-        public async Task<ItemDTO?> GetItemByIdAsync(int id)
+        public async Task<ReturnedItemDTO?> GetItemByIdAsync(int id)
         {
             var item = await _db.Items.FindAsync(id);
             if (item == null) return null;
-            return new ItemDTO
+            return new ReturnedItemDTO
             {
                 Name = item.Name,
                 Description = item.Description,
                 Price = item.Price,
                 quantity=item.quantity,
-                CategoryId = item.CategoryId
+                ImageUrl=item.ImageUrl
             };
         }
 
@@ -120,7 +121,7 @@ namespace Lunamaroapi.Services
             item.Price = itemdto.Price;
             item.ImageUrl = itemdto.ImageUrl;
             item.Description = itemdto.Description;
-
+            item.CategoryId = itemdto.CategoryId;
 
             await _db.SaveChangesAsync();
             
@@ -191,5 +192,7 @@ namespace Lunamaroapi.Services
 
             return popularItems;
         }
+
+     
     }
 }

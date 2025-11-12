@@ -3,6 +3,7 @@ import { Item } from '../../../Models/item';
 import { ItemService } from '../../../Service/Item/item.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -17,7 +18,7 @@ Items:Item[] =[] as Item[];
 
 
 
-constructor(private _apiItem:ItemService){
+constructor(private _apiItem:ItemService,private router:Router){
 
 }
 
@@ -49,5 +50,8 @@ deleteItem(id:number){
       console.error('Failed to delete item', err);
     }
   })
+}
+ViewItem(id:number){
+ this.router.navigate(['Admin/update-item',id]);
 }
 }

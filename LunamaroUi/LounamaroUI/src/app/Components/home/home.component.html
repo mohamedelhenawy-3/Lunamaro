@@ -1,13 +1,14 @@
 <!-- ===== HERO SECTION ===== -->
+<!-- ===== HERO SECTION ===== -->
 <header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
-  <div class="overlay">
-    <div class="hero-content">
-      <h1>Welcome to LunaMaro Restaurant</h1>
-      <p>Delicious meals crafted with love, delivered fresh to you</p>
-      <a routerLink="/menu" class="btn-hero">Explore Our Menu</a>
-    </div>
+  <div class="overlay"></div> <!-- Dark overlay -->
+  <div class="hero-content">
+    <h1>Welcome to Lunamaro Restaurant</h1>
+    <p>Delicious meals crafted with love, delivered fresh to you</p>
+    <a routerLink="/menu" class="btn-hero">Explore Our Menu</a>
   </div>
 </header>
+
 
 <!-- ===== ABOUT US ===== -->
 <section class="about-section">
@@ -22,6 +23,29 @@
       <img src="assets/aboutus/about2.jpg" alt="Restaurant image 2">
       <img src="assets/aboutus/about3.jpg" alt="Restaurant image 3">
       <img src="assets/aboutus/about4.jpg" alt="Restaurant image 4">
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED DISHES ===== -->
+<section class="featured-dishes">
+  <div class="container text-center">
+    <div class="section-header">
+      <h2>Chef’s Specials</h2>
+      <p>Our most loved dishes, handpicked by our chefs</p>
+    </div>
+
+    <div class="featured-grid">
+      <div class="featured-card" *ngFor="let dish of bestSellerItems">
+        <div class="featured-img">
+          <img [src]="'http://localhost:5218' + dish.imageUrl" alt="{{ dish.name }}">
+          <div class="ribbon">Top Seller</div>
+        </div>
+        <div class="featured-info">
+          <h5>{{ dish.name }}</h5>
+          <p class="price">{{ dish.price | currency:'EGP' }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -51,8 +75,8 @@
       </div>
     </div>
 
-    <div class="text-center mt-4">
-      <button class="btn-explore">Explore Full Menu</button>
+    <div class="text-center mt-4" style="text-decoration: none">
+       <a routerLink="/reservation" class="btn-primary">Explore Menu</a>
     </div>
   </div>
 </section>
@@ -62,4 +86,27 @@
   <h2>Ready to Dine With Us?</h2>
   <p>Book your table in just a few clicks!</p>
   <a routerLink="/reservation" class="btn-primary">Make a Reservation</a>
+</section>
+
+
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+    <div class="contact-left">
+      <h2>Contact Us</h2>
+      <p>Have questions or want to make a reservation? Send us a message and we'll get back to you promptly.</p>
+      <ul class="contact-info">
+        <li><strong>Address:</strong> 123 Main Street, Your City</li>
+        <li><strong>Phone:</strong> +20 123 456 7890</li>
+        <li><strong>Email:</strong> contact-restaurant.com</li>
+      </ul>
+    </div>
+    <div class="contact-right">
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn-contact">Send Message</button>
+      </form>
+    </div>
+  </div>
 </section>

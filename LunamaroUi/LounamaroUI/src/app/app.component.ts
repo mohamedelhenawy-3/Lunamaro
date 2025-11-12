@@ -23,7 +23,7 @@ export class AppComponent {
   constructor(private route:Router){
          route.events.subscribe((event)=>{
           if(event instanceof NavigationEnd){
-                if (event.url === '/login' || event.url === '/register') {
+          if (event.url === '/login' || event.url === '/register') {
           this.showlayout = false;
         } else {
           this.showlayout = true;

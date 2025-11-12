@@ -11,7 +11,7 @@
         <p class="item-price">$ {{ item.price }}</p>
 
         <div class="item-actions">
-          <button class="btn-update">Update</button>
+          <button class="btn-update" (click)="ViewItem(item.id)">Update</button>
           <button class="btn-delete" (click)="deleteItem(item.id)">Delete</button>
         </div>
       </div>
