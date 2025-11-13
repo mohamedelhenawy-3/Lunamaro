@@ -122,7 +122,19 @@ namespace Lunamaroapi.Controllers
 
             return Ok(new { message = "Reservation canceled successfully." });
         }
-
+        [HttpGet("available")]
+        public async Task<IActionResult> GetAvailableTables(DateTime startTime, DateTime endTime, int guests)
+        {
+            try
+            {
+                var availableTables = await _reservationService.GetAvailableTablesAsync(startTime, endTime, guests);
+                return Ok(availableTables);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
 
 
     }

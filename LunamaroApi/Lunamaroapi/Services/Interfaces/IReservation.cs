@@ -20,7 +20,9 @@ namespace Lunamaroapi.Services.Interfaces
         //User
         Task<IEnumerable<UserReservationDTO>> GetReservationByUser(string UserId);
         Task<bool> CancelReservation(int ReservationId, string userid);
-        
-     
+        Task<List<Lunamaroapi.DTOs.TableDTO.AvTablesDTO>> GetAvailableTablesAsync(DateTime startTime, DateTime endTime, int guests);
+
+
+
     }
 }

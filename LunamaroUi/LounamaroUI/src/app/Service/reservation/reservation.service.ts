@@ -33,4 +33,8 @@ export class ReservationService {
       body: { reservationId },
     });
   }
+    getAvailableTables(startTime: string, endTime: string, guests: number): Observable<any[]> {
+    return this.httpclient.get<any[]>(`${environment.baseurl}/Reservation/available?startTime=${startTime}&endTime=${endTime}&guests=${guests}`);
+  }
+
 }

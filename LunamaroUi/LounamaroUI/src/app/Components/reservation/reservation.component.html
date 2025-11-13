@@ -4,23 +4,27 @@
 
     <form [formGroup]="reservationForm" (ngSubmit)="onsubmit()">
       <div class="form-group">
-        <label>Table Number</label>
-        <input type="number" formControlName="tableId" class="form-control" placeholder="Enter table number">
-      </div>
-
-      <div class="form-group">
         <label>Start Time</label>
-        <input type="datetime-local" formControlName="startTime" class="form-control">
+        <input type="datetime-local" formControlName="startTime" class="form-control" (change)="loadAvailableTables()">
       </div>
 
       <div class="form-group">
         <label>End Time</label>
-        <input type="datetime-local" formControlName="endTime" class="form-control">
+        <input type="datetime-local" formControlName="endTime" class="form-control" (change)="loadAvailableTables()">
       </div>
 
       <div class="form-group">
         <label>Guests</label>
-        <input type="number" formControlName="guests" class="form-control" min="1" placeholder="Number of guests">
+        <input type="number" formControlName="guests" class="form-control" min="1" placeholder="Number of guests" (change)="loadAvailableTables()">
+      </div>
+
+      <div class="form-group">
+        <label>Available Tables</label>
+        <select formControlName="tableId" class="form-control">
+          <option *ngFor="let table of availableTables" [value]="table.id">
+            {{ table.tableNumber }} - Capacity: {{ table.capacity }} - {{ table.location || 'N/A' }}
+          </option>
+        </select>
       </div>
 
       <div class="form-group">

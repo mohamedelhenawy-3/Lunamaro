@@ -1,5 +1,6 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.DTOs.ReservationDTO;
+using Lunamaroapi.DTOs.TableDTO;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -184,6 +185,32 @@ namespace Lunamaroapi.Services
             await _db.SaveChangesAsync();
 
             return true; // ✅ Reservation removed
+        }
+
+        public async Task<List<AvTablesDTO>> GetAvailableTablesAsync(DateTime startTime, DateTime endTime, int guests)
+        {
+            var candidateTables = _db.Tables
+                .Where(t => t.Capacity >= guests);
+
+            var availableTables = await candidateTables
+                .Where(t => !_db.Reservations.Any(r =>
+                    r.TableId == t.Id &&
+                    r.Status != ReservationStatus.Cancelled &&
+                    r.Status != ReservationStatus.Rejected &&
+                    ((startTime >= r.StartTime && startTime < r.EndTime) ||
+                     (endTime > r.StartTime && endTime <= r.EndTime) ||
+                     (startTime <= r.StartTime && endTime >= r.EndTime))
+                ))
+                .ToListAsync();
+
+            // Map to DTO
+            return availableTables.Select(t => new AvTablesDTO
+            {
+                Id = t.Id,
+                TableNumber = t.TableNumber,
+                Capacity = t.Capacity,
+                Location = t.Location
+            }).ToList();
         }
     }
 }

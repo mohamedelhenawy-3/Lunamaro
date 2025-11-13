@@ -34,7 +34,7 @@ constructor(private service:OrderService,private router:Router){
   }
 
 viewDetails(orderId: number) {
-  this.router.navigate(['Admin/details', orderId]);
+  this.router.navigate(['details', orderId]);
 }
 
 }
