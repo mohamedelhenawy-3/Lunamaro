@@ -1,6 +1,7 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
 using Lunamaroapi.DTOs.Admin;
+using Lunamaroapi.Helper;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -10,15 +11,27 @@ using System.Security.Claims;
 
 namespace Lunamaroapi.Services
 {
+    public delegate Task OrderPlaceHandler(UserOrderHeader order);
+    public delegate Task OrderStatusChangedHandler(UserOrderHeader order);
+
     public class OrderServices : IOrder
     {
         private readonly AppDBContext _db;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly EmailService _smsService;
 
-        public OrderServices(AppDBContext db, IHttpContextAccessor httpContextAccessor)
+        public event OrderPlaceHandler? OnOrderPlaced;
+        public event OrderStatusChangedHandler? OnOrderStatusChanged;
+
+
+
+        public OrderServices(AppDBContext db, IHttpContextAccessor httpContextAccessor, EmailService emailService)
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
+            _smsService = emailService;
+            OnOrderPlaced += SendOrderPlacedEmail;
+
         }
         private string? GetCurrentUserId()
         {
@@ -71,14 +84,13 @@ namespace Lunamaroapi.Services
 
             return dto;
         }
-
         public async Task<OrderResDTO?> OrderDone(CreateOrderdto dto)
         {
             var userId = GetCurrentUserId();
             if (string.IsNullOrEmpty(userId))
                 return null;
 
-            var currentUser = _db.Users.FirstOrDefault(x => x.Id == userId);
+            var currentUser = await _db.Users.FirstOrDefaultAsync(x => x.Id == userId);
             if (currentUser == null)
                 return null;
 
@@ -104,9 +116,8 @@ namespace Lunamaroapi.Services
                 PostalCode = dto.PostalCode,
                 Name = dto.Name,
                 paymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
-
                 OrderStatus = OrderStatus.Pending,
-                PaymentStatus = dto.IsPayOnDelivery ? "Pending Payment" : "Not Paid" ,
+                PaymentStatus = dto.IsPayOnDelivery ? "Pending Payment" : "Not Paid",
                 OrderItems = new List<OrderItem>()
             };
 
@@ -120,9 +131,17 @@ namespace Lunamaroapi.Services
                 });
             }
 
+            // Save the order first
             await _db.UserOrderHeaders.AddAsync(orderHeader);
             await _db.SaveChangesAsync();
 
+            // ✅ Trigger order placed email using delegate/event
+            if (OnOrderPlaced != null)
+            {
+                await OnOrderPlaced.Invoke(orderHeader);
+            }
+
+            // If pay on delivery, clear cart and return
             if (dto.IsPayOnDelivery)
             {
                 _db.UserCarts.RemoveRange(userCart);
@@ -131,11 +150,11 @@ namespace Lunamaroapi.Services
                 return new OrderResDTO
                 {
                     OrderId = orderHeader.Id,
-                    PaymentUrl = null   // No Stripe URL
+                    PaymentUrl = null // No Stripe URL
                 };
             }
 
-
+            // Stripe payment session
             var options = new SessionCreateOptions
             {
                 Mode = "payment",
@@ -161,19 +180,18 @@ namespace Lunamaroapi.Services
                 });
             }
 
-            // ✅ Create Stripe session AFTER setting urls
             var sessionService = new SessionService();
             var session = await sessionService.CreateAsync(options);
 
-            // ✅ Save generated Stripe IDs
+            // Save Stripe info
             orderHeader.StripeSessionId = session.Id;
             orderHeader.StripePaymentIntentId = session.PaymentIntentId;
             orderHeader.PaymentStatus = "Paid";
             _db.UserOrderHeaders.Update(orderHeader);
             await _db.SaveChangesAsync();
 
-            var cartItems = _db.UserCarts.Where(x => x.UserId == userId);
-            _db.UserCarts.RemoveRange(cartItems);
+            // Clear user cart
+            _db.UserCarts.RemoveRange(userCart);
             await _db.SaveChangesAsync();
 
             return new OrderResDTO
@@ -303,9 +321,28 @@ namespace Lunamaroapi.Services
             {
                 order.PaymentStatus = "Paid";
             }
+            if (order.OrderStatus == OrderStatus.OutForDelivery)
+            {
+                try
+                {
+                    await SendOutForDeliveryEmailAsync(order);
+                    Console.WriteLine($"✅ Email sent: Order #{order.Id} is out for delivery!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"❌ Failed to send OutForDelivery email: {ex.Message}");
+                }
+
+                if (OnOrderStatusChanged != null)
+                    await OnOrderStatusChanged.Invoke(order);
+            }
+
+
+            // This will now always run
+            await _db.SaveChangesAsync();
+
 
             // Save changes to database
-            await _db.SaveChangesAsync();
 
             return true;
         }
@@ -338,5 +375,70 @@ namespace Lunamaroapi.Services
                 }).ToList()
             };
         }
+        private async Task SendOrderPlacedEmail(UserOrderHeader order)
+        {
+            if (string.IsNullOrEmpty(order.UserId)) return;
+
+            // Get user email (from DB or order object)
+            var userEmail = order.User?.Email ?? "customer@example.com";
+            var userName = order.Name ?? "Customer";
+
+            string subject = $"✅ Your Order #{order.Id} Has Been Placed Successfully!";
+
+            string body = $@"
+    <html>
+    <head>
+        <style>
+            body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+            .container {{ max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }}
+            .header {{ background-color: #4CAF50; color: white; padding: 10px; text-align: center; border-radius: 8px 8px 0 0; }}
+            .content {{ padding: 20px; }}
+            .button {{ display: inline-block; padding: 10px 20px; margin-top: 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; }}
+            .footer {{ margin-top: 20px; font-size: 12px; color: #777; text-align: center; }}
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <h2>Order Confirmation</h2>
+            </div>
+            <div class='content'>
+                <p>Hi {userName},</p>
+                <p>Thank you for your order! Your order #{order.Id} has been placed successfully and is being processed.</p>
+                <p>Order Date: {order.DateOfOrder:dd MMM yyyy}</p>
+                <a class='button' href='#'>View Your Order</a>
+            </div>
+            <div class='footer'>
+                <p>Thank you for shopping with us!<br/>YourCompanyName</p>
+            </div>
+        </div>
+    </body>
+    </html>";
+
+            await _smsService.SendEmailAsync(userEmail, subject, body);
+        }
+        private async Task SendOutForDeliveryEmailAsync(UserOrderHeader order)
+        {
+            if (string.IsNullOrEmpty(order?.UserId))
+                return;
+
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == order.UserId);
+            if (user == null || string.IsNullOrEmpty(user.Email))
+                return;
+
+            string subject = $"🚚 Your Order #{order.Id} is Out for Delivery!";
+            string body = $@"
+        <h3>Hi {user.FullName ?? "Customer"},</h3>
+        <p>Good news! Your order <strong>#{order.Id}</strong> is now <strong>out for delivery</strong>.</p>
+        <p>It should arrive at your address within approximately <strong>30 minutes</strong>.</p>
+        <p>Thank you for shopping with <strong>Lunamaro</strong>! ❤️</p>
+        <hr />
+        <p><small>If you have any questions, contact our support team anytime.</small></p>";
+
+            await _smsService.SendEmailAsync(user.Email, subject, body);
+        }
+
+
+
     }
 }

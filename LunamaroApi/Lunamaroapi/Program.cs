@@ -1,5 +1,6 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.Helper;
+using Lunamaroapi.Helper.EmailSetting;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services;
 using Lunamaroapi.Services.Interfaces;
@@ -64,6 +65,11 @@ policy =>
             builder.Services.AddScoped<IOrder, OrderServices>();
             builder.Services.AddScoped<ITable, TableServices>();
             builder.Services.AddScoped<IReservation, ReservationServices>();
+            builder.Services.AddSingleton<SmsService>();
+            builder.Services.Configure<ESetting>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.AddSingleton<EmailService>();
+
+
 
             builder.Services.AddControllers()
     .AddJsonOptions(options =>
