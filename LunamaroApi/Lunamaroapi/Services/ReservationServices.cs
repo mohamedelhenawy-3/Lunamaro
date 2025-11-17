@@ -10,15 +10,20 @@ using System.Security.Claims;
 
 namespace Lunamaroapi.Services
 {
+    public delegate Task ReservationPlaceHandler(string to,Reservation reservation);
+
     public class ReservationServices : IReservation
     {
         private readonly AppDBContext _db;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
-        public ReservationServices(AppDBContext db, IHttpContextAccessor httpContextAccessor)
+        private readonly EmailService _smsService;
+        public event ReservationPlaceHandler? orderedEvent;
+        public ReservationServices(AppDBContext db, IHttpContextAccessor httpContextAccessor,EmailService _sendmail)
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
+            _smsService = _sendmail;
+            orderedEvent += SendReservationEmail;
         }
 
         public async Task<ReservationDto> Add(ReservationDto dto)
@@ -58,6 +63,12 @@ namespace Lunamaroapi.Services
 
             _db.Reservations.Add(reservation);
             await _db.SaveChangesAsync();
+
+
+            var user = await _db.Users.FindAsync(reservation.UserId);
+            if (orderedEvent != null)
+                await orderedEvent.Invoke(user.Email, reservation);
+
             return new ReservationDto
             {
                 TableId = reservation.TableId,
@@ -212,5 +223,23 @@ namespace Lunamaroapi.Services
                 Location = t.Location
             }).ToList();
         }
+
+
+
+        public async Task SendReservationEmail(string to, Reservation reservation)
+        {
+            var message = $@"
+        Hi,
+        Your reservation is confirmed!
+        Table: {reservation.TableId}
+        StartTime: {reservation.StartTime}
+        EndTime: {reservation.EndTime}
+        Guests: {reservation.Guests}
+    ";
+
+            await _smsService.SendEmailAsync(to, "Reservation Confirmation", message);
+        }
+
+
     }
 }

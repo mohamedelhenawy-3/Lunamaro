@@ -41,10 +41,11 @@ this.imageService.currentimage.subscribe(image => {
       this.cartService.loadcount$.subscribe(count => {
         this.cartCount = count;
         console.log(count);
+              this.cartService.fetchCartCount(); // ← Make sure this works without userId
+
       });
 
       // Fetch initial count once (optional if already triggered from MenuComponent)
-      this.cartService.fetchCartCount(); // ← Make sure this works without userId
     }
   });
 }
@@ -69,5 +70,6 @@ this.imageService.currentimage.subscribe(image => {
       }
     }
   }
+
 
 }

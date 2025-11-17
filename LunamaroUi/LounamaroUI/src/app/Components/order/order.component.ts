@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { OrderInfo } from '../../Models/User/orderUserInfo';
 import { Router } from '@angular/router';
+import { Usercart } from '../../Models/usercart';
+import { UsercartService } from '../../Service/UserCart/usercart.service';
 
 @Component({
   selector: 'app-order',
@@ -31,7 +33,7 @@ export class OrderComponent implements OnInit {
 
   };
 
-  constructor(private orderservice: OrderService,private router:Router) {}
+  constructor(private orderservice: OrderService,private router:Router,private cartcount:UsercartService) {}
 
   ngOnInit(): void {
     this.orderservice.GetOrderPerview().subscribe({
@@ -47,7 +49,8 @@ export class OrderComponent implements OnInit {
     this.orderservice.placeOrder(this.orderInfo).subscribe({
       next: (res: OrderRes) => {
       if(res.paymentUrl){
-          console.log("Order Created ✅", res);
+        this.cartcount.fetchCartCount();
+        console.log("Order Created ✅", res);
         window.location.href = res.paymentUrl;
       }else{
               alert("Order placed successfully! Pay on delivery.");

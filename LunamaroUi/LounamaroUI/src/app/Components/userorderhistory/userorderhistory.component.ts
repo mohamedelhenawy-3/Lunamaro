@@ -14,10 +14,16 @@ import { Router } from '@angular/router';
 })
 export class UserorderhistoryComponent implements OnInit{
   orderhistroy:userorderhostory[] =[];
-constructor(private service:OrderService,private router:Router){
+    private refreshInterval: any;
+
+constructor(private service:OrderService,private router:Router,private Loc:Location){
 }
   ngOnInit(): void {
-    this.loadOrderHistory();
+
+        // 🔥 Auto-refresh every 10 seconds
+    this.refreshInterval = setInterval(() => {
+         this.loadOrderHistory();
+    }, 2000);
   }
 
   private loadOrderHistory(): void {
@@ -32,9 +38,18 @@ constructor(private service:OrderService,private router:Router){
       }
     });
   }
+  ngOnDestroy(): void {
+    clearInterval(this.refreshInterval);
+  }
 
 viewDetails(orderId: number) {
   this.router.navigate(['details', orderId]);
+}
+
+reload(){
+  setTimeout(()=>{
+    window.location.reload();
+  },100);
 }
 
 }

@@ -13,6 +13,8 @@ namespace Lunamaroapi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+
+
     public class ReservationController : ControllerBase
     {
         private readonly IReservation _reservationService;

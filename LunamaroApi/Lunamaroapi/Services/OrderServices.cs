@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace Lunamaroapi.Services
 {
-    public delegate Task OrderPlaceHandler(UserOrderHeader order);
+    public delegate Task OrderPlacceHandler(UserOrderHeader order);
     public delegate Task OrderStatusChangedHandler(UserOrderHeader order);
 
     public class OrderServices : IOrder
@@ -20,7 +20,8 @@ namespace Lunamaroapi.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly EmailService _smsService;
 
-        public event OrderPlaceHandler? OnOrderPlaced;
+        public event OrderPlacceHandler? OnOrderPlaced;
+
         public event OrderStatusChangedHandler? OnOrderStatusChanged;
 
 

@@ -65,6 +65,7 @@ policy =>
             builder.Services.AddScoped<IOrder, OrderServices>();
             builder.Services.AddScoped<ITable, TableServices>();
             builder.Services.AddScoped<IReservation, ReservationServices>();
+            builder.Services.AddScoped<IDashboard, DashboardServices>();
             builder.Services.AddSingleton<SmsService>();
             builder.Services.Configure<ESetting>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.AddSingleton<EmailService>();
