@@ -1,0 +1,82 @@
+<div class="dashboard-wrapper">
+
+  <!-- Dashboard Cards -->
+  <div class="dashboard-container">
+    <div class="card">
+      <div class="icon"><i class="fas fa-utensils"></i></div>
+      <div class="text">
+        <h5>Items</h5>
+        <h3>{{ headerStats?.totalMenuItems || 0 }}</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="fas fa-users"></i></div>
+      <div class="text">
+        <h5>Active Users</h5>
+        <h3>{{ headerStats?.totalUsers || 0 }}</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+      <div class="text">
+        <h5>Revenue</h5>
+        <h3>${{ headerStats?.totalRevenue || 0 }}</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+      <div class="text">
+        <h5>Orders</h5>
+        <h3>{{ headerStats?.totalOrders || 0 }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <section class="charts-section">
+    <h2 class="section-title">Analytics Overview</h2>
+    <div class="chart-grid">
+      <div class="chart-box"><canvas id="revenueChart"></canvas></div>
+      <div class="chart-box"><canvas id="monthlyOrdersChart"></canvas></div>
+      <div class="chart-box"><canvas id="categoriesChart"></canvas></div>
+    </div>
+  </section>
+
+  <!-- Recent Orders Table -->
+  <section class="recent-orders-section">
+    <h2 class="section-title">Recent Orders</h2>
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of recentOrders">
+          <td>#{{ order.orderId }}</td>
+          <td>{{ order.customer }}</td>
+          <td>${{ order.amount }}</td>
+          <td>
+            <span class="status-badge"
+                  [ngClass]="{
+                    'pending': order.status === 'Pending',
+                    'delivered': order.status === 'Delivered',
+                    'out': order.status === 'OutForDelivery'
+                  }">
+              {{ order.status }}
+            </span>
+          </td>
+          <td>{{ order.date | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

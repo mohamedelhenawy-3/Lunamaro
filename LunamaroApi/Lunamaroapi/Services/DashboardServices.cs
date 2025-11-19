@@ -103,6 +103,29 @@ namespace Lunamaroapi.Services
             return result;
         }
 
+        public async Task<MonthlyOrdersDTO> GetMonthlyOrdersAsync()
+        {
+            var labels = new List<string>();
+            var values = new List<int>();
+
+            for (int month = 1; month <= 12; month++)
+            {
+                labels.Add(new DateTime(DateTime.Today.Year, month, 1).ToString("MMM"));
+
+                int count = await _db.UserOrderHeaders
+                    .Where(x => x.DateOfOrder.Month == month)
+                    .CountAsync();
+
+                values.Add(count);
+            }
+
+            return new MonthlyOrdersDTO
+            {
+                Labels = labels,
+                Values = values
+            };
+        }
+
         public async Task<RevenueDTO> GetMonthlyRevenueSummary()
         {
 
@@ -152,6 +175,74 @@ namespace Lunamaroapi.Services
 
         }
 
+        public async Task<ProductCategoryDTO> GetProductCategoriesAsync()
+        {
+            var labels = new List<string>();
+            var values = new List<int>();
+
+            var data = await _db.Items
+                .Include(p => p.Category)
+                .GroupBy(p => p.Category.Name)
+                .Select(g => new
+                {
+                    Category = g.Key,
+                    Count = g.Count()
+                })
+                .ToListAsync();
+
+            foreach (var item in data)
+            {
+                labels.Add(item.Category);
+                values.Add(item.Count);
+            }
+
+            return new ProductCategoryDTO
+            {
+                Labels = labels,
+                Values = values
+            };
+        }
+
+        public async Task<IEnumerable<OrderRowDTO>> GetRecentOrders()
+        {
+            var orders =  await _db.UserOrderHeaders.OrderByDescending(x => x.DateOfOrder).Take(10).Select(x => new OrderRowDTO
+            {
+                OrderId = x.Id,
+                Customer = x.User.FullName,
+                Amount = x.TotalAmount,
+                Status = x.OrderStatus,
+                Date = x.DateOfOrder
+            }).ToListAsync();
+
+            return orders;
+
+
+        }
+
+        public async Task<RevenueChartDTO> GetRevenueLast7DaysAsync()
+        {
+            var labels = new List<string>();
+            var values = new List<decimal>();
+
+            for (int i = 6; i >= 0; i--)
+            {
+                var date = DateTime.Today.AddDays(-i);
+                labels.Add(date.ToString("ddd"));
+
+                var total = await _db.UserOrderHeaders
+                    .Where(x => x.DateOfOrder.Date == date)
+                    .SumAsync(x => (decimal?)x.TotalAmount) ?? 0;
+
+                values.Add(total);
+            }
+
+            return new RevenueChartDTO
+            {
+                Labels = labels,
+                Values = values
+            };
+        }
+
         public async Task<RevenueDTO> GetWeaklyRevenueSummary()
         {
             var today = DateTime.Today;
@@ -193,5 +284,9 @@ namespace Lunamaroapi.Services
 
             return result;
         }
+
+
+
+
     }
 }

@@ -11,20 +11,36 @@
       "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\services\\interfaces\\idashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\headerstatsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\headerstatsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\monthlyordersdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\monthlyordersdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\revenuedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\revenuedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\headerstatsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\headerstatsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\revenuechartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\revenuechartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\ordersummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\ordersummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\productcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\productcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\dashboard\\orderrowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\dashboard\\orderrowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -346,15 +362,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "MonthlyOrdersDTO.cs",
+              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\MonthlyOrdersDTO.cs",
+              "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\DashBoard\\MonthlyOrdersDTO.cs",
+              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\MonthlyOrdersDTO.cs",
+              "RelativeToolTip": "Lunamaroapi\\DTOs\\DashBoard\\MonthlyOrdersDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T10:41:40.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RevenueChartDTO.cs",
+              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\RevenueChartDTO.cs",
+              "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\DashBoard\\RevenueChartDTO.cs",
+              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\RevenueChartDTO.cs",
+              "RelativeToolTip": "Lunamaroapi\\DTOs\\DashBoard\\RevenueChartDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T10:34:29.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OrderRowDTO.cs",
+              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\OrderRowDTO.cs",
+              "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\DashBoard\\OrderRowDTO.cs",
+              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\OrderRowDTO.cs",
+              "RelativeToolTip": "Lunamaroapi\\DTOs\\DashBoard\\OrderRowDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T09:40:58.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "RevenueDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\RevenueDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\DashBoard\\RevenueDTO.cs",
@@ -362,12 +410,11 @@
               "RelativeToolTip": "Lunamaroapi\\DTOs\\DashBoard\\RevenueDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T16:01:01.429Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T16:01:01.429Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\CategoryController.cs",
@@ -375,21 +422,19 @@
               "RelativeToolTip": "Lunamaroapi\\Controllers\\CategoryController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T13:10:15.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T13:10:15.273Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\DashboardController.cs",
               "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "Lunamaroapi\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAAADEAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAH4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T13:09:50.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T13:09:50.629Z"
             },
             {
               "$type": "Document",
@@ -399,10 +444,9 @@
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\IDashboard.cs",
               "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\IDashboard.cs",
               "RelativeToolTip": "Lunamaroapi\\Services\\Interfaces\\IDashboard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T12:37:10.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T12:37:10.056Z"
             },
             {
               "$type": "Document",
@@ -412,40 +456,14 @@
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\DashboardServices.cs",
               "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\DashboardServices.cs",
               "RelativeToolTip": "Lunamaroapi\\Services\\DashboardServices.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAIAwwE0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJ0AAAAAAAAAAIAwwLgAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T11:41:55.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ItemController.cs",
-              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ItemController.cs",
-              "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\ItemController.cs",
-              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ItemController.cs",
-              "RelativeToolTip": "Lunamaroapi\\Controllers\\ItemController.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAApwB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:00:33.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ReservationController.cs",
-              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ReservationController.cs",
-              "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\ReservationController.cs",
-              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ReservationController.cs",
-              "RelativeToolTip": "Lunamaroapi\\Controllers\\ReservationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T12:59:22.659Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "OrderSummaryDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\OrderSummaryDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\DashBoard\\OrderSummaryDTO.cs",
@@ -453,25 +471,59 @@
               "RelativeToolTip": "Lunamaroapi\\DTOs\\DashBoard\\OrderSummaryDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T13:12:49.099Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T13:12:49.099Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "HeaderStatsDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\HeaderStatsDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\DashBoard\\HeaderStatsDTO.cs",
               "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\HeaderStatsDTO.cs",
               "RelativeToolTip": "Lunamaroapi\\DTOs\\DashBoard\\HeaderStatsDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T11:38:11.25Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T11:38:11.25Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "ProductCategoryDTO.cs",
+              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\ProductCategoryDTO.cs",
+              "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\DashBoard\\ProductCategoryDTO.cs",
+              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\DashBoard\\ProductCategoryDTO.cs",
+              "RelativeToolTip": "Lunamaroapi\\DTOs\\DashBoard\\ProductCategoryDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T10:42:04.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ItemController.cs",
+              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ItemController.cs",
+              "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\ItemController.cs",
+              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ItemController.cs",
+              "RelativeToolTip": "Lunamaroapi\\Controllers\\ItemController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAApwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T14:00:33.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ReservationController.cs",
+              "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ReservationController.cs",
+              "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\ReservationController.cs",
+              "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ReservationController.cs",
+              "RelativeToolTip": "Lunamaroapi\\Controllers\\ReservationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T12:59:22.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Program.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Program.cs",
@@ -479,12 +531,11 @@
               "RelativeToolTip": "Lunamaroapi\\Program.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAAAEMAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T01:20:57.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-30T01:20:57.342Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "OrderServices.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\OrderServices.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\OrderServices.cs",
@@ -492,12 +543,11 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\OrderServices.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T18:55:23.635Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T18:55:23.635Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "IImageServices.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\IImageServices.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\IImageServices.cs",
@@ -505,12 +555,11 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\Interfaces\\IImageServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T10:13:30.462Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-11T10:13:30.462Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "ImageService.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\ImageService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\ImageService.cs",
@@ -518,12 +567,11 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\ImageService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:13:21.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T14:13:21.494Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "UserOrderHeader.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\UserOrderHeader.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\UserOrderHeader.cs",
@@ -531,12 +579,11 @@
               "RelativeToolTip": "Lunamaroapi\\Models\\UserOrderHeader.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAAADEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:47:29.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T20:47:29.35Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "ReservationServices.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\ReservationServices.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\ReservationServices.cs",
@@ -544,12 +591,11 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\ReservationServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAOsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T18:53:50.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T18:53:50.847Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "ReservationDto.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\ReservationDTO\\ReservationDto.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\ReservationDTO\\ReservationDto.cs",
@@ -561,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "Reservation.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\Reservation.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\Reservation.cs",
@@ -573,7 +619,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "OrderController.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\OrderController.cs",
@@ -585,7 +631,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "TableController.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\TableController.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\TableController.cs",
@@ -597,7 +643,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "UserCartController.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\UserCartController.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\UserCartController.cs",
@@ -609,7 +655,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "AvTablesDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\TableDTO\\AvTablesDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\TableDTO\\AvTablesDTO.cs",
@@ -621,7 +667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "IOrder.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\IOrder.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\IOrder.cs",
@@ -633,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "TableServices.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\TableServices.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\TableServices.cs",
@@ -645,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "EmailService.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Helper\\EmailService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Helper\\EmailService.cs",
@@ -657,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "IReservation.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\IReservation.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\IReservation.cs",
@@ -669,7 +715,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "ReservationStatus.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\ReservationStatus.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\ReservationStatus.cs",
@@ -681,7 +727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "Table.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\Table.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\Table.cs",
@@ -693,7 +739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 29,
               "Title": "TableStatus.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\TableStatus.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\TableStatus.cs",
@@ -705,7 +751,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "TablesDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\TableDTO\\TablesDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\TableDTO\\TablesDTO.cs",
@@ -717,7 +763,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "ITable.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\ITable.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\ITable.cs",
@@ -729,7 +775,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 41,
               "Title": "ReturnedItemDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\Item\\ReturnedItemDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\Item\\ReturnedItemDTO.cs",
@@ -741,7 +787,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 36,
               "Title": "CreateOrderdto.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\CreateOrderdto.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\CreateOrderdto.cs",
@@ -753,7 +799,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\appsettings.json",
               "RelativeDocumentMoniker": "Lunamaroapi\\appsettings.json",
@@ -765,7 +811,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 47,
               "Title": "OrderStatus.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\OrderStatus.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\OrderStatus.cs",
@@ -777,7 +823,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 37,
               "Title": "SmsService.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Helper\\SmsService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Helper\\SmsService.cs",
@@ -789,7 +835,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "ESetting.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Helper\\EmailSetting\\ESetting.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Helper\\EmailSetting\\ESetting.cs",
@@ -801,7 +847,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 46,
               "Title": "UpdateStatusOrderDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\Admin\\UpdateStatusOrderDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\Admin\\UpdateStatusOrderDTO.cs",
@@ -813,7 +859,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 40,
               "Title": "ItemDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\ItemDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\ItemDTO.cs",
@@ -825,7 +871,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 38,
               "Title": "ItemService.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\ItemService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\ItemService.cs",
@@ -837,7 +883,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 42,
               "Title": "UpdateQuantityDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\UpdateQuantityDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\UpdateQuantityDTO.cs",
@@ -849,7 +895,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 39,
               "Title": "IItem.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\IItem.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\IItem.cs",
@@ -861,7 +907,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 43,
               "Title": "OrderDetailsDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\OrderDetailsDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\OrderDetailsDTO.cs",
@@ -873,7 +919,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 45,
               "Title": "OrderitemshistoryDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\OrderitemshistoryDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\OrderitemshistoryDTO.cs",
@@ -885,7 +931,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 44,
               "Title": "orderhistorydetails.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\orderhistorydetails.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\orderhistorydetails.cs",
@@ -897,7 +943,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 48,
               "Title": "UpdateTableDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\TableDTO\\UpdateTableDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\TableDTO\\UpdateTableDTO.cs",
@@ -909,7 +955,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 49,
               "Title": "UsersTableDto.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\TableDTO\\UsersTableDto.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\TableDTO\\UsersTableDto.cs",
@@ -921,7 +967,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 50,
               "Title": "UpdateTableStatusDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\TableDTO\\UpdateTableStatusDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\TableDTO\\UpdateTableStatusDTO.cs",
@@ -933,7 +979,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 51,
               "Title": "ExplorePopItems.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\ExplorePopItems.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\ExplorePopItems.cs",
@@ -945,7 +991,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 52,
               "Title": "Item.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\Item.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\Item.cs",
@@ -957,7 +1003,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 55,
               "Title": "PaymentType.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\PaymentType.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\PaymentType.cs",
@@ -969,7 +1015,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 53,
               "Title": "RegisterRequest.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\userDTO\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\userDTO\\RegisterRequest.cs",
@@ -981,7 +1027,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 56,
               "Title": "ordersListDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\Admin\\ordersListDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\Admin\\ordersListDTO.cs",
@@ -993,7 +1039,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 59,
               "Title": "OrderResDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\OrderResDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\OrderResDTO.cs",
@@ -1005,7 +1051,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 54,
               "Title": "AppDBContext.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Data\\AppDBContext.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Data\\AppDBContext.cs",
@@ -1017,7 +1063,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 57,
               "Title": "UpdateStatusDto.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\ReservationDTO\\UpdateStatusDto.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\ReservationDTO\\UpdateStatusDto.cs",
@@ -1029,7 +1075,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 87,
               "Title": "20251109023851_adding cash-delivery payment.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251109023851_adding cash-delivery payment.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251109023851_adding cash-delivery payment.cs",
@@ -1041,7 +1087,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 58,
               "Title": "Order.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\Order.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\Order.cs",
@@ -1053,7 +1099,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 62,
               "Title": "UserCart.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\UserCart.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\UserCart.cs",
@@ -1065,7 +1111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 61,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\OrderItem.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\OrderItem.cs",
@@ -1077,7 +1123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 60,
               "Title": "UserOrdersHistory.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\UserOrdersHistory.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\UserOrdersHistory.cs",
@@ -1089,7 +1135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 64,
               "Title": "OrderDto.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\OrderDto.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\OrderDto.cs",
@@ -1101,7 +1147,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 63,
               "Title": "OrderItemDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\OrderItemDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\OrderItemDTO.cs",
@@ -1113,7 +1159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 86,
               "Title": "20251107062537_Update OrderStatus.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251107062537_Update OrderStatus.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251107062537_Update OrderStatus.cs",
@@ -1125,7 +1171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 82,
               "Title": "20251104225549_Update userorderheader.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251104225549_Update userorderheader.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251104225549_Update userorderheader.cs",
@@ -1137,7 +1183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 83,
               "Title": "20251104224507_Updateorderitems.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251104224507_Updateorderitems.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251104224507_Updateorderitems.cs",
@@ -1149,7 +1195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 65,
               "Title": "Lunamaroapi.http",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Lunamaroapi.http",
               "RelativeDocumentMoniker": "Lunamaroapi\\Lunamaroapi.http",
@@ -1161,7 +1207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 66,
               "Title": "UserCartService.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\UserCartService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\UserCartService.cs",
@@ -1173,7 +1219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 84,
               "Title": "20251104211614_Updateorderitem.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251104211614_Updateorderitem.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251104211614_Updateorderitem.cs",
@@ -1185,7 +1231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 67,
               "Title": "UserCartDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\UserCartDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\UserCartDTO.cs",
@@ -1197,7 +1243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 69,
               "Title": "CategoryDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\CategoryDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\CategoryDTO.cs",
@@ -1209,7 +1255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 68,
               "Title": "ReservationAdminDto.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\ReservationDTO\\ReservationAdminDto.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\ReservationDTO\\ReservationAdminDto.cs",
@@ -1221,7 +1267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 70,
               "Title": "CancelReservationDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\ReservationDTO\\CancelReservationDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\ReservationDTO\\CancelReservationDTO.cs",
@@ -1233,7 +1279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 71,
               "Title": "UserReservationDTO.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\ReservationDTO\\UserReservationDTO.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\ReservationDTO\\UserReservationDTO.cs",
@@ -1245,7 +1291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 85,
               "Title": "20251103002806_Update.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251103002806_Update.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251103002806_Update.cs",
@@ -1257,7 +1303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 72,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Models\\ApplicationUser.cs",
@@ -1269,7 +1315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 76,
               "Title": "ICategory.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\ICategory.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\ICategory.cs",
@@ -1281,7 +1327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 74,
               "Title": "20251030163337_update model of reservations.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251030163337_update model of reservations.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251030163337_update model of reservations.cs",
@@ -1292,7 +1338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 73,
               "Title": "20251030164729_AddReservationTable.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251030164729_AddReservationTable.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251030164729_AddReservationTable.cs",
@@ -1303,7 +1349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 77,
               "Title": "20251029163742_DB.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251029163742_DB.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251029163742_DB.cs",
@@ -1314,7 +1360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 78,
               "Title": "20251029163517_update some data in table model and adding data.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251029163517_update some data in table model and adding data.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251029163517_update some data in table model and adding data.cs",
@@ -1325,7 +1371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 75,
               "Title": "IUserCart.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\IUserCart.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\IUserCart.cs",
@@ -1337,7 +1383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 79,
               "Title": "20251029163244_update tabke and reservation.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251029163244_update tabke and reservation.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251029163244_update tabke and reservation.cs",
@@ -1348,7 +1394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 80,
               "Title": "20251029162631_update some data in table model and adding data.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251029162631_update some data in table model and adding data.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251029162631_update some data in table model and adding data.cs",
@@ -1359,7 +1405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 81,
               "Title": "20251029130340_New ReservationModel.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Migrations\\20251029130340_New ReservationModel.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Migrations\\20251029130340_New ReservationModel.cs",
@@ -1367,6 +1413,10 @@
               "RelativeToolTip": "Lunamaroapi\\Migrations\\20251029130340_New ReservationModel.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T13:03:41.11Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
             }
           ]
         }

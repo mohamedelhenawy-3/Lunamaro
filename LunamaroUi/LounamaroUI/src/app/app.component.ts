@@ -4,6 +4,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from "./Components/footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 

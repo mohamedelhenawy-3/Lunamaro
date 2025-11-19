@@ -1,29 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrderService } from '../../Service/Order/order.service';
 import { userorderhostory } from '../../Models/userorderhistory';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-userorderhistory',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './userorderhistory.component.html',
-  styleUrl: './userorderhistory.component.css'
+  styleUrls: ['./userorderhistory.component.css']
 })
-export class UserorderhistoryComponent implements OnInit{
-  orderhistroy:userorderhostory[] =[];
-    private refreshInterval: any;
+export class UserorderhistoryComponent implements OnInit, OnDestroy {
+  orderhistroy: userorderhostory[] = [];
+  private refreshInterval: any;
 
-constructor(private service:OrderService,private router:Router,private Loc:Location){
-}
+  constructor(
+    private service: OrderService,
+    private router: Router,
+    private loc: Location
+  ) {}
+
   ngOnInit(): void {
+    this.loadOrderHistory();
 
-        // 🔥 Auto-refresh every 10 seconds
+    // Auto-refresh every 10 seconds
     this.refreshInterval = setInterval(() => {
-         this.loadOrderHistory();
-    }, 2000);
+      this.loadOrderHistory();
+    }, 10000);
   }
 
   private loadOrderHistory(): void {
@@ -38,18 +44,14 @@ constructor(private service:OrderService,private router:Router,private Loc:Locat
       }
     });
   }
+
   ngOnDestroy(): void {
     clearInterval(this.refreshInterval);
   }
 
-viewDetails(orderId: number) {
-  this.router.navigate(['details', orderId]);
-}
+  viewDetails(orderId: number): void {
+    this.router.navigate(['details', orderId]);
+  }
 
-reload(){
-  setTimeout(()=>{
-    window.location.reload();
-  },100);
-}
 
 }

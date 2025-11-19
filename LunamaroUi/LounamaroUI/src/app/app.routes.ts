@@ -23,21 +23,23 @@ import { ControlledOrderHistoryComponent } from './Components/Admin/controlled-o
 import { customerGuard } from './Components/Auth/customer.guard';
 import { ControlleddetailsComponent } from './Components/Admin/controlleddetails/controlleddetails.component';
 import { UpdateitemsComponent } from './Components/Admin/updateitems/updateitems.component';
+import { DashboardComponent } from './Components/Admin/dashboard/dashboard.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+    {path:'Admin/dashboard',component:DashboardComponent,canActivate:[adminGuard]},
    { path: 'Home', component: HomeComponent },
    {path:'Admin/AddCategory',component:AddCategoryComponent,canActivate:[adminGuard]},
   {path:'Admin/category',component:CategoryComponent,canActivate:[adminGuard]},
    {path:'Admin/additem',component:AddItemComponent,canActivate:[adminGuard]},
-    {path:'Admin/item',component:ItemComponent,canActivate:[adminGuard]},
-      {path:'Admin/update-item/:id',component:UpdateitemsComponent,canActivate:[adminGuard]},
-       {path:'menu',component:MenuComponent},
-          {path:'orderpervew',component:OrderComponent},
+  {path:'Admin/item',component:ItemComponent,canActivate:[adminGuard]},
+  {path:'Admin/update-item/:id',component:UpdateitemsComponent,canActivate:[adminGuard]},
+  {path:'menu',component:MenuComponent},
+   {path:'orderpervew',component:OrderComponent},
    {path:'usercartitempervew',component:UserCartItemsComponent},
   {path:'Table',component:TableComponent},
-    {path:'ordershistory',component:UserorderhistoryComponent,canActivate:[customerGuard]},
+  {path:'ordershistory',component:UserorderhistoryComponent,canActivate:[customerGuard]},
 
   {path:'details/:id',component:OrderdetailsComponent},
   {path:'reservation',component:ReservationComponent},

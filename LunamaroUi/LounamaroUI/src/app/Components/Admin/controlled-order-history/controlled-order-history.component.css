@@ -1,6 +1,7 @@
 .orders-container {
   max-width: 1000px;
   margin: 40px auto;
+  margin-bottom: 1px;
   background-color: #1a3350;
   padding: 25px;
   border-radius: 15px;
