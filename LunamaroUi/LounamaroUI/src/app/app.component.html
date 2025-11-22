@@ -1,12 +1,9 @@
-<!-- Navbar -->
-<app-navbar></app-navbar>
+<div class="page-wrapper">
+  <app-navbar></app-navbar>
 
-<!-- Page Content Area -->
-<div class="page-content">
-
+  <div class="page-content">
     <router-outlet></router-outlet>
+  </div>
 
+  <app-footer *ngIf="showlayout"></app-footer>
 </div>
-
-<!-- Footer -->
-<app-footer *ngIf="showlayout"></app-footer>

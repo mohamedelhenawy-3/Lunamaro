@@ -1,14 +1,14 @@
 /* Full page background */
 .cart-wrapper {
   min-height: 100vh;
-  background-color: #3B6790;
+  /* background-color: #3B6790; */
   padding-top: 60px;
 }
 
 /* Main cart container */
 .cart-container {
   max-width: 900px;
-  background-color: #23486A;
+  background-color:#1a3350;
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);

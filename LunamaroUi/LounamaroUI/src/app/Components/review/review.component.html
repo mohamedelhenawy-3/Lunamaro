@@ -1,0 +1,51 @@
+<div class="review-page">
+
+  <!-- ⭐ CREATE REVIEW FORM -->
+  <div class="add-review-card">
+    <h2>Leave a Review</h2>
+
+    <!-- Star Rating -->
+    <div class="stars">
+      <span 
+        *ngFor="let s of [1,2,3,4,5]" 
+        (click)="setRating(s)"
+        [class.active]="s <= newReview.Rating">
+        ★
+      </span>
+    </div>
+
+    <textarea 
+      [(ngModel)]="newReview.Content" 
+      placeholder="Write your review..."
+      rows="4">
+    </textarea>
+
+    <button (click)="submitReview()">Submit Review</button>
+  </div>
+
+  <!-- ⭐ SHOW ALL REVIEWS -->
+  <div class="reviews-section" *ngIf="reviewsData">
+    <h2>Reviews</h2>
+
+    <div class="avg-info">
+      <span class="big-stars">⭐ {{ reviewsData.averageRating }}</span>
+      <span>{{ reviewsData.totalReviews }} reviews</span>
+    </div>
+
+    <div class="review-list">
+      <div class="review-item" *ngFor="let r of reviewsData.reviews">
+        <div class="review-top">
+          <strong>{{ r.name }}</strong>
+          <span class="stars-display">
+            <span *ngFor="let s of [1,2,3,4,5]" [class.filled]="s <= r.rating">★</span>
+          </span>
+        </div>
+
+        <p class="content">{{ r.content }}</p>
+        <small class="date">{{ r.createdAt | date:'mediumDate' }}</small>
+      </div>
+    </div>
+
+  </div>
+
+</div>

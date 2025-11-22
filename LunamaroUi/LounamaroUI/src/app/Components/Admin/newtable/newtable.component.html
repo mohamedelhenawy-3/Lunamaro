@@ -1,0 +1,78 @@
+<div class="form-wrapper">
+  <div class="form-card">
+
+    <h2 class="form-title">Add New Table</h2>
+
+    <form [formGroup]="Tableform" (ngSubmit)="onSubmit()">
+
+      <!-- Table Number -->
+      <div class="form-group">
+        <label for="tableNumber">Table Number</label>
+        <input 
+          type="text" 
+          id="tableNumber" 
+          formControlName="tableNumber"
+          placeholder="Enter table number">
+      </div>
+
+      <!-- Capacity -->
+      <div class="form-group">
+        <label for="capacity">Capacity</label>
+        <input 
+          type="number" 
+          id="capacity" 
+          formControlName="capacity"
+          placeholder="Enter number of seats">
+      </div>
+
+      <!-- Location -->
+      <div class="form-group">
+        <label for="location">Location</label>
+        <select id="location" formControlName="location">
+         <option value="" disabled>Select a location</option>
+
+<option value="Main Hall">Main Hall</option>
+<option value="Outdoor Terrace">Outdoor Terrace</option>
+<option value="VIP Area">VIP Area</option>
+<option value="Near Window">Near Window</option>
+<option value="Near Entrance">Near Entrance</option>
+<option value="Near Bar">Near Bar</option>
+<option value="Rooftop">Rooftop</option>
+<option value="Garden Area">Garden Area</option>
+<option value="Family Section">Family Section</option>
+<option value="Smoking Area">Smoking Area</option>
+<option value="Non-Smoking Area">Non-Smoking Area</option>
+<option value="Private Room">Private Room</option>
+<option value="Corner Area">Corner Area</option>
+<option value="Center Area">Center Area</option>
+<option value="Kids Area">Kids Area</option>
+<option value="Romantic Section">Romantic Section</option>
+
+        </select>
+      </div>
+
+      <!-- Availability -->
+      <div class="form-group">
+        <label for="isAvailable">Availability</label>
+    <select id="isAvailable" formControlName="isAvailable">
+  <option value="" disabled>Select status</option>
+  <option value="0">Available</option>
+  <option value="1">UnAvailable</option>
+</select>
+
+      </div>
+
+      <!-- Buttons -->
+      <div class="btn-group">
+        <button type="submit" class="btn-primary" [disabled]="!Tableform.valid">
+          Save Table
+        </button>
+        <button type="button" class="btn-reset" (click)="resetForm()">
+          Reset
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

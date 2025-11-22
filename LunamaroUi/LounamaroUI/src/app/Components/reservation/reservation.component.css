@@ -9,7 +9,7 @@
 
 /* Card container */
 .reservation-card {
-  background-color: #23486A;
+  background-color:#1a3350;
   color: white;
   width: 100%;
   max-width: 500px;
@@ -61,7 +61,7 @@ label {
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background-color: #4a90e2;
+  background-color:#EFB036;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -69,7 +69,6 @@ label {
 }
 
 .btn-submit:hover {
-  background-color:#EFB036;
   transform: translateY(-2px);
 }
 

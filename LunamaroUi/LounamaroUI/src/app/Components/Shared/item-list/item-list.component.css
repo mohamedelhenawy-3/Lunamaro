@@ -15,7 +15,7 @@
 
 /* Card */
 .item-card {
-  background-color: #23486A;
+  background-color:  #1a3350;
   width: 200px;
   border-radius: 14px;
   overflow: hidden;
@@ -33,7 +33,7 @@
 /* Product Image */
 .item-image {
   width: 100%;
-  height: 135px;
+  height: 150px;
   object-fit: cover;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .item-title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 6px;

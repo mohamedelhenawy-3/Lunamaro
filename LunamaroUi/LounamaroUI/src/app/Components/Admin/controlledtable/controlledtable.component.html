@@ -1,7 +1,8 @@
+
 <div class="tables-container">
   <h2>Manage Tables</h2>
 
-  <button class="refresh-btn" (click)="refresh()">🔄 Refresh</button>
+  <button class="update-btn-table" (click)="AddTable()"> Add NewTable</button>
 
   <div *ngIf="Table.length > 0; else noTables">
     <table class="tables-table">
@@ -13,6 +14,7 @@
           <th>Location</th>
           <th>Status</th>
           <th>Update Status</th>
+           <th>Update</th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +39,10 @@
               <option value="UnAvailable">UnAvailable</option>
             </select>
           </td>
+         <td>
+  <button class="update-btn-table" (click)="UpdateTable(t.id)">Update</button>
+</td>
+
         </tr>
       </tbody>
     </table>

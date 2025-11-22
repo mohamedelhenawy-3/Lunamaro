@@ -6,6 +6,8 @@
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   color: #fff;
+  
+
 }
 
 .tables-container h2 {
@@ -95,4 +97,29 @@
   font-size: 1.1rem;
   margin-top: 20px;
   color: #EFB036;
+}
+/* UPDATE BUTTON in table */
+.update-btn-table {
+  background-color: #EFB036;   /* Gold */
+  color: #1a3350;              /* Dark blue text */
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 0.9rem;
+}
+
+/* Hover effect */
+.update-btn-table:hover {
+  background-color: #ffffff;
+  color: #1a3350;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+}
+
+/* Active effect */
+.update-btn-table:active {
+  transform: scale(0.95);
 }

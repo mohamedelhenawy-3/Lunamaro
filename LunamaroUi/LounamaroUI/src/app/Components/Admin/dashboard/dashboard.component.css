@@ -2,7 +2,7 @@
 .dashboard-wrapper {
   /* max-width: 1200px; */
 
-  background-color: #1a3350;
+  background-color: #223b59;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.5);
@@ -21,7 +21,8 @@
 
 .card {
   flex: 1 1 220px;
-  background: #23486A;
+  background-color: #1a3350;
+
   display: flex;
   align-items: center;
   padding: 20px;
@@ -57,7 +58,7 @@
 .chart-grid { display: flex; flex-wrap: wrap; gap: 20px; }
 .chart-box {
   flex: 1 1 300px;
-  background: #23486A;
+  background: #1a3350;
   padding: 20px;
   border-radius: 12px;
   height: 40vh;
@@ -67,7 +68,7 @@
 
 /* Recent Orders */
 .recent-orders-section {
-  background: #23486A;
+  background:#1a3350;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);

@@ -4,6 +4,7 @@ import { TableService } from '../../../Service/Table/table.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { updatetablestatus } from '../../../Models/updatetablestatus';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-controlledtable',
@@ -15,7 +16,7 @@ import { updatetablestatus } from '../../../Models/updatetablestatus';
 export class ControlledtableComponent implements OnInit{
   Table:Table[] =[];
 
-  constructor( private tableservice:TableService){
+  constructor( private tableservice:TableService,private router:Router){
 
   }
   ngOnInit(): void {
@@ -53,4 +54,10 @@ export class ControlledtableComponent implements OnInit{
   trackByIndex(index: number, _item: Table): number {
     return index;
   }
+UpdateTable(id: number) {
+  this.router.navigate(['Admin/details', id]);
+}
+AddTable(){
+  this.router.navigateByUrl('Admin/AddNewTable')
+}
 }

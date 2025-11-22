@@ -22,8 +22,11 @@ import { OrderdetailsComponent } from './Components/orderdetails/orderdetails.co
 import { ControlledOrderHistoryComponent } from './Components/Admin/controlled-order-history/controlled-order-history.component';
 import { customerGuard } from './Components/Auth/customer.guard';
 import { ControlleddetailsComponent } from './Components/Admin/controlleddetails/controlleddetails.component';
-import { UpdateitemsComponent } from './Components/Admin/updateitems/updateitems.component';
+import { UpdateItemComponent } from './Components/Admin/updateitems/updateitems.component';
 import { DashboardComponent } from './Components/Admin/dashboard/dashboard.component';
+import { UpdatedTableComponent } from './Components/Admin/updated-table/updated-table.component';
+import { NewtableComponent } from './Components/Admin/newtable/newtable.component';
+import { ReviewComponent } from './Components/review/review.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -34,7 +37,7 @@ export const routes: Routes = [
   {path:'Admin/category',component:CategoryComponent,canActivate:[adminGuard]},
    {path:'Admin/additem',component:AddItemComponent,canActivate:[adminGuard]},
   {path:'Admin/item',component:ItemComponent,canActivate:[adminGuard]},
-  {path:'Admin/update-item/:id',component:UpdateitemsComponent,canActivate:[adminGuard]},
+  {path:'Admin/update-item/:id',component:UpdateItemComponent,canActivate:[adminGuard]},
   {path:'menu',component:MenuComponent},
    {path:'orderpervew',component:OrderComponent},
    {path:'usercartitempervew',component:UserCartItemsComponent},
@@ -47,14 +50,18 @@ export const routes: Routes = [
   {path:'Admin/reservation',component:ControlledRecervationsComponent,canActivate:[adminGuard]},
   {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},
 
-  
+    {path:'Admin/details/:id',component:UpdatedTableComponent,canActivate:[adminGuard]},
 
 { path: 'payment-success/:sessionId', component:PaymentsuccessComponent },
 
 
   {path:'Admin/ordershistory',component:ControlledOrderHistoryComponent,canActivate:[adminGuard]},
-{ path: 'Admin/details/:id', component: ControlleddetailsComponent, canActivate: [adminGuard] },
+{ path: 'Admin/order/details/:id', component: ControlleddetailsComponent, canActivate: [adminGuard] },
+  {path:'Admin/AddNewTable',component:NewtableComponent,canActivate:[adminGuard]},
 
+
+
+      {path:'Reviews',component:ReviewComponent},
 
   // Fallback
   { path: '**', redirectTo: '' }

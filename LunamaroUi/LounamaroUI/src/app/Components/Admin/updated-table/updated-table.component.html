@@ -1,0 +1,28 @@
+<div class="update-container" *ngIf="form">
+  <h2>Update Table</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="update-form">
+
+    <div class="form-group">
+      <label>Table Number</label>
+      <input formControlName="tableNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Capacity</label>
+      <input type="number" formControlName="capacity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Location</label>
+      <select formControlName="location" class="form-control">
+        <option value="Indoor">Indoor</option>
+        <option value="Outdoor">Outdoor</option>
+        <option value="MiddleHole">MiddleHole</option>
+      </select>
+    </div>
+
+    <button class="update-btn" [disabled]="form.invalid">Update</button>
+
+  </form>
+</div>

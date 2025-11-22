@@ -4,6 +4,8 @@ import { RouterLink } from '@angular/router';
 import { ExploreItem } from '../../Models/item/exploreItem';
 import { ItemService } from '../../Service/Item/item.service';
 import { CommonModule } from '@angular/common';
+import { ReviewResponse } from '../../Models/Review/ReviewResponse';
+import { ReviewsService } from '../../Service/Reviews/reviews.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,10 @@ export class HomeComponent implements OnInit {
   newestItems: ExploreItem[] = [];
   bestSellerItems: ExploreItem[] = [];
 
-  constructor(private imgservice: ImageShareService, private itemService: ItemService) {}
+    reviewsData?: ReviewResponse;
+
+
+  constructor(private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService) {}
 
   ngOnInit(): void {
     this.imgservice.updateImage(this.headerImage);
@@ -33,6 +38,11 @@ export class HomeComponent implements OnInit {
     this.itemService.getBestSelerItems().subscribe(res => {
       this.bestSellerItems = res;
     });
+
+     this.reviewservice.getLatestReviews().subscribe(
+    res => this.reviewsData = res,
+    err => console.error(err)
+  );
   }
 
 

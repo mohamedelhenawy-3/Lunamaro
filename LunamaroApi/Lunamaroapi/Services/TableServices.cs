@@ -74,7 +74,6 @@ namespace Lunamaroapi.Services
             existing.TableNumber = updated.TableNumber;
             existing.Capacity = updated.Capacity;
             existing.Location = updated.Location;
-            existing.IsAvailable = updated.IsAvailable;
 
             // Save changes
             await _db.SaveChangesAsync();

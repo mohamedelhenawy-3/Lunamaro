@@ -4,7 +4,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #3B6790;
+  background-color:#223b59
+;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -17,7 +18,7 @@ form {
   flex-direction: column;
   padding: 30px;
   border-radius: 20px;
-  background-color: #23486A;
+  background-color:  #1a3350;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   animation: fadeIn 0.4s ease;
 }

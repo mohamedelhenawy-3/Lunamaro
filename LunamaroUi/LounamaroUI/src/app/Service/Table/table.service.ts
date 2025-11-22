@@ -5,6 +5,7 @@ import { Table } from '../../Models/tables';
 import { environment } from '../../../environments/environment.development';
 import { updatetablestatus } from '../../Models/updatetablestatus';
 import { AvTable } from '../../Models/usersTables';
+import { UpdateTable } from '../../Models/Admin/Table/updatetable';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,14 @@ export class TableService {
   getAllAvailableTables():Observable<AvTable[]>{
      return this.http.get<AvTable[]>(`${environment.baseurl}/table/available`);
   }
+ UpdatetTable(id: number, dto:UpdateTable):Observable<any>{
+      return this.http.put(`${environment.baseurl}/table/${id}`,dto);
+    }
+getitembyid(Id:number):Observable<any>{
+    return this.http.get<any>(`${environment.baseurl}/table/${Id}`)
 
+}
+AddTable(dto:any):Observable<any>{
+       return this.http.post(`${environment.baseurl}/table`,dto);
+}
 }

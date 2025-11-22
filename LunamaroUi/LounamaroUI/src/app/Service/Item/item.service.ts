@@ -39,8 +39,8 @@ getitembyid(Id:number):Observable<ReturnedItem>{
 
 }
 
-updateItem(id:number,itemData:UpdateItem):Observable<void>{
-      return this._HttpClient.put<void>(`${environment.baseurl}/Item/:id`,itemData);
-
+updateItem(id: number, data: FormData): Observable<any> {
+  return this._HttpClient.put(`${environment.baseurl}/Item/${id}`, data);
 }
+
 }

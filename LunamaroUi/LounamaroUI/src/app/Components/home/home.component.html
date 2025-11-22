@@ -1,48 +1,48 @@
 <!-- ===== HERO SECTION ===== -->
-<!-- ===== HERO SECTION ===== -->
 <header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
-  <div class="overlay"></div> <!-- Dark overlay -->
+  <div class="overlay"></div>
   <div class="hero-content">
     <h1>Welcome to Lunamaro Restaurant</h1>
-    <p>Delicious meals crafted with love, delivered fresh to you</p>
-    <a routerLink="/menu" class="btn-hero">Explore Our Menu</a>
+    <p>Your destination for authentic flavors, warm ambiance, and unforgettable meals.</p>
+    <a routerLink="/menu" class="btn-hero">Discover Our Menu</a>
   </div>
 </header>
-
 
 <!-- ===== ABOUT US ===== -->
 <section class="about-section">
   <div class="about-left">
-    <h2>About Us</h2>
-    <p>We are passionate about serving the finest dishes with fresh ingredients and exceptional care. Experience our cozy ambiance and taste the difference.</p>
-    <a routerLink="/reservation" class="btn-primary">Reserve a Table</a>
+    <h2>Our Story</h2>
+    <p>
+      At Lunamaro, we blend tradition with creativity to bring you dishes prepared with the finest
+      ingredients and crafted with love. Whether you're dining in or ordering delivery, our goal is to
+      offer you an exceptional culinary experience.
+    </p>
+    <a routerLink="/reservation" class="btn-primary">Reserve Your Table</a>
   </div>
+
   <div class="about-right">
-    <div class="gallery">
-      <img src="assets/aboutus/about1.jpg" alt="Restaurant image 1">
-      <img src="assets/aboutus/about2.jpg" alt="Restaurant image 2">
-      <img src="assets/aboutus/about3.jpg" alt="Restaurant image 3">
-      <img src="assets/aboutus/about4.jpg" alt="Restaurant image 4">
-    </div>
+    <img src="assets/aboutus/about1.jpg" alt="Lunamaro dining">
+    <img src="assets/aboutus/about2.jpg" alt="Chef preparing food">
+    <img src="assets/aboutus/about3.jpg" alt="Signature dishes">
+    <img src="assets/aboutus/about4.jpg" alt="Restaurant interior">
   </div>
 </section>
 
 <!-- ===== FEATURED DISHES ===== -->
 <section class="featured-dishes">
-  <div class="container text-center">
-    <div class="section-header">
-      <h2>Chef’s Specials</h2>
-      <p>Our most loved dishes, handpicked by our chefs</p>
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Chef's Specials</h2>
+      <p>Handcrafted specialties with premium ingredients</p>
     </div>
-
     <div class="featured-grid">
       <div class="featured-card" *ngFor="let dish of bestSellerItems">
         <div class="featured-img">
           <img [src]="'http://localhost:5218' + dish.imageUrl" alt="{{ dish.name }}">
-          <div class="ribbon">Top Seller</div>
+          <div class="ribbon">Best Seller</div>
         </div>
         <div class="featured-info">
-          <h5>{{ dish.name }}</h5>
+          <h5 class="dish-name">{{ dish.name }}</h5>
           <p class="price">{{ dish.price | currency:'EGP' }}</p>
         </div>
       </div>
@@ -51,53 +51,56 @@
 </section>
 
 
-<!-- ===== POPULAR MENU ===== -->
-<section class="popular-menu">
+<!-- ===== LATEST REVIEWS (MATCHED STYLE) ===== -->
+<section class="latest-reviews" *ngIf="reviewsData">
   <div class="container">
-    <div class="section-header">
-      <h2>Our Menu</h2>
-      <p>Explore a wide variety of delicious dishes</p>
+    
+    <div class="section-header text-center">
+      <h2 style="color:  white;">Customer Reviews</h2>
+      <p style="color:  white;">What people are saying right now</p>
     </div>
 
-    <div class="menu-grid">
-      <div class="menu-card" *ngFor="let item of newestItems">
+    <div class="reviews-slider">
+      <div class="review-card" *ngFor="let review of reviewsData?.reviews">
         
-        <div class="menu-img">
-          <img [src]="'http://localhost:5218' + item.imageUrl" alt="{{ item.name }}">
-          <div class="menu-overlay">
-            <p class="desc">{{ item.description }}</p>
-            <span class="price">{{ item.price | currency:'EGP' }}</span>
-            <button class="btn-order">Order Now</button>
-          </div>
+        <!-- Name -->
+        <strong class="review-name">{{ review.name }}</strong>
+
+        <!-- Stars -->
+        <div class="stars-display">
+          <span *ngFor="let s of [1,2,3,4,5]" 
+                [class.filled]="s <= review.rating">
+            ★
+          </span>
         </div>
 
-        <h5 class="menu-name">{{ item.name }}</h5>
+        <!-- Content -->
+        <p class="review-content">{{ review.content }}</p>
+
+        <!-- Date -->
+        <small class="review-date">{{ review.createdAt | date:'mediumDate' }}</small>
       </div>
     </div>
 
-    <div class="text-center mt-4" style="text-decoration: none">
-       <a routerLink="/reservation" class="btn-primary">Explore Menu</a>
+    <!-- Button -->
+    <div class="text-center mt-3">
+      <a routerLink="/Reviews" class="btn-primary">View All Reviews</a>
     </div>
+
   </div>
 </section>
 
-<!-- ===== RESERVATION CTA ===== -->
-<section class="reservation-cta">
-  <h2>Ready to Dine With Us?</h2>
-  <p>Book your table in just a few clicks!</p>
-  <a routerLink="/reservation" class="btn-primary">Make a Reservation</a>
-</section>
 
-
+<!-- ===== CONTACT SECTION ===== -->
 <section class="contact-section" id="contact">
   <div class="contact-container">
     <div class="contact-left">
       <h2>Contact Us</h2>
-      <p>Have questions or want to make a reservation? Send us a message and we'll get back to you promptly.</p>
+      <p>Reach out for reservations, feedback, or inquiries. We're here to serve you.</p>
       <ul class="contact-info">
-        <li><strong>Address:</strong> 123 Main Street, Your City</li>
-        <li><strong>Phone:</strong> +20 123 456 7890</li>
-        <li><strong>Email:</strong> contact-restaurant.com</li>
+        <li><strong>Address:</strong> Ahmed Oraby Street, Giza, Egypt</li>
+        <li><strong>Phone:</strong> +20 015 5660 59</li>
+        <li><strong>Email:</strong> support-lunamaro.com</li>
       </ul>
     </div>
     <div class="contact-right">
@@ -110,3 +113,4 @@
     </div>
   </div>
 </section>
+

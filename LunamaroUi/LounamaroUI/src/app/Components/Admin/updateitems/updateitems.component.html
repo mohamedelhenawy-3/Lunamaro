@@ -1,1 +1,45 @@
-<p>Untel</p>
+<div class="update-container" *ngIf="form">
+  <h2>Update Item</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="update-form">
+
+    <!-- Name -->
+    <div class="form-group">
+      <label>Item Name</label>
+      <input formControlName="name" class="form-control" />
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label>Description</label>
+      <textarea formControlName="description" class="form-control textarea-control"></textarea>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group">
+      <label>Price</label>
+      <input type="number" formControlName="price" class="form-control" />
+    </div>
+
+    <!-- Category -->
+    <div class="form-group">
+      <label>Category</label>
+      <input type="number" formControlName="categoryId" class="form-control" />
+    </div>
+
+    <!-- Current Image Preview -->
+    <div class="form-group">
+      <label>Current Image</label>
+      <img *ngIf="previewImage" [src]="previewImage" class="preview-img" />
+    </div>
+
+    <!-- Upload New Image -->
+    <div class="form-group">
+      <label>Upload New Image</label>
+      <input type="file" class="form-control file-control" (change)="onFileSelected($event)" />
+    </div>
+
+    <button class="update-btn" [disabled]="form.invalid">Update Item</button>
+
+  </form>
+</div>

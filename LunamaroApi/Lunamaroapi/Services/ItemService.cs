@@ -108,7 +108,8 @@ namespace Lunamaroapi.Services
                 Description = item.Description,
                 Price = item.Price,
                 quantity=item.quantity,
-                ImageUrl=item.ImageUrl
+                ImageUrl=item.ImageUrl,
+               CategoryId=item.CategoryId
             };
         }
 

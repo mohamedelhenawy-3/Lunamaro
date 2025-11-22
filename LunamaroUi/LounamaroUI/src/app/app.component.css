@@ -1,18 +1,3 @@
-
-app-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; /* stay above content */
-}
-
-.page-content {
-  background-color:  #3B6790;
-  min-height: calc(100vh - 120px); /* 120px = header + footer height */
-}
-
-
 /* Ensure the page takes full height */
 html, body {
   margin: 0;
@@ -20,28 +5,41 @@ html, body {
   height: 100%;
 }
 
-/* Wrapper ensures footer stays at the bottom */
+/* Wrapper to hold content and footer */
 .page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Content takes all available space except footer */
-.page-content {
-  flex: 1; /* makes content fill remaining space */
-  background-color: #3B6790;
-  padding-top: 60px;   /* space for fixed navbar */
-  box-sizing: border-box;
+/* Navbar fixed at top */
+app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-/* Footer styling */
+.page-content {
+  flex: 1;
+  padding-top: 60px;
+  margin: 0;
+  background-color: #223b59
+;/* Recommended */
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* Footer at the bottom */
 footer {
-  background-color: #250302;
-  color: white;
-  padding-top: 20px;
-  padding-bottom: 10px;
   text-align: center;
-  bottom: 0;
-  height: 30vh;
+  padding: 20px 0;
+  flex-shrink: 0; /* prevent footer from shrinking */
+}
+
+/* Optional: remove margin from router-outlet */
+.page-content > router-outlet {
+  display: block;
+  margin: 0;
 }

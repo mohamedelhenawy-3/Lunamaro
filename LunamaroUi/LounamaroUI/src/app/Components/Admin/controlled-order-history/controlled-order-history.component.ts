@@ -65,7 +65,7 @@ getNextStatus(order: orderhistory): { text: string; value: OrderStatus } | null 
 
 
 viewDetails(orderId: number) {
-this.router.navigate(['Admin/details', orderId]);
+this.router.navigate(['Admin/order/details', orderId]);
 
 }
 }

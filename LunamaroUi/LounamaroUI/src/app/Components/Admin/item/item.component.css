@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   padding: 20px;
-  background: #3B6790;
+  /* background: #3B6790; */
   margin-top: 20PX;
 }
 
@@ -16,7 +16,7 @@
 
 /* Card */
 .item-card {
-  background-color: #23486A;
+  background-color: #1a3350;
   width: 200px;
   border-radius: 12px;
   overflow: hidden;

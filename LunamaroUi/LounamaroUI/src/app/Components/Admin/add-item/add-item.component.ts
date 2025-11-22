@@ -34,6 +34,7 @@ export class AddItemComponent implements OnInit {
     this.catservice.getallCategories().subscribe({
       next: (data) => {
         this.categories = data;
+        console.log(data);
       }
     });
   }

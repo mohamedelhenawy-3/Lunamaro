@@ -3,5 +3,5 @@ export interface UpdateItem {
   description: string;
   price: number;
   imageUrl: string;
-  
+    CategoryId:number;
 }
