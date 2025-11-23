@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { ReviewResponse } from '../../Models/Review/ReviewResponse';
 import { CreateReview } from '../../Models/Review/CreateReview';
 import { ReviewsService } from '../../Service/Reviews/reviews.service';
-import { CommonModule } from '@angular/common';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-review',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
 })
@@ -21,9 +22,15 @@ export class ReviewComponent implements OnInit {
     Content: ''
   };
 
-  constructor(private reviewService: ReviewsService) {}
+  role: string | null = null;   // <<< IMPORTANT
+
+  constructor(
+    private reviewService: ReviewsService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.role = this.authService.getUserRole();  // <<< DETECT ROLE
     this.loadReviews();
   }
 
@@ -44,6 +51,15 @@ export class ReviewComponent implements OnInit {
     this.reviewService.CreateReview(this.newReview).subscribe(() => {
       alert("Review added successfully!");
       this.newReview = { Rating: 0, Content: '' };
+      this.loadReviews();
+    });
+  }
+
+  deleteReview(id: number) {
+    if (!confirm("Are you sure you want to delete this review?")) return;
+
+    this.reviewService.cancelReservation(id).subscribe(() => {
+      alert("Review removed.");
       this.loadReviews();
     });
   }

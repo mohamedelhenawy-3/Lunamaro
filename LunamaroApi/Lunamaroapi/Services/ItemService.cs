@@ -115,20 +115,25 @@ namespace Lunamaroapi.Services
 
         public async Task UpdateItemAsync(ItemDTO itemdto, int id)
         {
-            var item =await  _db.Items.FindAsync(id);
-            if (item == null) Console.WriteLine("nOTHING");
+            var item = await _db.Items.FindAsync(id);
+            if (item == null)
+                throw new ArgumentException("Item not found");
 
+        
+                var imageUrl = await _imageService.UploadImage(itemdto.File);
+                item.ImageUrl = imageUrl;
+         
+            // Update other fields
             item.Name = itemdto.Name;
             item.Price = itemdto.Price;
-            item.ImageUrl = itemdto.ImageUrl;
             item.Description = itemdto.Description;
             item.CategoryId = itemdto.CategoryId;
 
             await _db.SaveChangesAsync();
-            
         }
 
- 
+
+
         public async  Task<IEnumerable<ItemDTO>> GetItemByCatId(int catId)
         {
             var items = await _db.Items

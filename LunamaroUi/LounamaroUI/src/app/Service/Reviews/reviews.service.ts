@@ -14,7 +14,7 @@ export class ReviewsService {
 
 
 
-   getAllReviews(): Observable<ReviewResponse> {
+getAllReviews(): Observable<ReviewResponse> {
     return this._HttpClient.get<ReviewResponse>(`${environment.baseurl}/Review`)
   }
 
@@ -27,5 +27,8 @@ getLatestReviews() {
  CreateReview(review: CreateReview) {
   return this._HttpClient.post<any>(`${environment.baseurl}/Review`, review);
 }
+ cancelReservation(Id: number): Observable<any> {
+    return this._HttpClient.delete(`${environment.baseurl}/Review/admin/{Id}`);
+  }
 
 }

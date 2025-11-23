@@ -63,26 +63,30 @@ export class UpdateItemComponent implements OnInit {
     }
   }
 
-  submit() {
-    if (this.form.invalid) return;
+submit() {
+  if (this.form.invalid) return;
 
-    const formData = new FormData();
+  const formData = new FormData();
+  formData.append("Name", this.form.value.name);
+  formData.append("Description", this.form.value.description);
+  formData.append("Price", this.form.value.price);
+  formData.append("CategoryId", this.form.value.categoryId);
 
-    formData.append("name", this.form.value.name);
-    formData.append("description", this.form.value.description);
-    formData.append("price", this.form.value.price);
-    formData.append("categoryId", this.form.value.categoryId);
-
-    // If user selected a new image
-    if (this.selectedFile) {
-      formData.append("imageFile", this.selectedFile);
-    }
-
-    this.itemService.updateItem(this.itemId, formData).subscribe({
-      next: () => {
-        alert("Item updated successfully!");
-        this.router.navigateByUrl("/menu");
-      }
-    });
+  // If user selected a new image
+  if (this.selectedFile) {
+    formData.append("File", this.selectedFile); // ✅ match backend
   }
+
+  this.itemService.updateItem(this.itemId, formData).subscribe({
+    next: () => {
+      alert("Item updated successfully!");
+      this.router.navigateByUrl("/menu");
+    },
+    error: (err) => {
+      console.error(err);
+      alert("Update failed!");
+    }
+  });
+}
+
 }

@@ -61,7 +61,7 @@ namespace Lunamaroapi.Controllers
      
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateItem(ItemDTO itemdto, int id)
+        public async Task<ActionResult> UpdateItem([FromForm] ItemDTO itemdto, int id)
         {
             var exists = await _IItemService.Exists(id);
 

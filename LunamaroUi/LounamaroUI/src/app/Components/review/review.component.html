@@ -1,13 +1,12 @@
 <div class="review-page">
 
-  <!-- ⭐ CREATE REVIEW FORM -->
-  <div class="add-review-card">
+  <!-- ⭐ ADD REVIEW (Only Customer) -->
+  <div class="add-review-card" *ngIf="role === 'Customer'">
     <h2>Leave a Review</h2>
 
-    <!-- Star Rating -->
     <div class="stars">
       <span 
-        *ngFor="let s of [1,2,3,4,5]" 
+        *ngFor="let s of [1,2,3,4,5]"
         (click)="setRating(s)"
         [class.active]="s <= newReview.Rating">
         ★
@@ -23,7 +22,8 @@
     <button (click)="submitReview()">Submit Review</button>
   </div>
 
-  <!-- ⭐ SHOW ALL REVIEWS -->
+
+  <!-- ⭐ ALL REVIEWS -->
   <div class="reviews-section" *ngIf="reviewsData">
     <h2>Reviews</h2>
 
@@ -33,17 +33,31 @@
     </div>
 
     <div class="review-list">
+
       <div class="review-item" *ngFor="let r of reviewsData.reviews">
+
         <div class="review-top">
           <strong>{{ r.name }}</strong>
+
           <span class="stars-display">
-            <span *ngFor="let s of [1,2,3,4,5]" [class.filled]="s <= r.rating">★</span>
+            <span 
+              *ngFor="let s of [1,2,3,4,5]" 
+              [class.filled]="s <= r.rating">
+              ★
+            </span>
           </span>
         </div>
 
         <p class="content">{{ r.content }}</p>
         <small class="date">{{ r.createdAt | date:'mediumDate' }}</small>
+
+        <!-- ADMIN ACTIONS -->
+        <div class="admin-actions" *ngIf="role === 'Admin'">
+          <button class="delete-btn" (click)="deleteReview(r.rating)">Delete</button>
+        </div>
+
       </div>
+
     </div>
 
   </div>
