@@ -24,9 +24,10 @@ export class OrderdetailsComponent implements OnInit {
   ngOnInit(): void {
     this.orderId = Number(this.route.snapshot.paramMap.get("id"));
     
-    this.orderService.getOrderHistoryDetails(this.orderId)
+    this.orderService.getOrderHistoryDetailsAd(this.orderId)
       .subscribe(result => {
   this.orderDetails = result;
+  console.log(result);
       });
   }
 

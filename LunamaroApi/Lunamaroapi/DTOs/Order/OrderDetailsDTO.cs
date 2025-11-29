@@ -1,4 +1,4 @@
-﻿using Lunamaroapi.DTOs;
+﻿using Lunamaroapi.DTOs.UserCart;
 
 public class OrderDetailsDTO
 {

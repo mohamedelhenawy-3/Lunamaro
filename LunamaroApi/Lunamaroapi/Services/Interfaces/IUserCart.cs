@@ -1,4 +1,4 @@
-﻿using Lunamaroapi.DTOs;
+﻿using Lunamaroapi.DTOs.UserCart;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lunamaroapi.Services.Interfaces

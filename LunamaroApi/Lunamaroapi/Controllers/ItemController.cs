@@ -1,4 +1,4 @@
-﻿using Lunamaroapi.DTOs;
+﻿using Lunamaroapi.DTOs.Item;
 using Lunamaroapi.Services;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;

@@ -16,6 +16,9 @@ export class AddItemComponent implements OnInit {
   categories: any[] = [];
   selectedFile: File | null = null;  // ✅ Store file separately
 
+
+
+  formChanges:boolean = false;
   constructor(
     private fb: FormBuilder,
     private apiitem: ItemService,
@@ -28,6 +31,11 @@ export class AddItemComponent implements OnInit {
       price: ['', Validators.required],
       categoryId: ['', Validators.required]
     });
+
+
+    this.Itemform.valueChanges.subscribe(()=>{
+      this.formChanges = true;
+    })
   }
 
   ngOnInit(): void {
@@ -46,6 +54,14 @@ export class AddItemComponent implements OnInit {
     }
   }
 
+
+  canExit(): boolean {
+    if (this.formChanges) {
+      alert("You have unsaved changes. Do you really want to leave?");
+      return confirm("You have unsaved changes. Do you really want to leave?");
+    }
+    return true;
+  }
   AddItem(): void {
     if (this.Itemform.valid && this.selectedFile) {
       const formData = new FormData();
@@ -59,6 +75,7 @@ export class AddItemComponent implements OnInit {
       this.apiitem.addtem(formData).subscribe({
         next: () => {
           console.log('Item added successfully!');
+          this.formChanges = false; // Reset after save
           this.Itemform.reset();
           this.selectedFile = null;
         },

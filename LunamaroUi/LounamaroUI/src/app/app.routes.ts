@@ -27,6 +27,7 @@ import { DashboardComponent } from './Components/Admin/dashboard/dashboard.compo
 import { UpdatedTableComponent } from './Components/Admin/updated-table/updated-table.component';
 import { NewtableComponent } from './Components/Admin/newtable/newtable.component';
 import { ReviewComponent } from './Components/review/review.component';
+import { deactiveGuard } from './Components/Guards/DeactiveGuard/deactive.guard';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -35,7 +36,7 @@ export const routes: Routes = [
    { path: 'Home', component: HomeComponent },
    {path:'Admin/AddCategory',component:AddCategoryComponent,canActivate:[adminGuard]},
   {path:'Admin/category',component:CategoryComponent,canActivate:[adminGuard]},
-   {path:'Admin/additem',component:AddItemComponent,canActivate:[adminGuard]},
+   {path:'Admin/additem',component:AddItemComponent,canActivate:[adminGuard],canDeactivate:[deactiveGuard]},
   {path:'Admin/item',component:ItemComponent,canActivate:[adminGuard]},
   {path:'Admin/update-item/:id',component:UpdateItemComponent,canActivate:[adminGuard]},
   {path:'menu',component:MenuComponent},

@@ -1,6 +1,8 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
 using Lunamaroapi.DTOs.Admin;
+using Lunamaroapi.DTOs.Order;
+using Lunamaroapi.DTOs.UserCart;
 using Lunamaroapi.Helper;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
@@ -438,7 +440,6 @@ namespace Lunamaroapi.Services
 
             await _smsService.SendEmailAsync(user.Email, subject, body);
         }
-
 
 
     }

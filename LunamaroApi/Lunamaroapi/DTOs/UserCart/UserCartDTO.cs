@@ -1,4 +1,4 @@
-﻿namespace Lunamaroapi.DTOs
+﻿namespace Lunamaroapi.DTOs.UserCart
 {
     public class UserCartDTO
     {

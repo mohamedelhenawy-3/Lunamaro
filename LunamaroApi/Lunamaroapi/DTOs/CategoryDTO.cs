@@ -1,4 +1,6 @@
-﻿namespace Lunamaroapi.DTOs
+﻿using Lunamaroapi.DTOs.Item;
+
+namespace Lunamaroapi.DTOs
 {
     public class CategoryDTO
     {

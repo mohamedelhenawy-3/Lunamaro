@@ -1,7 +1,7 @@
 ﻿using Lunamaroapi.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lunamaroapi.DTOs
+namespace Lunamaroapi.DTOs.Order
 {
     public class orderhistorydetails
     {
