@@ -1,9 +1,17 @@
-﻿using Lunamaroapi.Data;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Lunamaroapi.Data;
 using Lunamaroapi.Helper;
 using Lunamaroapi.Helper.EmailSetting;
+using Lunamaroapi.Middlwares;
 using Lunamaroapi.Models;
+using Lunamaroapi.Repositories.Implementations;
+using Lunamaroapi.Repositories.Interfaces;
 using Lunamaroapi.Services;
+using Lunamaroapi.Services.Implements;
 using Lunamaroapi.Services.Interfaces;
+using Lunamaroapi.Validators.CategoryValidator;
+using Lunamaroapi.Validators.ItemValidators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -55,22 +63,44 @@ policy =>
             .AddEntityFrameworkStores<AppDBContext>()
             .AddDefaultTokenProviders();
 
-            builder.Services.AddScoped<IAuth, AuthServices>();
+
+
+
+
+
+
+            builder.Services.AddScoped<IAuthServices,Services.Implements.AuthServices>();
+            builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+            builder.Services.AddScoped<ITokenService,Services.Implements.TokenService>();
+            builder.Services.AddScoped<IRefreshToken, RefrshTokenRepoitory>();
+
+            //builder.Services.AddScoped<IAuth,Services>
             builder.Services.AddScoped<JwtTokenGenerator>();
             builder.Services.AddScoped<IImageServices, ImageService>();
-        
-            builder.Services.AddScoped<ICategory, CategoryService>();
-            builder.Services.AddScoped<IItem, ItemService>();
+            builder.Services.AddScoped<ICategoryService,Services.Implements.CategoryService>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            //builder.Services.AddScoped<IItem, ItemService>();
+            builder.Services.AddScoped<IItemRepository, ItemRepository>();
+            builder.Services.AddScoped<IItemService, Services.Implements.ItemService>();
+
             builder.Services.AddScoped<IUserCart, UserCartService>();
             builder.Services.AddScoped<IOrder, OrderServices>();
             builder.Services.AddScoped<ITable, TableServices>();
             builder.Services.AddScoped<IReservation, ReservationServices>();
             builder.Services.AddScoped<IDashboard, DashboardServices>();
             builder.Services.AddScoped<IReview, ReviewsService>();
-
+            // Inside the service configuration block in Program.cs
+            builder.Services.AddTransient<GlobalExceptionMiddleware>();
             builder.Services.AddSingleton<SmsService>();
             builder.Services.Configure<ESetting>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.AddSingleton<EmailService>();
+
+            //fluentApiValidtor
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<ItemDTOValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<UpdateItemDTOValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateCategpryValidator>();
+
 
 
 
@@ -98,9 +128,12 @@ policy =>
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
+
                     ValidIssuer = jwtSettings["Issuer"],
                     ValidAudience = jwtSettings["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])),
+                    ClockSkew = TimeSpan.Zero
+
                 };
             });
 
@@ -110,6 +143,9 @@ policy =>
 
             // 3. Build the app
             var app = builder.Build();
+
+            // NEW - Works because the framework can build the middleware instance at startup.
+            app.UseMiddleware<GlobalExceptionMiddleware>();
 
             // 4. Create roles using scope (safe here, no service modification)
             using (var scope = app.Services.CreateScope())

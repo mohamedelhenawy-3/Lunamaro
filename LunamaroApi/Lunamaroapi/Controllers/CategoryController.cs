@@ -1,4 +1,5 @@
 ﻿using Lunamaroapi.DTOs;
+using Lunamaroapi.DTOs.Category;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -8,14 +9,16 @@ namespace Lunamaroapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+
+    [Authorize(Roles = "Admin")]
 
 
 
     public class CategoryController : ControllerBase
     {
-        private readonly ICategory _categoryService;
-        public CategoryController(ICategory category)
+        private readonly ICategoryService _categoryService;
+        
+        public CategoryController(ICategoryService category)
         {
             _categoryService = category;
         }
@@ -28,9 +31,9 @@ namespace Lunamaroapi.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost("CreateCategory")]
-        public async Task<ActionResult> Add([FromBody] CategoryDTO catdto)
+        public async Task<ActionResult> Add([FromBody] CreateCategoryDTO catdto)
         {
-            var createdCategory = await _categoryService.AddSync(catdto);
+            var createdCategory = await _categoryService.AddAsync(catdto);
             return CreatedAtAction(nameof(GetById), new { id = createdCategory.Id }, createdCategory);
         }
 

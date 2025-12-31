@@ -12,7 +12,9 @@ namespace Lunamaroapi.Data
 
         }
        public  DbSet<ApplicationUser> Users { get; set; }
-      public   DbSet<Item> Items { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+        public DbSet<Item> Items { get; set; }
       public   DbSet<Category> Categories { get; set; }
         public DbSet<UserCart> UserCarts { get; set; }
         public DbSet<Order> Orders { get; set; }

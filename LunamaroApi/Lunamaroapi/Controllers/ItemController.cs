@@ -1,5 +1,7 @@
-﻿using Lunamaroapi.DTOs.Item;
+﻿using FluentValidation;
+using Lunamaroapi.DTOs.Item;
 using Lunamaroapi.Services;
+using Lunamaroapi.Services.Implements;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -14,23 +16,23 @@ namespace Lunamaroapi.Controllers
 
     public class ItemController : ControllerBase
     {
-        private readonly IItem _IItemService;
+        private readonly IItemService _IItemService;
 
 
-        public ItemController(IItem itemsrvice)
+        public ItemController(IItemService itemsrvice)
         {
             _IItemService = itemsrvice;
         }
+        [Authorize(Roles = "Admin")]
 
         [HttpPost("CreateItem")]
         [Consumes("multipart/form-data")]
 
-        public async Task<ActionResult> CreateItem([FromForm] ItemDTO itemdto)
+        public async Task<ActionResult> CreateItem([FromForm] ItemDTO itemdto, [FromServices] IValidator<ItemDTO> validator)
         {
-            //Console.WriteLine($"File Received: {itemdto.File?.FileName}, Length: {itemdto.File?.Length}");
+            await validator.ValidateAsync(itemdto, options =>options.IncludeRuleSets("Create"));
 
-            var result = await _IItemService.CreateItemAsync(itemdto);
-            return Ok(result);
+            return Ok(await _IItemService.CreateItemAsync(itemdto));
 
         }
         [HttpGet("GetItemsByCategory/{catId}")]
@@ -58,21 +60,19 @@ namespace Lunamaroapi.Controllers
         }
 
 
-     
+
+        [Authorize(Roles = "Admin")]
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateItem([FromForm] ItemDTO itemdto, int id)
+        public async Task<ActionResult> UpdateItem([FromForm] UpdateItemDTO itemdto, int id)
         {
-            var exists = await _IItemService.Exists(id);
-
-            if (!exists)
-                return NotFound();
 
             await _IItemService.UpdateItemAsync(itemdto, id);
             return NoContent();
 
         }
 
+        [Authorize(Roles = "Admin")]
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

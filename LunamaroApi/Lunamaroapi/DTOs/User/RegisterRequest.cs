@@ -5,7 +5,7 @@ namespace Lunamaroapi.DTOs.userDTO
     public class RegisterRequest
     {
         [Required(ErrorMessage = "Full name is required")]
-        public string FulName { get; set; }
+        public string FullName { get; set; }
 
         [Required(ErrorMessage = "Username is required")]
         [MinLength(4, ErrorMessage = "Username must be at least 4 characters")]

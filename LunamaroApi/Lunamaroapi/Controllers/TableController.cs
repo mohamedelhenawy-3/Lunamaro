@@ -2,6 +2,7 @@
 using Lunamaroapi.Models;
 using Lunamaroapi.Services;
 using Lunamaroapi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +10,7 @@ namespace Lunamaroapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [Authorize]
     public class TableController : ControllerBase
     {
 

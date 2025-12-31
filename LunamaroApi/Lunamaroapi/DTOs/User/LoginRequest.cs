@@ -12,5 +12,9 @@ namespace Lunamaroapi.DTOs.userDTO
         [MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
         public string Password { get; set; }
 
+        public string DeviceId { get; set; } // add this
+
+
+
     }
 }
