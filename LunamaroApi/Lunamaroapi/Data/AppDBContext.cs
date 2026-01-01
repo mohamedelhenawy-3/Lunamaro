@@ -40,7 +40,9 @@ namespace Lunamaroapi.Data
 
 
 
-
+            modelBuilder.Entity<UserOrderHeader>()
+          .HasIndex(u => u.TemporaryKey)
+          .IsUnique();
 
             modelBuilder.Entity<Reservation>().HasOne(r => r.User)
                 .WithMany(x => x.Reservations)

@@ -28,6 +28,7 @@ import { UpdatedTableComponent } from './Components/Admin/updated-table/updated-
 import { NewtableComponent } from './Components/Admin/newtable/newtable.component';
 import { ReviewComponent } from './Components/review/review.component';
 import { deactiveGuard } from './Components/Guards/DeactiveGuard/deactive.guard';
+import { pendingorderguardGuard } from './Components/Guards/pendingorderguard.guard';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -40,7 +41,7 @@ export const routes: Routes = [
   {path:'Admin/item',component:ItemComponent,canActivate:[adminGuard]},
   {path:'Admin/update-item/:id',component:UpdateItemComponent,canActivate:[adminGuard]},
   {path:'menu',component:MenuComponent},
-   {path:'orderpervew',component:OrderComponent},
+   {path:'orderpervew',component:OrderComponent ,canDeactivate:[pendingorderguardGuard]},
    {path:'usercartitempervew',component:UserCartItemsComponent},
   {path:'Table',component:TableComponent},
   {path:'ordershistory',component:UserorderhistoryComponent,canActivate:[customerGuard]},

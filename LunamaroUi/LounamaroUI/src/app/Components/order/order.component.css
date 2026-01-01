@@ -138,4 +138,14 @@
     flex: 1 1 100%;
     margin-bottom: 20px;
   }
+
+  .error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.input-box.ng-invalid.ng-touched {
+  border-color: red;
+}
+
 }

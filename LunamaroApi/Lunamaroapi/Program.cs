@@ -12,6 +12,7 @@ using Lunamaroapi.Services.Implements;
 using Lunamaroapi.Services.Interfaces;
 using Lunamaroapi.Validators.CategoryValidator;
 using Lunamaroapi.Validators.ItemValidators;
+using Lunamaroapi.Validators.OrderValidator;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -100,7 +101,7 @@ policy =>
             builder.Services.AddValidatorsFromAssemblyContaining<ItemDTOValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<UpdateItemDTOValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<CreateCategpryValidator>();
-
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderValidator>();
 
 
 

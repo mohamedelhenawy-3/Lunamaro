@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 public class UserOrderHeader
 {
     public int Id { get; set; }
+    public string TemporaryKey { get; set; } = null!;
 
     // ✅ Not required from client
     public string? UserId { get; set; }

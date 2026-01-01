@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { OrderDetails } from '../../Models/order-details';
 import { environment } from '../../../environments/environment.development';
 import { OrderItem } from '../../Models/order-item';
@@ -29,7 +29,16 @@ constructor(private _HttpClient:HttpClient) {
 
 
  placeOrder(order:OrderInfo) {
-  return this._HttpClient.post<OrderRes>(`${environment.baseurl}/Order/create`, order);
+  return this._HttpClient.post<OrderRes>(`${environment.baseurl}/Order/create`, order).pipe(
+      catchError((err) => {
+        // You can catch 409 or any error
+       
+        if (err.status === 400) {
+          return throwError(() => err.error?.message || "Duplicate order detected!");
+        }
+        return throwError(() => "Something went wrong. Please try again.");
+      })
+    );
 }
 paymentSuccess(sessionId: string) {
   return this._HttpClient.get(`${environment.baseurl}/Order/success?sessionId=${sessionId}`);

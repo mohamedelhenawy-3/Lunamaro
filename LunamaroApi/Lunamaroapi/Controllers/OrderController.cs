@@ -56,8 +56,10 @@ namespace Lunamaroapi.Controllers
         {
             var result = await _orderService.OrderDone(dto);
 
+
             if (result == null)
-                return BadRequest("Could not create order.");
+                return BadRequest("Cannot create order: pending order exists or user not logged in.");
+
 
             return Ok(result);
         }

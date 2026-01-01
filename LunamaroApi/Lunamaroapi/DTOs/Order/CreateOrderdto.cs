@@ -2,6 +2,8 @@
 {
     public class CreateOrderdto
     {
+        public string TemporaryKey { get; set; } = null!;
+
         public string Name { get; set; }
 
         public string PhoneNumber { get; set; }

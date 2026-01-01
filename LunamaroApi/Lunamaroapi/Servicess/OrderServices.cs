@@ -4,6 +4,7 @@ using Lunamaroapi.DTOs.Admin;
 using Lunamaroapi.DTOs.Order;
 using Lunamaroapi.DTOs.UserCart;
 using Lunamaroapi.Helper;
+using Lunamaroapi.Helper.ServiceResult;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -21,19 +22,20 @@ namespace Lunamaroapi.Services
         private readonly AppDBContext _db;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly EmailService _smsService;
-
+        private readonly ILogger<OrderServices> __Loger;
         public event OrderPlacceHandler? OnOrderPlaced;
 
         public event OrderStatusChangedHandler? OnOrderStatusChanged;
 
 
 
-        public OrderServices(AppDBContext db, IHttpContextAccessor httpContextAccessor, EmailService emailService)
+        public OrderServices(AppDBContext db, IHttpContextAccessor httpContextAccessor, EmailService emailService,ILogger<OrderServices> Logger)
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
             _smsService = emailService;
             OnOrderPlaced += SendOrderPlacedEmail;
+            __Loger = Logger;
 
         }
         private string? GetCurrentUserId()
@@ -89,119 +91,220 @@ namespace Lunamaroapi.Services
         }
         public async Task<OrderResDTO?> OrderDone(CreateOrderdto dto)
         {
-            var userId = GetCurrentUserId();
-            if (string.IsNullOrEmpty(userId))
-                return null;
-
-            var currentUser = await _db.Users.FirstOrDefaultAsync(x => x.Id == userId);
-            if (currentUser == null)
-                return null;
-
-            var userCart = await _db.UserCarts
-                .Include(c => c.Item)
-                .Where(c => c.UserId == userId)
-                .ToListAsync();
-
-            if (!userCart.Any())
-                return null;
-
-            double total = userCart.Sum(c => (double)c.Item.Price * c.Quantity);
-
-            var orderHeader = new UserOrderHeader
+            try
             {
-                UserId = userId,
-                DateOfOrder = DateTime.Now,
-                TotalAmount = total,
-                PhoneNumber = dto.PhoneNumber,
-                DeliveryStreetAddress = dto.DeliveryStreetAddress,
-                City = dto.City,
-                State = dto.State,
-                PostalCode = dto.PostalCode,
-                Name = dto.Name,
-                paymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
-                OrderStatus = OrderStatus.Pending,
-                PaymentStatus = dto.IsPayOnDelivery ? "Pending Payment" : "Not Paid",
-                OrderItems = new List<OrderItem>()
-            };
+                var userId = GetCurrentUserId();
 
-            foreach (var cart in userCart)
-            {
-                orderHeader.OrderItems.Add(new OrderItem
+                __Loger.LogInformation("Order attempt. UserId = {UserId}", userId);
+
+                if (string.IsNullOrEmpty(userId))
+                    return null;
+
+                var currentUser = await _db.Users.FirstOrDefaultAsync(x => x.Id == userId);
+                if (currentUser == null)
+                    return null;
+
+
+
+                var keyUsed = await _db.UserOrderHeaders
+    .AnyAsync(o => o.TemporaryKey == dto.TemporaryKey);
+
+                if (keyUsed)
                 {
-                    ItemId = cart.ItemId,
-                    Quantity = cart.Quantity,
-                    UnitPrice = (decimal)cart.Item.Price
-                });
-            }
+                    __Loger.LogWarning(
+                        "Duplicate order blocked. UserId: {UserId}, Key: {Key}",
+                        userId,
+                        dto.TemporaryKey
+                    );
+                    return null; // controller will return 409
+                }
 
-            // Save the order first
-            await _db.UserOrderHeaders.AddAsync(orderHeader);
-            await _db.SaveChangesAsync();
 
-            // ✅ Trigger order placed email using delegate/event
-            if (OnOrderPlaced != null)
-            {
-                await OnOrderPlaced.Invoke(orderHeader);
-            }
 
-            // If pay on delivery, clear cart and return
-            if (dto.IsPayOnDelivery)
-            {
+
+
+                var requestId = Guid.NewGuid().ToString();
+
+                __Loger.LogInformation(
+                    "Order request started. RequestId: {RequestId}, UserId: {UserId}",
+                    requestId,
+                    userId
+                );
+
+                __Loger.LogInformation(
+        "Order attempt started. UserId: {UserId}, Time: {Time}",
+        userId,
+        DateTime.UtcNow
+    );
+
+
+                var userCart = await _db.UserCarts
+                    .Include(c => c.Item)
+                    .Where(c => c.UserId == userId)
+                    .ToListAsync();
+
+                if (!userCart.Any())
+                    return null;
+                __Loger.LogInformation(
+        "Cart items count: {Count} for UserId: {UserId}",
+        userCart.Count,
+        userId
+    );
+
+
+                double total = userCart.Sum(c => (double)c.Item.Price * c.Quantity);
+
+                __Loger.LogInformation(
+    "Order total calculated. RequestId: {RequestId}, Total: {Total}",
+    requestId,
+    total
+);
+
+
+          
+
+                var orderHeader = new UserOrderHeader
+                {
+            TemporaryKey =dto.TemporaryKey,
+        UserId = userId,
+                    DateOfOrder = DateTime.Now,
+                    TotalAmount = total,
+                    PhoneNumber = dto.PhoneNumber,
+                    DeliveryStreetAddress = dto.DeliveryStreetAddress,
+                    City = dto.City,
+                    State = dto.State,
+                    PostalCode = dto.PostalCode,
+                    Name = dto.Name,
+                    paymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
+                    OrderStatus = OrderStatus.Pending,
+                    PaymentStatus = dto.IsPayOnDelivery ? "Pending Payment" : "Not Paid",
+                    OrderItems = new List<OrderItem>()
+                };
+  
+
+                foreach (var cart in userCart)
+                {
+                    orderHeader.OrderItems.Add(new OrderItem
+                    {
+                        ItemId = cart.ItemId,
+                        Quantity = cart.Quantity,
+                        UnitPrice = (decimal)cart.Item.Price
+                    });
+                }
+                // Save the order first
+                await _db.UserOrderHeaders.AddAsync(orderHeader);
+                await _db.SaveChangesAsync();
+                __Loger.LogInformation(
+               "Creating Stripe session. RequestId: {RequestId}, OrderId: {OrderId}",
+               requestId,
+               orderHeader.Id
+           );
+
+
+
+                // ✅ Trigger order placed email using delegate/event
+                if (OnOrderPlaced != null)
+                {
+                    await OnOrderPlaced.Invoke(orderHeader);
+                }
+
+                // If pay on delivery, clear cart and return
+                if (dto.IsPayOnDelivery)
+                {
+                    _db.UserCarts.RemoveRange(userCart);
+                    await _db.SaveChangesAsync();
+
+                    return new OrderResDTO
+                    {
+                        OrderId = orderHeader.Id,
+                        PaymentUrl = null // No Stripe URL
+                    };
+                }
+
+
+                // Stripe payment session
+                var options = new SessionCreateOptions
+                {
+                    Mode = "payment",
+                    SuccessUrl = "http://localhost:4200/payment-success/{CHECKOUT_SESSION_ID}",
+                    CancelUrl = "http://localhost:4200/payment-failed/{CHECKOUT_SESSION_ID}",
+                    LineItems = new List<SessionLineItemOptions>()
+                };
+
+                foreach (var cart in userCart)
+                {
+                    options.LineItems.Add(new SessionLineItemOptions
+                    {
+                        Quantity = cart.Quantity,
+                        PriceData = new SessionLineItemPriceDataOptions
+                        {
+                            Currency = "usd",
+                            UnitAmount = (long)(cart.Item.Price * 100),
+                            ProductData = new SessionLineItemPriceDataProductDataOptions
+                            {
+                                Name = cart.Item.Name
+                            }
+                        }
+                    });
+                }
+
+                var sessionService = new SessionService();
+                var session = await sessionService.CreateAsync(options);
+
+                // Save Stripe info
+                orderHeader.StripeSessionId = session.Id;
+                orderHeader.StripePaymentIntentId = session.PaymentIntentId;
+                orderHeader.PaymentStatus = "Paid";
+
+
+                __Loger.LogInformation(
+    "Stripe session created. RequestId: {RequestId}, SessionId: {SessionId}",
+    requestId,
+    session.Id
+);
+
+                _db.UserOrderHeaders.Update(orderHeader);
+                await _db.SaveChangesAsync();
+
+                // Clear user cart
                 _db.UserCarts.RemoveRange(userCart);
                 await _db.SaveChangesAsync();
+                __Loger.LogInformation(
+                    "Cart cleared after cash order. RequestId: {RequestId}, UserId: {UserId}",
+                    requestId,
+                    userId
+                );
+
+
+
+
+
+
+
+
+
+                __Loger.LogInformation(
+    "Order completed successfully. RequestId: {RequestId}, OrderId: {OrderId}",
+    requestId,
+    orderHeader.Id
+);
+
 
                 return new OrderResDTO
                 {
                     OrderId = orderHeader.Id,
-                    PaymentUrl = null // No Stripe URL
+                    PaymentUrl = session.Url
                 };
             }
-
-            // Stripe payment session
-            var options = new SessionCreateOptions
+            catch (Exception ex)
             {
-                Mode = "payment",
-                SuccessUrl = "http://localhost:4200/payment-success/{CHECKOUT_SESSION_ID}",
-                CancelUrl = "http://localhost:4200/payment-failed/{CHECKOUT_SESSION_ID}",
-                LineItems = new List<SessionLineItemOptions>()
-            };
-
-            foreach (var cart in userCart)
-            {
-                options.LineItems.Add(new SessionLineItemOptions
-                {
-                    Quantity = cart.Quantity,
-                    PriceData = new SessionLineItemPriceDataOptions
-                    {
-                        Currency = "usd",
-                        UnitAmount = (long)(cart.Item.Price * 100),
-                        ProductData = new SessionLineItemPriceDataProductDataOptions
-                        {
-                            Name = cart.Item.Name
-                        }
-                    }
-                });
+                __Loger.LogError(
+                    ex,
+                    "Order failed. UserId: {UserId}",
+                    GetCurrentUserId()
+                );
+                throw;
             }
-
-            var sessionService = new SessionService();
-            var session = await sessionService.CreateAsync(options);
-
-            // Save Stripe info
-            orderHeader.StripeSessionId = session.Id;
-            orderHeader.StripePaymentIntentId = session.PaymentIntentId;
-            orderHeader.PaymentStatus = "Paid";
-            _db.UserOrderHeaders.Update(orderHeader);
-            await _db.SaveChangesAsync();
-
-            // Clear user cart
-            _db.UserCarts.RemoveRange(userCart);
-            await _db.SaveChangesAsync();
-
-            return new OrderResDTO
-            {
-                OrderId = orderHeader.Id,
-                PaymentUrl = session.Url
-            };
         }
 
 

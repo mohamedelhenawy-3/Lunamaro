@@ -1,4 +1,5 @@
 export interface OrderInfo {
+  temporaryKey:string;
   phoneNumber: string;
   deliveryStreetAddress: string;
   city: string;
