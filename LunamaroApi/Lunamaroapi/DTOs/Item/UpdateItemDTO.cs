@@ -10,5 +10,7 @@
         public int CategoryId { get; set; }
         public IFormFile? File { get; set; }  // Image file
         public string? ImageUrl { get; set; }
+        public bool IsSpecial { get; set; }
+
     }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ItemService } from '../../../Service/Item/item.service';
 import { CommonModule } from '@angular/common';
 import { CategoryService } from '../../../Service/Category/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -22,7 +23,8 @@ export class AddItemComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private apiitem: ItemService,
-    private catservice: CategoryService
+    private catservice: CategoryService,
+    private router:Router
   ) {
     this.Itemform = this.fb.group({
       name: ['', Validators.required],
@@ -75,14 +77,18 @@ export class AddItemComponent implements OnInit {
       this.apiitem.addtem(formData).subscribe({
         next: () => {
           console.log('Item added successfully!');
+          console.log(formData);
           this.formChanges = false; // Reset after save
           this.Itemform.reset();
           this.selectedFile = null;
+          
         },
         error: (err) => {
           console.error(err);
         }
       });
+      alert("Item Add Succefully");
+      this.router.navigate(['/menu']);
     } else {
       alert("Form is invalid or no image selected!");
     }

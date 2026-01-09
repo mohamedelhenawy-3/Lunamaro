@@ -7,6 +7,8 @@ namespace Lunamaroapi.Repositories.Interfaces
     public interface IItemRepository
     {
         Task<IEnumerable<Item>> GetAllItemsAsync();
+        Task<IEnumerable<Item>> GetSpecialItemsAsync();
+
         Task<Item?> GetItemByIdAsync(int id);
         Task CreateItemAsync(Item item);
         Task UpdateItemAsync(Item item, int id);

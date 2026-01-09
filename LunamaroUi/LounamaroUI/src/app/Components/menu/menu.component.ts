@@ -32,15 +32,26 @@ constructor( private categoryApi:CategoryService ,private  itemsapi:ItemService,
 }
 ngOnInit(): void {
   this.categoryApi.getallCategories().subscribe(
-    data => {this.categories = data
-      console.log(data);
+    data => {
+      this.categories = data
+      console.log(this.categories
+      );
     });
   this.itemsapi.getallItems().subscribe(data => this.items = data); // ← FIXED
 }
 
 
   onCategorySelected(catId:number){
+    console.log(catId);
+    if(catId === 0){
+      this.itemsapi.getallItems().subscribe(data =>{
+        this.items =data;
+      })
+    }else{
    this.itemsapi.getItemsByCategoryId(catId).subscribe(data => this.items = data);
+
+    }
+
   }
 
 

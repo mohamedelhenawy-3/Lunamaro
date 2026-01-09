@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../../../Service/Item/item.service';
 
 @Component({
   selector: 'app-update-item',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './updateitems.component.html',
   styleUrls: ['./updateitems.component.css']
 })
@@ -26,14 +26,16 @@ export class UpdateItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.itemId = Number(this.route.snapshot.paramMap.get("id"));
+    this.itemId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.form = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
       categoryId: ['', Validators.required],
-      imageUrl: ['']  // existing image
+      imageUrl: [''],
+      quantity: [''],
+      IsSpecial: [false] // ✅ DEFAULT FALSE
     });
 
     this.loadItem();
@@ -46,10 +48,12 @@ export class UpdateItemComponent implements OnInit {
         description: res.description,
         price: res.price,
         categoryId: res.categoryId,
-        imageUrl: res.imageUrl
+        imageUrl: res.imageUrl,
+        quantity: res.quantity,
+  
       });
 
-      this.previewImage = "http://localhost:5218" + res.imageUrl;
+      this.previewImage = 'http://localhost:5218' + res.imageUrl;
     });
   }
 
@@ -58,35 +62,32 @@ export class UpdateItemComponent implements OnInit {
 
     if (this.selectedFile) {
       const reader = new FileReader();
-      reader.onload = () => this.previewImage = reader.result;
+      reader.onload = () => (this.previewImage = reader.result);
       reader.readAsDataURL(this.selectedFile);
     }
   }
 
-submit() {
-  if (this.form.invalid) return;
+  submit() {
+    if (this.form.invalid) return;
 
-  const formData = new FormData();
-  formData.append("Name", this.form.value.name);
-  formData.append("Description", this.form.value.description);
-  formData.append("Price", this.form.value.price);
-  formData.append("CategoryId", this.form.value.categoryId);
+    const formData = new FormData();
+    formData.append('Name', this.form.value.name);
+    formData.append('Description', this.form.value.description);
+    formData.append('Price', this.form.value.price);
+    formData.append('CategoryId', this.form.value.categoryId);
+    formData.append('Quantity', this.form.value.quantity);
+    formData.append('IsSpecial', String(this.form.value.IsSpecial)); // ✅ SAFE
 
-  // If user selected a new image
-  if (this.selectedFile) {
-    formData.append("File", this.selectedFile); // ✅ match backend
-  }
-
-  this.itemService.updateItem(this.itemId, formData).subscribe({
-    next: () => {
-      alert("Item updated successfully!");
-      this.router.navigateByUrl("/menu");
-    },
-    error: (err) => {
-      console.error(err);
-      alert("Update failed!");
+    if (this.selectedFile) {
+      formData.append('File', this.selectedFile);
     }
-  });
-}
 
+    this.itemService.updateItem(this.itemId, formData).subscribe({
+      next: () => {
+        alert('Item updated successfully!');
+        this.router.navigateByUrl('/menu');
+      },
+      error: () => alert('Update failed!')
+    });
+  }
 }

@@ -6,6 +6,7 @@ import { ItemService } from '../../Service/Item/item.service';
 import { CommonModule } from '@angular/common';
 import { ReviewResponse } from '../../Models/Review/ReviewResponse';
 import { ReviewsService } from '../../Service/Reviews/reviews.service';
+import { specialItem } from '../../Models/item/specialitems';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   bestSellerItems: ExploreItem[] = [];
 
     reviewsData?: ReviewResponse;
+  specialItems: specialItem[] = []; // <-- NEW: Special Items
 
 
   constructor(private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService) {}
@@ -43,7 +45,38 @@ export class HomeComponent implements OnInit {
     res => this.reviewsData = res,
     err => console.error(err)
   );
+     // Load special items
+    this.itemService.getSpecialItems().subscribe({
+      next: (res) => this.specialItems = res,
+      error: (err) => console.error('Failed to load special items', err)
+    });
+
   }
 
+getInitials(name: string): string {
+  if (!name) return '?';
 
+  const parts = name.trim().split(' ');
+  if (parts.length === 1) return parts[0][0].toUpperCase();
+
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+}
+
+getAvatarColor(name: string): string {
+  const colors = [
+    '#F44336', '#E91E63', '#9C27B0',
+    '#3F51B5', '#2196F3', '#4CAF50',
+    '#FF9800', '#795548'
+  ];
+
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  return colors[Math.abs(hash) % colors.length];
+}
+addToCart(id:number){
+alert("Added");
+}
 }

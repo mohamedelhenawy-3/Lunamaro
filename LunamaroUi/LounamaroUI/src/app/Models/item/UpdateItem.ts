@@ -4,4 +4,6 @@ export interface UpdateItem {
   price: number;
   imageUrl: string;
     CategoryId:number;
+   IsSpecial :boolean;
+quantity:number;
 }

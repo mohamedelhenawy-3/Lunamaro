@@ -50,6 +50,14 @@ namespace Lunamaroapi.Controllers
             return Ok(items);
         }
 
+
+        [HttpGet("SpecialItems")]
+        public async Task<ActionResult<IEnumerable<ItemDTO>>> GetSpecialItems()
+        {
+            var items = await _IItemService.GetSpecialItems();
+            return Ok(items);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemDTO>> GetItemById(int id)
         {

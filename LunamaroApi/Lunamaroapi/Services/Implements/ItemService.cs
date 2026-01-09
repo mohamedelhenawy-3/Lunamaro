@@ -149,10 +149,25 @@ namespace Lunamaroapi.Services.Implements
             existingItem.Price = itemdto.Price;
             existingItem.quantity = itemdto.quantity;
             existingItem.CategoryId = itemdto.CategoryId;
+            existingItem.IsSpecial = itemdto.IsSpecial;
 
             await _itemRepository.UpdateItemAsync(existingItem, id);
         }
 
-     
+        public async Task<IEnumerable<SpecialItems>> GetSpecialItems()
+        {
+            var items = await _itemRepository.GetSpecialItemsAsync();
+            return items.Select(i => new SpecialItems
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Description = i.Description,
+                Price = i.Price,
+                quantity = i.quantity,
+                CategoryId = i.CategoryId,
+                ImageUrl = i.ImageUrl,
+                IsSpecial=i.IsSpecial
+            });
+        }
     }
 }

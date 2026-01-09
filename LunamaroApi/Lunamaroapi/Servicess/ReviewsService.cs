@@ -164,7 +164,7 @@ namespace Lunamaroapi.Services
         {
             var reviews = await _db.Reviews
                 .OrderByDescending(r => r.CreatedAt)
-                .Take(3)         // latest 5 reviews
+                .Take(6)         // latest 5 reviews
                 .ToListAsync();
 
             var returnedReviews = reviews.Select(r => new ReturnedReview

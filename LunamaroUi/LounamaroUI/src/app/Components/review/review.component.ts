@@ -63,4 +63,28 @@ export class ReviewComponent implements OnInit {
       this.loadReviews();
     });
   }
+  getInitials(name: string): string {
+  if (!name) return '?';
+
+  const parts = name.trim().split(' ');
+  if (parts.length === 1) return parts[0][0].toUpperCase();
+
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+}
+
+getAvatarColor(name: string): string {
+  const colors = [
+    '#F44336', '#E91E63', '#9C27B0',
+    '#3F51B5', '#2196F3', '#4CAF50',
+    '#FF9800', '#795548'
+  ];
+
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  return colors[Math.abs(hash) % colors.length];
+}
+
 }

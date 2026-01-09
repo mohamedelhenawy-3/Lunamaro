@@ -26,9 +26,13 @@
  <li><a routerLink="/MyReservations" *ngIf="userRole === 'Customer'">Reservations</a></li>
   <li><a routerLink="/ordershistory"  *ngIf="userRole === 'Customer'">ordershistory</a></li>
                 
-
+  <li><a routerLink="/reservation" class="btn-book-table" *ngIf="isLoggedIn && userRole === 'Customer'">
+  Book Table
+</a></li>
       </ul>
     </div>
+<!-- Book Table Button -->
+
 
     <!-- Right Side Icons -->
     <ul class="right-actions">

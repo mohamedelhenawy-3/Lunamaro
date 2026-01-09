@@ -1,60 +1,63 @@
+/* ===== PAGE ===== */
 .review-page {
   max-width: 900px;
   margin: auto;
   padding: 20px;
-  font-family: Poppins, sans-serif;
-  color: white; /* <-- MAKE ALL TEXT WHITE */
+  font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
-/* ===== Add Review Card ===== */
+/* ===== ADD REVIEW CARD ===== */
 .add-review-card {
   background: #1a3350;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
   margin-bottom: 30px;
 }
 
 .add-review-card h2 {
   margin-bottom: 15px;
-  color: white;
 }
 
-/* Star Rating Input */
+/* Star Input */
 .stars span {
   font-size: 32px;
   cursor: pointer;
-  color: #666;              /* unselected */
+  color: #555;
   transition: 0.3s;
 }
 
-.stars span:hover {
-  color: gold;              /* hover */
-}
-
+.stars span:hover,
 .stars span.active {
-  color: gold;              /* selected star */
+  color: gold;
 }
 
 /* Textarea */
 textarea {
   width: 100%;
   margin-top: 10px;
-  padding: 10px;
+  padding: 12px;
   border-radius: 10px;
-  border: 1px solid #ddd;
+  border: none;
   background: #0f2238;
-  color: white;             /* text inside textarea white */
+  color: white;
+  resize: none;
 }
 
-/* Buttons */
+textarea::placeholder {
+  color: #bbb;
+}
+
+/* Button */
 button {
   background: #EFB036;
-  color: white;
+  color: #1a3350;
   border: none;
-  padding: 12px 20px;
-  margin-top: 10px;
+  padding: 12px 22px;
+  margin-top: 12px;
   border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -63,16 +66,15 @@ button:hover {
   background: #c98f2f;
 }
 
-/* ===== Review List ===== */
+/* ===== REVIEWS ===== */
 .reviews-section h2 {
   margin-bottom: 10px;
-  color: white;
 }
 
 .avg-info {
   font-size: 18px;
-  margin-bottom: 15px;
-  color: white;
+  margin-bottom: 20px;
+  color: #ddd;
 }
 
 .big-stars {
@@ -80,39 +82,107 @@ button:hover {
   font-weight: bold;
 }
 
-/* Review Item */
+/* ===== REVIEW CARD ===== */
 .review-item {
+  display: flex;
+  gap: 15px;
   background: #1a3350;
-  padding: 15px;
+  padding: 20px;
   border-radius: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  color: white;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+
+  /* 🔒 CRITICAL FIX */
+  overflow: hidden;
 }
 
-/* Review card header */
+/* Avatar */
+.avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Body */
+.review-body {
+  flex: 1;
+  min-width: 0;              /* 🔥 MOST IMPORTANT */
+}
+
+/* Header */
 .review-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
-/* Gold stars for read-only display */
+/* Name */
+.review-name {
+  font-size: 1.1rem;
+}
+
+/* Stars */
 .stars-display span {
-  color: #444;
-  font-size: 20px;
+  font-size: 18px;
+  color: #666;
 }
 
 .stars-display .filled {
-  color: gold;        /* gold stars */
+  color: gold;
 }
 
-/* Review content text */
+/* ===== CONTENT FIX ===== */
 .content {
   margin: 10px 0;
-  color: white;
+  line-height: 1.6;
+
+  /* ✅ NO HORIZONTAL SCROLL */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
+/* Date */
 .date {
-  color: #d9d9d9;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Admin */
+.admin-actions {
+  margin-top: 10px;
+}
+
+.delete-btn {
+  background: #d9534f;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #c9302c;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .review-item {
+    flex-direction: column;
+  }
+
+  .review-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

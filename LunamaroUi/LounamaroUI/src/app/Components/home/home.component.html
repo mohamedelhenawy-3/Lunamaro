@@ -1,11 +1,19 @@
 <!-- ===== HERO SECTION ===== -->
 <header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
   <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Welcome to Lunamaro Restaurant</h1>
-    <p>Your destination for authentic flavors, warm ambiance, and unforgettable meals.</p>
-    <a routerLink="/menu" class="btn-hero">Discover Our Menu</a>
-  </div>
+<header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to Lunamaro Restaurant</h1>
+        <p>Order now for quick delivery or discover our authentic menu.</p> 
+
+        <div class="hero-actions">
+                  <a routerLink="/menu"  class="btn-hero btn-order-now">
+        Menu
+      </a>
+    </div>
+  </div>
+</header>
 </header>
 
 <!-- ===== ABOUT US ===== -->
@@ -16,6 +24,10 @@
       At Lunamaro, we blend tradition with creativity to bring you dishes prepared with the finest
       ingredients and crafted with love. Whether you're dining in or ordering delivery, our goal is to
       offer you an exceptional culinary experience.
+       At Lunamaro, we blend tradition with creativity to bring you dishes prepared with the finest
+      ingredients and crafted with love. Whether you're dining in or ordering delivery, our goal is to
+      offer you an exceptional culinary experience.
+      
     </p>
     <a routerLink="/reservation" class="btn-primary">Reserve Your Table</a>
   </div>
@@ -27,68 +39,120 @@
     <img src="assets/aboutus/about4.jpg" alt="Restaurant interior">
   </div>
 </section>
-
-<!-- ===== FEATURED DISHES ===== -->
-<section class="featured-dishes">
+<!-- ===== SPECIAL ITEMS ===== -->
+<section class="special-items" *ngIf="specialItems.length > 0">
   <div class="container">
     <div class="section-header text-center">
-      <h2>Chef's Specials</h2>
-      <p>Handcrafted specialties with premium ingredients</p>
+      <h2>⭐ Chef's Specials</h2>
+      <p style="color: white;">Handpicked dishes loved by our customers</p>
     </div>
-    <div class="featured-grid">
-      <div class="featured-card" *ngFor="let dish of bestSellerItems">
-        <div class="featured-img">
-          <img [src]="'http://localhost:5218' + dish.imageUrl" alt="{{ dish.name }}">
-          <div class="ribbon">Best Seller</div>
-        </div>
-        <div class="featured-info">
-          <h5 class="dish-name">{{ dish.name }}</h5>
-          <p class="price">{{ dish.price | currency:'EGP' }}</p>
-        </div>
-      </div>
+
+    <div class="special-items-grid">
+      <div class="special-item-card" *ngFor="let item of specialItems">
+  <div class="item-image-container">
+    <img [src]="'http://localhost:5218' + item.imageUrl" alt="{{ item.name }}">
+    <span class="special-badge">⭐ Special</span>
+   
+    <button class="quick-add-btn" (click)="addToCart(item.id)">
+      + Add to Cart
+    </button>
+  </div>
+
+  <div class="item-details">
+    <h4 class="item-title">{{ item.name }}</h4>
+    <p class="item-description">{{ item.description }}</p>
+    <p class="item-price">{{ item.price | currency:'EGP' }}</p>
+  </div>
+</div>
+
     </div>
   </div>
 </section>
 
 
 <!-- ===== LATEST REVIEWS (MATCHED STYLE) ===== -->
+<!-- ===== LATEST REVIEWS ===== -->
 <section class="latest-reviews" *ngIf="reviewsData">
-  <div class="container">
-    
-    <div class="section-header text-center">
-      <h2 style="color:  white;">Customer Reviews</h2>
-      <p style="color:  white;">What people are saying right now</p>
-    </div>
+  <div class="container" >
+    <div class="rating-summary">
+  ⭐⭐⭐⭐⭐ <strong>4.8</strong> / 5
+  <span>Based on 1,200+ reviews</span>
+</div>
 
     <div class="reviews-slider">
-      <div class="review-card" *ngFor="let review of reviewsData?.reviews">
-        
-        <!-- Name -->
-        <strong class="review-name">{{ review.name }}</strong>
+      <div class="review-card" *ngFor="let review of reviewsData.reviews">
 
-        <!-- Stars -->
-        <div class="stars-display">
-          <span *ngFor="let s of [1,2,3,4,5]" 
-                [class.filled]="s <= review.rating">
-            ★
-          </span>
+        <div class="avatar"
+             [style.background-color]="getAvatarColor(review.name)">
+          {{ getInitials(review.name) }}
         </div>
 
-        <!-- Content -->
-        <p class="review-content">{{ review.content }}</p>
+        <div class="review-body">
+          <span class="review-name">{{ review.name }}</span>
 
-        <!-- Date -->
-        <small class="review-date">{{ review.createdAt | date:'mediumDate' }}</small>
+          <div class="stars-display">
+            <span *ngFor="let s of [1,2,3,4,5]"
+                  [class.filled]="s <= review.rating">★</span>
+          </div>
+
+          <p class="review-content">
+            {{ review.content }}
+          </p>
+
+          <small class="review-date">
+            {{ review.createdAt | date:'mediumDate' }}
+          </small>
+        </div>
+
       </div>
     </div>
 
     <!-- Button -->
-    <div class="text-center mt-3">
+    <div class="text-center mt-4">
       <a routerLink="/Reviews" class="btn-primary">View All Reviews</a>
     </div>
 
   </div>
 </section>
+<!-- ================= OPENING HOURS ================= -->
+<section class="opening-hours">
+  <div class="container">
+    <h2>Opening Hours</h2>
+    <p>We are ready to serve you every day!</p>
+
+    <div class="hours-grid">
+      <div class="day">
+        <span>Monday</span>
+        <span>09:00 AM - 10:00 PM</span>
+      </div>
+      <div class="day">
+        <span>Tuesday</span>
+        <span>09:00 AM - 10:00 PM</span>
+      </div>
+      <div class="day">
+        <span>Wednesday</span>
+        <span>09:00 AM - 10:00 PM</span>
+      </div>
+      <div class="day">
+        <span>Thursday</span>
+        <span>09:00 AM - 10:00 PM</span>
+      </div>
+      <div class="day">
+        <span>Friday</span>
+        <span>09:00 AM - 11:00 PM</span>
+      </div>
+      <div class="day">
+        <span>Saturday</span>
+        <span>09:00 AM - 11:00 PM</span>
+      </div>
+      <div class="day">
+        <span>Sunday</span>
+        <span>09:00 AM - 10:00 PM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 <!-- ===== CONTACT SECTION ===== -->

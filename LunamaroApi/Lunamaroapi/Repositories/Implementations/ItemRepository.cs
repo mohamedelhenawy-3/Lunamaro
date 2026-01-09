@@ -98,5 +98,14 @@ namespace Lunamaroapi.Repositories.Implementations
 
             return popularItems;
         }
+
+        public async Task<IEnumerable<Item>> GetSpecialItemsAsync()
+        {
+
+            return await _context.Items.Where(i => i.IsSpecial)
+                .OrderBy(x=>x.Name)
+                .Take(6).ToListAsync();
+        
+        }
     }
 }

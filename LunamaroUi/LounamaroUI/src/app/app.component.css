@@ -43,3 +43,74 @@ footer {
   display: block;
   margin: 0;
 }
+/* ======================================= */
+/* 💡 NEW: HERO ACTIONS CONTAINER STYLES */
+/* ======================================= */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Increase space between buttons */
+    margin-top: 40px; /* Give space below the paragraph */
+}
+
+/* Base button style update */
+.btn-hero {
+    /* Existing styles: padding, font-size, border-radius */
+    font-size: 1.1rem; /* Slightly larger text */
+    padding: 15px 35px; /* Consistent, larger padding */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid transparent; /* Base for consistency */
+    transition: all 0.3s ease;
+}
+
+/* ======================================= */
+/* 1. PRIMARY CTA: ORDER DELIVERY */
+/* ======================================= */
+.btn-order-now {
+    background-color: #EFB036; /* Bright Primary Accent */
+    color: #23486A; /* Dark Color for Contrast */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Add shadow to make it pop */
+}
+
+.btn-order-now:hover {
+    background-color: #f7d287; /* Slightly lighter/softer hover */
+    color: #23486A;
+    transform: translateY(-5px); /* Stronger lift on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* ======================================= */
+/* 2. SECONDARY CTA: VIEW MENU */
+/* ======================================= */
+.btn-menu {
+    background-color: transparent; /* Transparent background */
+    color: #fff; /* White Text */
+    border-color: #EFB036; /* Accent Border */
+}
+
+.btn-menu:hover {
+    background-color: #EFB036; /* Fill with accent color on hover */
+    color: #23486A;
+    transform: translateY(-5px);
+}
+
+/* ===== RESPONSIVE FIX for Hero Section ===== */
+@media (max-width: 600px) {
+    .hero-actions {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 15px;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .btn-hero {
+        width: 80%; /* Make buttons full width */
+        margin: 0 auto; /* Center stacked buttons */
+        padding: 12px 20px;
+    }
+}

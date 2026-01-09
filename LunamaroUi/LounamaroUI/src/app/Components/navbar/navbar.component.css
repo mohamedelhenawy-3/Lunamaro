@@ -70,8 +70,8 @@
 }
 
 .nav-links a:hover {
-  color: #EFB036;               /* gold hover */
-  text-decoration: underline;   
+  color: white;              /* gold hover */
+  text-decoration: none;   
   transform: translateY(-2px);  /* small float effect */
 }
 
@@ -143,4 +143,21 @@
   .main-navbar.open .nav-links ul {
     display: flex;
   }
+}
+/* ================= BOOK TABLE BUTTON ================= */
+.btn-book-table {
+  background-color: #EFB036;
+  color: #23486A;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 15px; /* spacing between links and cart */
+}
+
+.btn-book-table:hover {
+  background-color: #c98f2f;
+  color: #23486A;
+  transform: translateY(-2px);
 }

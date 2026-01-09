@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ExploreItem } from '../../Models/item/exploreItem';
 import { UpdateItem } from '../../Models/item/UpdateItem';
 import { ReturnedItem } from '../../Models/item/returnedItem';
+import { specialItem } from '../../Models/item/specialitems';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,9 @@ getitembyid(Id:number):Observable<ReturnedItem>{
 
 updateItem(id: number, data: FormData): Observable<any> {
   return this._HttpClient.put(`${environment.baseurl}/Item/${id}`, data);
+}
+getSpecialItems() {
+  return this._HttpClient.get<specialItem[]>('http://localhost:5218/api/Item/SpecialItems');
 }
 
 }

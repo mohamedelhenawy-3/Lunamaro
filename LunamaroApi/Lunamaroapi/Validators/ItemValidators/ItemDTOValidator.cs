@@ -10,7 +10,7 @@ namespace Lunamaroapi.Validators.ItemValidators
         public ItemDTOValidator()
         {
             RuleFor(x => x.Name).NotEmpty().MaximumLength(50);
-            RuleFor(x => x.Description).NotEmpty().MaximumLength(500);
+            RuleFor(x => x.Description).NotEmpty().MaximumLength(15);
             RuleFor(x => x.Price).GreaterThan(0);
             RuleFor(x => x.quantity).GreaterThanOrEqualTo(0);
             RuleFor(x => x.CategoryId).GreaterThan(0);

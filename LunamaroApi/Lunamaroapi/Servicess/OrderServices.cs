@@ -7,6 +7,7 @@ using Lunamaroapi.Helper;
 using Lunamaroapi.Helper.ServiceResult;
 using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
 using Stripe.Checkout;
@@ -91,8 +92,7 @@ namespace Lunamaroapi.Services
         }
         public async Task<OrderResDTO?> OrderDone(CreateOrderdto dto)
         {
-            try
-            {
+            
                 var userId = GetCurrentUserId();
 
                 __Loger.LogInformation("Order attempt. UserId = {UserId}", userId);
@@ -161,12 +161,41 @@ namespace Lunamaroapi.Services
 );
 
 
-          
+                //START transactions
+                using var transaction = await _db.Database.BeginTransactionAsync();
+                try
+                {
+
+
+                foreach(var cart in userCart)
+                {
+         
+
+                 var affected = await _db.Database.ExecuteSqlRawAsync(
+                @"UPDATE Items
+                  SET Quantity = Quantity - @qty
+                  WHERE Id = @itemId AND Quantity >= @qty",
+                new SqlParameter("@qty", cart.Quantity),
+                new SqlParameter("@itemId", cart.ItemId)
+                  );
+                    if (affected == 0)
+                    {
+                        // ❌ Not enough stock
+                        await transaction.RollbackAsync();
+                        return null;
+                    }
+                }
+
+
+
+
+
+
 
                 var orderHeader = new UserOrderHeader
                 {
-            TemporaryKey =dto.TemporaryKey,
-        UserId = userId,
+                    TemporaryKey = dto.TemporaryKey,
+                    UserId = userId,
                     DateOfOrder = DateTime.Now,
                     TotalAmount = total,
                     PhoneNumber = dto.PhoneNumber,
@@ -180,7 +209,7 @@ namespace Lunamaroapi.Services
                     PaymentStatus = dto.IsPayOnDelivery ? "Pending Payment" : "Not Paid",
                     OrderItems = new List<OrderItem>()
                 };
-  
+
 
                 foreach (var cart in userCart)
                 {
@@ -200,7 +229,7 @@ namespace Lunamaroapi.Services
                orderHeader.Id
            );
 
-
+                await transaction.CommitAsync();
 
                 // ✅ Trigger order placed email using delegate/event
                 if (OnOrderPlaced != null)
@@ -295,16 +324,18 @@ namespace Lunamaroapi.Services
                     OrderId = orderHeader.Id,
                     PaymentUrl = session.Url
                 };
+
             }
-            catch (Exception ex)
+            catch
             {
-                __Loger.LogError(
-                    ex,
-                    "Order failed. UserId: {UserId}",
-                    GetCurrentUserId()
-                );
+                // ❌ Any error → rollback
+                await transaction.RollbackAsync();
                 throw;
             }
+
+           
+            
+       
         }
 
 
@@ -350,7 +381,7 @@ namespace Lunamaroapi.Services
 
             return await _db.OrderItems.Include(x => x.UserOrderHeader).Where(x => x.UserOrderHeader.UserId == userId).Select(s => new UserOrdersHistory
             {
-                OrderId = s.OrderItemId,
+                OrderId = s.UserOrderHeaderId,
                 DateOfOrder = s.UserOrderHeader.DateOfOrder,
                 OrderStatus = s.UserOrderHeader.OrderStatus,
                 TotalAmount = s.UserOrderHeader.TotalAmount
