@@ -1,40 +1,60 @@
-<div class="container">
-  <form [formGroup]="registerForm" (ngSubmit)="register()">
-
-    <h2>Register</h2>
-
-    <!-- Full Name -->
-    <label>Full Name:</label>
-    <input type="text" formControlName="fullName" />
-    <div *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
-      Full Name is required
+<div class="register-wrapper">
+  <div class="register-card">
+    <div class="brand-header">
+      <h2 class="title">Join Lunamaro</h2>
+      <p class="subtitle">Create an account to start your culinary journey</p>
     </div>
 
-    <!-- Username -->
-    <label>Username:</label>
-    <input type="text" formControlName="userName" />
-    <!-- Email -->
-    <label>Email:</label>
-    <input type="email" formControlName="email" />
-    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-      Enter a valid email
-    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label><i class="fas fa-user me-2"></i>Full Name</label>
+          <input type="text" formControlName="fullName" placeholder="John Doe" />
+          <div class="error-msg" *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
+            Full Name is required
+          </div>
+        </div>
 
-    <!-- Password -->
-    <label>Password:</label>
-    <input type="password" formControlName="password" />
-    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-      Password must be at least 6 characters
-    </div>
+        <div class="form-group">
+          <label><i class="fas fa-at me-2"></i>Username</label>
+          <input type="text" formControlName="userName" placeholder="johndoe123" />
+        </div>
+      </div>
 
-    <!-- Confirm Password -->
-    <label>Confirm Password:</label>
-    <input type="password" formControlName="confirmPassword" />
-    <div *ngIf="registerForm.errors && registerForm.get('confirmPassword')?.touched">
-      Passwords do not match
-    </div>
-    
-    <!-- Submit -->
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
-  </form>
+      <div class="form-group">
+        <label><i class="fas fa-envelope me-2"></i>Email</label>
+        <input type="email" formControlName="email" placeholder="example@mail.com" />
+        <div class="error-msg" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+          Enter a valid email address
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label><i class="fas fa-lock me-2"></i>Password</label>
+          <input type="password" formControlName="password" placeholder="••••••••" />
+          <div class="error-msg" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            Min 6 characters
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-shield-alt me-2"></i>Confirm</label>
+          <input type="password" formControlName="confirmPassword" placeholder="••••••••" />
+          <div class="error-msg" *ngIf="registerForm.errors && registerForm.get('confirmPassword')?.touched">
+            Passwords do not match
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid" class="register-btn">
+        Create Account
+      </button>
+
+      <p class="login-hint">
+        Already have an account? <a routerLink="/login">Log in here</a>
+      </p>
+    </form>
+  </div>
 </div>

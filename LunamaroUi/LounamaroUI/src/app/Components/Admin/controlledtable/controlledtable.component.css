@@ -1,125 +1,156 @@
-.tables-container {
-  max-width: 1000px;
-  margin: 40px auto;
-  background-color: #1a3350;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-  color: #fff;
-  
-
+.management-card {
+  max-width: 1100px;
+  margin: 50px auto;
+  background: rgba(26, 51, 80, 0.85);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
 }
 
-.tables-container h2 {
-  text-align: center;
-  font-weight: 700;
-  margin-bottom: 20px;
+/* Header Section */
+.management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
 }
 
-.tables-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #23486A;
-  border-radius: 10px;
-  overflow: hidden;
+.title-group h2 {
+  font-family: 'Playfair Display', serif;
+  color: #EFB036;
+  font-size: 1.8rem;
+  margin: 0;
 }
 
-.tables-table th,
-.tables-table td {
-  padding: 12px 15px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
+.title-group p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
 
-.tables-table th {
-  background-color: #1a3350;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-/* Status Badges */
-.status {
-  padding: 5px 12px;
-  border-radius: 12px;
-  font-weight: 500;
-  display: inline-block;
-  text-transform: capitalize;
-}
-
-.status-available {
-  background-color: #00ff99;
-  color: #1a3350;
-}
-
-.status-unavailable {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-/* Styled select dropdown */
-.status-select {
-  background-color: #EFB036;
-  color: #1a3350;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 10px;
-  cursor: pointer;
-  outline: none;
-  font-weight: 500;
-}
-
-.status-select:hover {
-  background-color: #fff;
-  color: #1a3350;
-}
-
-/* Refresh button */
-.refresh-btn {
+/* Add Button */
+.btn-primary-gold {
   background: #EFB036;
   color: #1a3350;
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: 500;
-  margin-bottom: 12px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
 }
 
-.refresh-btn:hover {
+.btn-primary-gold:hover {
   background: #fff;
-  color: #1a3350;
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 176, 54, 0.3);
 }
 
-.no-data {
-  text-align: center;
-  font-size: 1.1rem;
-  margin-top: 20px;
-  color: #EFB036;
+/* Table Design */
+.table-responsive-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  background: rgba(15, 28, 46, 0.3);
 }
-/* UPDATE BUTTON in table */
-.update-btn-table {
-  background-color: #EFB036;   /* Gold */
-  color: #1a3350;              /* Dark blue text */
-  border: none;
-  padding: 8px 14px;
+
+.lunamaro-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lunamaro-table th {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px;
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lunamaro-table td {
+  padding: 20px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  vertical-align: middle;
+  color: #fff;
+}
+
+/* Content Styles */
+.id-text { font-family: monospace; color: #EFB036; font-size: 0.9rem; }
+
+.table-info-cell .table-label { display: block; font-weight: 600; font-size: 1rem; }
+.table-info-cell .capacity-pill {
+  font-size: 0.75rem;
+  color: #EFB036;
+  background: rgba(239, 176, 54, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.location-cell { display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.7); }
+.location-cell i { color: #EFB036; font-size: 0.8rem; }
+
+/* Status Indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.is-active { color: #00ff99; }
+.is-active .pulse-dot { background: #00ff99; box-shadow: 0 0 10px #00ff99; }
+
+.is-disabled { color: #ff4d4d; }
+.is-disabled .pulse-dot { background: #ff4d4d; }
+
+/* Action Buttons & Selects */
+.select-box select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-edit-action {
+  background: transparent;
+  border: 1px solid #EFB036;
+  color: #EFB036;
+  padding: 8px 16px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.25s ease;
-  font-size: 0.9rem;
+  transition: 0.3s;
 }
 
-/* Hover effect */
-.update-btn-table:hover {
-  background-color: #ffffff;
+.btn-edit-action:hover {
+  background: #EFB036;
   color: #1a3350;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
 }
 
-/* Active effect */
-.update-btn-table:active {
-  transform: scale(0.95);
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  color: rgba(255, 255, 255, 0.4);
 }
+
+.empty-state i { font-size: 3rem; margin-bottom: 15px; display: block; }

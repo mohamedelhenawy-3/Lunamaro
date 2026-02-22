@@ -146,17 +146,19 @@
 =========================== */
 .logout-btn {
   border: 1px solid rgba(255, 77, 77, 0.5);
-  color: #ff4d4d !important;
+  background-color: #ff4d4d !important;
   padding: 8px 18px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.9rem;
   transition: 0.3s;
+  text-decoration: none;
+  color: white;
 }
 
 .logout-btn:hover {
   background: #ff4d4d;
-  color: #fff !important;
+  /* color: #fff !important; */
 }
 
 .btn-book-table {
@@ -208,4 +210,70 @@
   border-radius: 50%;
   border: 2px solid #0f1c2e; /* Creates a clean 'gap' effect against navbar */
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+/* Container for Guest Actions */
+.guest-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Spacing between Login and Register */
+  list-style: none;
+}
+
+/* 1. LOGIN LINK - Minimalist & Elegant */
+.login-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.login-link:hover {
+  color: #EFB036 !important;
+}
+
+/* Animated underline effect for Login */
+.login-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #EFB036;
+  transition: width 0.3s ease;
+}
+
+.login-link:hover::after {
+  width: 100%;
+}
+
+/* 2. REGISTER BUTTON - The Star Action */
+.btn-register {
+  background: #EFB036; /* Your signature gold */
+  color: #0f1c2e !important; /* Dark text for contrast */
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(239, 176, 54, 0.2);
+}
+
+.btn-register:hover {
+  background-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  color: #0f1c2e !important;
+}
+
+/* Active state when clicked */
+.btn-register:active {
+  transform: translateY(-1px);
 }

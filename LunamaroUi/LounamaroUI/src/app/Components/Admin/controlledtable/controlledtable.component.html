@@ -1,54 +1,74 @@
+<div class="management-card">
+  <div class="management-header">
+    <div class="title-group">
+      <h2>Table Inventory</h2>
+      <p>Configure floor layout and table availability</p>
+    </div>
+    <button class="btn-primary-gold" (click)="AddTable()">
+      <i class="fas fa-plus-circle me-2"></i> Add New Table
+    </button>
+  </div>
 
-<div class="tables-container">
-  <h2>Manage Tables</h2>
-
-  <button class="update-btn-table" (click)="AddTable()"> Add NewTable</button>
-
-  <div *ngIf="Table.length > 0; else noTables">
-    <table class="tables-table">
+  <div *ngIf="Table.length > 0; else noTables" class="table-responsive-wrapper">
+    <table class="lunamaro-table">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Table Number</th>
-          <th>Capacity</th>
+          <th>Reference</th>
+          <th>Table Details</th>
           <th>Location</th>
-          <th>Status</th>
-          <th>Update Status</th>
-           <th>Update</th>
+          <th>Availability</th>
+          <th>Status Control</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let t of Table; trackBy: trackByIndex">
-          <td>{{ t.id }}</td>
-          <td>{{ t.tableNumber }}</td>
-          <td>{{ t.capacity }}</td>
-          <td>{{ t.location }}</td>
+          <td class="id-text">#{{ t.id }}</td>
 
-          <!-- Status Badge -->
           <td>
-            <span class="status" [ngClass]="t.isAvailable === 'Available' ? 'status-available' : 'status-unavailable'">
+            <div class="table-info-cell">
+              <span class="table-label">Table {{ t.tableNumber }}</span>
+              <span class="capacity-pill"><i class="fas fa-users"></i> {{ t.capacity }} Seats</span>
+            </div>
+          </td>
+
+          <td>
+            <div class="location-cell">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{{ t.location }}</span>
+            </div>
+          </td>
+
+          <td>
+            <div class="status-indicator" [ngClass]="t.isAvailable === 'Available' ? 'is-active' : 'is-disabled'">
+              <span class="pulse-dot"></span>
               {{ t.isAvailable }}
-            </span>
+            </div>
           </td>
 
-          <!-- Select Status -->
           <td>
-            <select class="status-select" [(ngModel)]="t.isAvailable"
-                    (change)="onStatusChange(t)">
-              <option value="Available">Available</option>
-              <option value="UnAvailable">UnAvailable</option>
-            </select>
+            <div class="select-box">
+              <select [(ngModel)]="t.isAvailable" (change)="onStatusChange(t)">
+                <option value="Available">Available</option>
+                <option value="UnAvailable">UnAvailable</option>
+              </select>
+            </div>
           </td>
-         <td>
-  <button class="update-btn-table" (click)="UpdateTable(t.id)">Update</button>
-</td>
 
+          <td>
+            <button class="btn-edit-action" (click)="UpdateTable(t.id)">
+              <i class="fas fa-pen"></i> Update
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <ng-template #noTables>
-    <p class="no-data">No tables found.</p>
-  </ng-template>  
+    <div class="empty-state">
+      <i class="fas fa-chair"></i>
+      <p>Your dining floor is empty. Start by adding your first table.</p>
+    </div>
+  </ng-template> 
 </div>

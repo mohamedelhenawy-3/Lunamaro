@@ -1,19 +1,34 @@
-<div class="container">
-  <form [formGroup]="LoginrForm" (ngSubmit)="login()">
-    <h2>Login</h2>
-
-    <label>Email:</label>
-    <input type="email" formControlName="email" />
-    <div *ngIf="LoginrForm.get('email')?.invalid && LoginrForm.get('email')?.touched">
-      Enter a valid email
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="brand-header">
+      <h2 class="title">Welcome Back</h2>
+      <p class="subtitle">Please enter your details to continue</p>
     </div>
 
-    <label>Password:</label>
-    <input type="password" formControlName="password" />
-    <div *ngIf="LoginrForm.get('password')?.invalid && LoginrForm.get('password')?.touched">
-      Password must be at least 6 characters
-    </div>
+    <form [formGroup]="LoginrForm" (ngSubmit)="login()">
+      <div class="form-group">
+        <label><i class="fas fa-envelope me-2"></i>Email</label>
+        <input type="email" formControlName="email" placeholder="chef@lunamaro.com" />
+        <div class="error-msg" *ngIf="LoginrForm.get('email')?.invalid && LoginrForm.get('email')?.touched">
+          Enter a valid email address
+        </div>
+      </div>
 
-    <button type="submit" [disabled]="LoginrForm.invalid">Login</button>
-  </form>
+      <div class="form-group">
+        <label><i class="fas fa-lock me-2"></i>Password</label>
+        <input type="password" formControlName="password" placeholder="••••••••" />
+        <div class="error-msg" *ngIf="LoginrForm.get('password')?.invalid && LoginrForm.get('password')?.touched">
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="LoginrForm.invalid" class="login-btn">
+        Login
+      </button>
+
+      <p class="register-hint">
+        Don't have an account? <a routerLink="/register">Sign up for free</a>
+      </p>
+    </form>
+  </div>
 </div>

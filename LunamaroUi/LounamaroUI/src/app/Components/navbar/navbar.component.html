@@ -42,10 +42,16 @@
         <li><a class="logout-btn" (click)="logout()">Logout</a></li>
       </ng-container>
 
-      <ng-container *ngIf="!isLoggedIn">
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register" class="btn-register">Register</a></li>
-      </ng-container>
+  <ng-container *ngIf="!isLoggedIn">
+  <div class="guest-actions">
+    <li>
+      <a routerLink="/login" class="login-link">Login</a>
+    </li>
+    <li>
+      <a routerLink="/register" class="btn-register">Register</a>
+    </li>
+  </div>
+</ng-container>
     </ul>
 
   </div>

@@ -1,51 +1,80 @@
-<div class="reservations-container">
-  <h2>All Reservations</h2>
+<div class="admin-dashboard">
+  <div class="dashboard-header">
+    <div class="header-text">
+      <h2>Reservation Management</h2>
+      <p>Manage and monitor all restaurant bookings</p>
+    </div>
+    <div class="header-actions">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search by email or table...">
+      </div>
+      <span class="total-indicator">{{ recervations?.length || 0 }} Entries</span>
+    </div>
+  </div>
 
-  <table class="reservations-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Table</th>
-        <th>User Email</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Guests</th>
-        <th>Notes</th>
-        <th>Status</th>
-        <th>Created At</th>
-        <th>Update Status</th>
-      </tr>
-    </thead>
+  <div class="data-surface">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Reference</th>
+          <th>Table & Guests</th>
+          <th>Customer Details</th>
+          <th>Booking Schedule</th>
+          <th>Status</th>
+          <th>Management</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of recervations">
+          <td>
+            <span class="ref-id">#{{ r.id }}</span>
+          </td>
 
-    <tbody>
-      <tr *ngFor="let r of recervations">
-        <td>{{ r.id }}</td>
-        <td>{{ r.tableName }}</td>
-        <td>{{ r.userEmail }}</td>
-        <td>{{ r.startTime | date: 'short' }}</td>
-        <td>{{ r.endTime | date: 'short' }}</td>
-        <td>{{ r.guests }}</td>
-        <td>{{ r.notes }}</td>
+          <td>
+            <div class="table-info">
+              <span class="table-name">{{ r.tableName }}</span>
+              <span class="guest-pill"><i class="fas fa-users"></i> {{ r.guests }}</span>
+            </div>
+          </td>
 
-        <!-- Status Badge -->
-        <td>
-          <span class="status" [ngClass]="'status-' + r.status.toLowerCase()">
-            {{ r.status }}
-          </span>
-        </td>
+          <td>
+            <div class="customer-cell">
+              <div class="avatar-circle">{{ r.userEmail.charAt(0).toUpperCase() }}</div>
+              <div class="customer-data">
+                <span class="email">{{ r.userEmail }}</span>
+                <span class="created">Booked on {{ r.createdAt | date: 'dd MMM' }}</span>
+              </div>
+            </div>
+          </td>
 
-        <td>{{ r.createdAt | date: 'short' }}</td>
+          <td>
+            <div class="schedule-cell">
+              <span class="date-main">{{ r.startTime | date: 'EEEE, MMM d' }}</span>
+              <span class="time-range">
+                {{ r.startTime | date: 'h:mm a' }} — {{ r.endTime | date: 'h:mm a' }}
+              </span>
+            </div>
+          </td>
 
-        <!-- Status Select -->
-        <td>
-          <select class="status-select" [(ngModel)]="r.status"
-                  (change)="onStatusChange(r)">
-            <option value="Pending">Pending</option>
-            <option value="Approved">Approved</option>
-            <option value="Rejected">Rejected</option>
-          </select>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <td>
+            <div class="status-pill" [ngClass]="'status-' + r.status.toLowerCase()">
+              <span class="dot"></span> {{ r.status }}
+            </div>
+          </td>
+
+          <td>
+            <div class="action-cell">
+              <select class="minimal-select" [(ngModel)]="r.status" (change)="onStatusChange(r)">
+                <option value="Pending">Set Pending</option>
+                <option value="Approved">Approve</option>
+                <option value="Rejected">Reject</option>
+              </select>
+              <button class="btn-icon" [title]="r.notes"><i class="fas fa-info-circle"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

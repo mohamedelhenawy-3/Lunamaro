@@ -1,40 +1,51 @@
-<div class="reservation-wrapper">
-  <div class="reservation-card">
-    <h2 class="title">Book a Table</h2>
+<div class="reservation-page">
+  <div class="split-container">
+    
+    <div class="image-side">
+      <img src="assets/reservation/Reservation.jfif" alt="Reservation Background">
+    </div>
 
-    <form [formGroup]="reservationForm" (ngSubmit)="onsubmit()">
-      <div class="form-group">
-        <label>Start Time</label>
-        <input type="datetime-local" formControlName="startTime" class="form-control" (change)="loadAvailableTables()">
+    <div class="form-side">
+      <div class="reservation-card">
+        <h2 class="title">Book a Table</h2>
+
+        <form [formGroup]="reservationForm" (ngSubmit)="onsubmit()">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Start Time</label>
+              <input type="datetime-local" formControlName="startTime" class="form-control" (change)="loadAvailableTables()">
+            </div>
+            <div class="form-group">
+              <label>End Time</label>
+              <input type="datetime-local" formControlName="endTime" class="form-control" (change)="loadAvailableTables()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Number of Guests</label>
+            <input type="number" formControlName="guests" class="form-control" min="1" (change)="loadAvailableTables()">
+          </div>
+
+          <div class="form-group">
+            <label>Available Tables</label>
+            <select formControlName="tableId" class="form-control">
+              <option *ngFor="let table of availableTables" [value]="table.id">
+                Table {{ table.tableNumber }} (Cap: {{ table.capacity }})
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Special Requests</label>
+            <textarea formControlName="notes" class="form-control" rows="2"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Reserve Now</button>
+        </form>
+
+        <p class="message" *ngIf="message">{{ message }}</p>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label>End Time</label>
-        <input type="datetime-local" formControlName="endTime" class="form-control" (change)="loadAvailableTables()">
-      </div>
-
-      <div class="form-group">
-        <label>Guests</label>
-        <input type="number" formControlName="guests" class="form-control" min="1" placeholder="Number of guests" (change)="loadAvailableTables()">
-      </div>
-
-      <div class="form-group">
-        <label>Available Tables</label>
-        <select formControlName="tableId" class="form-control">
-          <option *ngFor="let table of availableTables" [value]="table.id">
-            {{ table.tableNumber }} - Capacity: {{ table.capacity }} - {{ table.location || 'N/A' }}
-          </option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Notes</label>
-        <textarea formControlName="notes" class="form-control" rows="3" placeholder="Special requests or notes"></textarea>
-      </div>
-
-      <button type="submit" class="btn-submit">Reserve Now</button>
-    </form>
-
-    <p class="message text-success mt-3">{{ message }}</p>
   </div>
 </div>
