@@ -1,61 +1,62 @@
 /* ===========================
-   MAIN NAVBAR
+   MAIN NAVBAR BASE
 =========================== */
 .main-navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 70px;
-
+  height: 80px;
   display: flex;
   align-items: center;
-  z-index: 1000;
-
-  background-color: #0f1c2e; /* dark premium navy */
-  color: #ffffff;
-
-  padding: 0.8rem 1.5rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 2000;
+  background-color: #0f1c2e;
+  padding: 0 5%;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
-/* ON SCROLL */
 .main-navbar.scrolled {
-  background-color: #13263d; /* slightly brighter tone */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  height: 70px;
+  background-color: rgba(15, 28, 46, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
 }
 
-/* Container: brand + links + right actions */
+/* THE THREE-PART CONTAINER */
 .navbar-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  /* This creates the Left | Middle | Right layout */
+  justify-content: space-between; 
   align-items: center;
 }
 
-/* ===========================
-   BRAND / LOGO
-=========================== */
+/* 1. LEFT SIDE: BRAND */
 .brand-link {
+  flex: 1; /* Takes up space on the left */
+  display: flex;
+  justify-content: flex-start;
   text-decoration: none;
 }
 
 .brand-name {
-  color: #EFB036;       /* gold brand */
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  color: #EFB036;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
-/* ===========================
-   NAV LINKS
-=========================== */
+/* 2. MIDDLE SIDE: LINKS */
+.nav-links {
+  flex: 2; /* Takes more space to stay centered */
+  display: flex;
+  justify-content: center; /* PERFECTLY CENTERED */
+}
+
 .nav-links ul {
   display: flex;
   list-style: none;
-  gap: 25px;
-
+  gap: 35px; /* Comfortable spacing */
   margin: 0;
   padding: 0;
   align-items: center;
@@ -64,100 +65,122 @@
 .nav-links a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 1rem;
   font-weight: 500;
-  transition: color 0.25s, transform 0.2s;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: white;              /* gold hover */
-  text-decoration: none;   
-  transform: translateY(-2px);  /* small float effect */
+  color: #EFB036;
 }
 
-/* ===========================
-   RIGHT ACTIONS (CART / LOGIN / LOGOUT)
-=========================== */
+/* 3. RIGHT SIDE: ACTIONS */
 .right-actions {
-  list-style: none;
+  flex: 1; /* Takes up space on the right */
   display: flex;
+  justify-content: flex-end; /* ALIGN TO THE RIGHT */
   align-items: center;
   gap: 20px;
-
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.right-actions a,
-.logout-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.25s, transform 0.2s;
-}
-
-.right-actions a:hover,
-.logout-link:hover {
-  color: #EFB036;
-  transform: translateY(-2px);
-}
-
-/* Cart */
-.cart-link {
+/* ===========================
+   ADMIN DROPDOWN (VERTICAL)
+=========================== */
+.dropdown {
   position: relative;
-  color: #ffffff;
+}
+
+.dropdown-toggle {
+  color: #EFB036 !important;
+  font-weight: 700 !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px); /* Centers menu under link */
+  background-color: #1a3350;
+  min-width: 220px;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  list-style: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.dropdown-menu a {
+  padding: 12px 20px !important;
+  display: block !important;
+  font-size: 0.85rem !important;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(239, 176, 54, 0.1) !important;
+  border-left: 3px solid #EFB036;
+  padding-left: 25px !important;
+}
+
+/* ===========================
+   BUTTONS & CART
+=========================== */
+.logout-btn {
+  border: 1px solid rgba(255, 77, 77, 0.5);
+  color: #ff4d4d !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #ff4d4d;
+  color: #fff !important;
+}
+
+.btn-book-table {
+  background: #EFB036;
+  color: #1a3350 !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 700 !important;
 }
 
 .cart-link i {
   font-size: 1.3rem;
+  color: #fff;
+  position: relative;
 }
 
 .cart-badge {
   position: absolute;
   top: -8px;
-  right: -12px;
-  background-color: #dc3545;
+  right: -10px;
+  background: #ff4d4d;
   color: white;
-  font-size: 0.75rem;
-  padding: 0 6px;
-  border-radius: 10px;
-}
-
-/* ===========================
-   MOBILE MENU
-=========================== */
-@media (max-width: 768px) {
-  .nav-links ul {
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-
-    width: 100%;
-    padding: 1rem 0;
-
-    background-color: #0f1c2e; /* same as navbar */
-    display: none;
-  }
-
-  .main-navbar.open .nav-links ul {
-    display: flex;
-  }
-}
-/* ================= BOOK TABLE BUTTON ================= */
-.btn-book-table {
-  background-color: #EFB036;
-  color: #23486A;
-  font-weight: 700;
-  padding: 8px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin: 0 15px; /* spacing between links and cart */
-}
-
-.btn-book-table:hover {
-  background-color: #c98f2f;
-  color: #23486A;
-  transform: translateY(-2px);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 20px;
+  border: 2px solid #0f1c2e;
 }

@@ -1,61 +1,52 @@
-<nav class="main-navbar" [class.scrolled]="isScrolled"   >
+<nav class="main-navbar" [class.scrolled]="isScrolled">
   <div class="navbar-container">
 
-    <!-- Brand -->
-    <a class="brand-link" href="#!">
+    <a class="brand-link" routerLink="/Home">
       <span class="brand-name">Lunamaro</span>
     </a>
 
-    <!-- Navbar Links (only if user is logged in) -->
     <div class="nav-links" *ngIf="isLoggedIn">
       <ul>
-                <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/dashboard">Dashboard</a></li>
-
         <li><a routerLink="/Home">Home</a></li>
         <li><a routerLink="/menu">Menu</a></li>
-       <!-- <li><a routerLink="/Table">Tables</a></li> -->
 
+        <ng-container *ngIf="userRole === 'Customer'">
+          <li><a routerLink="/MyReservations">Reservations</a></li>
+          <li><a routerLink="/ordershistory">History</a></li>
+          <li><a routerLink="/reservation" class="btn-book-table">Book Table</a></li>
+        </ng-container>
 
-        <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/category">Category</a></li>
-        <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/item">Item</a></li>
-        <li *ngIf="userRole === 'Admin'"><a routerLink="/Admin/additem">Add Item</a></li>
-        <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/reservation">Reservations</a></li>
-        <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/table">Tables</a></li>
-        <li *ngIf="userRole === 'Admin'"><a routerLink="Admin/ordershistory">Orders</a></li>
-
- <li><a routerLink="/MyReservations" *ngIf="userRole === 'Customer'">Reservations</a></li>
-  <li><a routerLink="/ordershistory"  *ngIf="userRole === 'Customer'">ordershistory</a></li>
-                
-  <li><a routerLink="/reservation" class="btn-book-table" *ngIf="isLoggedIn && userRole === 'Customer'">
-  Book Table
-</a></li>
+        <li class="dropdown" *ngIf="userRole === 'Admin'">
+          <a class="dropdown-toggle">Admin Panel <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="Admin/dashboard">Dashboard</a></li>
+            <li><a routerLink="/Admin/category">Categories</a></li>
+            <li><a routerLink="/Admin/item">Items List</a></li>
+            <li><a routerLink="/Admin/additem">Add New Item</a></li>
+            <li><a routerLink="Admin/reservation">All Reservations</a></li>
+            <li><a routerLink="Admin/table">Table Management</a></li>
+            <li><a routerLink="Admin/ordershistory">Order History</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
-<!-- Book Table Button -->
 
-
-    <!-- Right Side Icons -->
     <ul class="right-actions">
-
-      <!-- Logged in -->
       <ng-container *ngIf="isLoggedIn">
-        <li class="cart-item">
+        <li class="cart-item" *ngIf="userRole === 'Customer'">
           <a routerLink="/usercartitempervew" class="cart-link">
             <i class="fas fa-shopping-cart">
               <span *ngIf="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
             </i>
           </a>
         </li>
-
-        <li><a class="logout-link" (click)="logout()">Logout</a></li>
+        <li><a class="logout-btn" (click)="logout()">Logout</a></li>
       </ng-container>
 
-      <!-- Not logged in -->
       <ng-container *ngIf="!isLoggedIn">
         <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
+        <li><a routerLink="/register" class="btn-register">Register</a></li>
       </ng-container>
-
     </ul>
 
   </div>
