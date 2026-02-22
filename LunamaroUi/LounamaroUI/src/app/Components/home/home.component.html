@@ -39,6 +39,7 @@
     <img src="assets/aboutus/about4.jpg" alt="Restaurant interior">
   </div>
 </section>
+
 <!-- ===== SPECIAL ITEMS ===== -->
 <section class="special-items" *ngIf="specialItems.length > 0">
   <div class="container">
@@ -68,9 +69,34 @@
     </div>
   </div>
 </section>
-
-
-<!-- ===== LATEST REVIEWS (MATCHED STYLE) ===== -->
+<section class="philosophy-parallax">
+  <div class="parallax-overlay"></div>
+  
+  <div class="parallax-content">
+    <span>The Art of Dining</span>
+    <h2>Where Passion Meets <em>Perfection</em></h2>
+    
+    <div class="divider-gold" style="width: 80px; height: 1px; background: #efb036; margin: 40px auto;"></div>
+    
+    <p style="color: rgba(255,255,255,0.7); font-style: italic; font-size: 1.2rem;">
+        An unforgettable culinary journey in the heart of Giza.
+    </p>
+  </div>
+</section>
+<section class="newsletter-concierge">
+  <div class="container">
+    <div class="concierge-box">
+      <div class="concierge-text">
+        <h3>Join the Inner Circle</h3>
+        <p>Experience seasonal reveals and priority reservation access.</p>
+      </div>
+      <form class="concierge-form">
+        <input type="email" placeholder="YOUR EMAIL ADDRESS" required>
+        <button type="submit">Invite Me</button>
+      </form>
+    </div>
+  </div>
+</section>
 <!-- ===== LATEST REVIEWS ===== -->
 <section class="latest-reviews" *ngIf="reviewsData">
   <div class="container" >
@@ -81,30 +107,28 @@
 
     <div class="reviews-slider">
       <div class="review-card" *ngFor="let review of reviewsData.reviews">
+  
+  <div class="review-header">
+    <div class="avatar" [style.background-color]="getAvatarColor(review.name)">
+      {{ getInitials(review.name) }}
+    </div>
+    <span class="review-name">{{ review.name }}</span>
+  </div>
 
-        <div class="avatar"
-             [style.background-color]="getAvatarColor(review.name)">
-          {{ getInitials(review.name) }}
-        </div>
+  <div class="review-body">
+    <div class="stars-display">
+      <span *ngFor="let s of [1,2,3,4,5]" [class.filled]="s <= review.rating">★</span>
+    </div>
 
-        <div class="review-body">
-          <span class="review-name">{{ review.name }}</span>
+    <p class="review-content">
+      {{ review.content }}
+    </p>
 
-          <div class="stars-display">
-            <span *ngFor="let s of [1,2,3,4,5]"
-                  [class.filled]="s <= review.rating">★</span>
-          </div>
-
-          <p class="review-content">
-            {{ review.content }}
-          </p>
-
-          <small class="review-date">
-            {{ review.createdAt | date:'mediumDate' }}
-          </small>
-        </div>
-
-      </div>
+    <small class="review-date">
+      {{ review.createdAt | date:'mediumDate' }}
+    </small>
+  </div>
+</div>
     </div>
 
     <!-- Button -->
@@ -116,44 +140,42 @@
 </section>
 <!-- ================= OPENING HOURS ================= -->
 <section class="opening-hours">
-  <div class="container">
-    <h2>Opening Hours</h2>
-    <p>We are ready to serve you every day!</p>
+  <div class="hours-content-left">
+    <h2>Hours</h2>
+    <p>We are ready to serve you <br> every day of the week.</p>
+  </div>
 
-    <div class="hours-grid">
-      <div class="day">
-        <span>Monday</span>
-        <span>09:00 AM - 10:00 PM</span>
-      </div>
-      <div class="day">
-        <span>Tuesday</span>
-        <span>09:00 AM - 10:00 PM</span>
-      </div>
-      <div class="day">
-        <span>Wednesday</span>
-        <span>09:00 AM - 10:00 PM</span>
-      </div>
-      <div class="day">
-        <span>Thursday</span>
-        <span>09:00 AM - 10:00 PM</span>
-      </div>
-      <div class="day">
-        <span>Friday</span>
-        <span>09:00 AM - 11:00 PM</span>
-      </div>
-      <div class="day">
-        <span>Saturday</span>
-        <span>09:00 AM - 11:00 PM</span>
-      </div>
-      <div class="day">
-        <span>Sunday</span>
-        <span>09:00 AM - 10:00 PM</span>
-      </div>
+  <div class="hours-grid">
+    <div class="day">
+      <span>Monday</span>
+      <span>09:00 AM - 10:00 PM</span>
+    </div>
+    <div class="day">
+      <span>Tuesday</span>
+      <span>09:00 AM - 10:00 PM</span>
+    </div>
+    <div class="day">
+      <span>Wednesday</span>
+      <span>09:00 AM - 10:00 PM</span>
+    </div>
+    <div class="day">
+      <span>Thursday</span>
+      <span>09:00 AM - 10:00 PM</span>
+    </div>
+    <div class="day">
+      <span>Friday</span>
+      <span>09:00 AM - 11:00 PM</span>
+    </div>
+    <div class="day">
+      <span>Saturday</span>
+      <span>09:00 AM - 11:00 PM</span>
+    </div>
+    <div class="day">
+      <span>Sunday</span>
+      <span>09:00 AM - 10:00 PM</span>
     </div>
   </div>
 </section>
-
-
 
 <!-- ===== CONTACT SECTION ===== -->
 <section class="contact-section" id="contact">
@@ -177,4 +199,8 @@
     </div>
   </div>
 </section>
+
+
+
+
 

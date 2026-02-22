@@ -33,13 +33,12 @@
 
     <ul class="right-actions">
       <ng-container *ngIf="isLoggedIn">
-        <li class="cart-item" *ngIf="userRole === 'Customer'">
-          <a routerLink="/usercartitempervew" class="cart-link">
-            <i class="fas fa-shopping-cart">
-              <span *ngIf="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
-            </i>
-          </a>
-        </li>
+       <li class="cart-item" *ngIf="userRole === 'Customer'">
+  <a routerLink="/usercartitempervew" class="cart-link">
+    <i class="fas fa-shopping-cart"></i> 
+    <span *ngIf="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
+  </a>
+</li>
         <li><a class="logout-btn" (click)="logout()">Logout</a></li>
       </ng-container>
 
