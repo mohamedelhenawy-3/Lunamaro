@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\item\\specialitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\item\\specialitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\repositories\\interfaces\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\repositories\\interfaces\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\item\\specialitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|solutionrelative:lunamaroapi\\dtos\\item\\specialitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7443C1EE-0403-405D-86FC-7789EB249802}|Lunamaroapi\\Lunamaroapi.csproj|e:\\fullstackprojects\\lunamaro\\lunamaroapi\\lunamaroapi\\dtos\\item\\updateitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -538,23 +538,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 663,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
@@ -570,11 +558,19 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "SpecialItems.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\DTOs\\Item\\SpecialItems.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\DTOs\\Item\\SpecialItems.cs",
@@ -595,8 +591,7 @@
               "RelativeToolTip": "Lunamaroapi\\Models\\Item.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:31:37.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T20:31:37.536Z"
             },
             {
               "$type": "Document",
@@ -608,8 +603,7 @@
               "RelativeToolTip": "Lunamaroapi\\DTOs\\Item\\ItemDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T21:11:05.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T21:11:05.868Z"
             },
             {
               "$type": "Document",
@@ -621,12 +615,11 @@
               "RelativeToolTip": "Lunamaroapi\\DTOs\\Item\\UpdateItemDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-30T09:31:14.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-30T09:31:14.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ItemRepository.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Repositories\\Implementations\\ItemRepository.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Repositories\\Implementations\\ItemRepository.cs",
@@ -634,12 +627,11 @@
               "RelativeToolTip": "Lunamaroapi\\Repositories\\Implementations\\ItemRepository.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAAAGkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T16:17:28.991Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-29T16:17:28.991Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IItemRepository.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Repositories\\Interfaces\\IItemRepository.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Repositories\\Interfaces\\IItemRepository.cs",
@@ -647,12 +639,11 @@
               "RelativeToolTip": "Lunamaroapi\\Repositories\\Interfaces\\IItemRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T16:10:56.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-29T16:10:56.999Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IAuthRepository.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Repositories\\Interfaces\\IAuthRepository.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Repositories\\Interfaces\\IAuthRepository.cs",
@@ -660,12 +651,11 @@
               "RelativeToolTip": "Lunamaroapi\\Repositories\\Interfaces\\IAuthRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-30T13:31:56.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-30T13:31:56.811Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IItemService.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Interfaces\\IItemService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Interfaces\\IItemService.cs",
@@ -673,12 +663,11 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\Interfaces\\IItemService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T17:21:05.489Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-29T17:21:05.489Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ItemService.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Services\\Implements\\ItemService.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Services\\Implements\\ItemService.cs",
@@ -686,21 +675,19 @@
               "RelativeToolTip": "Lunamaroapi\\Services\\Implements\\ItemService.cs",
               "ViewState": "AgIAAJQAAAAAAAAAAAAAAKkAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T17:21:50.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-29T17:21:50.842Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ItemController.cs",
               "DocumentMoniker": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ItemController.cs",
               "RelativeDocumentMoniker": "Lunamaroapi\\Controllers\\ItemController.cs",
               "ToolTip": "E:\\FullStackProjects\\Lunamaro\\LunamaroApi\\Lunamaroapi\\Controllers\\ItemController.cs",
               "RelativeToolTip": "Lunamaroapi\\Controllers\\ItemController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAADgAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAADUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:00:33.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T14:00:33.688Z"
             },
             {
               "$type": "Document",
@@ -712,8 +699,7 @@
               "RelativeToolTip": "Lunamaroapi\\Migrations\\20260108124835_special in item.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T12:48:35.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-08T12:48:35.317Z"
             },
             {
               "$type": "Document",
@@ -725,8 +711,7 @@
               "RelativeToolTip": "Lunamaroapi\\Servicess\\ItemService.cs",
               "ViewState": "AgIAAHwAAAAAAAAAAAAqwMwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:02:51.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T14:02:51.969Z"
             },
             {
               "$type": "Document",
@@ -822,8 +807,7 @@
               "RelativeToolTip": "Lunamaroapi\\Servicess\\ReservationServices.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAADQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T18:53:50.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T18:53:50.847Z"
             },
             {
               "$type": "Document",
@@ -1399,8 +1383,7 @@
               "RelativeToolTip": "Lunamaroapi\\Servicess\\DashboardServices.cs",
               "ViewState": "AgIAAOwAAAAAAAAAAIBJwLgAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T11:41:55.132Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T11:41:55.132Z"
             },
             {
               "$type": "Document",

@@ -13,20 +13,16 @@
     <label>Description:</label>
     <textarea formControlName="description" rows="4"></textarea>
 
-    <!-- Price -->
+  <div class="row">
+  <div class="input-group">
     <label>Price:</label>
     <input type="number" formControlName="price" />
-    <small class="error" *ngIf="Itemform.get('price')?.invalid && Itemform.get('price')?.touched">
-      Price is required
-    </small>
-
-    <!-- Quantity -->
+  </div>
+  <div class="input-group">
     <label>Quantity:</label>
     <input type="number" formControlName="quantity" />
-    <small class="error" *ngIf="Itemform.get('quantity')?.invalid && Itemform.get('quantity')?.touched">
-      Quantity is required
-    </small>
-
+  </div>
+</div>
     <!-- Image -->
     <label>Image:</label>
     <input type="file" class="file-input" (change)="onFileSelected($event)" accept="image/*" />

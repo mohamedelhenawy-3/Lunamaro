@@ -1,37 +1,76 @@
 <div class="category-container">
 
+
+
   <h2>Manage Categories</h2>
 
+
+
   <div class="category-input-container">
+
     <input type="text" placeholder="New Category" [(ngModel)]="newcategory" />
+
     <button (click)="addCategory()">Add Category</button>
+
   </div>
+
+
 
   <div class="table-wrapper" *ngIf="Categories.length > 0; else noCats">
+
     <table class="category-table">
+
       <thead>
+
         <tr>
+
           <th>#</th>
+
           <th>Category Name</th>
+
           <th>Manage</th>
+
         </tr>
+
       </thead>
 
+
+
       <tbody>
+
         <tr *ngFor="let cat of Categories; let i = index">
+
           <td>{{ i + 1 }}</td>
+
           <td>{{ cat?.name }}</td>
+
           <td>
-            <button class="update-btn">Update</button>
-            <button class="delete-btn" (click)="deleteCategory(cat.id)">Delete</button>
+
+           <button class="update-btn">
+  <i>✎</i> Update
+</button>
+<button class="delete-btn" (click)="deleteCategory(cat.id)">
+  <i>🗑</i> Delete
+</button>
+
           </td>
+
         </tr>
+
       </tbody>
+
     </table>
+
   </div>
 
+
+
   <ng-template #noCats>
+
     <p class="no-categories">No categories found.</p>
+
   </ng-template>
+
+
 
 </div>

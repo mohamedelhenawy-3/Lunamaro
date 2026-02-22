@@ -1,115 +1,192 @@
-/* Background and center container */
+/* Container logic */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color:#223b59
-;
-  padding: 20px;
-  box-sizing: border-box;
+  background: radial-gradient(circle at center, #2c4e75 0%, #1a3350 100%);
+  padding: 40px 20px;
 }
 
-/* Form */
+/* The Card */
 form {
   width: 100%;
-  max-width: 600px;
+  max-width: 550px;
   display: flex;
   flex-direction: column;
-  padding: 30px;
-  border-radius: 20px;
-  background-color:  #1a3350;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  animation: fadeIn 0.4s ease;
+  padding: 40px;
+  border-radius: 24px;
+  background-color: #1a3350;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: slideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Form title */
 form h2 {
-  text-align: center;
-  color: white;
-  margin-bottom: 20px;
-  font-weight: bold;
+  text-align: left; /* Left align for modern admin feel */
+  color: #EFB036;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* Label Styling */
+label {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1; /* Softer white for labels */
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Labels */
-label {
-  margin-top: 12px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-/* Inputs + select + textarea */
+/* Universal Input Styling */
 input[type="text"],
 input[type="number"],
 select,
 textarea {
-  padding: 10px;
-  margin-top: 6px;
-  font-size: 15px;
-  border: 1px solid #EFB036;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #23486A;
+  padding: 14px 16px;
+  margin-top: 8px;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.03); /* Semi-transparent inputs */
+  color: #ffffff;
   outline: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: #4C7B8B;
-  box-shadow: 0 0 6px rgba(255,255,255,0.4);
+  border-color: #EFB036;
+  background-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 15px rgba(239, 176, 54, 0.1);
 }
 
-/* File input */
+/* Custom File Input Look */
 .file-input {
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 10px;
-  background-color: white;
-  border-radius: 6px;
-}
-
-/* Error messages */
-.error {
-  color: #ff4d4d;
-  font-size: 13px;
-  margin-top: 4px;
-}
-
-/* Submit button */
-button {
-  margin-top: 25px;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #4C7B8B;
-  color: white;
-  border: none;
-  border-radius: 25px;
+  background: rgba(239, 176, 54, 0.05);
+  border: 2px dashed rgba(239, 176, 54, 0.3);
+  color: #EFB036;
   cursor: pointer;
-  transition: 0.3s;
+  border-radius: 12px;
 }
 
-button:hover:not(:disabled) {
-  background-color: #EFB036;
-  color: #23486A;
+/* Error Messages */
+.error {
+  color: #ff5f6d;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+}
+
+/* The High-End Button */
+button[type="submit"] {
+  margin-top: 35px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #EFB036 0%, #d99a28 100%);
+  color: #1a3350;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(239, 176, 54, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(239, 176, 54, 0.3);
+  background: linear-gradient(135deg, #ffc24d 0%, #EFB036 100%);
+}
+
+button[type="submit"]:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 button:disabled {
-  background-color: #8a8a8a;
+  background: #334155;
+  color: #64748b;
   cursor: not-allowed;
+  box-shadow: none;
+}
+/* This targets the select box itself */
+select {
+  padding: 14px 16px;
+  margin-top: 8px;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background-color: #ffffff; /* Keeping the box white for contrast */
+  color: #1a3350;            /* Dark text so you can see the selection */
+  outline: none;
+  cursor: pointer;
+  appearance: none;          /* Removes default browser arrow to allow custom styling */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a3350' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
 }
 
-/* Divider line */
+/* This targets the actual list that pops out */
+select option {
+  background-color: #ffffff; /* Background of the list */
+  color: #1a3350;            /* Text color of the categories */
+  padding: 10px;
+}
+
+/* Optional: If you want a Dark Dropdown instead */
+.dark-select {
+  background-color: #23486A !important;
+  color: #ffffff !important;
+  border: 2px solid #EFB036 !important;
+}
+
+.dark-select option {
+  background-color: #1a3350 !important;
+  color: #ffffff !important;
+}
+label{
+  border-radius: 20px;
+}
+/* Visual Decoration */
 hr {
-  margin: 25px 0;
-  border-top: 1px solid #EFB036;
+  margin-top: 30px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Ensure the row is a flex container */
+.row {
+  display: flex;
+  flex-direction: row; /* Force side-by-side */
+  gap: 20px;           /* Modern spacing between inputs */
+  width: 100%;
+  margin-top: 15px;    /* Space from the description above */
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+/* Ensure each group takes exactly 50% minus the gap */
+.input-group {
+  flex: 1;             /* Each child grows/shrinks equally */
+  display: flex;
+  flex-direction: column;
+  min-width: 0;        /* IMPORTANT: Prevents inputs from overflowing their container */
+}
+
+/* Force the inputs inside the group to stay within their 50% boundary */
+.input-group input {
+  width: 100%;         /* Fill the 50% group */
+  box-sizing: border-box; /* Ensures padding doesn't push the width out */
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }

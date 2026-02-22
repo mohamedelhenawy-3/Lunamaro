@@ -2,15 +2,28 @@
   <div class="item-row">
     <div class="item-card" *ngFor="let item of items">
       
-      <img [src]="'http://localhost:5218' + item.imageUrl" class="item-image" alt="Product Image">
+      <div class="card-badge" *ngIf="item.price > 20">Chef's Choice</div>
 
-      <div class="item-body">
-        <h5 class="item-title">{{ item.name }}</h5>
-        <p class="item-description">{{ item.description }}</p>
-        <p class="item-price">$ {{ item.price }}</p>
+      <div class="image-container">
+        <img [src]="'http://localhost:5218' + item.imageUrl" class="item-image" alt="Dish Image">
+        <div class="image-overlay"></div>
       </div>
 
-      <button class="add-btn" (click)="onAddToCart(item.id)">Add to Cart</button>
+      <div class="item-body">
+        <div class="title-row">
+          <h5 class="item-title">{{ item.name }}</h5>
+          <span class="item-price">${{ item.price }}</span>
+        </div>
+        
+        <p class="item-description">{{ item.description }}</p>
+        
+        <button class="add-btn" (click)="onAddToCart(item.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cart-icon" viewBox="0 0 16 16">
+            <path d="M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z"/>
+          </svg>
+          Add to Order
+        </button>
+      </div>
 
     </div>
   </div>

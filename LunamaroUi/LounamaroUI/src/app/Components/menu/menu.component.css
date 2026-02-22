@@ -1,11 +1,47 @@
-.page-container{
+.page-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
-
+  align-items: center; /* Centers children horizontally */
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
 }
 
+.category-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centers the category list */
+  padding: 20px 0;
+}
 
+.item-cards {
+  width: 100%;
+  max-width: 1200px; /* Limits the width so it doesn't look stretched */
+  display: flex;
+  justify-content: center; /* Centers the internal item-list */
+  padding: 0 20px;
+}
+/* 1. The Outer Wrapper (The "Window") */
+/* --- 4. ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-
+/* --- 5. RESPONSIVE TWEAKS --- */
+@media (max-width: 768px) {
+  .category-bar {
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+  
+  .item-cards {
+    padding: 0 16px;
+  }
+}
