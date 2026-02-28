@@ -17,6 +17,7 @@ import { Updatequantity } from '../../Models/updatequantity';
 })
 export class UserCartItemsComponent implements OnInit {
   cartitems?: Usercart[];
+  pricing: any;
 
   constructor(private usercart: UsercartService,private router: Router) {}
 

@@ -28,15 +28,19 @@ namespace Lunamaroapi.Services
 
         public event OrderStatusChangedHandler? OnOrderStatusChanged;
 
+        private readonly IPricingService _pricingService;
 
-
-        public OrderServices(AppDBContext db, IHttpContextAccessor httpContextAccessor, EmailService emailService,ILogger<OrderServices> Logger)
+        public OrderServices(AppDBContext db, IHttpContextAccessor httpContextAccessor,
+            EmailService emailService,
+            ILogger<OrderServices> Logger,
+            IPricingService pricingService)
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
             _smsService = emailService;
             OnOrderPlaced += SendOrderPlacedEmail;
             __Loger = Logger;
+            _pricingService = pricingService;
 
         }
         private string? GetCurrentUserId()
@@ -44,52 +48,51 @@ namespace Lunamaroapi.Services
             return _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
 
-        public async Task<OrderDetailsDTO> GetOrderPerview(string userId)
-        {
-            // Get cart items with related Item data
-            var userCartList = await _db.UserCarts
-                .Include(uc => uc.Item)
-                .Where(uc => uc.UserId == userId)
-                .Select(uc => new UserCartDTO
-                {
-                    UserCartId = uc.Id,
-                    ItemName = uc.Item.Name,
-                    price = uc.Item.Price,
-                    Description = uc.Item.Description,
-                    ImageUrl = uc.Item.ImageUrl,
-                    Quantity = uc.Quantity
-                })
-                .ToListAsync();
+   public async Task<OrderDetailsDTO> GetOrderPerview(string userId)
+{
+    var userCart = await _db.UserCarts
+        .Include(uc => uc.Item)
+        .Where(uc => uc.UserId == userId)
+        .ToListAsync();
 
-            // ✅ Calculate total cart value
-            double totalAmount = userCartList.Sum(c => c.TotalPrice);
+    var userCartList = userCart.Select(uc => new UserCartDTO
+    {
+        UserCartId = uc.Id,
+        ItemId = uc.ItemId,
+        ItemName = uc.Item.Name,
+        price = uc.Item.Price,
+        Description = uc.Item.Description,
+        ImageUrl = uc.Item.ImageUrl,
+        Quantity = uc.Quantity
+    }).ToList();
 
-            // Get user details
-            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
+    var pricingResult = await _pricingService.CalculateAsync(userCart);
 
-            // Prepare order header
-            var orderHeader = new UserOrderHeader
-            {
-                UserId = userId,
-                DateOfOrder = DateTime.Now,
-                TotalAmount = totalAmount,
-                PhoneNumber = user?.PhoneNumber ?? "",
-                DeliveryStreetAddress = user?.Address ?? "",
-                City = user?.City ?? "",
-                PostalCode = user?.PostalCode ?? 0,
-                Name = user?.FullName ?? ""
-            };
+    var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
 
-            // Return DTO
-            var dto = new OrderDetailsDTO
-            {
-                OrderId = 0,
-                UserCartList = userCartList,
-                UserOrderHeader = orderHeader
-            };
+    var orderHeader = new UserOrderHeader
+    {
+        UserId = userId,
+        DateOfOrder = DateTime.Now,
+        OriginalTotalAmount = pricingResult.OriginalTotal,
+        OfferDiscountAmount = pricingResult.OfferDiscount,
+        TierDiscountAmount = pricingResult.TierDiscount,
+        TotalDiscountAmount = pricingResult.TotalDiscount,
+        FinalTotalAmount = pricingResult.FinalTotal,
+        PhoneNumber = user?.PhoneNumber ?? "",
+        DeliveryStreetAddress = user?.Address ?? "",
+        City = user?.City ?? "",
+        PostalCode = user?.PostalCode ?? 0,
+        Name = user?.FullName ?? ""
+    };
 
-            return dto;
-        }
+    return new OrderDetailsDTO
+    {
+        OrderId = 0,
+        UserCartList = userCartList,
+        UserOrderHeader = orderHeader,
+    };
+}
         public async Task<OrderResDTO?> OrderDone(CreateOrderdto dto)
         {
             
@@ -152,12 +155,12 @@ namespace Lunamaroapi.Services
     );
 
 
-                double total = userCart.Sum(c => (double)c.Item.Price * c.Quantity);
+            var pricingResult = await _pricingService.CalculateAsync(userCart);
 
-                __Loger.LogInformation(
+            __Loger.LogInformation(
     "Order total calculated. RequestId: {RequestId}, Total: {Total}",
     requestId,
-    total
+    pricingResult
 );
 
 
@@ -197,14 +200,18 @@ namespace Lunamaroapi.Services
                     TemporaryKey = dto.TemporaryKey,
                     UserId = userId,
                     DateOfOrder = DateTime.Now,
-                    TotalAmount = total,
+                    OriginalTotalAmount = pricingResult.OriginalTotal,
+                    OfferDiscountAmount = pricingResult.OfferDiscount,
+                    TierDiscountAmount = pricingResult.TierDiscount,
+                    TotalDiscountAmount = pricingResult.TotalDiscount,
+                    FinalTotalAmount = pricingResult.FinalTotal, 
                     PhoneNumber = dto.PhoneNumber,
                     DeliveryStreetAddress = dto.DeliveryStreetAddress,
                     City = dto.City,
                     State = dto.State,
                     PostalCode = dto.PostalCode,
                     Name = dto.Name,
-                    paymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
+                    PaymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
                     OrderStatus = OrderStatus.Pending,
                     PaymentStatus = dto.IsPayOnDelivery ? "Pending Payment" : "Not Paid",
                     OrderItems = new List<OrderItem>()
@@ -213,11 +220,18 @@ namespace Lunamaroapi.Services
 
                 foreach (var cart in userCart)
                 {
+                    var unitPrice = cart.Item.Price;
+
+                    // Check if this item is the free product from pricing
+                    bool isFreeItem = pricingResult.FreeProductId.HasValue &&
+                                      pricingResult.FreeProductId.Value == cart.ItemId;
+
                     orderHeader.OrderItems.Add(new OrderItem
                     {
                         ItemId = cart.ItemId,
                         Quantity = cart.Quantity,
-                        UnitPrice = (decimal)cart.Item.Price
+                        UnitPrice = isFreeItem ? 0 : unitPrice, // Free item = 0
+                        IsFreeItem = isFreeItem
                     });
                 }
                 // Save the order first
@@ -262,13 +276,16 @@ namespace Lunamaroapi.Services
 
                 foreach (var cart in userCart)
                 {
+                    var isFreeItem = pricingResult.FreeProductId.HasValue &&
+                            pricingResult.FreeProductId.Value == cart.ItemId;
+
                     options.LineItems.Add(new SessionLineItemOptions
                     {
                         Quantity = cart.Quantity,
                         PriceData = new SessionLineItemPriceDataOptions
                         {
                             Currency = "usd",
-                            UnitAmount = (long)(cart.Item.Price * 100),
+                            UnitAmount = (long)((isFreeItem ? 0 : cart.Item.Price) * 100),
                             ProductData = new SessionLineItemPriceDataProductDataOptions
                             {
                                 Name = cart.Item.Name
@@ -384,7 +401,7 @@ namespace Lunamaroapi.Services
                 OrderId = s.UserOrderHeaderId,
                 DateOfOrder = s.UserOrderHeader.DateOfOrder,
                 OrderStatus = s.UserOrderHeader.OrderStatus,
-                TotalAmount = s.UserOrderHeader.TotalAmount
+                //TotalAmount = s.UserOrderHeader.TotalAmount
 
             }).ToListAsync();
 
@@ -413,7 +430,7 @@ namespace Lunamaroapi.Services
                 OrderId = order.Id,
                 DateOfOrder = order.DateOfOrder,
                 OrderStatus = order.OrderStatus,
-                TotalAmount = order.TotalAmount,
+                //TotalAmount = order.TotalAmount,
                 orderItems = order.OrderItems.Select(i => new OrderitemshistoryDTO
                 {
                     ProductName = i.Item.Name,
@@ -431,11 +448,11 @@ namespace Lunamaroapi.Services
                 OrderId = x.Id,
                 CustomerName = x.Name,
                 PhoneNumber = x.PhoneNumber,
-                totalAmount = x.TotalAmount,
+                //totalAmount = x.TotalAmount,
 
                 orderStatus = x.OrderStatus,
                 OrderDate = x.DateOfOrder
-                ,paymentType=x.paymentType
+                ,paymentType=x.PaymentType
             }).ToListAsync();
 
 
@@ -454,7 +471,7 @@ namespace Lunamaroapi.Services
             order.OrderStatus = dto.Status;
 
             // Optional: if you want to handle Cash on Delivery -> mark Paid when Delivered
-            if (order.paymentType == PaymentType.Cash && dto.Status == OrderStatus.Delivered)
+            if (order.PaymentType == PaymentType.Cash && dto.Status == OrderStatus.Delivered)
             {
                 order.PaymentStatus = "Paid";
             }
@@ -502,7 +519,7 @@ namespace Lunamaroapi.Services
                 OrderId = order.Id,
                 DateOfOrder = order.DateOfOrder,
                 OrderStatus = order.OrderStatus,
-                TotalAmount = order.TotalAmount,
+                //TotalAmount = order.TotalAmount,
                 orderItems = order.OrderItems.Select(i => new OrderitemshistoryDTO
                 {
                     ProductName = i.Item.Name,

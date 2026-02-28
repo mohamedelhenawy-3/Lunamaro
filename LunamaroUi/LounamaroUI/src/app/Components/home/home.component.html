@@ -15,7 +15,140 @@
   </div>
 </header>
 </header>
+<!-- ===== SPECIAL OFFERS SECTION ===== -->
+<!-- DROP THIS IN: replaces your old <section class="offers-section"> block -->
 
+<section class="offers-section" *ngIf="weeklyDeals.length > 0 || discountTiers.length > 0 || rewards.length > 0">
+
+  <!-- Section Title -->
+  <span class="offers-eyebrow">Exclusive For You</span>
+  <h2 class="offers-title">Special <em>Offers</em></h2>
+  <div class="offers-title-line"></div>
+
+  <!-- ══════════════ 1. WEEKLY DEALS ══════════════ -->
+  <div class="offers-block" *ngIf="weeklyDeals.length > 0">
+
+    <div class="offers-block-head">
+      <span class="block-icon">🔥</span>
+      <h3>Weekly <em>Deals</em></h3>
+      <div class="block-line"></div>
+    </div>
+
+    <div class="deals-grid">
+      <div
+        class="deal-card"
+        *ngFor="let deal of weeklyDeals; let i = index"
+        [style.animation-delay]="(i * 80) + 'ms'"
+      >
+        <!-- Discount Ribbon -->
+        <div class="deal-ribbon">{{ deal.discountPercentage }}% OFF</div>
+
+        <!-- Image -->
+        <div class="deal-img-wrap">
+          <img
+            [src]="'http://localhost:5218' + deal?.product?.imageUrl"
+            [alt]="deal?.product?.name"
+            onerror="this.src='assets/placeholder.jpg'"
+          />
+        </div>
+
+        <!-- Body -->
+        <div class="deal-body">
+          <h4 class="deal-name">{{ deal?.product?.name }}</h4>
+          <p class="deal-desc">{{ deal?.product?.description }}</p>
+
+          <div class="deal-pricing">
+            <span class="old-price">{{ deal?.product?.price | currency:'EGP ' }}</span>
+            <span class="new-price">
+              {{
+                deal?.product?.price -
+                (deal?.product?.price * deal?.discountPercentage / 100)
+                | currency:'EGP '
+              }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════ 2. DISCOUNT TIERS ══════════════ -->
+  <div class="offers-block" *ngIf="discountTiers.length > 0">
+
+    <div class="offers-block-head">
+      <span class="block-icon">💰</span>
+      <h3>Spend <em>&amp; Save</em></h3>
+      <div class="block-line"></div>
+    </div>
+
+    <div class="tiers-row">
+      <div
+        class="tier-card"
+        *ngFor="let tier of discountTiers; let i = index"
+        [style.animation-delay]="(i * 90) + 'ms'"
+      >
+        <div class="tier-icon-wrap">
+          <i class="fas fa-tags"></i>
+        </div>
+        <div class="tier-label">Tier {{ i + 1 }}</div>
+        <div class="tier-spend">
+          Spend <strong>{{ tier?.minimumAmount | currency:'EGP ' }}</strong>
+        </div>
+        <div class="tier-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="tier-save">
+          {{ tier?.discountAmount | currency:'EGP ' }}
+        </div>
+        <span class="tier-save-sub">automatically deducted</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════ 3. FREE REWARDS ══════════════ -->
+  <div class="offers-block" *ngIf="rewards.length > 0">
+
+    <div class="offers-block-head">
+      <span class="block-icon">🎁</span>
+      <h3>Free <em>Add-On Rewards</em></h3>
+      <div class="block-line"></div>
+    </div>
+
+    <div class="rewards-list">
+      <div
+        class="reward-card"
+        *ngFor="let reward of rewards; let i = index"
+        [style.animation-delay]="(i * 80) + 'ms'"
+      >
+        <div class="reward-left">
+          <div class="reward-gift-icon">
+            <i class="fas fa-gift"></i>
+          </div>
+          <div class="reward-info">
+            <span class="reward-condition">
+              Orders over <strong>{{ reward?.minimumAmount | currency:'EGP ' }}</strong>
+            </span>
+            <span class="reward-product">
+              🎁 Free: <strong>{{ reward?.freeProduct?.name }}</strong>
+            </span>
+          </div>
+        </div>
+        <div class="reward-right">
+          <div class="reward-thumb" *ngIf="reward?.freeProduct?.imageUrl">
+            <img
+              [src]="'http://localhost:5218' + reward?.freeProduct?.imageUrl"
+              [alt]="reward?.freeProduct?.name"
+              onerror="this.src='assets/placeholder.jpg'"
+            />
+          </div>
+          <span class="reward-badge">Active</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 <!-- ===== ABOUT US ===== -->
 <section class="about-section">
   <div class="about-left">

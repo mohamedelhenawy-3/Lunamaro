@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ReviewResponse } from '../../Models/Review/ReviewResponse';
 import { ReviewsService } from '../../Service/Reviews/reviews.service';
 import { specialItem } from '../../Models/item/specialitems';
+import { OffersservicesService } from '../../Service/Offers/offersservices.service';
 
 @Component({
   selector: 'app-home',
@@ -17,18 +18,19 @@ import { specialItem } from '../../Models/item/specialitems';
 })
 export class HomeComponent implements OnInit {
   headerImage = '/assets/Intro/Item.jpg';
-
   newestItems: ExploreItem[] = [];
   bestSellerItems: ExploreItem[] = [];
-
-    reviewsData?: ReviewResponse;
+  reviewsData?: ReviewResponse;
   specialItems: specialItem[] = []; // <-- NEW: Special Items
 
-
-  constructor(private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService) {}
+weeklyDeals: any[] = [];
+discountTiers: any[] = [];
+rewards: any[] = [];
+  constructor(private offerService:OffersservicesService,private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService) {}
 
   ngOnInit(): void {
     this.imgservice.updateImage(this.headerImage);
+  this.loadOffers();
 
     // Load newest menu items
     this.itemService.getNewestItems().subscribe(res => {
@@ -52,7 +54,21 @@ export class HomeComponent implements OnInit {
     });
 
   }
+loadOffers() {
 
+  this.offerService.getWeeklyDeals().subscribe(res => {
+    this.weeklyDeals = res?.data || [];
+  });
+
+  this.offerService.getDiscountTiers().subscribe(res => {
+    this.discountTiers = res?.data || [];
+  });
+
+  this.offerService.getAddOnRewards().subscribe(res => {
+    this.rewards = res?.data || [];
+  });
+
+}
 getInitials(name: string): string {
   if (!name) return '?';
 

@@ -1,0 +1,87 @@
+.offers-container {
+  font-family: 'DM Sans', sans-serif;
+  max-width: 1180px;
+  margin: 44px auto;
+  padding: 36px;
+  background: rgba(26, 51, 80, 0.72);
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+  border: 1px solid rgba(239, 176, 54, 0.12);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.section-header h2 {
+  color: #EFB036;
+}
+.add-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.add-btn:hover { opacity: 0.85; }
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(10,20,34,0.35);
+  margin-bottom: 24px;
+}
+thead th {
+  padding: 12px;
+  text-align: left;
+  color: #EFB036;
+  text-transform: uppercase;
+}
+tbody td {
+  padding: 10px;
+  color: #fff;
+}
+tbody tr:hover { background: rgba(239,176,54,0.04); }
+
+/* Badge */
+.badge-active {
+  cursor: pointer;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.10);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.badge-inactive {
+  cursor: pointer;
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.edit-btn, .delete-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-left: 4px;
+  border: none;
+  cursor: pointer;
+}
+.edit-btn { background: #facc15; color: black; }
+.delete-btn { background: #f87171; color: white; }
+
+/* Empty State */
+.empty-state {
+  color: rgba(255,255,255,0.3);
+  font-style: italic;
+  padding: 12px 0;
+}

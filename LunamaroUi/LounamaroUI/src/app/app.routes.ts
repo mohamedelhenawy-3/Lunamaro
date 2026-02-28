@@ -29,6 +29,7 @@ import { NewtableComponent } from './Components/Admin/newtable/newtable.componen
 import { ReviewComponent } from './Components/review/review.component';
 import { deactiveGuard } from './Components/Guards/DeactiveGuard/deactive.guard';
 import { pendingorderguardGuard } from './Components/Guards/pendingorderguard.guard';
+import { OffersComponent } from './Components/Admin/offers/offers.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -51,6 +52,7 @@ export const routes: Routes = [
  {path:'MyReservations',component:UserRescervationsComponent,canActivate:[customerGuard]},
   {path:'Admin/reservation',component:ControlledRecervationsComponent,canActivate:[adminGuard]},
   {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},
+  {path:'Admin/offers',component:OffersComponent,canActivate:[adminGuard]},
 
     {path:'Admin/details/:id',component:UpdatedTableComponent,canActivate:[adminGuard]},
 

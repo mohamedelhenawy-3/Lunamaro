@@ -9,7 +9,7 @@ namespace Lunamaroapi.Models
         public int UserOrderHeaderId { get; set; }
         [ForeignKey("UserOrderHeaderId")]
         public UserOrderHeader UserOrderHeader { get; set; }
-
+        public bool IsFreeItem { get; set; }
         public int ItemId { get; set; }
         public Item Item { get; set; }
 
@@ -18,8 +18,12 @@ namespace Lunamaroapi.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal UnitPrice { get; set; }
 
-        public decimal TotalPrice => UnitPrice * Quantity;
 
+        public decimal ItemOriginalTotal { get; set; }
+
+        public decimal ItemDiscountAmount { get; set; }
+
+        public decimal ItemFinalTotal { get; set; }
     }
 
 }

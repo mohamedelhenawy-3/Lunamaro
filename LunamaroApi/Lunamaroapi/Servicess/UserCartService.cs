@@ -77,6 +77,7 @@ namespace Lunamaroapi.Services
                 .Select(c => new UserCartDTO
                 {
                     UserCartId = c.Id,
+                    ItemId=c.ItemId,
                     ItemName = c.Item.Name,
                     price = c.Item.Price,
                     Description = c.Item.Description,

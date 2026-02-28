@@ -57,6 +57,7 @@ canExit():boolean{
   }
   return true;
 }
+ 
   placeOrder(form:NgForm) {
     if(form.invalid){
      alert("Please Complete the Form Correctly");

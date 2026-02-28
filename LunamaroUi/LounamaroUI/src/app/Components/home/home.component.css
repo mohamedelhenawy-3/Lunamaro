@@ -1,7 +1,459 @@
 /* ======================================= */
 /* ===== GLOBAL / BASE STYLES ===== */
 /* ======================================= */
+/* =====================================================
+   SPECIAL OFFERS SECTION
+   Add this block to your home.component.css
+   Works with your existing Playfair Display / Montserrat
+   fonts and #efb036 / #1a2e46 colour system.
+   ===================================================== */
 
+/* ── Section wrapper ─────────────────────────────── */
+.offers-section {
+  padding: 110px 8% 120px;
+  background: #1a2e46;             /* matches your special-items bg */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient golden glow in the background */
+.offers-section::before {
+  content: '';
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse, rgba(239,176,54,0.07) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Section title ───────────────────────────────── */
+.offers-eyebrow {
+  display: block;
+  text-align: center;
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(239,176,54,0.55);
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.offers-title {
+  font-family: 'Playfair Display', serif;   /* same as .about-left h2 */
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-style: italic;
+  color: #efb036;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.offers-title em {
+  color: #fff;
+  font-style: italic;
+}
+
+.offers-title-line {
+  width: 60px;
+  height: 2px;
+  background: rgba(239,176,54,0.5);
+  margin: 20px auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Block (per sub-section) ─────────────────────── */
+.offers-block {
+  margin-top: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sub-section header row */
+.offers-block-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.block-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.offers-block-head h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.offers-block-head h3 em {
+  color: #efb036;
+  font-style: italic;
+}
+
+.block-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(239,176,54,0.14);
+}
+
+/* ── Shared card base ────────────────────────────── */
+/* Uses the same opacity/border style as .review-card */
+.deal-card,
+.tier-card,
+.reward-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: transform .4s cubic-bezier(.2,1,.3,1),
+              box-shadow .4s cubic-bezier(.2,1,.3,1),
+              border-color .35s ease;
+}
+
+/* =====================================================
+   1. WEEKLY DEAL CARDS
+   ===================================================== */
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 26px;
+}
+
+.deal-card {
+  border-radius: 24px;           /* matches .special-item-card */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: lm-fadeUp .5s ease both;
+}
+
+.deal-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 65px rgba(0,0,0,0.45);
+  border-color: rgba(239,176,54,0.30);
+}
+
+/* Ribbon — same style as your .ribbon in best sellers */
+.deal-ribbon {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  background: linear-gradient(135deg, #efb036, #c98f2f);
+  color: #1a2e46;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  padding: 6px 16px 6px 13px;
+  border-radius: 8px 0 0 8px;
+  z-index: 3;
+  box-shadow: -3px 3px 12px rgba(239,176,54,0.26);
+}
+
+/* Image wrapper — same height as .item-image-container */
+.deal-img-wrap {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.deal-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.5s ease;    /* same slow zoom as special items */
+}
+
+.deal-card:hover .deal-img-wrap img {
+  transform: scale(1.15);
+}
+
+/* Gradient overlay on image bottom */
+.deal-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,46,70,0.90) 0%, transparent 55%);
+}
+
+/* Card body */
+.deal-body {
+  padding: 18px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.deal-name {
+  font-family: 'Playfair Display', serif;   /* matches .item-title */
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.deal-desc {
+  font-size: .85rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.55;
+  margin: 0 0 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.deal-pricing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+/* Re-uses your existing .old-price / .new-price class names */
+.old-price {
+  font-size: .82rem;
+  color: rgba(255,255,255,0.28);
+  text-decoration: line-through;
+}
+
+.new-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #efb036;                   /* matches .item-price */
+}
+
+/* =====================================================
+   2. SPEND & SAVE TIERS
+   ===================================================== */
+.tiers-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.tier-card {
+  flex: 1;
+  min-width: 170px;
+  border-radius: 22px;
+  padding: 32px 22px 28px;
+  text-align: center;
+  animation: lm-fadeUp .5s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent bar on hover — same idea as your .btn-primary hover */
+.tier-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #efb036, transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.tier-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(239,176,54,0.30);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.38);
+}
+
+.tier-card:hover::after {
+  opacity: 1;
+}
+
+.tier-icon-wrap {
+  width: 50px; height: 50px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: rgba(239,176,54,0.10);
+  border: 1px solid rgba(239,176,54,0.22);
+  display: flex; align-items: center; justify-content: center;
+  color: #efb036;
+  font-size: 1.1rem;
+}
+
+.tier-label {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(239,176,54,0.48);
+  margin-bottom: 12px;
+}
+
+.tier-spend {
+  font-size: .92rem;
+  color: rgba(255,255,255,0.50);
+  margin-bottom: 8px;
+}
+
+.tier-spend strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.tier-arrow {
+  color: rgba(239,176,54,0.25);
+  font-size: .7rem;
+  margin-bottom: 8px;
+}
+
+.tier-save {
+  font-family: 'Playfair Display', serif;   /* matches section headings */
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #efb036;
+}
+
+.tier-save-sub {
+  display: block;
+  font-size: .68rem;
+  color: rgba(255,255,255,0.30);
+  margin-top: 4px;
+  letter-spacing: .04em;
+}
+
+/* =====================================================
+   3. FREE ADD-ON REWARDS
+   ===================================================== */
+.rewards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reward-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-radius: 22px;
+  padding: 22px 26px;
+  animation: lm-fadeUp .5s ease both;
+  position: relative;
+}
+
+/* Left-side gold accent bar on hover — matches hours grid hover */
+.reward-card:hover {
+  transform: translateX(6px);
+  border-color: rgba(239,176,54,0.28);
+  box-shadow: inset 5px 0 0 #efb036, 0 14px 40px rgba(0,0,0,0.30);
+}
+
+.reward-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 1;
+}
+
+.reward-gift-icon {
+  width: 54px; height: 54px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(239,176,54,0.15), rgba(239,176,54,0.04));
+  border: 1px solid rgba(239,176,54,0.24);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: #efb036;
+  font-size: 1.3rem;
+}
+
+.reward-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reward-condition {
+  font-size: .82rem;
+  color: rgba(255,255,255,0.42);
+}
+
+.reward-condition strong {
+  color: rgba(255,255,255,0.85);
+}
+
+.reward-product {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #fff;
+}
+
+.reward-product strong {
+  color: #efb036;
+}
+
+.reward-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.reward-thumb {
+  width: 70px; height: 70px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(239,176,54,0.16);
+  flex-shrink: 0;
+}
+
+.reward-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* Green "Active" pill — same pill style from earlier builds */
+.reward-badge {
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: 100px;
+  background: rgba(52,211,153,0.10);
+  color: #34d399;
+  border: 1px solid rgba(52,211,153,0.22);
+  white-space: nowrap;
+}
+
+/* ── Entrance animation (matches your other sections) ── */
+@keyframes lm-fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .offers-section  { padding: 80px 6% 90px; }
+  .tiers-row       { flex-direction: column; }
+}
+
+@media (max-width: 768px) {
+  .offers-section  { padding: 60px 5% 70px; }
+  .deals-grid      { grid-template-columns: 1fr; }
+  .reward-card     { flex-direction: column; align-items: flex-start; }
+  .reward-right    { align-self: flex-end; }
+  .offers-block-head h3 { font-size: 1.25rem; }
+}
 .container { 
     width: 100%; 
     max-width: 2000px; 

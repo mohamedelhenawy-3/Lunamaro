@@ -7,6 +7,6 @@ namespace Lunamaroapi.DTOs
         public int OrderId { get; set; }
         public DateTime DateOfOrder { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public double TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
     }
 }

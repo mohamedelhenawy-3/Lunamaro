@@ -1,5 +1,6 @@
 ﻿using Lunamaroapi.Data.Configuration;
 using Lunamaroapi.Models;
+using Lunamaroapi.Models.Offers;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,9 @@ namespace Lunamaroapi.Data
         }
        public  DbSet<ApplicationUser> Users { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-
+        public DbSet<AddOnReward> AddOnRewards { get; set; }
+        public DbSet<DiscountTier> DiscountTiers { get; set; }
+        public DbSet<WeeklyDeal>  WeeklyDeals { get; set; }
         public DbSet<Item> Items { get; set; }
       public   DbSet<Category> Categories { get; set; }
         public DbSet<UserCart> UserCarts { get; set; }
