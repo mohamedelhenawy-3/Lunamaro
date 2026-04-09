@@ -89,7 +89,7 @@ policy =>
             builder.Services.AddScoped<IOrder, OrderServices>();
             builder.Services.AddScoped<ITable, TableServices>();
             builder.Services.AddScoped<IReservation, ReservationServices>();
-            //builder.Services.AddScoped<IDashboard, DashboardServices>();
+            builder.Services.AddScoped<IDashboard, DashboardServices>();
             builder.Services.AddScoped<IReview, ReviewsService>();
             // Inside the service configuration block in Program.cs
             builder.Services.AddTransient<GlobalExceptionMiddleware>();

@@ -1,9 +1,11 @@
 ﻿
+using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
 using Lunamaroapi.DTOs.Item;
 using Lunamaroapi.Models;
 using Lunamaroapi.Repositories.Interfaces;
 using Lunamaroapi.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Update.Internal;
 
 namespace Lunamaroapi.Services.Implements
@@ -13,12 +15,16 @@ namespace Lunamaroapi.Services.Implements
 
         private readonly IItemRepository _itemRepository;
         private readonly IImageServices _imageService;
+        private readonly AppDBContext _db;
 
-        public ItemService(IItemRepository itemRepository, IImageServices imageService)
+        public ItemService(IItemRepository itemRepository, IImageServices imageService,AppDBContext db)
         {
             _itemRepository = itemRepository;
             _imageService = imageService;
+            _db = db;
         }
+
+
 
         public async Task<ItemDTO> CreateItemAsync(ItemDTO itemdto)
         {
@@ -63,17 +69,19 @@ namespace Lunamaroapi.Services.Implements
 
         public async Task<IEnumerable<ItemDTO>> GetAllItemsAsync()
         {
-            var items = await _itemRepository.GetAllItemsAsync();
-            return items.Select(i => new ItemDTO
-            {
-                Id = i.Id,
-                Name = i.Name,
-                Description = i.Description,
-                Price = i.Price,
-                quantity = i.quantity,
-                CategoryId = i.CategoryId,
-                ImageUrl = i.ImageUrl
-            });
+            return await _db.Items
+                .AsNoTracking() // 🚀 huge performance boost
+                .Select(i => new ItemDTO
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Description = i.Description,
+                    Price = i.Price,
+                    quantity = i.quantity,
+                    CategoryId = i.CategoryId,
+                    ImageUrl = i.ImageUrl
+                })
+                .ToListAsync();
         }
 
         public async Task<ReturnedItemDTO?> GetItemByIdAsync(int id)

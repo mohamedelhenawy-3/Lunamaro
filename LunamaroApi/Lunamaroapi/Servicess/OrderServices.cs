@@ -401,7 +401,7 @@ namespace Lunamaroapi.Services
                 OrderId = s.UserOrderHeaderId,
                 DateOfOrder = s.UserOrderHeader.DateOfOrder,
                 OrderStatus = s.UserOrderHeader.OrderStatus,
-                //TotalAmount = s.UserOrderHeader.TotalAmount
+                TotalAmount = s.UserOrderHeader.FinalTotalAmount
 
             }).ToListAsync();
 
@@ -430,7 +430,7 @@ namespace Lunamaroapi.Services
                 OrderId = order.Id,
                 DateOfOrder = order.DateOfOrder,
                 OrderStatus = order.OrderStatus,
-                //TotalAmount = order.TotalAmount,
+                TotalAmount = order.FinalTotalAmount,
                 orderItems = order.OrderItems.Select(i => new OrderitemshistoryDTO
                 {
                     ProductName = i.Item.Name,
@@ -448,7 +448,7 @@ namespace Lunamaroapi.Services
                 OrderId = x.Id,
                 CustomerName = x.Name,
                 PhoneNumber = x.PhoneNumber,
-                //totalAmount = x.TotalAmount,
+                totalAmount = x.FinalTotalAmount,
 
                 orderStatus = x.OrderStatus,
                 OrderDate = x.DateOfOrder
@@ -496,8 +496,6 @@ namespace Lunamaroapi.Services
             await _db.SaveChangesAsync();
 
 
-            // Save changes to database
-
             return true;
         }
 
@@ -519,7 +517,7 @@ namespace Lunamaroapi.Services
                 OrderId = order.Id,
                 DateOfOrder = order.DateOfOrder,
                 OrderStatus = order.OrderStatus,
-                //TotalAmount = order.TotalAmount,
+                TotalAmount = order.FinalTotalAmount,
                 orderItems = order.OrderItems.Select(i => new OrderitemshistoryDTO
                 {
                     ProductName = i.Item.Name,

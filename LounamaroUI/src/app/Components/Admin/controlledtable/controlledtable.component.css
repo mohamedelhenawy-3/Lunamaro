@@ -1,0 +1,231 @@
+/* ── Card Wrapper ── */
+.management-card {
+  max-width: 1100px;
+  margin: 50px auto;
+  background: rgba(26, 51, 80, 0.85);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Header Section */
+.management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-group h2 {
+  font-family: 'Playfair Display', serif;
+  color: #EFB036;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.title-group p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Add Button */
+.btn-primary-gold {
+  background: #EFB036;
+  color: #1a3350;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.btn-primary-gold:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 176, 54, 0.3);
+}
+
+/* ── Table Controls (Search + Filter) ── */
+.table-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* 🔍 SEARCH */
+.management-card .search-bar {
+  position: relative;
+  width: 260px;
+}
+
+.management-card .search-bar input {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border-radius: 12px;
+  background: rgba(10, 20, 34, 0.6);
+  border: 1px solid rgba(239, 176, 54, 0.2);
+  color: #fff;
+  font-size: 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.25s ease;
+}
+
+.management-card .search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.management-card .search-bar input:focus {
+  border-color: #EFB036;
+  background: rgba(10, 20, 34, 0.85);
+  box-shadow: 0 0 0 2px rgba(239, 176, 54, 0.15),
+              0 10px 30px rgba(239, 176, 54, 0.15);
+  transform: translateY(-1px);
+}
+
+/* 🔍 ICON */
+.management-card .search-bar i {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(239, 176, 54, 0.6);
+  transition: 0.25s;
+}
+
+.management-card .search-bar:hover i,
+.management-card .search-bar input:focus + i {
+  color: #EFB036;
+  text-shadow: 0 0 8px rgba(239, 176, 54, 0.6);
+}
+
+/* 🎯 FILTER DROPDOWN */
+.management-card .filter-box select {
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: rgba(10, 20, 34, 0.6);
+  border: 1px solid rgba(239, 176, 54, 0.2);
+  color: #EFB036;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.management-card .filter-box select:focus {
+  border-color: #EFB036;
+  box-shadow: 0 0 0 2px rgba(239, 176, 54, 0.15);
+}
+
+/* Table Design */
+.table-responsive-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  background: rgba(15, 28, 46, 0.3);
+}
+
+.lunamaro-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lunamaro-table th {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px;
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lunamaro-table td {
+  padding: 20px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  vertical-align: middle;
+  color: #fff;
+}
+
+.id-text { font-family: monospace; color: #EFB036; font-size: 0.9rem; }
+
+.table-info-cell .table-label { display: block; font-weight: 600; font-size: 1rem; }
+.table-info-cell .capacity-pill {
+  font-size: 0.75rem;
+  color: #EFB036;
+  background: rgba(239, 176, 54, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.location-cell { display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.7); }
+.location-cell i { color: #EFB036; font-size: 0.8rem; }
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.is-active { color: #00ff99; }
+.is-active .pulse-dot { background: #00ff99; box-shadow: 0 0 10px #00ff99; }
+
+.is-disabled { color: #ff4d4d; }
+.is-disabled .pulse-dot { background: #ff4d4d; }
+
+.select-box select {
+  background: rgba(239, 176, 54, 0.1);
+  border: 1px solid rgba(239, 176, 54, 0.2);
+  color: #EFB036;
+  padding: 8px 12px;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-edit-action {
+  background: transparent;
+  border: 1px solid #EFB036;
+  color: #EFB036;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-edit-action:hover {
+  background: #EFB036;
+  color: #1a3350;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.empty-state i { font-size: 3rem; margin-bottom: 15px; display: block; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table-controls { flex-direction: column; }
+  .management-card .search-bar { width: 100%; }
+}
