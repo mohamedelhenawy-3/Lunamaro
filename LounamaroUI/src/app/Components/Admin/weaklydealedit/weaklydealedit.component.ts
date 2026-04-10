@@ -32,8 +32,33 @@ throw new Error('Method not implemented.');
   ) {}
    ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.loaditem();
 
   }
+
+loaditem() {
+  this.offersService.getWeeklyDealById(this.id).subscribe(res => {
+
+    const deal = res.data || res;
+
+    console.log("DEAL DATA:", deal); 
+
+    if (!deal) return;
+
+    this.discount = deal.discountPercentage;
+    this.expiryDate = deal.expiryDate?.split('T')[0];
+    this.isActive = deal.isActive;
+
+    if (deal.product) {
+      this.selectedProduct = deal.product;
+      this.searchTerm = deal.product.name;
+    } else {
+      console.warn("Product is NULL ❌");
+      this.searchTerm = '';
+    }
+
+  });
+}
   onSearch() {
     if (!this.searchTerm) {
       this.products = [];
@@ -47,6 +72,7 @@ throw new Error('Method not implemented.');
 
   selectProduct(p: any) {
     this.selectedProduct = p;
+    console.log('selected pr',p)
     this.searchTerm = p.name;
     this.products = [];
   }
@@ -68,7 +94,7 @@ throw new Error('Method not implemented.');
     this.offersService.updateWeeklyDeal(this.id, dto).subscribe({
       next: () => {
         alert('Updated successfully ✅');
-        this.router.navigate(['/admin/weekly-deals']);
+        this.router.navigate(['Admin/offers']);
       },
       error: (err) => {
         console.error(err);

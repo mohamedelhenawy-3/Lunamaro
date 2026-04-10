@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
   styleUrl: './offers.component.css'
 })
 export class OffersComponent implements OnInit {
-editTiers(arg0: any) {
-throw new Error('Method not implemented.');
+EditReward(id: number) {
+this.router.navigate(['/Admin/offers/addonrewardedit', id]);}
+editTiers(id: number) {
+  this.router.navigate(['Admin/offers/discount-tier', id]);
 }
 editDeal(id:number) {
   this.router.navigate(['Admin/offers/weekly-deal', id]);

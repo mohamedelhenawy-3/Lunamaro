@@ -4,6 +4,7 @@ using Lunamaroapi.DTOs.DiscountTierDto;
 using Lunamaroapi.DTOs.WeaklyDto;
 using Lunamaroapi.Helper;
 using Lunamaroapi.Models.Offers;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,25 @@ public class AdminOffersController : ControllerBase
     }
 
 
+
+    [HttpGet("getweakdeal/{id}")]
+    public async Task<IActionResult> GetWeeklyDealById(int id)
+    {
+        var deal = await _db.WeeklyDeals
+            .Include(x => x.Product) 
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (deal == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(new ApiResponse<WeeklyDeal>
+        {
+            Success = true,
+            Data = deal
+        });
+    }
     [HttpGet("weekly-deals")]
     public async Task<IActionResult> GetWeeklyDeals()
     {
@@ -177,6 +197,97 @@ public class AdminOffersController : ControllerBase
             Data = existing
         });
     }
+
+    [HttpPut("UpdateAddOnReward/{id}")]
+    public async Task<IActionResult> UpdateOnReward(int id, [FromBody] UpdateAddOnRewardDTO dto)
+    {
+        if (dto == null)
+        {
+            return BadRequest(new ApiResponse<object>
+            {
+                Success = false,
+                Message = "Invalid request data"
+            });
+        }
+
+        var existing = await _db.AddOnRewards.FindAsync(id);
+
+        if (existing == null)
+        {
+            return NotFound(new ApiResponse<object>
+            {
+                Success = false,
+                Message = "Weekly deal not found"
+            });
+        }
+
+       
+
+        var duplicate = await _db.AddOnRewards
+            .AnyAsync(x => x.FreeProductId == dto.FreeProductId && x.Id != id);
+
+        if (duplicate)
+        {
+            return BadRequest(new ApiResponse<object>
+            {
+                Success = false,
+                Message = "This product already in Reward"
+            });
+        }
+
+        existing.FreeProductId = dto.FreeProductId;
+        existing.MinimumAmount = dto.MinimumAmount;
+        
+        existing.IsActive = dto.IsActive;
+
+        await _db.SaveChangesAsync();
+
+        return Ok(new ApiResponse<AddOnReward>
+        {
+            Success = true,
+            Message = "Weekly deal updated successfully",
+            Data = existing
+        });
+    }
+    [HttpPut("discount-tiers/{id}")]
+    public async Task<IActionResult> UpdateDiscountTiers(int id, [FromBody] UpdateDiscountTierDTO dto)
+    {
+        if (dto == null)
+        {
+            return BadRequest(new ApiResponse<object>
+            {
+                Success = false,
+                Message = "Invalid request data"
+            });
+        }
+
+        var existing = await _db.DiscountTiers.FindAsync(id);
+
+        if (existing == null)
+        {
+            return NotFound(new ApiResponse<object>
+            {
+                Success = false,
+                Message = "Weekly deal not found"
+            });
+        }
+
+      
+
+     
+        existing.DiscountAmount = dto.DiscountAmount;
+        existing.MinimumAmount = dto.MinimumAmount;
+        existing.IsActive = dto.IsActive;
+
+        await _db.SaveChangesAsync();
+
+        return Ok(new ApiResponse<DiscountTier>
+        {
+            Success = true,
+            Message = "Weekly deal updated successfully",
+            Data = existing
+        });
+    }
     [HttpPatch("weekly-deals/{id}/activate")]
     public async Task<IActionResult> ActivateWeeklyDeal(int id)
     {
@@ -238,6 +349,23 @@ public class AdminOffersController : ControllerBase
     }
 
 
+    [HttpGet("getdiscounttierbyid/{id}")]
+    public async Task<IActionResult> GetDiscountTiersById(int id)
+    {
+        var deal = await _db.DiscountTiers
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (deal == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(new ApiResponse<DiscountTier>
+        {
+            Success = true,
+            Data = deal
+        });
+    }
     [HttpGet("discount-tiers")]
     public async Task<IActionResult> GetDiscountTiers()
     {
@@ -338,6 +466,24 @@ public class AdminOffersController : ControllerBase
             Success = true,
             Message = "Add-on reward created successfully",
             Data = reward
+        });
+    }
+
+    [HttpGet("getadd-on-reward/{id}")]
+    public async Task<IActionResult> GetOnRewardById(int id)
+    {
+        var deal = await _db.AddOnRewards.Include(x=>x.FreeProduct)
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (deal == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(new ApiResponse<AddOnReward>
+        {
+            Success = true,
+            Data = deal
         });
     }
 

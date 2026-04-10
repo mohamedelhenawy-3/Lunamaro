@@ -34,6 +34,8 @@ import { AddweeklydealComponent } from './Components/Admin/addweeklydeal/addweek
 import { CreatediscounttiersComponent } from './Components/Admin/creatediscounttiers/creatediscounttiers.component';
 import { AddonrewardComponent } from './Components/Admin/addonreward/addonreward.component';
 import { WeaklydealeditComponent } from './Components/Admin/weaklydealedit/weaklydealedit.component';
+import { EditdiscounttiersComponent } from './Components/Admin/editdiscounttiers/editdiscounttiers.component';
+import { AddonrewardeditComponent } from './Components/Admin/addonrewardedit/addonrewardedit.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -58,10 +60,13 @@ export const routes: Routes = [
   {path:'Admin/table',component:ControlledtableComponent,canActivate:[adminGuard]},
   {path:'Admin/offers',component:OffersComponent,canActivate:[adminGuard]},
     {path:'Admin/offers/weekly-deal/:id',component:WeaklydealeditComponent,canActivate:[adminGuard]},
+    {path:'Admin/offers/discount-tier/:id',component:EditdiscounttiersComponent,canActivate:[adminGuard]},
 
   {path:'Admin/createweeklydeals',component:AddweeklydealComponent,canActivate:[adminGuard]},
     {path:'Admin/creatediscounttiers',component:CreatediscounttiersComponent,canActivate:[adminGuard]},
   {path:'Admin/addonreward',component:AddonrewardComponent,canActivate:[adminGuard]},
+      {path:'Admin/offers/addonrewardedit/:id',component:AddonrewardeditComponent,canActivate:[adminGuard]},
+
 
 
 

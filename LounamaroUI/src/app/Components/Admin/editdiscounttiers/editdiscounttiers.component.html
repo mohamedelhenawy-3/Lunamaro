@@ -1,0 +1,33 @@
+<div class="edit-container">
+  <h2>Edit Discount Tier</h2>
+
+  <div class="form-group">
+    <label>Minimum Amount</label>
+    <input
+      type="number"
+      [(ngModel)]="minimumAmount"
+      placeholder="Enter minimum amount"
+    />
+  </div>
+
+  <div class="form-group">
+    <label>Discount Amount</label>
+    <input
+      type="number"
+      [(ngModel)]="discountAmount"
+      placeholder="Enter discount amount"
+    />
+  </div>
+
+  <div class="form-group checkbox-group">
+    <label>
+      <input type="checkbox" [(ngModel)]="isActive" />
+      <span>Active Tier</span>
+    </label>
+  </div>
+
+  <div class="actions">
+    <button class="btn-update" (click)="updateDeal()">Update</button>
+    <button class="btn-cancel" (click)="cancel()">Cancel</button>
+  </div>
+</div>

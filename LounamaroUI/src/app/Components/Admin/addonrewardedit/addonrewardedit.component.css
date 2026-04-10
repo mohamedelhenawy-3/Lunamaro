@@ -1,0 +1,157 @@
+/* ============================================================
+   ADD-ON REWARD EDIT — LUNAMARO STYLE
+   ============================================================ */
+
+.edit-container {
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 30px;
+
+  /* Glassmorphism */
+  background: rgba(26, 51, 80, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(239, 176, 54, 0.15);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+
+  font-family: 'DM Sans', sans-serif;
+  color: #fff;
+  animation: fadeUp 0.4s ease-out;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  color: #EFB036;
+  font-size: 1.75rem;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(239, 176, 54, 0.2);
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(239, 176, 54, 0.25);
+  background: rgba(15, 28, 46, 0.7);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #EFB036;
+  box-shadow: 0 0 0 4px rgba(239, 176, 54, 0.1);
+}
+
+/* Search Dropdown */
+.dropdown {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  margin-top: 5px;
+  background: #1a3350;
+  border: 1px solid rgba(239, 176, 54, 0.3);
+  border-radius: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.dropdown-item {
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-item:hover {
+  background: rgba(239, 176, 54, 0.15);
+  color: #EFB036;
+}
+
+/* Checkbox */
+.checkbox-group {
+  margin: 20px 0;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #EFB036;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.btn-update {
+  background: linear-gradient(135deg, #EFB036, #d4922a);
+  color: #1a3350;
+}
+
+.btn-update:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(239, 176, 54, 0.3);
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-color: #fff !important;
+}

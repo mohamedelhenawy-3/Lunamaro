@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WeaklydealeditComponent } from './weaklydealedit.component';
+import { AddonrewardeditComponent } from './addonrewardedit.component';
 
-describe('WeaklydealeditComponent', () => {
-  let component: WeaklydealeditComponent;
-  let fixture: ComponentFixture<WeaklydealeditComponent>;
+describe('AddonrewardeditComponent', () => {
+  let component: AddonrewardeditComponent;
+  let fixture: ComponentFixture<AddonrewardeditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WeaklydealeditComponent]
+      imports: [AddonrewardeditComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(WeaklydealeditComponent);
+    fixture = TestBed.createComponent(AddonrewardeditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
