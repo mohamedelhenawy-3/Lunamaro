@@ -3,7 +3,7 @@
   <!-- ================= WEEKLY DEALS ================= -->
   <div class="section-header">
     <h2>🔥 Weekly Deals</h2>
-    <button class="add-btn">+ Add Deal</button>
+    <button class="add-btn" (click)="AddWeeklyDeals()">+ Add Deal</button>
   </div>
 
   <div *ngIf="weeklyDeals.length === 0" class="empty-state">
@@ -37,7 +37,7 @@
         </td>
 
         <td class="actions">
-          <button class="edit-btn">Edit</button>
+          <button class="edit-btn" (click)="editDeal(deal.id)">Edit</button>
           <button class="delete-btn" (click)="deleteWeeklyDeal(deal.id)">Delete</button>
         </td>
       </tr>
@@ -49,7 +49,7 @@
   <!-- ================= DISCOUNT TIERS ================= -->
   <div class="section-header">
     <h2>💰 Discount Tiers</h2>
-    <button class="add-btn">+ Add Tier</button>
+    <button class="add-btn" (click)="AddDiscountTier()">+ Add Tier</button>
   </div>
 
   <div *ngIf="discountTiers.length === 0" class="empty-state">
@@ -81,8 +81,8 @@
         </td>
 
         <td class="actions">
-          <button class="edit-btn">Edit</button>
-          <button class="delete-btn">Delete</button>
+          <button class="edit-btn" (click)="editTiers(tier.id)">Edit</button>
+          <button class="delete-btn" (click)="deleteTier(tier.id)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -93,7 +93,7 @@
   <!-- ================= ADD-ON REWARDS ================= -->
   <div class="section-header">
     <h2>🎁 Add-On Rewards</h2>
-    <button class="add-btn">+ Add Reward</button>
+    <button class="add-btn" (click)="AddAddonReward()">+ Add Reward</button>
   </div>
 
   <div *ngIf="addOnRewards.length === 0" class="empty-state">
@@ -126,7 +126,7 @@
 
         <td class="actions">
           <button class="edit-btn">Edit</button>
-          <button class="delete-btn" >Delete</button>
+          <button class="delete-btn" (click)="deleteReward(reward.id)" >Delete</button>
         </td>
       </tr>
     </tbody>

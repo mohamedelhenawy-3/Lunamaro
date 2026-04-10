@@ -1,0 +1,41 @@
+<div class="edit-container">
+
+  <h2>Edit Weekly Deal</h2>
+
+  <!-- Product Search -->
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="onSearch()"
+    placeholder="Search product..."
+  />
+
+  <div class="dropdown" *ngIf="products.length">
+    <div
+      *ngFor="let p of products"
+      (click)="selectProduct(p)"
+      class="dropdown-item"
+    >
+      {{ p.name }}
+    </div>
+  </div>
+
+  <!-- Discount -->
+  <input type="number" [(ngModel)]="discount" placeholder="Discount %" />
+
+  <!-- Expiry -->
+  <input type="date" [(ngModel)]="expiryDate" />
+
+  <!-- Active -->
+  <label>
+    <input type="checkbox" [(ngModel)]="isActive" />
+    Active
+  </label>
+
+  <button (click)="updateDeal()">Update</button>
+
+  <button (click)="cancel()">
+    Cancel
+  </button>
+
+</div>

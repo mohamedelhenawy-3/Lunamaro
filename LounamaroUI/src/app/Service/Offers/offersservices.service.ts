@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 
@@ -22,6 +22,10 @@ deactivateWeeklyDeal(id: number) {
 }
   createWeeklyDeal(data:any) {
     return this.http.post(`${environment.baseurl}/admin/offers/weekly-deals`, data);
+  }
+   searchProducts(term: string) {
+    let params = new HttpParams().set('term', term);
+    return this.http.get<any[]>(`${environment.baseurl}/admin/offers/products/search`, { params });
   }
 
   updateWeeklyDeal(id:number, data:any) {

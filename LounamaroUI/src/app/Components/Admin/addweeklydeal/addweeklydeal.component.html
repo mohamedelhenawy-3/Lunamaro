@@ -1,0 +1,53 @@
+<div class="create-page">
+
+  <h2>Create Weekly Deal</h2>
+
+  <!-- 🔍 Product Search -->
+  <div class="form-group">
+    <label>Search Product</label>
+
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+      placeholder="Type product name..."
+    />
+
+    <!-- Dropdown -->
+    <div class="dropdown" *ngIf="products.length">
+      <div
+        *ngFor="let p of products"
+        (click)="selectProduct(p)"
+        class="dropdown-item"
+      >
+        {{ p.name }} - {{ p.price }} EGP
+      </div>
+    </div>
+  </div>
+
+  <!-- Selected Product -->
+  <div *ngIf="selectedProduct" class="selected">
+    Selected: {{ selectedProduct.name }}
+  </div>
+
+  <!-- Discount -->
+  <div class="form-group">
+    <label>Discount %</label>
+    <input type="number" [(ngModel)]="discount" />
+  </div>
+
+  <!-- Expiry -->
+  <div class="form-group">
+    <label>Expiry Date</label>
+    <input type="date" [(ngModel)]="expiryDate" />
+  </div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button (click)="createDeal()">Create</button>
+    <button class="cancel" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+
+</div>

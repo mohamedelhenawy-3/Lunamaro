@@ -1,0 +1,57 @@
+.create-page {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #1a3350;
+  padding: 30px;
+  border-radius: 16px;
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 5px;
+}
+
+.dropdown {
+  background: #0f1c2e;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #EFB036;
+  color: #1a3350;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+button:first-child {
+  background: #EFB036;
+  color: #1a3350;
+}
+
+.cancel {
+  background: #ccc;
+}

@@ -42,7 +42,6 @@ namespace Lunamaroapi.Controllers
             return Ok(items);
         }
 
-        //ActionResult return a status code also
         [HttpGet("AllNote")]
         public async Task<ActionResult<IEnumerable<ItemDTO>>> GetAllItems()
         {
@@ -96,7 +95,6 @@ namespace Lunamaroapi.Controllers
 
 
 
-        // GET: api/items/menu-preview
         [HttpGet("menu-preview")]
         public async Task<IActionResult> GetMenuPreview()
         {

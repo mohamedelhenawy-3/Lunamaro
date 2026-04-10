@@ -1,0 +1,26 @@
+<div class="create-page">
+
+  <h2>Create Discount Tier</h2>
+
+  <!-- Minimum Amount -->
+  <div class="form-group">
+    <label>Minimum Order Amount</label>
+    <input type="number" [(ngModel)]="minimumAmount" />
+  </div>
+
+  <!-- Discount Amount -->
+  <div class="form-group">
+    <label>Discount Amount</label>
+    <input type="number" [(ngModel)]="discountAmount" />
+  </div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button (click)="create()">Create</button>
+    <button class="cancel"
+      (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+
+</div>

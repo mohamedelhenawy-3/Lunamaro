@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OffersservicesService } from '../../../Service/Offers/offersservices.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-offers',
@@ -10,12 +11,25 @@ import { CommonModule } from '@angular/common';
   styleUrl: './offers.component.css'
 })
 export class OffersComponent implements OnInit {
+editTiers(arg0: any) {
+throw new Error('Method not implemented.');
+}
+editDeal(id:number) {
+  this.router.navigate(['Admin/offers/weekly-deal', id]);
+}
+AddAddonReward() {
+this.router.navigate(['/Admin/addonreward']);        
+}
+AddDiscountTier() {
+this.router.navigate(['/Admin/creatediscounttiers']);}
+AddWeeklyDeals() {
+this.router.navigate(['/Admin/createweeklydeals']);}
 
   weeklyDeals: any[] = [];
   discountTiers: any[] = [];
   addOnRewards: any[] = [];
 
-  constructor(private offersService: OffersservicesService) {}
+  constructor(private offersService: OffersservicesService,private router:Router) {}
 
   ngOnInit(): void {
     this.loadAll();
@@ -32,6 +46,7 @@ export class OffersComponent implements OnInit {
     this.offersService.getWeeklyDeals()
       .subscribe((res: any) => {
         this.weeklyDeals = res.data;
+        console.log("weekly deals:",this.weeklyDeals);
       });
   }
 
