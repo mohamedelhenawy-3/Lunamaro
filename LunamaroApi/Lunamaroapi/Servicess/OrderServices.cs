@@ -298,22 +298,21 @@ namespace Lunamaroapi.Services
 
                 // Save Stripe info
                 orderHeader.StripeSessionId = session.Id;
-                orderHeader.StripePaymentIntentId = session.PaymentIntentId;
-                orderHeader.PaymentStatus = "Paid";
-
+                orderHeader.PaymentStatus = "Pending";
 
                 __Loger.LogInformation(
     "Stripe session created. RequestId: {RequestId}, SessionId: {SessionId}",
     requestId,
     session.Id
-);
+); if (dto.IsPayOnDelivery)
+                {
+                    _db.UserCarts.RemoveRange(userCart);
+                }
 
                 _db.UserOrderHeaders.Update(orderHeader);
                 await _db.SaveChangesAsync();
 
-                // Clear user cart
-                _db.UserCarts.RemoveRange(userCart);
-                await _db.SaveChangesAsync();
+         
                 __Loger.LogInformation(
                     "Cart cleared after cash order. RequestId: {RequestId}, UserId: {UserId}",
                     requestId,
@@ -360,17 +359,20 @@ namespace Lunamaroapi.Services
             var order = await _db.UserOrderHeaders
                 .FirstOrDefaultAsync(o => o.StripeSessionId == sessionId);
 
-            if (order == null)
-                return false;
+            if (order == null) return false;
 
+            if (order.PaymentStatus != "Paid")
+            {
+                order.PaymentStatus = "Paid";
+                order.OrderStatus = OrderStatus.Pending; 
+                order.PaymentProcessDate = DateTime.Now;
 
-            
+                var userCart = await _db.UserCarts.Where(u => u.UserId == order.UserId).ToListAsync();
+                _db.UserCarts.RemoveRange(userCart);
 
-            order.PaymentStatus = "Paid";
-            order.OrderStatus = OrderStatus.Processing;
-            order.PaymentProcessDate = DateTime.Now;
+                await _db.SaveChangesAsync();
+            }
 
-            await _db.SaveChangesAsync();
             return true;
         }
 
