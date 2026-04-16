@@ -6,6 +6,7 @@ using Lunamaroapi.DTOs.UserCart;
 using Lunamaroapi.Helper;
 using Lunamaroapi.Helper.ServiceResult;
 using Lunamaroapi.Models;
+using Lunamaroapi.Queues;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +23,7 @@ namespace Lunamaroapi.Services
     {
         private readonly AppDBContext _db;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly EmailService _smsService;
-        private readonly ILogger<OrderServices> __Loger;
+       private readonly ILogger<OrderServices> __Loger;
         public event OrderPlacceHandler? OnOrderPlaced;
 
         public event OrderStatusChangedHandler? OnOrderStatusChanged;
@@ -37,7 +37,6 @@ namespace Lunamaroapi.Services
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
-            _smsService = emailService;
             OnOrderPlaced += SendOrderPlacedEmail;
             __Loger = Logger;
             _pricingService = pricingService;
@@ -567,7 +566,11 @@ namespace Lunamaroapi.Services
     </body>
     </html>";
 
-            await _smsService.SendEmailAsync(userEmail, subject, body);
+            EmailQueue.Queue.Enqueue((
+                userEmail,
+                subject,
+                body
+            ));
         }
         private async Task SendOutForDeliveryEmailAsync(UserOrderHeader order)
         {
@@ -587,7 +590,11 @@ namespace Lunamaroapi.Services
         <hr />
         <p><small>If you have any questions, contact our support team anytime.</small></p>";
 
-            await _smsService.SendEmailAsync(user.Email, subject, body);
+            EmailQueue.Queue.Enqueue((
+                user.Email,
+                subject,
+                body
+            ));
         }
 
 
