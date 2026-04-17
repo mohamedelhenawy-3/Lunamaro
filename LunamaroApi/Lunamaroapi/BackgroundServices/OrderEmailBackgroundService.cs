@@ -13,20 +13,27 @@ namespace Lunamaroapi.BackgroundServices
         }
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-
+            await Task.Yield();
             while (!stoppingToken.IsCancellationRequested)
             {
-                if (EmailQueue.Queue.TryDequeue(out var emailData))
+                while (!stoppingToken.IsCancellationRequested)
                 {
-                    using var scope = _serviceProvider.CreateScope();
+                    if (EmailQueue.Queue.TryDequeue(out var emailData))
+                    {
+                        using var scope = _serviceProvider.CreateScope();
+                        var emailService = scope.ServiceProvider.GetRequiredService<EmailService>();
 
-                    var emailService = scope.ServiceProvider
-                        .GetRequiredService<EmailService>();
+                        await emailService.SendEmailAsync(emailData.Email, emailData.Subject, emailData.Body);
 
-
-                    emailService.SendEmailAsync(emailData.Email, emailData.Subject, emailData.Body);
-
-                    await Task.Delay(500, stoppingToken);
+                        // Small delay between emails to avoid spamming the provider
+                        await Task.Delay(500, stoppingToken);
+                    }
+                    else
+                    {
+                        // 2. IMPORTANT: If the queue is empty, wait longer before checking again.
+                        // This prevents the "Infinite Hang" and lets the CPU breathe.
+                        await Task.Delay(5000, stoppingToken);
+                    }
                 }
             }
         }

@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿// ... (keep your namespaces)
+
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Lunamaroapi.BackgroundServices;
 using Lunamaroapi.Data;
@@ -11,44 +13,44 @@ using Lunamaroapi.Repositories.Interfaces;
 using Lunamaroapi.Services;
 using Lunamaroapi.Services.Implements;
 using Lunamaroapi.Services.Interfaces;
-using Lunamaroapi.Validators.CategoryValidator;
 using Lunamaroapi.Validators.ItemValidators;
-using Lunamaroapi.Validators.OrderValidator;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Stripe;
 using System.Text;
-using System.Text.Json.Serialization; 
+using System.Text.Json.Serialization;
+using CategoryService = Lunamaroapi.Services.Implements.CategoryService;
+using ItemService = Lunamaroapi.Services.Implements.ItemService;
+using TokenService = Lunamaroapi.Services.Implements.TokenService;
 
 namespace Lunamaroapi
 {
     public class Program
     {
-        public static async Task Main(string[] args) 
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // 1. Configuration
             StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
+            // 2. Services
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAngularApp",
-policy =>
-{
-    policy.SetIsOriginAllowed(origin => true)
-      .AllowAnyHeader()
-      .AllowAnyMethod()
-      .AllowCredentials();
-
-});
-
-                (string item1, string item2) = ("http://localhost:4200", "https://localhost:4200");
-
+                options.AddPolicy("AllowAngularApp", policy =>
+                {
+                    policy.SetIsOriginAllowed(origin => true) // Good for dev, tighten for production
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
             });
 
             builder.Services.AddDbContext<AppDBContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
@@ -56,77 +58,68 @@ policy =>
             .AddEntityFrameworkStores<AppDBContext>()
             .AddDefaultTokenProviders();
 
-
-
-
-
-
-
-            builder.Services.AddScoped<IAuthServices,Services.Implements.AuthServices>();
-
-            builder.Services.AddHostedService<OrderEmailBackgroundService>();
+            // Repositories & Services
+            builder.Services.AddScoped<IAuthServices, AuthServices>();
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-            builder.Services.AddScoped<ITokenService,Services.Implements.TokenService>();
+            builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IRefreshToken, RefrshTokenRepoitory>();
             builder.Services.AddScoped<IOffersRepository, OfferRepository>();
             builder.Services.AddScoped<IPricingService, PricingService>();
             builder.Services.AddScoped<JwtTokenGenerator>();
             builder.Services.AddScoped<IImageServices, ImageService>();
-            builder.Services.AddScoped<ICategoryService,Services.Implements.CategoryService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IItemRepository, ItemRepository>();
-            builder.Services.AddScoped<IItemService, Services.Implements.ItemService>();
-
+            builder.Services.AddScoped<IItemService, ItemService>();
             builder.Services.AddScoped<IUserCart, UserCartService>();
             builder.Services.AddScoped<IOrder, OrderServices>();
             builder.Services.AddScoped<ITable, TableServices>();
             builder.Services.AddScoped<IReservation, ReservationServices>();
             builder.Services.AddScoped<IDashboard, DashboardServices>();
             builder.Services.AddScoped<IReview, ReviewsService>();
+
+            // Background Services
+            builder.Services.AddHostedService<OrderEmailBackgroundService>();
+            // If you uncomment this, make sure StockCleanupWorker uses 'await Task.Yield()' at the start
+            builder.Services.AddHostedService<StockCleanupWorker>();
+
             builder.Services.AddTransient<GlobalExceptionMiddleware>();
             builder.Services.AddSingleton<SmsService>();
             builder.Services.Configure<ESetting>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.AddSingleton<EmailService>();
+
+            // Validation
             builder.Services.AddFluentValidationAutoValidation();
             builder.Services.AddValidatorsFromAssemblyContaining<ItemDTOValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<UpdateItemDTOValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateCategpryValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderValidator>();
-
-
 
             builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        // This converts enums (like ReservationStatus) to strings in JSON responses
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });
-
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                });
 
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
             {
                 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-
                     ValidIssuer = jwtSettings["Issuer"],
                     ValidAudience = jwtSettings["Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])),
                     ClockSkew = TimeSpan.Zero
-
                 };
             });
+
+            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
                 options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -138,64 +131,58 @@ policy =>
                     In = Microsoft.OpenApi.Models.ParameterLocation.Header,
                     Description = "Enter JWT Token"
                 });
-
                 options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
                 {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
+                    {
+                        new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                        {
+                            Reference = new Microsoft.OpenApi.Models.OpenApiReference { Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme, Id = "Bearer" }
+                        },
+                        new string[] {}
+                    }
+                });
             });
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
 
-            // 3. Build the app
             var app = builder.Build();
 
-            app.UseMiddleware<GlobalExceptionMiddleware>();
-
+            // 3. Seed Roles (Moved after app.Build but before app.Run)
             using (var scope = app.Services.CreateScope())
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-                string[] roles = { "Admin", "Customer" };
-
-                foreach (var role in roles)
-                {
-                    if (!await roleManager.RoleExistsAsync(role))
-                    {
-                        await roleManager.CreateAsync(new IdentityRole(role));
-                    }
-                }
+                await SeedRolesAsync(roleManager);
             }
 
-            // 5. Configure the HTTP request pipeline
+            // 4. Middleware Pipeline
+            app.UseMiddleware<GlobalExceptionMiddleware>();
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            app.UseCors("AllowAngularApp"); 
+            app.UseCors("AllowAngularApp");
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseStaticFiles(); 
-
-         
-
             app.MapControllers();
 
-            app.Run();
+            Console.WriteLine("--> API is running and ready for requests.");
+            await app.RunAsync();
+        }
 
+        // Seeding logic extracted to a method for clarity
+        private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+        {
+            string[] roles = { "Admin", "Customer" };
+            foreach (var role in roles)
+            {
+                if (!await roleManager.RoleExistsAsync(role))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
         }
     }
 }
