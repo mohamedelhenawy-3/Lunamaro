@@ -1,6 +1,6 @@
 ﻿using Lunamaroapi.Services.Interfaces;
 
-namespace Lunamaroapi.Services
+namespace Lunamaroapi.Services.Implements
 {
     public class ImageService : IImageServices
     {

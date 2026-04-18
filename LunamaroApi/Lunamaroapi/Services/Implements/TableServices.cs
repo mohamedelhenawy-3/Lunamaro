@@ -4,7 +4,7 @@ using Lunamaroapi.Models;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Lunamaroapi.Services
+namespace Lunamaroapi.Services.Implements
 {
     public class TableServices : ITable
     {

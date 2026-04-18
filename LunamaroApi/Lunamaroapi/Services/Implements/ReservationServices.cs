@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Security.Claims;
 
-namespace Lunamaroapi.Services
+namespace Lunamaroapi.Services.Implements
 {
     public delegate Task ReservationPlaceHandler(string to,Reservation reservation);
 
@@ -142,7 +142,7 @@ namespace Lunamaroapi.Services
                          r.Status != ReservationStatus.Cancelled
                          && r.Status != ReservationStatus.Rejected
                          // Ignore rejected
-                         &&((start >= r.StartTime && start < r.EndTime) || (end >  r.StartTime && end  <= r.EndTime) || (start <= r.StartTime && end >= r.EndTime) )
+                         &&(start >= r.StartTime && start < r.EndTime || end >  r.StartTime && end  <= r.EndTime || start <= r.StartTime && end >= r.EndTime )
                      );
         }
 
@@ -208,9 +208,9 @@ namespace Lunamaroapi.Services
                     r.TableId == t.Id &&
                     r.Status != ReservationStatus.Cancelled &&
                     r.Status != ReservationStatus.Rejected &&
-                    ((startTime >= r.StartTime && startTime < r.EndTime) ||
-                     (endTime > r.StartTime && endTime <= r.EndTime) ||
-                     (startTime <= r.StartTime && endTime >= r.EndTime))
+                    (startTime >= r.StartTime && startTime < r.EndTime ||
+                     endTime > r.StartTime && endTime <= r.EndTime ||
+                     startTime <= r.StartTime && endTime >= r.EndTime)
                 ))
                 .ToListAsync();
 

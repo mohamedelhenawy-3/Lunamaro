@@ -74,6 +74,8 @@ canExit():boolean{
   // 🔥 THIS IS THE IMPORTANT LINE
   this.orderInfo.temporaryKey = this.temporaryKey;
 
+  console.log("temporaryKey",this.temporaryKey);
+
     this.orderservice.placeOrder(this.orderInfo).subscribe({
       next: (res: OrderRes) => {
           this.isSubmitting = false;
@@ -96,9 +98,7 @@ canExit():boolean{
     alert('You already submitted this order.');
   } else if (err.status === 400) {
     alert('Invalid data, please check the form.');
-  } else {
-    alert('You make This order Befor plz dont play in this buttom .');
-  }
+  } 
 }
 
     });

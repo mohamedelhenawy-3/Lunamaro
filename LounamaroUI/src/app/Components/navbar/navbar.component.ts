@@ -16,7 +16,7 @@ import { ImageShareService } from '../../Service/ImageService/image-share.servic
 })
 export class NavbarComponent {
  isLoggedIn: boolean = false;
-  userRole: string | null = null;
+userRole: string | null = null;
 cartCount: number = 0;
 
 
@@ -26,7 +26,10 @@ cartCount: number = 0;
  
 
 
-  constructor(private auth: AuthService  ,private router:Router,private cartService:UsercartService ,private imageService: ImageShareService) {}
+  constructor(private auth: AuthService  ,private router:Router,private cartService:UsercartService ,private imageService: ImageShareService)
+  {
+
+  }
 
 ngOnInit(): void {
 
@@ -39,13 +42,12 @@ ngOnInit(): void {
     this.userRole = this.auth.getUserRole();
 
     if (isLogged) {
+        this.cartService.fetchCartCount();
+     }
+  });
 
-      this.cartService.loadcount$.subscribe(count => {
-        this.cartCount = count;
-      });
-
-      this.cartService.fetchCartCount();
-    }
+  this.cartService.loadcount$.subscribe(count => {
+    this.cartCount = count;
   });
 }
 

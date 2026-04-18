@@ -13,7 +13,7 @@ public class StripeWebhookController : ControllerBase
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<StripeWebhookController> _logger;
 
-    public StripeWebhookController(IConfiguration configuration, IServiceProvider serviceProvider, ILogger<WebhookController> logger)
+    public StripeWebhookController(IConfiguration configuration, IServiceProvider serviceProvider, ILogger<StripeWebhookController> logger)
     {
         _webhookSecret = configuration["StripeSettings:WebhookSecret"];
         _serviceProvider = serviceProvider;

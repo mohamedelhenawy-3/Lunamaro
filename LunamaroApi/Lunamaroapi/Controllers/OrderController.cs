@@ -15,10 +15,10 @@ namespace Lunamaroapi.Controllers
     [Authorize]
     public class OrderController : ControllerBase
     {
-        private readonly IOrder _orderService;
+        private readonly IOrderService _orderService;
 
 
-        public OrderController(IOrder orderServices)
+        public OrderController(IOrderService orderServices)
         {
             _orderService = orderServices;
         }

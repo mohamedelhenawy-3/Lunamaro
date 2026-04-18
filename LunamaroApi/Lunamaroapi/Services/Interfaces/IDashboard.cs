@@ -12,9 +12,6 @@ namespace Lunamaroapi.Services.Interfaces
         public Task<RevenueDTO> GetDailyRevenueSummary();
         public Task<RevenueDTO> GetMonthlyRevenueSummary();
         public Task<RevenueDTO> GetWeaklyRevenueSummary();
-
-
-
         public Task<IEnumerable<OrderRowDTO>> GetRecentOrders();
         public Task<RevenueChartDTO> GetRevenueLast7DaysAsync();
          public Task<MonthlyOrdersDTO> GetMonthlyOrdersAsync();

@@ -187,8 +187,8 @@
     <img [src]="'http://localhost:5218' + item.imageUrl" alt="{{ item.name }}">
     <span class="special-badge">⭐ Special</span>
    
-    <button class="quick-add-btn" (click)="addToCart(item.id)">
-      + Add to Cart
+    <button class="quick-add-btn"  (click)="addtocart(item.id)" [disabled]="item.quantity <= 0">
+      {{ item.quantity >0 ? '+ Add to Cart' : 'Sold Out' }}
     </button>
   </div>
 

@@ -23,11 +23,11 @@ namespace Lunamaroapi.BackgroundServices
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Stock Cleanup Worker running at: {time}", DateTimeOffset.Now);
+                _logger.LogInformation("Stock Cleanup Worker running at: {time}", DateTimeOffset.UtcNow);
                 using (var scoped = _serviceProvider.CreateScope())
                 {
                     var db = scoped.ServiceProvider.GetRequiredService<AppDBContext>();
-                    var thresholdTime = DateTime.Now.AddMinutes(-10);
+                    var thresholdTime = DateTime.UtcNow.AddMinutes(-10);
                     var abandonedOrders = await db.UserOrderHeaders.Include(c => c.OrderItems).Where(o => o.PaymentType == PaymentType.Visa
                     && o.PaymentStatus == "Pending" && o.DateOfOrder < thresholdTime).ToListAsync();
 

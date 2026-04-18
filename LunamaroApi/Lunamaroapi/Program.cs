@@ -10,7 +10,6 @@ using Lunamaroapi.Middlwares;
 using Lunamaroapi.Models;
 using Lunamaroapi.Repositories.Implementations;
 using Lunamaroapi.Repositories.Interfaces;
-using Lunamaroapi.Services;
 using Lunamaroapi.Services.Implements;
 using Lunamaroapi.Services.Interfaces;
 using Lunamaroapi.Validators.ItemValidators;
@@ -34,9 +33,8 @@ namespace Lunamaroapi
             var builder = WebApplication.CreateBuilder(args);
 
             // 1. Configuration
-            StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
-
-            // 2. Services
+            // Use your actual Stripe Secret Key (starts with sk_test_...)
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();            // 2. Services
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAngularApp", policy =>
@@ -72,11 +70,12 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IItemRepository, ItemRepository>();
             builder.Services.AddScoped<IItemService, ItemService>();
             builder.Services.AddScoped<IUserCart, UserCartService>();
-            builder.Services.AddScoped<IOrder, OrderServices>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<ITable, TableServices>();
             builder.Services.AddScoped<IReservation, ReservationServices>();
             builder.Services.AddScoped<IDashboard, DashboardServices>();
             builder.Services.AddScoped<IReview, ReviewsService>();
+            builder.Services.AddScoped<IOrderNotificationService, OrderNotificationService>();
 
             // Background Services
             builder.Services.AddHostedService<OrderEmailBackgroundService>();

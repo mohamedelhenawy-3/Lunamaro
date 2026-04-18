@@ -22,7 +22,7 @@ namespace Lunamaroapi.Repositories.Implementations
         public async Task<List<WeeklyDeal>> GetActiveWeeklyDealsAsync()
         {
             return await _context.WeeklyDeals
-                .Where(d => d.IsActive && d.ExpiryDate > DateTime.Now)
+                .Where(d => d.IsActive && d.ExpiryDate > DateTime.UtcNow)
                 .ToListAsync();
         }
 

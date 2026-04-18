@@ -12,7 +12,7 @@
             public Item Item { get; set; }
 
             public int Quantity { get; set; }
-            public DateTime AddedAt { get; set; } = DateTime.Now;
+            public DateTime AddedAt { get; set; } = DateTime.UtcNow;
        
 
     }

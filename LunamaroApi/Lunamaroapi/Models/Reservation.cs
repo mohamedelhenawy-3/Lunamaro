@@ -14,7 +14,7 @@
         public int Guests { get; set; }
         public string? Notes { get; set; }
         public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation properties
         public ApplicationUser? User { get; set; }

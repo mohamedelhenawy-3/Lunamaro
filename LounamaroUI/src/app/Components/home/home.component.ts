@@ -8,6 +8,8 @@ import { ReviewResponse } from '../../Models/Review/ReviewResponse';
 import { ReviewsService } from '../../Service/Reviews/reviews.service';
 import { specialItem } from '../../Models/item/specialitems';
 import { OffersservicesService } from '../../Service/Offers/offersservices.service';
+import { AddToCart } from '../../Models/add-to-cart';
+import { UsercartService } from '../../Service/UserCart/usercart.service';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +28,8 @@ export class HomeComponent implements OnInit {
 weeklyDeals: any[] = [];
 discountTiers: any[] = [];
 rewards: any[] = [];
-  constructor(private offerService:OffersservicesService,private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService) {}
+  constructor(private offerService:OffersservicesService,private cartsrviceapi:UsercartService
+    ,private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService) {}
 
   ngOnInit(): void {
     this.imgservice.updateImage(this.headerImage);
@@ -49,11 +52,32 @@ rewards: any[] = [];
   );
      // Load special items
     this.itemService.getSpecialItems().subscribe({
-      next: (res) => this.specialItems = res,
+      next: (res) => {
+        this.specialItems = res
+      console.log("res",res);},
       error: (err) => console.error('Failed to load special items', err)
     });
 
   }
+
+
+
+ addtocart(itemid:number){
+  
+    const dto: AddToCart = {     // Use dynamic userId if available
+     itemId: itemid,
+      quantity: 1               // default quantity
+    };
+    this.cartsrviceapi.addToCart(dto).subscribe(() => {
+    this.cartsrviceapi.fetchCartCount(); // No need for userId
+  });
+    }
+
+
+
+
+
+
 loadOffers() {
 
   this.offerService.getWeeklyDeals().subscribe(res => {

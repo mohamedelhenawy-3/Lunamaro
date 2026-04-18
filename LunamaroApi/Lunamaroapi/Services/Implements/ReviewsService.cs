@@ -6,7 +6,7 @@ using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
-namespace Lunamaroapi.Services
+namespace Lunamaroapi.Services.Implements
 {
     public class ReviewsService : IReview
     {
