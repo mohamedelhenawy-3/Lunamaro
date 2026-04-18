@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using Stripe;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -32,14 +33,19 @@ namespace Lunamaroapi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // 1. Configuration
-            // Use your actual Stripe Secret Key (starts with sk_test_...)
+            Log.Logger = new LoggerConfiguration()
+             .MinimumLevel.Information() 
+             .WriteTo.Console()         
+             .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+             .CreateLogger();
+
+            builder.Host.UseSerilog();
             StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();            // 2. Services
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAngularApp", policy =>
                 {
-                    policy.SetIsOriginAllowed(origin => true) // Good for dev, tighten for production
+                    policy.SetIsOriginAllowed(origin => true) 
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -142,7 +148,11 @@ namespace Lunamaroapi
                 });
             });
 
-            var app = builder.Build();
+
+            try
+            {
+                Log.Information("Starting Lunamaro Web API...");
+                var app = builder.Build();
 
             // 3. Seed Roles (Moved after app.Build but before app.Run)
             using (var scope = app.Services.CreateScope())
@@ -159,7 +169,7 @@ namespace Lunamaroapi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseSerilogRequestLogging();
             app.UseCors("AllowAngularApp");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -169,9 +179,18 @@ namespace Lunamaroapi
 
             Console.WriteLine("--> API is running and ready for requests.");
             await app.RunAsync();
-        }
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "The application failed to start correctly.");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
 
-        // Seeding logic extracted to a method for clarity
+
+        }
         private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
             string[] roles = { "Admin", "Customer" };

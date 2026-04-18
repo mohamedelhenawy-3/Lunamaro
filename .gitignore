@@ -5,6 +5,16 @@ bin/
 obj/
 *.dll
 *.exe
+ 
+
+# Ignore appsettings with real secrets
+appsettings.json
+appsettings.Development.json
+
+# Ignore Angular environment files (where you might store API keys)
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
 
 ## User-specific files
 *.user
