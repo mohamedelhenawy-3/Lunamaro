@@ -1,6 +1,4 @@
-﻿
-
-using Lunamaroapi.Data;
+﻿using Lunamaroapi.Data;
 using Lunamaroapi.Models;
 using Microsoft.EntityFrameworkCore;
 

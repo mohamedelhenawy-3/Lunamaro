@@ -1,13 +1,12 @@
-﻿
-using Lunamaroapi.Queues;
+﻿using Lunamaroapi.Queues;
 
 namespace Lunamaroapi.BackgroundServices
 {
-    public class OrderEmailBackgroundService : BackgroundService
+    public class EmailBackgroundService : BackgroundService
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public OrderEmailBackgroundService(IServiceProvider serviceProvider)
+        public EmailBackgroundService(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
@@ -30,8 +29,6 @@ namespace Lunamaroapi.BackgroundServices
                     }
                     else
                     {
-                        // 2. IMPORTANT: If the queue is empty, wait longer before checking again.
-                        // This prevents the "Infinite Hang" and lets the CPU breathe.
                         await Task.Delay(5000, stoppingToken);
                     }
                 }
