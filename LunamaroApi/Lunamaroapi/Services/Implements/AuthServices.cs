@@ -35,12 +35,12 @@ namespace Lunamaroapi.Services.Implements
         {
             var user = await _repo.GetUserByEmail(request.Email);
             if (user == null)
-                throw new Exception("Invalid credentials");
+                throw new Exception("Invalid Email Or Password");
 
             // 2️⃣ Check password
             var validPassword = await _repo.CheckPasswordAsync(user, request.Password);
             if (!validPassword)
-                throw new Exception("Invalid credentials");
+                throw new Exception("Invalid Email Or Password");
 
 
             var token = await _jwtService.GenerateTokensAsync(user,request.DeviceId);

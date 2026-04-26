@@ -1,41 +1,54 @@
-﻿using Lunamaroapi.Services.Interfaces;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Lunamaroapi.Services.Interfaces;
 
 namespace Lunamaroapi.Services.Implements
 {
     public class ImageService : IImageServices
     {
+        private readonly string _connectionString;
+        private readonly string _containerName = "uploads";
 
-        private readonly IWebHostEnvironment _env;
-
-
-        public ImageService(IWebHostEnvironment env)
+        public ImageService(IConfiguration configuration)
         {
-            _env = env;
+            // This looks in every possible place Azure might store the key
+            _connectionString = configuration["AzureStorage:ConnectionString"]
+                             ?? configuration["AzureStorage__ConnectionString"]
+                             ?? configuration.GetConnectionString("AzureStorage")
+                             ?? Environment.GetEnvironmentVariable("AzureStorage__ConnectionString");
+
+            if (string.IsNullOrEmpty(_connectionString))
+            {
+                
+                throw new Exception("CRITICAL: Azure Storage Connection String is missing from ALL sources.");
+            }
         }
+
         public async Task<string> UploadImage(IFormFile file)
         {
-            if (file == null || file.Length == 0) throw new ArgumentException("File is requirezd");
+            if (file == null || file.Length == 0)
+                throw new ArgumentException("File is required.");
 
+            var blobServiceClient = new BlobServiceClient(_connectionString);
+            var containerClient = blobServiceClient.GetBlobContainerClient("$web");
 
-            var uploadsFolder = Path.Combine(_env.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(),"wwwroot"), "uploads");
-            if (!Directory.Exists(uploadsFolder))
-                Directory.CreateDirectory(uploadsFolder);
+            var extension = Path.GetExtension(file.FileName);
+            var cleanFileName = $"{Guid.NewGuid()}{extension}";
+            var blobPath = $"uploads/{cleanFileName}";
 
+            var blobClient = containerClient.GetBlobClient(blobPath);
 
-
-            var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            using var stream = file.OpenReadStream();
+            await blobClient.UploadAsync(stream, new BlobHttpHeaders
             {
-                await file.CopyToAsync(stream);
-            }
+                ContentType = file.ContentType
+            });
 
-            // Return relative path or URL
-            return $"/uploads/{uniqueFileName}";
+           
+            string finalUrl = blobClient.Uri.AbsoluteUri
+                .Replace(".blob.core.windows.net/$web", ".z1.web.core.windows.net");
 
+            return finalUrl;
         }
     }
 }

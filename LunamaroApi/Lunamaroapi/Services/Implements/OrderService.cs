@@ -145,115 +145,122 @@ namespace Lunamaroapi.Services.Implements
 
             if (string.IsNullOrEmpty(userId)) return null;
 
-            // 1. Set Stripe Key (Fixes the "No API key provided" error)
-            StripeConfiguration.ApiKey = _configuration.GetSection("Stripe:SecretKey").Get<string>();
+            StripeConfiguration.ApiKey = _configuration["Stripe:Secretkey"];
 
-            // 2. Duplicate Check
             var keyUsed = await _db.UserOrderHeaders.AnyAsync(o => o.TemporaryKey == dto.TemporaryKey);
             if (keyUsed) return null;
 
-            // 3. Fetch Cart
             var userCart = await _db.UserCarts.Include(c => c.Item).Where(c => c.UserId == userId).ToListAsync();
             if (!userCart.Any()) return null;
 
-            var pricingResult = await _pricingService.CalculateAsync(userCart);
+            // ✅ THIS IS THE FIX
+            var executionStrategy = _db.Database.CreateExecutionStrategy();
 
-            using var transaction = await _db.Database.BeginTransactionAsync();
-            try
+            return await executionStrategy.ExecuteAsync(async () =>
             {
-                // 4. Update Stock Atomically
-                foreach (var cart in userCart)
+                using var transaction = await _db.Database.BeginTransactionAsync();
+                try
                 {
-                    var affected = await _db.Database.ExecuteSqlRawAsync(
-                        @"UPDATE Items SET Quantity = Quantity - @qty WHERE Id = @itemId AND Quantity >= @qty",
-                        new SqlParameter("@qty", cart.Quantity),
-                        new SqlParameter("@itemId", cart.ItemId));
+                    var pricingResult = await _pricingService.CalculateAsync(userCart);
 
-                    if (affected == 0) throw new Exception($"Item {cart.Item.Name} is out of stock.");
-                }
-
-                // 5. Build Order Header
-                var orderHeader = new UserOrderHeader
-                {
-                    TemporaryKey = dto.TemporaryKey,
-                    UserId = userId,
-                    DateOfOrder = DateTime.UtcNow,
-                    FinalTotalAmount = pricingResult.FinalTotal,
-                    PhoneNumber = dto.PhoneNumber,
-                    DeliveryStreetAddress = dto.DeliveryStreetAddress,
-                    City = dto.City,
-                    State = dto.State,
-                    PostalCode = dto.PostalCode,
-                    Name = dto.Name,
-                    OriginalTotalAmount = pricingResult.OriginalTotal,
-                    TierDiscountAmount = pricingResult.TierDiscount,
-                    TotalDiscountAmount = pricingResult.TotalDiscount,
-
-                    PaymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
-                    OrderStatus = OrderStatus.Pending,
-                    PaymentStatus = "Pending",
-                    OrderItems = userCart.Select(c => new OrderItem
+                    foreach (var cart in userCart)
                     {
-                        ItemId = c.ItemId,
-                        Quantity = c.Quantity,
-                        UnitPrice = (pricingResult.FreeProductId == c.ItemId) ? 0 : c.Item.Price,
-                        IsFreeItem = (pricingResult.FreeProductId == c.ItemId)
-                    }).ToList()
-                };
+                        var affected = await _db.Database.ExecuteSqlRawAsync(
+                            @"UPDATE Items SET Quantity = Quantity - @qty WHERE Id = @itemId AND Quantity >= @qty",
+                            new SqlParameter("@qty", cart.Quantity),
+                            new SqlParameter("@itemId", cart.ItemId));
 
-                _db.UserOrderHeaders.Add(orderHeader);
-                await _db.SaveChangesAsync(); // Generates the Order Id for Stripe Metadata
-
-                string? stripeUrl = null;
-
-                if (!dto.IsPayOnDelivery)
-                {
-                    // 6. Stripe Logic (Inside the Transaction)
-                    var options = new SessionCreateOptions
-                    {
-                        SuccessUrl = "http://localhost:4200/payment-success/{CHECKOUT_SESSION_ID}",
-                        CancelUrl = "http://localhost:4200/payment-failed",
-                        LineItems = new List<SessionLineItemOptions>(),
-                        Mode = "payment",
-                        Metadata = new Dictionary<string, string> { { "orderId", orderHeader.Id.ToString() } }
-                    };
-
-                    foreach (var item in orderHeader.OrderItems)
-                    {
-                        options.LineItems.Add(new SessionLineItemOptions
-                        {
-                            PriceData = new SessionLineItemPriceDataOptions
-                            {
-                                UnitAmount = (long)(item.UnitPrice * 100),
-                                Currency = "usd",
-                                ProductData = new SessionLineItemPriceDataProductDataOptions { Name = "Food Item" },
-                            },
-                            Quantity = item.Quantity
-                        });
+                        if (affected == 0) throw new Exception($"Item {cart.Item.Name} is out of stock.");
                     }
 
-                    var service = new SessionService();
-                    var session = await service.CreateAsync(options);
+                    var orderHeader = new UserOrderHeader
+                    {
+                        TemporaryKey = dto.TemporaryKey,
+                        UserId = userId,
+                        DateOfOrder = DateTime.UtcNow,
+                        FinalTotalAmount = pricingResult.FinalTotal,
+                        PhoneNumber = dto.PhoneNumber,
+                        DeliveryStreetAddress = dto.DeliveryStreetAddress,
+                        City = dto.City,
+                        State = dto.State,
+                        PostalCode = dto.PostalCode,
+                        Name = dto.Name,
+                        OriginalTotalAmount = pricingResult.OriginalTotal,
+                        TierDiscountAmount = pricingResult.TierDiscount,
+                        TotalDiscountAmount = pricingResult.TotalDiscount,
+                        PaymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
+                        OrderStatus = OrderStatus.Pending,
+                        PaymentStatus = "Pending",
+                        OrderItems = userCart.Select(c => new OrderItem
+                        {
+                            ItemId = c.ItemId,
+                            Quantity = c.Quantity,
+                            UnitPrice = (pricingResult.FreeProductId == c.ItemId) ? 0 : c.Item.Price,
+                            IsFreeItem = (pricingResult.FreeProductId == c.ItemId)
+                        }).ToList()
+                    };
 
-                    stripeUrl = session.Url;
-                    orderHeader.StripeSessionId = session.Id;
-                    await _db.SaveChangesAsync(); // Update order with SessionId
+                    _db.UserOrderHeaders.Add(orderHeader);
+                    await _db.SaveChangesAsync();
+
+                    string? stripeUrl = null;
+
+                    if (!dto.IsPayOnDelivery)
+                    {
+                        var options = new SessionCreateOptions
+                        {
+                            SuccessUrl = "https://lunamarofrontend.z1.web.core.windows.net/payment-success/{CHECKOUT_SESSION_ID}",
+                            CancelUrl = "https://lunamarofrontend.z1.web.core.windows.net/payment-failed",
+                            LineItems = new List<SessionLineItemOptions>(),
+                            Mode = "payment",
+                            Metadata = new Dictionary<string, string> { { "orderId", orderHeader.Id.ToString() } }
+                        };
+
+                        foreach (var item in orderHeader.OrderItems)
+                        {
+                            options.LineItems.Add(new SessionLineItemOptions
+                            {
+                                PriceData = new SessionLineItemPriceDataOptions
+                                {
+                                    UnitAmount = (long)(item.UnitPrice * 100),
+                                    Currency = "usd",
+                                    ProductData = new SessionLineItemPriceDataProductDataOptions { Name = "Food Item" },
+                                },
+                                Quantity = item.Quantity
+                            });
+                        }
+
+                        var service = new SessionService();
+                        var session = await service.CreateAsync(options);
+                        stripeUrl = session.Url;
+                        orderHeader.StripeSessionId = session.Id;
+                        await _db.SaveChangesAsync();
+                    }
+
+                    _db.UserCarts.RemoveRange(userCart);
+                    await _db.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+
+                    try
+                    {
+                        if (OnOrderPlaced != null)
+                            await OnOrderPlaced.Invoke(orderHeader);
+                    }
+                    catch (Exception emailEx)
+                    {
+                        __Loger.LogError("Email failed: {Message}", emailEx.Message);
+                    }
+
+                    return new OrderResDTO { OrderId = orderHeader.Id, PaymentUrl = stripeUrl };
                 }
-
-                // 7. Clear Cart and Finalize
-                _db.UserCarts.RemoveRange(userCart);
-                await _db.SaveChangesAsync();
-
-                await transaction.CommitAsync();
-
-                return new OrderResDTO { OrderId = orderHeader.Id, PaymentUrl = stripeUrl };
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                __Loger.LogError("[{ReqId}] ORDER FAILED: {Message}", requestId, ex.Message);
-                throw; // Sends a 400/500 to the client so they know it failed
-            }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    __Loger.LogError("[{ReqId}] ORDER FAILED: {Message}", requestId, ex.Message);
+                    throw;
+                }
+            });
         }
 
         public async Task<orderhistorydetails> OrderHistoryDetailsAd(int orderId)

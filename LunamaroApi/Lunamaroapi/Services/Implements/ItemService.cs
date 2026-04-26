@@ -1,6 +1,7 @@
 ﻿
 using Lunamaroapi.Data;
 using Lunamaroapi.DTOs;
+using Lunamaroapi.DTOs.AuthResponse;
 using Lunamaroapi.DTOs.Item;
 using Lunamaroapi.Models;
 using Lunamaroapi.Repositories.Interfaces;
@@ -26,7 +27,7 @@ namespace Lunamaroapi.Services.Implements
 
 
 
-        public async Task<ItemDTO> CreateItemAsync(ItemDTO itemdto)
+        public async Task<SuccessResponseDto> CreateItemAsync(ItemDTO itemdto)
         {
             if (itemdto.File == null || itemdto.File.Length == 0)
                 throw new ArgumentException("Image file required");
@@ -45,15 +46,9 @@ namespace Lunamaroapi.Services.Implements
 
             await _itemRepository.CreateItemAsync(item);
 
-            return new ItemDTO
+            return new SuccessResponseDto
             {
-                Id = item.Id,
-                Name = item.Name,
-                Description = item.Description,
-                Price = item.Price,
-                quantity = item.quantity,
-                CategoryId = item.CategoryId,
-                ImageUrl = item.ImageUrl
+                Message = "Item Added Succefully"
             };
         }
 

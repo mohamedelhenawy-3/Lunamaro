@@ -28,9 +28,28 @@ namespace Lunamaroapi.Controllers
         [HttpPost("CreateItem")]
         [Consumes("multipart/form-data")]
 
-        public async Task<ActionResult> CreateItem([FromForm] ItemDTO itemdto, [FromServices] IValidator<ItemDTO> validator)
+        public async Task<ActionResult> CreateItem([FromForm] ItemDTO itemdto)
         {
-            await validator.ValidateAsync(itemdto, options =>options.IncludeRuleSets("Create"));
+            try
+            {
+                var result = await _IItemService.CreateItemAsync(itemdto);
+
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                // This will send the ACTUAL error message to your browser console
+                return StatusCode(500, new
+                {
+                    message = ex.Message,
+                    inner = ex.InnerException?.Message,
+                    stackTrace = ex.StackTrace
+                });
+            }
+
+
+            //await validator.ValidateAsync(itemdto, options =>options.IncludeRuleSets("Create"));
 
             return Ok(await _IItemService.CreateItemAsync(itemdto));
 

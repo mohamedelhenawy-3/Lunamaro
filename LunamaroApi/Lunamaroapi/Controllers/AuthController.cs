@@ -32,12 +32,17 @@ namespace Lunamaroapi.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginreq)
         {
-
-            var result = await _authServices.LoginAsync(loginreq);
-            return Ok(result);
+            try
+            {
+                var result = await _authServices.LoginAsync(loginreq);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+               
+                return BadRequest(new { message = ex.Message });
+            }
         }
-
-
         [HttpPost("refresh")]
         public async Task<IActionResult> Refresh([FromBody] RefreshRequestDto dto)
         {

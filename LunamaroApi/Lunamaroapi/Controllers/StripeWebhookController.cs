@@ -15,7 +15,7 @@ public class StripeWebhookController : ControllerBase
 
     public StripeWebhookController(IConfiguration configuration, IServiceProvider serviceProvider, ILogger<StripeWebhookController> logger)
     {
-        _webhookSecret = configuration["StripeSettings:WebhookSecret"];
+        _webhookSecret = configuration["Stripe:WebhookSecret"];
         _serviceProvider = serviceProvider;
         _logger = logger;
     }
@@ -40,9 +40,9 @@ public class StripeWebhookController : ControllerBase
                 var session = stripeEvent.Data.Object as Stripe.Checkout.Session;
 
                 // 2. Get the OrderId you stored in the session earlier
-                var orderIdClaim = session.Metadata.ContainsKey("OrderId")
-                                   ? session.Metadata["OrderId"]
-                                   : session.ClientReferenceId;
+                var orderIdClaim = session.Metadata.ContainsKey("orderId")
+                   ? session.Metadata["orderId"]
+                   : session.ClientReferenceId;
 
                 if (!string.IsNullOrEmpty(orderIdClaim))
                 {

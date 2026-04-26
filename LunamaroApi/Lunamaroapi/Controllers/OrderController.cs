@@ -16,10 +16,11 @@ namespace Lunamaroapi.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
+        private readonly IConfiguration _configuration;
 
-
-        public OrderController(IOrderService orderServices)
+        public OrderController(IOrderService orderServices,IConfiguration con)
         {
+            _configuration=con;
             _orderService = orderServices;
         }
         [HttpGet("AllOrders")]
@@ -54,6 +55,19 @@ namespace Lunamaroapi.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderdto dto)
         {
+
+
+            var stripeKey = _configuration["Stripe:Secretkey"]; // lowercase k now
+            if (string.IsNullOrEmpty(stripeKey))
+            {
+                return StatusCode(500, "Stripe Secret Key is missing in Azure Settings");
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return StatusCode(401, "User not identified from JWT");
+            }
             var result = await _orderService.OrderDone(dto);
 
 

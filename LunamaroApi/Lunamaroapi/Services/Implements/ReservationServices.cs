@@ -2,6 +2,7 @@
 using Lunamaroapi.DTOs.ReservationDTO;
 using Lunamaroapi.DTOs.TableDTO;
 using Lunamaroapi.Models;
+using Lunamaroapi.Queues;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
@@ -16,40 +17,47 @@ namespace Lunamaroapi.Services.Implements
     {
         private readonly AppDBContext _db;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly EmailService _smsService;
-        public event ReservationPlaceHandler? orderedEvent;
         public ReservationServices(AppDBContext db, IHttpContextAccessor httpContextAccessor,EmailService _sendmail)
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
-            _smsService = _sendmail;
-            orderedEvent += SendReservationEmail;
+        
         }
 
         public async Task<ReservationDto> Add(ReservationDto dto)
         {
+            if (dto.StartTime < DateTime.UtcNow.AddHours(1))
+                throw new InvalidOperationException("Reservations must be made at least 1 hour in advance.");
 
-            var yable = await _db.Tables.FindAsync(dto.TableId);
+            if (dto.StartTime.Hour < 12 || dto.EndTime.Hour > 23)
+                throw new InvalidOperationException("Lunamaro is open from 12:00 PM to 11:00 PM.");
 
+            var table = await _db.Tables.FindAsync(dto.TableId);
+            if (table == null) throw new KeyNotFoundException("Table not found.");
 
-            if (yable == null) throw new Exception("Table Not Found");
+            if (dto.Guests > table.Capacity)
+                throw new ArgumentException($"Table capacity is {table.Capacity}.");
 
-            if(dto.Guests > yable.Capacity) throw new Exception($"The selected table cannot accommodate {dto.Guests} guests. Maximum capacity is {yable.Capacity}.");
+         
+            if (table.Capacity - dto.Guests > 4 && table.Capacity > 6)
+                throw new ArgumentException("This table is reserved for larger groups. Please choose a smaller table.");
 
+            if ((dto.EndTime - dto.StartTime).TotalHours > 3)
+                throw new ArgumentException("Maximum reservation duration is 3 hours.");
 
-
-            // Validate time range
-            if (dto.EndTime <= dto.StartTime)
-                throw new ArgumentException("End time must be after start time");
-
-
-
-            // Check availability
+            // 6. AVAILABILITY
             var isAvailable = await IsAvailableAsync(dto.TableId, dto.StartTime, dto.EndTime);
             if (!isAvailable)
-                throw new InvalidOperationException("Table not available at this time");
+                throw new InvalidOperationException("Table is already booked or being sanitized during this window.");
 
-            // Create model
+            var alreadyHasBooking = await _db.Reservations.AnyAsync(r =>
+                r.UserId == GetCurrentUserId() &&
+                r.StartTime.Date == dto.StartTime.Date &&
+                r.Status != ReservationStatus.Cancelled);
+
+            if (alreadyHasBooking)
+                throw new InvalidOperationException("You already have a reservation for this day.");
+
             var reservation = new Reservation
             {
                 TableId = dto.TableId,
@@ -58,27 +66,27 @@ namespace Lunamaroapi.Services.Implements
                 Guests = dto.Guests,
                 Notes = dto.Notes,
                 CreatedAt = DateTime.UtcNow,
-                UserId = GetCurrentUserId()
+                UserId = GetCurrentUserId(),
+                Status = ReservationStatus.Pending // Real systems use "Pending" for staff review
             };
 
             _db.Reservations.Add(reservation);
             await _db.SaveChangesAsync();
 
-
             var user = await _db.Users.FindAsync(reservation.UserId);
-            if (orderedEvent != null)
-                await orderedEvent.Invoke(user.Email, reservation);
-
-            return new ReservationDto
+            if (user != null && !string.IsNullOrEmpty(user.Email))
             {
-                TableId = reservation.TableId,
-                StartTime = reservation.StartTime,
-                EndTime = reservation.EndTime,
-                Guests = reservation.Guests,
-                Notes = reservation.Notes
-            };
-        }
+                string body = BuildReservationPlacedTemplate(user.FullName, reservation);
+                EmailQueue.Queue.Enqueue((
+                    user.Email,
+                    "Lunamaro Reservation Confirmed",
+                    body
+                   
+                ));
+            }
 
+            return dto;
+        }
         public async Task DeleteAsync(int id)
         {
             var res = await _db.Reservations.FindAsync(id);
@@ -134,18 +142,19 @@ namespace Lunamaroapi.Services.Implements
         {
             return await _db.Reservations.FirstOrDefaultAsync(x => x.Id == id);
         }
-
-        public async Task<bool> IsAvailableAsync(int TableId, DateTime start, DateTime end)
+        public async Task<bool> IsAvailableAsync(int tableId, DateTime start, DateTime end)
         {
-            return !await _db.Reservations.AnyAsync(r =>
-                         r.TableId == TableId  &&
-                         r.Status != ReservationStatus.Cancelled
-                         && r.Status != ReservationStatus.Rejected
-                         // Ignore rejected
-                         &&(start >= r.StartTime && start < r.EndTime || end >  r.StartTime && end  <= r.EndTime || start <= r.StartTime && end >= r.EndTime )
-                     );
-        }
+            var startWithBuffer = start.AddMinutes(-15);
+            var endWithBuffer = end.AddMinutes(15);
 
+            return !await _db.Reservations.AnyAsync(r =>
+                r.TableId == tableId &&
+                r.Status != ReservationStatus.Cancelled &&
+                r.Status != ReservationStatus.Rejected &&
+                start < r.EndTime.AddMinutes(15) &&
+                end > r.StartTime.AddMinutes(-15)
+            );
+        }
         public Task SaveAsync()
         {
             throw new NotImplementedException();
@@ -168,22 +177,21 @@ namespace Lunamaroapi.Services.Implements
             await _db.SaveChangesAsync(); // ✅ Use async version
         }
 
-        public async Task<IEnumerable<UserReservationDTO>> GetReservationByUser(string UserId)
+        public async Task<IEnumerable<UserReservationDTO>> GetReservationByUser(string userId)
         {
-            string UserID = GetCurrentUserId();
-            var reservation = await _db.Reservations.Where(r => r.UserId == UserId).Include(r => r.Table).Select(r => new UserReservationDTO
-            {
-                Id = r.Id,
-                TableNumber = r.Table.TableNumber,
-                StartTime = r.StartTime,
-                EndTime = r.EndTime,
-                Status= r.Status
-                
-            }
-                ).ToListAsync();
-            return reservation;
+            return await _db.Reservations
+                .Where(r => r.UserId == userId)
+                .Include(r => r.Table)
+                .Select(r => new UserReservationDTO
+                {
+                    Id = r.Id,
+                    TableNumber = r.Table.TableNumber,
+                    StartTime = r.StartTime,
+                    EndTime = r.EndTime,
+                    Status = r.Status
+                })
+                .ToListAsync();
         }
-
         public async Task<bool> CancelReservation(int ReservationId, string userid)
         {
              var reservation = await _db.Reservations
@@ -226,20 +234,34 @@ namespace Lunamaroapi.Services.Implements
 
 
 
-        public async Task SendReservationEmail(string to, Reservation reservation)
+        
+
+        private string BuildReservationPlacedTemplate(string to, Reservation reservation)
         {
-            var message = $@"
-        Hi,
-        Your reservation is confirmed!
+            return $@"
+<html>
+<head>
+    <style>
+        body {{ font-family: Arial; }}
+        .container {{ max-width:600px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; }}
+        .header {{ background:#4CAF50; color:white; padding:10px; text-align:center; }}
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h2>Order Confirmation</h2>
+        </div>
+        <p>Hi {to},</p>
+         Your reservation is confirmed!
         Table: {reservation.TableId}
         StartTime: {reservation.StartTime}
         EndTime: {reservation.EndTime}
         Guests: {reservation.Guests}
-    ";
-
-            await _smsService.SendEmailAsync(to, "Reservation Confirmation", message);
+        
+    </div>
+</body>
+</html>";
         }
-
-
     }
 }

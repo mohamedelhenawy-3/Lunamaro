@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Stripe;
+using System;
 using System.Text;
 using System.Text.Json.Serialization;
 using CategoryService = Lunamaroapi.Services.Implements.CategoryService;
@@ -40,21 +41,29 @@ namespace Lunamaroapi
              .CreateLogger();
 
             builder.Host.UseSerilog();
-            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();            // 2. Services
+            // CORRECT
+            StripeConfiguration.ApiKey = builder.Configuration["Stripe:Secretkey"];
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAngularApp", policy =>
+                options.AddPolicy("AllowAll", policy =>
                 {
-                    policy.SetIsOriginAllowed(origin => true) 
-                          .AllowAnyHeader()
-                          .AllowAnyMethod()
-                          .AllowCredentials();
+                    policy.WithOrigins(
+                        "http://localhost:4200",
+                        "https://lunamarofrontend.z1.web.core.windows.net"
+                    )
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
                 });
             });
 
             builder.Services.AddDbContext<AppDBContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlServerOptionsAction: sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(); // Add this line
+        }));
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
@@ -71,6 +80,8 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IPricingService, PricingService>();
             builder.Services.AddScoped<JwtTokenGenerator>();
             builder.Services.AddScoped<IImageServices, ImageService>();
+            builder.Services.AddSingleton<IImageServices>(sp =>
+    new ImageService(builder.Configuration));
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IItemRepository, ItemRepository>();
@@ -84,7 +95,7 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IOrderNotificationService, OrderNotificationService>();
 
             // Background Services
-            builder.Services.AddHostedService<OrderEmailBackgroundService>();
+           builder.Services.AddHostedService<EmailBackgroundService>();
             // If you uncomment this, make sure StockCleanupWorker uses 'await Task.Yield()' at the start
             builder.Services.AddHostedService<StockCleanupWorker>();
 
@@ -153,9 +164,25 @@ namespace Lunamaroapi
             {
                 Log.Information("Starting Lunamaro Web API...");
                 var app = builder.Build();
-
-            // 3. Seed Roles (Moved after app.Build but before app.Run)
-            using (var scope = app.Services.CreateScope())
+                app.Use(async (context, next) =>
+                {
+                    try
+                    {
+                        await next();
+                    }
+                    catch (Exception ex)
+                    {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsJsonAsync(new
+                        {
+                            Error = ex.Message,
+                            Inner = ex.InnerException?.Message,
+                            Stack = ex.StackTrace
+                        });
+                    }
+                });
+                // 3. Seed Roles (Moved after app.Build but before app.Run)
+                using (var scope = app.Services.CreateScope())
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 await SeedRolesAsync(roleManager);
@@ -164,14 +191,16 @@ namespace Lunamaroapi
             // 4. Middleware Pipeline
             app.UseMiddleware<GlobalExceptionMiddleware>();
 
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
-            app.UseSerilogRequestLogging();
-            app.UseCors("AllowAngularApp");
-            app.UseHttpsRedirection();
+                app.UseSerilogRequestLogging();
+                app.UseCors("AllowAll");
+                app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();

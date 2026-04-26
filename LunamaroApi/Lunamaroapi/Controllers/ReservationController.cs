@@ -90,24 +90,20 @@ namespace Lunamaroapi.Controllers
             return Ok(new { message = "Status updated successfully" });
         }
 
-  
-[Authorize] // ✅ Make sure user is logged in
-    [HttpGet("myreservations")]
-    public async Task<IActionResult> GetUserReservations()
-    {
-        // Get user ID from the JWT token
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        if (string.IsNullOrEmpty(userId))
-            return Unauthorized(new { message = "User not authorized" });
+        [Authorize]
+        [HttpGet("myreservations")]
+        public async Task<IActionResult> GetUserReservations()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        var reservations = await _reservationService.GetReservationByUser(userId);
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized(new { message = "User not authorized" });
 
-        if (!reservations.Any())
-            return NotFound(new { message = "No reservations found for this user." });
+            var reservations = await _reservationService.GetReservationByUser(userId);
 
-        return Ok(reservations);
-    }
+            return Ok(reservations);
+        }
 
         [HttpDelete("cancel")]
         public async Task<IActionResult> CancelReservation([FromBody] CancelReservationDTO dto)

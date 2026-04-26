@@ -1,7 +1,6 @@
 ﻿using Azure.Core;
 using Lunamaroapi.DTOs.AuthResponse;
 using Lunamaroapi.Helper;
-using Lunamaroapi.Migrations;
 using Lunamaroapi.Models;
 using Lunamaroapi.Repositories.Interfaces;
 using Lunamaroapi.Services.Interfaces;
