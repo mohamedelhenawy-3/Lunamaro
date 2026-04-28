@@ -93,9 +93,10 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IDashboard, DashboardServices>();
             builder.Services.AddScoped<IReview, ReviewsService>();
             builder.Services.AddScoped<IOrderNotificationService, OrderNotificationService>();
-
-            // Background Services
-           builder.Services.AddHostedService<EmailBackgroundService>();
+            builder.Services.AddHttpClient();
+            // MUST HAVE for Facebook calls later
+                                              // Background Services
+            builder.Services.AddHostedService<EmailBackgroundService>();
             // If you uncomment this, make sure StockCleanupWorker uses 'await Task.Yield()' at the start
             builder.Services.AddHostedService<StockCleanupWorker>();
 
@@ -103,6 +104,8 @@ namespace Lunamaroapi
             builder.Services.AddSingleton<SmsService>();
             builder.Services.Configure<ESetting>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.AddSingleton<EmailService>();
+            builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
+            builder.Services.AddScoped<IIdentityService, Services.Implements.IdentityService>();
 
             // Validation
             builder.Services.AddFluentValidationAutoValidation();
@@ -199,6 +202,11 @@ namespace Lunamaroapi
                 app.UseSwagger();
                 app.UseSwaggerUI();
                 app.UseSerilogRequestLogging();
+                app.Use(async (context, next) =>
+                {
+                    context.Response.Headers.Add("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+                    await next();
+                });
                 app.UseCors("AllowAll");
                 app.UseHttpsRedirection();
             app.UseStaticFiles();

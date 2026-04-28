@@ -92,6 +92,7 @@ namespace Lunamaroapi.Services.Implements
                 FullName = dto.FullName
             };
 
+
             var result = await _repo.CreateUserAsync(user, dto.Password);
 
             if (!result.Succeeded)
