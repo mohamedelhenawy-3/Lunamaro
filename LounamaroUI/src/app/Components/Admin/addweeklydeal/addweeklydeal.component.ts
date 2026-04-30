@@ -70,5 +70,5 @@ export class AddweeklydealComponent {
   }
 
   cancel() {
-this.router.navigate(['/admin/weekly-deals']);}
+this.router.navigate(['Admin/offers']);}
 }

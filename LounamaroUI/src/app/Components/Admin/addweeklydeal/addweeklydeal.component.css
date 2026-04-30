@@ -7,16 +7,57 @@
   color: #fff;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
-  border: none;
-  margin-top: 5px;
+  /* Darker background than the container to create depth */
+  background: rgba(15, 28, 46, 0.8); 
+  /* Subtle border that glows when you click */
+  border: 1px solid rgba(239, 176, 54, 0.2); 
+  color: #fff;
+  margin-top: 8px;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Focus effect: When the user clicks to type */
+input:focus {
+  border-color: #EFB036;
+  background: #0f1c2e;
+  box-shadow: 0 0 10px rgba(239, 176, 54, 0.15);
+}
+
+/* Style for the date and number icons */
+input::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Makes the calendar icon white */
+  cursor: pointer;
+}
+
+/* Style the placeholder text */
+input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+}
+
+/* Label styling */
+.form-group label {
+  color: #EFB036;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Selected Product Box */
+.selected {
+  background: rgba(239, 176, 54, 0.1);
+  border-left: 4px solid #EFB036;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-size: 0.9rem;
 }
 
 .dropdown {
@@ -53,5 +94,11 @@ button:first-child {
 }
 
 .cancel {
-  background: #ccc;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cancel:hover {
+  background: rgba(255, 255, 255, 0.2);
 }

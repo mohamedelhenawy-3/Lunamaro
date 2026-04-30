@@ -108,14 +108,7 @@ namespace Lunamaroapi.Services.Implements
 
         public async Task<IEnumerable<ExplorePopItems>> ExplorePopularItems()
         {
-            var items = await _itemRepository.ExplorePopularItems();
-            return items.Select(i => new ExplorePopItems
-            {
-                Name = i.Name,
-                Description = i.Description,
-                Price = i.Price,
-                ImageUrl = i.ImageUrl
-            });
+            return await _itemRepository.ExplorePopularItems();
         }
 
         public async  Task<IEnumerable<ItemDTO>> GetItemByCatId(int catId)

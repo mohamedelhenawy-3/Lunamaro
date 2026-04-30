@@ -17,7 +17,10 @@
   overflow: hidden; /* Clips the image to the border radius */
   box-shadow: 0 40px 100px rgba(0,0,0,0.5);
 }
+.op{
+    background: #0f1c2e;
 
+}
 /* IMAGE SIDE */
 .image-side {
   flex: 1;

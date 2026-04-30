@@ -1,4 +1,5 @@
 ﻿using Lunamaroapi.Data;
+using Lunamaroapi.DTOs;
 using Lunamaroapi.Models;
 using Lunamaroapi.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -80,19 +81,39 @@ namespace Lunamaroapi.Repositories.Implementations
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Item>> ExplorePopularItems()
+        //public async Task<IEnumerable<Item>> ExplorePopularItems()
+        //{
+        //    var popularItems = await _context.OrderItems
+        //        .GroupBy(oi => new { oi.ItemId, oi.Item.Name, oi.Item.Description, oi.Item.Price, oi.Item.ImageUrl })
+        //        .Select(g => new Item
+        //        {
+        //            Id = g.Key.ItemId,
+        //            Name = g.Key.Name,
+        //            Description = g.Key.Description,
+        //            Price = g.Key.Price,
+        //            ImageUrl = g.Key.ImageUrl
+        //        })
+        //        .OrderByDescending(x => _context.OrderItems.Where(o => o.ItemId == x.Id)
+        //        .Sum(o => o.Quantity))
+        //        .Take(5)
+        //        .ToListAsync();   //Then sort by total quantity ❌ (problem here)
+
+        //    return popularItems;
+        //}
+        public async Task<IEnumerable<ExplorePopItems>> ExplorePopularItems()
         {
             var popularItems = await _context.OrderItems
-                .GroupBy(oi => new { oi.ItemId, oi.Item.Name, oi.Item.Description, oi.Item.Price, oi.Item.ImageUrl })
-                .Select(g => new Item
+                .GroupBy(x => x.ItemId)
+                .Select(g => new ExplorePopItems
                 {
-                    Id = g.Key.ItemId,
-                    Name = g.Key.Name,
-                    Description = g.Key.Description,
-                    Price = g.Key.Price,
-                    ImageUrl = g.Key.ImageUrl
+                    Id = g.Key,
+                    Name = g.Select(x => x.Item.Name).FirstOrDefault(),
+                    Description = g.Select(x => x.Item.Description).FirstOrDefault(),
+                    Price = g.Select(x => x.Item.Price).FirstOrDefault(),
+                    ImageUrl = g.Select(x => x.Item.ImageUrl).FirstOrDefault(),
+                    quantity = g.Sum(x => x.Item.quantity) 
                 })
-                .OrderByDescending(x => _context.OrderItems.Where(o => o.ItemId == x.Id).Sum(o => o.Quantity))
+                .OrderByDescending(x => x.quantity)
                 .Take(5)
                 .ToListAsync();
 

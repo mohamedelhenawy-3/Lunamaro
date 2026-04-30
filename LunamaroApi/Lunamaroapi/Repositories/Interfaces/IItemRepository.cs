@@ -17,7 +17,7 @@ namespace Lunamaroapi.Repositories.Interfaces
 
         Task<IEnumerable<Item>> GetItemByCatId(int catId);
         Task<IEnumerable<Item>> ExploreItemMenu();
-        Task<IEnumerable<Item>> ExplorePopularItems();
+        Task<IEnumerable<ExplorePopItems>> ExplorePopularItems();
         Task<bool> Exists(int id);
     }
 }

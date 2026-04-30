@@ -26,38 +26,52 @@ namespace Lunamaroapi.Services.Implements
 
         public async Task<ReservationDto> Add(ReservationDto dto)
         {
+            var userId = GetCurrentUserId();
+
+            if (string.IsNullOrEmpty(userId))
+                throw new UnauthorizedAccessException("User not logged in.");
+
+
+            var openingTime = dto.StartTime.Date.AddHours(9);
+            var closingTime = dto.StartTime.Date.AddHours(23).AddMinutes(59);
+
+            if (dto.StartTime < openingTime || dto.EndTime > closingTime)
+            {
+                throw new InvalidOperationException(
+                    "Reservations allowed only between 09:00 AM and 12:00 AM."
+                );
+            }
+            if (dto.StartTime.Minute % 30 != 0 || dto.EndTime.Minute % 30 != 0)
+                throw new InvalidOperationException("Reservations must be on 00 or 30 minutes.");
+
+            
             if (dto.StartTime < DateTime.UtcNow.AddHours(1))
-                throw new InvalidOperationException("Reservations must be made at least 1 hour in advance.");
+                throw new InvalidOperationException("Must book at least 1 hour in advance.");
 
-            if (dto.StartTime.Hour < 12 || dto.EndTime.Hour > 23)
-                throw new InvalidOperationException("Lunamaro is open from 12:00 PM to 11:00 PM.");
+            var duration = (dto.EndTime - dto.StartTime).TotalMinutes;
 
+            if (duration <= 0)
+                throw new ArgumentException("Invalid time range.");
+
+            if (duration > 120)
+                throw new ArgumentException("Max reservation is 2 hours.");
+
+       
             var table = await _db.Tables.FindAsync(dto.TableId);
-            if (table == null) throw new KeyNotFoundException("Table not found.");
+
+            if (table == null)
+                throw new KeyNotFoundException("Table not found.");
 
             if (dto.Guests > table.Capacity)
-                throw new ArgumentException($"Table capacity is {table.Capacity}.");
+                throw new ArgumentException("Too many guests for this table.");
 
-         
-            if (table.Capacity - dto.Guests > 4 && table.Capacity > 6)
-                throw new ArgumentException("This table is reserved for larger groups. Please choose a smaller table.");
-
-            if ((dto.EndTime - dto.StartTime).TotalHours > 3)
-                throw new ArgumentException("Maximum reservation duration is 3 hours.");
-
-            // 6. AVAILABILITY
+       
             var isAvailable = await IsAvailableAsync(dto.TableId, dto.StartTime, dto.EndTime);
+
             if (!isAvailable)
-                throw new InvalidOperationException("Table is already booked or being sanitized during this window.");
+                throw new InvalidOperationException("Table already booked.");
 
-            var alreadyHasBooking = await _db.Reservations.AnyAsync(r =>
-                r.UserId == GetCurrentUserId() &&
-                r.StartTime.Date == dto.StartTime.Date &&
-                r.Status != ReservationStatus.Cancelled);
-
-            if (alreadyHasBooking)
-                throw new InvalidOperationException("You already have a reservation for this day.");
-
+      
             var reservation = new Reservation
             {
                 TableId = dto.TableId,
@@ -66,27 +80,16 @@ namespace Lunamaroapi.Services.Implements
                 Guests = dto.Guests,
                 Notes = dto.Notes,
                 CreatedAt = DateTime.UtcNow,
-                UserId = GetCurrentUserId(),
-                Status = ReservationStatus.Pending // Real systems use "Pending" for staff review
+                UserId = userId,
+                Status = ReservationStatus.Pending
             };
 
             _db.Reservations.Add(reservation);
             await _db.SaveChangesAsync();
 
-            var user = await _db.Users.FindAsync(reservation.UserId);
-            if (user != null && !string.IsNullOrEmpty(user.Email))
-            {
-                string body = BuildReservationPlacedTemplate(user.FullName, reservation);
-                EmailQueue.Queue.Enqueue((
-                    user.Email,
-                    "Lunamaro Reservation Confirmed",
-                    body
-                   
-                ));
-            }
-
             return dto;
         }
+
         public async Task DeleteAsync(int id)
         {
             var res = await _db.Reservations.FindAsync(id);
@@ -231,10 +234,24 @@ namespace Lunamaroapi.Services.Implements
                 Location = t.Location
             }).ToList();
         }
+        public List<string> GetAvailableTimeSlots()
+        {
+            var slots = new List<string>();
+
+            var start = DateTime.Today.AddHours(9);
+            var end = DateTime.Today.AddHours(12);
+
+            while (start <= end)
+            {
+                slots.Add(start.ToString("hh:mm tt"));
+                start = start.AddMinutes(30);
+            }
+
+            return slots;
+        }
 
 
 
-        
 
         private string BuildReservationPlacedTemplate(string to, Reservation reservation)
         {
@@ -263,5 +280,7 @@ namespace Lunamaroapi.Services.Implements
 </body>
 </html>";
         }
+
+      
     }
 }
