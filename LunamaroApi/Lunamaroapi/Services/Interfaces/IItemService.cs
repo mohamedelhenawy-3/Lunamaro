@@ -6,7 +6,16 @@ namespace Lunamaroapi.Services.Interfaces
 {
     public interface IItemService
     {
-        Task<IEnumerable<ItemDTO>> GetAllItemsAsync();
+
+
+        Task<object> GetPaginatedMenuAsync(int page, int pageSize, int? categoryId = null);
+        Task<object> GetAdminItems(int page, int pageSize, int? categoryId = null, string? search = null);
+        
+
+
+
+
+            Task<IEnumerable<ItemDTO>> GetAllItemsAsync();
         Task<IEnumerable<SpecialItems>> GetSpecialItems();
         Task<ReturnedItemDTO?> GetItemByIdAsync(int id);
         Task<SuccessResponseDto> CreateItemAsync(ItemDTO itemdto);
@@ -14,6 +23,7 @@ namespace Lunamaroapi.Services.Interfaces
         Task DeleteItemAsync(int id);
         Task<IEnumerable<ItemDTO>> GetItemByCatId(int catId);
         Task<IEnumerable<ExplorePopItems>> ExploreItemMenu();
+        Task<object> GetPaginatedMenuAsync(int page, int pageSize);
         Task<IEnumerable<ExplorePopItems>> ExplorePopularItems();
         Task<bool> Exists(int id);
     }
