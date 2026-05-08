@@ -1,4 +1,6 @@
-﻿namespace Lunamaroapi.Models
+﻿using Lunamaroapi.Models.Cart;
+
+namespace Lunamaroapi.Models
 {
     public class UserCart
     {
@@ -13,7 +15,9 @@
 
             public int Quantity { get; set; }
             public DateTime AddedAt { get; set; } = DateTime.UtcNow;
-       
+            public ICollection<UserCartAddOn> AddOns { get; set; } = new List<UserCartAddOn>();
+
+
 
     }
 }

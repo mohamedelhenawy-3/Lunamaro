@@ -25,7 +25,14 @@ namespace Lunamaroapi.Services.Implements
 
             foreach (var item in cartItems)
             {
-                decimal unitPrice = item.Item.Price;
+                decimal basePrice = item.Item.Price;
+
+                decimal addOnsTotal = item.AddOns != null
+                    ? item.AddOns.Sum(a => a.AddOn.Price)
+                    : 0;
+
+                decimal unitPrice = basePrice + addOnsTotal;
+
                 decimal itemOriginal = unitPrice * item.Quantity;
 
                 originalTotal += itemOriginal;
@@ -38,7 +45,6 @@ namespace Lunamaroapi.Services.Implements
                     offerDiscount += discountPerUnit * item.Quantity;
                 }
             }
-
             decimal afterOfferTotal = originalTotal - offerDiscount;
 
             decimal tierDiscount = GetTierDiscount(afterOfferTotal, tiers);

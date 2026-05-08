@@ -5,6 +5,8 @@ namespace Lunamaroapi.Services.Interfaces
     public interface IRecommendationService
     {
         Task<List<Item>> GetSuggestions();
+        Task<List<Item>> GetSuggestionsV2();
+
 
     }
 }

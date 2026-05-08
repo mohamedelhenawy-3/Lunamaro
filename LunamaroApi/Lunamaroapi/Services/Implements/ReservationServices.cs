@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Security.Claims;
+using Twilio.TwiML.Messaging;
 
 namespace Lunamaroapi.Services.Implements
 {
@@ -15,13 +16,16 @@ namespace Lunamaroapi.Services.Implements
 
     public class ReservationServices : IReservation
     {
+        private readonly EmailService _emailService;
+
+
         private readonly AppDBContext _db;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public ReservationServices(AppDBContext db, IHttpContextAccessor httpContextAccessor,EmailService _sendmail)
+        public ReservationServices(AppDBContext db, EmailService emailService, IHttpContextAccessor httpContextAccessor,EmailService _sendmail)
         {
             _db = db;
             _httpContextAccessor = httpContextAccessor;
-        
+            _emailService = emailService;
         }
 
         public async Task<ReservationDto> Add(ReservationDto dto)
@@ -170,14 +174,44 @@ namespace Lunamaroapi.Services.Implements
 
         public async Task UpdateStatusAsync(UpdateStatusDto dto, int id)
         {
-            var reservation = await _db.Reservations.FindAsync(id);
+            var reservation = await _db.Reservations
+                .Include(r => r.User)
+                .Include(r => r.Table)
+                .FirstOrDefaultAsync(r => r.Id == id);
 
             if (reservation == null)
                 throw new Exception("Reservation not found");
 
+            var previousStatus = reservation.Status;
             reservation.Status = dto.Status;
+            await _db.SaveChangesAsync();
 
-            await _db.SaveChangesAsync(); // ✅ Use async version
+            if (reservation.User != null && !string.IsNullOrEmpty(reservation.User.Email))
+            {
+                if (dto.Status == ReservationStatus.Approved && previousStatus != ReservationStatus.Approved)
+                {
+                    EmailQueue.Queue.Enqueue((
+                        reservation.User.Email,
+                        "Your Lunamaro Reservation is Approved!",
+                        BuildReservationConfirmationEmail(
+                            reservation.User.FullName ?? reservation.User.Email,
+                            reservation,
+                            reservation.Table?.TableNumber ?? reservation.TableId.ToString()
+                        )
+                    ));
+                }
+                else if (dto.Status == ReservationStatus.Rejected && previousStatus != ReservationStatus.Rejected)
+                {
+                    EmailQueue.Queue.Enqueue((
+                        reservation.User.Email,
+                        "Your Lunamaro Reservation Could Not Be Confirmed",
+                        BuildReservationRejectedEmail(
+                            reservation.User.FullName ?? reservation.User.Email,
+                            reservation
+                        )
+                    ));
+                }
+            }
         }
 
         public async Task<IEnumerable<UserReservationDTO>> GetReservationByUser(string userId)
@@ -253,34 +287,153 @@ namespace Lunamaroapi.Services.Implements
 
 
 
-        private string BuildReservationPlacedTemplate(string to, Reservation reservation)
+        private string BuildReservationConfirmationEmail(
+          string userName,
+          Reservation reservation,
+          string tableNumber)
         {
             return $@"
+<!DOCTYPE html>
 <html>
 <head>
-    <style>
-        body {{ font-family: Arial; }}
-        .container {{ max-width:600px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; }}
-        .header {{ background:#4CAF50; color:white; padding:10px; text-align:center; }}
-    </style>
+  <meta charset='UTF-8'>
+  <style>
+    body {{ margin:0; padding:0; background:#0f1c2e; font-family:'Segoe UI',Arial,sans-serif; }}
+    .wrapper {{ max-width:600px; margin:40px auto; background:#1a2e46; border-radius:16px; overflow:hidden; border:1px solid rgba(239,176,54,0.2); }}
+    .header {{ background:#1a2e46; padding:40px 40px 20px; text-align:center; border-bottom:1px solid rgba(239,176,54,0.2); }}
+    .logo {{ font-size:2rem; font-weight:800; color:#EFB036; letter-spacing:-1px; }}
+    .badge {{ display:inline-block; background:rgba(52,211,153,0.15); color:#34d399; border:1px solid rgba(52,211,153,0.3); padding:6px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; margin-top:12px; }}
+    .body {{ padding:35px 40px; }}
+    .greeting {{ color:#ffffff; font-size:1.1rem; margin-bottom:20px; }}
+    .detail-card {{ background:rgba(255,255,255,0.04); border:1px solid rgba(239,176,54,0.15); border-radius:12px; padding:24px; margin:20px 0; }}
+    .detail-row {{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.06); }}
+    .detail-row:last-child {{ border-bottom:none; }}
+    .detail-label {{ color:rgba(255,255,255,0.5); font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; }}
+    .detail-value {{ color:#EFB036; font-weight:600; font-size:0.95rem; }}
+    .note {{ color:rgba(255,255,255,0.6); font-size:0.88rem; line-height:1.6; margin-top:20px; }}
+    .footer {{ background:rgba(0,0,0,0.2); padding:20px 40px; text-align:center; color:rgba(255,255,255,0.3); font-size:0.8rem; }}
+    .gold {{ color:#EFB036; }}
+  </style>
 </head>
 <body>
-    <div class='container'>
-        <div class='header'>
-            <h2>Order Confirmation</h2>
-        </div>
-        <p>Hi {to},</p>
-         Your reservation is confirmed!
-        Table: {reservation.TableId}
-        StartTime: {reservation.StartTime}
-        EndTime: {reservation.EndTime}
-        Guests: {reservation.Guests}
-        
+  <div class='wrapper'>
+    <div class='header'>
+      <div class='logo'>Lunamaro</div>
+      <div class='badge'>✓ Reservation Confirmed</div>
     </div>
+
+    <div class='body'>
+      <p class='greeting'>Dear <strong class='gold'>{userName}</strong>,</p>
+      <p style='color:rgba(255,255,255,0.7);line-height:1.7;'>
+        Your table has been successfully reserved. We look forward to welcoming you!
+      </p>
+
+      <div class='detail-card'>
+        <div class='detail-row'>
+          <span class='detail-label'>Table</span>
+          <span class='detail-value'>Table {tableNumber}</span>
+        </div>
+        <div class='detail-row'>
+          <span class='detail-label'>Date</span>
+          <span class='detail-value'>{reservation.StartTime:dddd, MMMM dd yyyy}</span>
+        </div>
+        <div class='detail-row'>
+          <span class='detail-label'>Time</span>
+          <span class='detail-value'>{reservation.StartTime:hh:mm tt} — {reservation.EndTime:hh:mm tt}</span>
+        </div>
+        <div class='detail-row'>
+          <span class='detail-label'>Guests</span>
+          <span class='detail-value'>{reservation.Guests} {(reservation.Guests == 1 ? "Guest" : "Guests")}</span>
+        </div>
+        {(string.IsNullOrEmpty(reservation.Notes) ? "" : $@"
+        <div class='detail-row'>
+          <span class='detail-label'>Notes</span>
+          <span class='detail-value'>{reservation.Notes}</span>
+        </div>")}
+      </div>
+
+      <p class='note'>
+        📍 <strong style='color:#fff;'>Ahmed Oraby Street, Giza, Egypt</strong><br>
+        📞 +20 015 5660 59<br><br>
+        If you need to cancel or modify your reservation, please contact us at least
+        <strong style='color:#EFB036;'>2 hours before</strong> your scheduled time.
+      </p>
+    </div>
+
+    <div class='footer'>
+      © {DateTime.Now.Year} Lunamaro Restaurant. All rights reserved.<br>
+      This is an automated confirmation email.
+    </div>
+  </div>
 </body>
 </html>";
         }
 
-      
+        private string BuildReservationRejectedEmail(string userName, Reservation reservation)
+        {
+            return $@"
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <style>
+    body {{ margin:0; padding:0; background:#0f1c2e; font-family:'Segoe UI',Arial,sans-serif; }}
+    .wrapper {{ max-width:600px; margin:40px auto; background:#1a2e46; border-radius:16px; overflow:hidden; border:1px solid rgba(255,77,77,0.2); }}
+    .header {{ background:#1a2e46; padding:40px 40px 20px; text-align:center; border-bottom:1px solid rgba(255,77,77,0.2); }}
+    .logo {{ font-size:2rem; font-weight:800; color:#EFB036; letter-spacing:-1px; }}
+    .badge {{ display:inline-block; background:rgba(255,77,77,0.15); color:#ff4d4d; border:1px solid rgba(255,77,77,0.3); padding:6px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; margin-top:12px; }}
+    .body {{ padding:35px 40px; }}
+    .detail-card {{ background:rgba(255,255,255,0.04); border:1px solid rgba(255,77,77,0.15); border-radius:12px; padding:24px; margin:20px 0; }}
+    .detail-row {{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.06); }}
+    .detail-row:last-child {{ border-bottom:none; }}
+    .detail-label {{ color:rgba(255,255,255,0.5); font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; }}
+    .detail-value {{ color:#ffffff; font-weight:600; font-size:0.95rem; }}
+    .footer {{ background:rgba(0,0,0,0.2); padding:20px 40px; text-align:center; color:rgba(255,255,255,0.3); font-size:0.8rem; }}
+  </style>
+</head>
+<body>
+  <div class='wrapper'>
+    <div class='header'>
+      <div class='logo'>Lunamaro</div>
+      <div class='badge'>Reservation Not Available</div>
+    </div>
+
+    <div class='body'>
+      <p style='color:#ffffff;font-size:1.1rem;'>Dear <strong style='color:#EFB036;'>{userName}</strong>,</p>
+      <p style='color:rgba(255,255,255,0.7);line-height:1.7;'>
+        Unfortunately we were unable to confirm your reservation for the requested time.
+        The table may no longer be available.
+      </p>
+
+      <div class='detail-card'>
+        <div class='detail-row'>
+          <span class='detail-label'>Requested Date</span>
+          <span class='detail-value'>{reservation.StartTime:dddd, MMMM dd yyyy}</span>
+        </div>
+        <div class='detail-row'>
+          <span class='detail-label'>Requested Time</span>
+          <span class='detail-value'>{reservation.StartTime:hh:mm tt} — {reservation.EndTime:hh:mm tt}</span>
+        </div>
+        <div class='detail-row'>
+          <span class='detail-label'>Guests</span>
+          <span class='detail-value'>{reservation.Guests}</span>
+        </div>
+      </div>
+
+      <p style='color:rgba(255,255,255,0.7);line-height:1.7;'>
+        Please try booking a different time slot or contact us directly:<br>
+        📞 <strong style='color:#EFB036;'>+20 015 5660 59</strong>
+      </p>
+    </div>
+
+    <div class='footer'>
+      © {DateTime.Now.Year} Lunamaro Restaurant. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>";
+        }
+
+
     }
 }

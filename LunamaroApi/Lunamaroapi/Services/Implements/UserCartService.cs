@@ -1,6 +1,8 @@
 ﻿using Lunamaroapi.Data;
+using Lunamaroapi.DTOs.Item;
 using Lunamaroapi.DTOs.UserCart;
 using Lunamaroapi.Models;
+using Lunamaroapi.Models.Cart;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
@@ -63,6 +65,31 @@ namespace Lunamaroapi.Services.Implements
             await _db.SaveChangesAsync();
         }
 
+        public async Task AddToCartV2(AddToCartDto dto, string userId)
+        {
+            var cart = new UserCart
+            {
+                UserId = userId,
+                ItemId = dto.ItemId,
+                Quantity = dto.Quantity
+            };
+
+            _db.UserCarts.Add(cart);
+            await _db.SaveChangesAsync();
+
+            if (dto.AddOnIds != null && dto.AddOnIds.Any())
+            {
+                var addOns = dto.AddOnIds.Select(id => new UserCartAddOn
+                {
+                    UserCartId = cart.Id,
+                    AddOnId = id
+                });
+
+                _db.userCartAddOns.AddRange(addOns);
+            }
+
+            await _db.SaveChangesAsync(); // 👈 single save at end
+        }
 
         public Task ClearCartAsync(string userId)
         {
@@ -87,6 +114,70 @@ namespace Lunamaroapi.Services.Implements
                 .ToListAsync();
         }
 
+        public async Task<List<UserCartV2DTO>> GetCartItemsV2(string userId)
+        {
+            // Query 1 — get cart items with item info and selected addons
+            var cartItems = await _db.UserCarts
+                .AsNoTracking()
+                .Where(x => x.UserId == userId)
+                .Select(c => new
+                {
+                    c.Id,
+                    c.ItemId,
+                    c.Quantity,
+                    ItemName = c.Item.Name,
+                    ItemPrice = c.Item.Price,
+                    Description = c.Item.Description,
+                    ImageUrl = c.Item.ImageUrl,
+                    SelectedAddOns = c.AddOns.Select(a => new AddOnDto
+                    {
+                        Id = a.AddOn.Id,
+                        Name = a.AddOn.Name,
+                        Price = a.AddOn.Price
+                    }).ToList()
+                })
+                .ToListAsync();
+
+            if (!cartItems.Any())
+                return new List<UserCartV2DTO>();
+
+            // Query 2 — get all available addons for all items in ONE query
+            var itemIds = cartItems.Select(c => c.ItemId).Distinct().ToList();
+
+            var availableAddOns = await _db.ItemAddOns
+                .AsNoTracking()
+                .Where(a => itemIds.Contains(a.ItemId))
+                .Select(a => new
+                {
+                    a.ItemId,
+                    AddOn = new AddOnDto
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                        Price = a.Price
+                    }
+                })
+                .ToListAsync();
+
+            var addOnsByItem = availableAddOns
+                .GroupBy(a => a.ItemId)
+                .ToDictionary(g => g.Key, g => g.Select(x => x.AddOn).ToList());
+
+            return cartItems.Select(c => new UserCartV2DTO
+            {
+                UserCartId = c.Id,
+                ItemId = c.ItemId,
+                ItemName = c.ItemName,
+                price = c.ItemPrice,
+                Quantity = c.Quantity,
+                Description = c.Description,
+                ImageUrl = c.ImageUrl,
+                AddOns = c.SelectedAddOns,
+                AvailableAddOns = addOnsByItem.GetValueOrDefault(c.ItemId) ?? new List<AddOnDto>(),
+                TotalPrice = (c.ItemPrice + c.SelectedAddOns.Sum(a => a.Price)) * c.Quantity
+            }).ToList();
+        }
+        
         public async Task<int> GetItemsCartCount(string userId)
         {
             return await _db.UserCarts
@@ -98,12 +189,43 @@ namespace Lunamaroapi.Services.Implements
 
         public async Task RemoveFromCartAsync(int cartItemId)
         {
-            var item = await _db.UserCarts.FindAsync(cartItemId);
-            if (item != null)
+            var addons = _db.userCartAddOns
+                .Where(a => a.UserCartId == cartItemId);
+
+            _db.userCartAddOns.RemoveRange(addons);
+
+            var cartItem = await _db.UserCarts.FindAsync(cartItemId);
+
+            if (cartItem != null)
             {
-                _db.UserCarts.Remove(item);
-                await _db.SaveChangesAsync();
+                _db.UserCarts.Remove(cartItem);
             }
+
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task UpdateCartAddOnsAsync(int userCartId, List<int> addOnIds, string userId)
+        {
+            var cartItem = await _db.UserCarts
+                 .FirstOrDefaultAsync(c => c.Id == userCartId && c.UserId == userId);
+
+            if (cartItem == null) return;
+            var existing = _db.userCartAddOns
+               .Where(a => a.UserCartId == userCartId);
+               _db.userCartAddOns.RemoveRange(existing);
+
+            if (addOnIds.Any())
+            {
+                var newAddOns = addOnIds.Select(id => new UserCartAddOn
+                {
+                    UserCartId = userCartId,
+                    AddOnId = id
+                });
+                _db.userCartAddOns.AddRange(newAddOns);
+            }
+
+            await _db.SaveChangesAsync();
+
         }
 
         public async Task UpdateQuantityAsync(int cartItemId, int newQuantity)

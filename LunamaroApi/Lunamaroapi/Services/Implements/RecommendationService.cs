@@ -1,5 +1,6 @@
 ﻿using Lunamaroapi.Data;
 using Lunamaroapi.Models;
+using Lunamaroapi.Models.CategoryEnums;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -19,9 +20,10 @@ namespace Lunamaroapi.Services.Implements
 
         private string? GetCurrentUserId()
         {
-            return _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return _httpContextAccessor.HttpContext?
+                .User.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?
+                .Value;
         }
-
         public async Task<List<Item>> GetSuggestions()
         {
             var userId = GetCurrentUserId();
@@ -43,86 +45,91 @@ namespace Lunamaroapi.Services.Implements
                 .Where(c => c.Item != null)
                 .Select(c => c.Item.CategoryId)
                 .ToList();
+            var relationships = await _context.categoryRelationships
+                .Where(x => categoryIds.Contains(x.CategoryId)).ToListAsync();
 
-            // 1. RELATED FOOD EXPANSION
-            var related = categoryIds
-                .SelectMany(GetRelatedCategories)
-                .Distinct();
+            var additionalCategories = relationships.Where(r => r.Type == RelationType.Additionl)
+                                                    .Select(r => r.RelatedCategoryId).Distinct().ToList();
+            var complementCategories = relationships.Where(r => r.Type == RelationType.Complement)
+                                                    .Select(r => r.RelatedCategoryId).Distinct().ToList();
+            var relatedCategories = relationships.Where(r => r.Type == RelationType.Related)
+                                                    .Select(r => r.RelatedCategoryId).Distinct().ToList();
 
-            // 2. COMPLEMENTS
-            var complements = GetComplementCategories();
 
-            // 3. FINAL CATEGORY SET
-            var finalCategories = related
-                .Union(complements)
+            var allCategories = additionalCategories
+                .Union(complementCategories)
+                .Union(relatedCategories)
                 .Distinct()
                 .ToList();
 
             var suggestions = await _context.Items
-                .Where(i => !cartItemIds.Contains(i.Id))
-                .Where(i => finalCategories.Contains(i.CategoryId))
-                .ToListAsync();
+                 .Where(i => !cartItemIds.Contains(i.Id))
+                 .Where(i => allCategories.Contains(i.CategoryId))
+                 .ToListAsync();
 
+            // 5. Sort: addons first, then complements, then related
             return suggestions
                 .OrderByDescending(i =>
-                    categoryIds.Contains(i.CategoryId) ? 3 :
-                    complements.Contains(i.CategoryId) ? 1 : 2
-                    )
-                    .ThenBy(i => i.Price)
-                    .ToList();
+                    additionalCategories.Contains(i.CategoryId) ? 3 :
+                    complementCategories.Contains(i.CategoryId) ? 2 : 1
+                )
+                .ThenBy(i => i.Price)
+                .ToList();
+
         }
 
-
-
-        private List<int> GetComplementCategories()
+        public async Task<List<Item>> GetSuggestionsV2()
         {
-            return new List<int>
-             {
-               1022, // Drinks
-               1020, // Sides
-               1021  // Desserts
-             };
-        }
+            var userId = GetCurrentUserId();
 
-        private List<int> GetRelatedCategories(int categoryId)
-        {
-            return categoryId switch
+            if (string.IsNullOrEmpty(userId))
+                return new List<Item>();
+
+            // 1. Get cart items
+            var cartItems = await _context.UserCarts
+                .Where(c => c.UserId == userId)
+                .Select(c => c.ItemId)
+                .ToListAsync();
+
+            if (!cartItems.Any())
+                return new List<Item>();
+
+            // 2. Get relationships FROM cart items
+            var relationships = await _context.ItemRelationships
+                .Where(r => cartItems.Contains(r.ItemId))
+                .ToListAsync();
+
+            if (!relationships.Any())
             {
-                // FAST FOOD
-                1010 => new List<int> { 1010, 1026, 1020, 1022, 1021 },
-                1026 => new List<int> { 1026, 1010, 1020, 1022, 1021 },
+                return await _context.Items
+                    .Where(i =>
+                        !cartItems.Contains(i.Id)
+                        && i.Price < 100  
+                    )
+                    .OrderBy(i => i.Price)
+                    .Take(10)
+                    .ToListAsync();
+            }
 
-                // MAIN FOOD
-                1019 => new List<int> { 1019, 1012, 1025, 1018, 1017, 1020, 1022 },
-                1012 => new List<int> { 1012, 1019, 1025, 1017, 1020, 1022 },
-                1025 => new List<int> { 1025, 1019, 1012, 1017, 1020, 1022 },
+            // 3. Get related item ids
+            var suggestedIds = relationships
+                .Select(r => r.RelatedItemId)
+                .Distinct()
+                .ToList();
 
-                // LIGHT FOOD
-                1018 => new List<int> { 1018, 1017, 1016, 1020, 1022, 1021 },
-                1017 => new List<int> { 1017, 1018, 1016, 1020, 1022 },
-                1016 => new List<int> { 1016, 1017, 1018, 1020, 1022 },
+            // 4. Get items
+            var suggestions = await _context.Items
+                .Where(i => suggestedIds.Contains(i.Id) && !cartItems.Contains(i.Id))
+                .ToListAsync();
 
-                // SWEETS
-                1021 => new List<int> { 1021, 1027, 1022 },
-                1027 => new List<int> { 1027, 1021, 1022 },
-
-                // DRINKS
-                1022 => new List<int> { 1022, 1020 },
-
-                // BREAKFAST
-                1028 => new List<int> { 1028, 1022, 1021 },
-
-                _ => new List<int> { categoryId }
-            };
+            // 5. Sort by relationship type (IMPORTANT FIX)
+            return suggestions
+                .OrderByDescending(i =>
+                    relationships.Any(r => r.RelatedItemId == i.Id && r.Type == RelationType.Additionl) ? 3 :
+                    relationships.Any(r => r.RelatedItemId == i.Id && r.Type == RelationType.Complement) ? 2 : 1
+                )
+                .ThenBy(i => i.Price)
+                .ToList();
         }
-
-
-
-
-
-
-
-
-
     }
 }

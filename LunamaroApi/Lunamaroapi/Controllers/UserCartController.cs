@@ -19,13 +19,32 @@ namespace Lunamaroapi.Controllers
     {
         private readonly IUserCart _cartService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IRecommendationService _recommendationService;
 
-        public UserCartController(IUserCart cartService, UserManager<ApplicationUser> userManager)
+        public UserCartController(IUserCart cartService, UserManager<ApplicationUser> userManager, IRecommendationService recommendationService)
         {
             _cartService = cartService;
             _userManager = userManager;
+            _recommendationService = recommendationService;
         }
 
+        [HttpGet("suggestions")]
+        public async Task<IActionResult> GetSuggestions()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var result = await _recommendationService.GetSuggestions();
+
+            return Ok(result);
+        }
+        [HttpGet("suggestions2")]
+        public async Task<IActionResult> GetSuggestionsNew()
+        {
+
+            var result = await _recommendationService.GetSuggestionsV2();
+
+            return Ok(result);
+        }
         [HttpGet("mycart")]
         public async Task<ActionResult<List<UserCartDTO>>> GetCarts()
         {
@@ -36,6 +55,15 @@ namespace Lunamaroapi.Controllers
 
             var cartItems = await _cartService.GetCartItemsAsync(userId);
             return Ok(cartItems);
+        }
+        [HttpGet("v2")]
+        public async Task<IActionResult> GetCartV2()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var result = await _cartService.GetCartItemsV2(userId);
+
+            return Ok(result);
         }
 
 
@@ -63,6 +91,22 @@ namespace Lunamaroapi.Controllers
             return Ok(count);
         }
 
+
+        [HttpPost("AddtoCartv2")]
+        public async Task<IActionResult> AddToCartV2([FromBody] AddToCartDto dto)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("User not logged in");
+
+            await _cartService.AddToCartV2(dto, userId);
+
+            return Ok(new
+            {
+                message = "Item added to cart successfully"
+            });
+        }
 
         [HttpPost("add")]
         public async Task<IActionResult> AddToCart([FromBody] AddToCartDTO request)
@@ -100,17 +144,16 @@ namespace Lunamaroapi.Controllers
 
             return Ok(new { message = "Quantity updated successfully." });
         }
+        [HttpPut("UpdateAddOns")]
+        [Authorize]
+        public async Task<IActionResult> UpdateCartAddOns([FromBody] UpdateCartAddOnsDto dto)
+        {
+            string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-
-        //[HttpGet("CartItemCount")]
-        //public async Task<int> CartItemCount(string UserId)
-        //{
-        //    string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-        //   var number= await _cartService.GetItemsCartCount(userId);
-        //    return number;
-
-        //}  
+            if (userId == null)
+                return Unauthorized(new { message = "User not authenticated." }); await _cartService.UpdateCartAddOnsAsync(dto.UserCartId, dto.AddOnIds, userId);
+            return Ok();
+        }
 
 
 
