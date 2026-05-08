@@ -211,12 +211,6 @@ Open `appsettings.json` and fill in your settings:
   "Stripe": {
     "SecretKey": "sk_live_...",
     "WebhookSecret": "whsec_..."
-  },
-  "EmailSettings": {
-    "Host": "smtp.yourprovider.com",
-    "Port": 587,
-    "Username": "your@email.com",
-    "Password": "your-password"
   }
 }
 ```
@@ -272,7 +266,7 @@ Lunamaro/
 
 ---
 
-## 📄 License
+
 
 This project is open source and available under the [MIT License](LICENSE).
 
@@ -280,8 +274,5 @@ This project is open source and available under the [MIT License](LICENSE).
 
 <div align="center">
 
-Built  using **Angular** & **ASP.NET Core**
-
-[⭐ Star this repo](https://github.com/mohamedelhenawy-3/Lunamaro) ·
 
 </div>
