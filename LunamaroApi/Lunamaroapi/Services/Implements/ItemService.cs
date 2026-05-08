@@ -8,6 +8,7 @@ using Lunamaroapi.Repositories.Interfaces;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Update.Internal;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Lunamaroapi.Services.Implements
 {
@@ -17,12 +18,14 @@ namespace Lunamaroapi.Services.Implements
         private readonly IItemRepository _itemRepository;
         private readonly IImageServices _imageService;
         private readonly AppDBContext _db;
+        private readonly IMemoryCache _cache;
 
-        public ItemService(IItemRepository itemRepository, IImageServices imageService,AppDBContext db)
+        public ItemService(IItemRepository itemRepository, IMemoryCache cache, IImageServices imageService, AppDBContext db)
         {
             _itemRepository = itemRepository;
             _imageService = imageService;
             _db = db;
+            _cache = cache;
         }
 
 
@@ -45,6 +48,7 @@ namespace Lunamaroapi.Services.Implements
             };
 
             await _itemRepository.CreateItemAsync(item);
+            ClearMenuCache();
 
             return new SuccessResponseDto
             {
@@ -54,7 +58,18 @@ namespace Lunamaroapi.Services.Implements
 
         public async Task DeleteItemAsync(int id)
         {
+            var item = await _itemRepository.GetItemByIdAsync(id);
+
+            if (item == null)
+                throw new ArgumentException("Item not found");
+
+            if (!string.IsNullOrEmpty(item.ImageUrl))
+            {
+                await _imageService.DeleteImage(item.ImageUrl);
+            }
+
             await _itemRepository.DeleteItemAsync(id);
+            ClearMenuCache();
         }
 
         public async Task<bool> Exists(int id)
@@ -111,7 +126,7 @@ namespace Lunamaroapi.Services.Implements
             return await _itemRepository.ExplorePopularItems();
         }
 
-        public async  Task<IEnumerable<ItemDTO>> GetItemByCatId(int catId)
+        public async Task<IEnumerable<ItemDTO>> GetItemByCatId(int catId)
         {
             var items = await _itemRepository.GetItemByCatId(catId);
             return items.Select(i => new ItemDTO
@@ -133,10 +148,15 @@ namespace Lunamaroapi.Services.Implements
             var existingItem = await _itemRepository.GetItemByIdAsync(id);
             if (existingItem == null)
                 throw new ArgumentException("Item not found");
-
             if (itemdto.File != null && itemdto.File.Length > 0)
             {
+                if (!string.IsNullOrEmpty(existingItem.ImageUrl))
+                {
+                    await _imageService.DeleteImage(existingItem.ImageUrl);
+                }
+
                 var imageUrl = await _imageService.UploadImage(itemdto.File);
+
                 existingItem.ImageUrl = imageUrl;
             }
 
@@ -148,6 +168,7 @@ namespace Lunamaroapi.Services.Implements
             existingItem.IsSpecial = itemdto.IsSpecial;
 
             await _itemRepository.UpdateItemAsync(existingItem, id);
+            ClearMenuCache();
         }
 
         public async Task<IEnumerable<SpecialItems>> GetSpecialItems()
@@ -162,8 +183,123 @@ namespace Lunamaroapi.Services.Implements
                 quantity = i.quantity,
                 CategoryId = i.CategoryId,
                 ImageUrl = i.ImageUrl,
-                IsSpecial=i.IsSpecial
+                IsSpecial = i.IsSpecial
             });
+        }
+
+        public async Task<object> GetPaginatedMenuAsync(int page, int pageSize, int? categoryId = null)
+        {
+            string cacheKey = $"menu_p{page}_s{pageSize}_cat{categoryId ?? 0}";
+
+            if (!_cache.TryGetValue(cacheKey, out object cachedData))
+            {
+                var query = _db.Items.AsNoTracking();
+
+                if (categoryId.HasValue && categoryId > 0)
+                {
+                    query = query.Where(x => x.CategoryId == categoryId.Value);
+                }
+
+                var totalCount = await query.CountAsync();
+
+                var items = await query
+                    .OrderByDescending(x => x.Id)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(i => new
+                    {
+                        i.Id,
+                        i.Name,
+                        i.Description,
+                        i.Price,
+                        i.ImageUrl,
+                        i.quantity
+                    })
+                    .ToListAsync();
+
+                cachedData = new
+                {
+                    Items = items,
+                    TotalCount = totalCount,
+                    CurrentPage = page,
+                    TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize)
+                };
+
+                // 5. تخزين النتيجة في الكاش
+                var cacheOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(2));
+
+                _cache.Set(cacheKey, cachedData, cacheOptions);
+            }
+
+            return cachedData;
+        }
+        public Task<object> GetPaginatedMenuAsync(int page, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<object> GetAdminItems(int page, int pageSize, int? categoryId = null, string? search = null)
+        {
+            string cacheKey = $"menu_p{page}_s{pageSize}_cat{categoryId ?? 0}_q{search ?? ""}";
+            if (!_cache.TryGetValue(cacheKey, out object cachedData))
+            {
+                var query = _db.Items.AsNoTracking();
+                if (categoryId.HasValue && categoryId > 0)
+                    query = query.Where(x => x.CategoryId == categoryId.Value);
+
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    query = query.Where(x =>
+                      x.Name.Contains(search) ||
+                      x.Description.Contains(search));
+                }
+
+
+                var totalCount = await query.CountAsync();
+                var items = await query
+                    .OrderByDescending(x => x.Id)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(i => new
+                    {
+                        i.Id,
+                        i.Name,
+                        i.Description,
+                        i.Price,
+                        i.ImageUrl,
+                        i.quantity,
+                    })
+                    .ToListAsync();
+                cachedData = new
+                {
+                    Items = items,
+                    TotalCount = totalCount,
+                    CurrentPage = page,
+                    TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize)
+                };
+                var ttl = string.IsNullOrWhiteSpace(search)
+                         ? TimeSpan.FromMinutes(10)
+                          : TimeSpan.FromMinutes(2);
+
+                _cache.Set(cacheKey, cachedData,
+                      new MemoryCacheEntryOptions()
+                     .SetAbsoluteExpiration(ttl));
+            }
+
+                return cachedData;
+
+
+            }
+
+        private void ClearMenuCache()
+        {
+            if (_cache is MemoryCache memoryCache)
+            {
+                memoryCache.Clear();
+            }
         }
     }
 }
+
