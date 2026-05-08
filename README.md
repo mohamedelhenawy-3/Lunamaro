@@ -12,7 +12,7 @@
 [![Stripe](https://img.shields.io/badge/Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://stripe.com)
 [![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io)
 
-### 🚀 [Test it Now → lunamaro.runasp.net](https://lunamaro.runasp.net)
+### [Test it Now → lunamaro.runasp.net](https://lunamaro.runasp.net)
 
 </div>
 
@@ -280,8 +280,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 <div align="center">
 
-Built with ❤️ using **Angular** & **ASP.NET Core**
+Built  using **Angular** & **ASP.NET Core**
 
-[⭐ Star this repo](https://github.com/mohamedelhenawy-3/Lunamaro) · [🐛 Report a bug](https://github.com/mohamedelhenawy-3/Lunamaro/issues) · [💡 Request a feature](https://github.com/mohamedelhenawy-3/Lunamaro/issues)
+[⭐ Star this repo](https://github.com/mohamedelhenawy-3/Lunamaro) ·
 
 </div>
