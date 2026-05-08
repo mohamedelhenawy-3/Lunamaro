@@ -1,9 +1,8 @@
 /* Wrapper */
 .dashboard-wrapper {
-  /* max-width: 1200px; */
-
+  margin-top: 20px;
   background-color: #223b59;
-  padding: 30px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.5);
   color: #fff;
@@ -12,20 +11,17 @@
 
 /* Cards */
 .dashboard-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .card {
-  flex: 1 1 220px;
   background-color: #1a3350;
-
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 18px;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   cursor: pointer;
@@ -34,78 +30,130 @@
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
 
 .card .icon {
-  font-size: 38px;
+  font-size: 32px;
   margin-right: 15px;
   color: #EFB036;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
-.card:hover .icon {
-  transform: rotate(15deg);
-}
-
-.card h5 { margin: 0; font-size: 16px; color: #fff; opacity: 0.95; }
-.card h3 { margin: 3px 0 0; font-size: 28px; font-weight: bold; color: #fff; }
+.card:hover .icon { transform: rotate(15deg); }
+.card h5 { margin: 0; font-size: 14px; color: rgba(255,255,255,0.8); }
+.card h3 { margin: 3px 0 0; font-size: 24px; font-weight: bold; color: #fff; }
 
 /* Charts */
-.charts-section { margin-bottom: 40px; }
-.section-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: #EFB036; }
-.chart-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+.charts-section { margin-bottom: 30px; }
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #EFB036;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
 .chart-box {
-  flex: 1 1 300px;
   background: #1a3350;
   padding: 20px;
   border-radius: 12px;
-  height: 40vh;
+  height: 300px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  color: #fff;
+  position: relative;
+}
+
+.chart-box canvas {
+  max-height: 100% !important;
 }
 
 /* Recent Orders */
 .recent-orders-section {
-  background:#1a3350;
-  padding: 25px;
+  background: #1a3350;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  color: #fff;
+  overflow-x: auto;
 }
 
 .orders-table {
   width: 100%;
   border-collapse: collapse;
   color: #fff;
+  min-width: 500px;
 }
 
 .orders-table th {
-  background: #1a3350;
-  padding: 12px;
+  background: rgba(239,176,54,0.1);
+  padding: 12px 15px;
   text-align: left;
   font-weight: 600;
-  color: #fff;
+  color: #EFB036;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .orders-table td {
-  padding: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.orders-table tbody tr:hover {
+  background: rgba(255,255,255,0.04);
 }
 
 /* Status badges */
 .status-badge {
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: capitalize;
-  transition: transform 0.3s ease;
+  display: inline-block;
 }
 
-.status-badge.pending { background: #EFB036; color: #1a3350; }
-.status-badge.delivered { background: #00ff99; color: #1a3350; }
-.status-badge.out { background: #dc3545; color: #fff; }
-.status-badge:hover { transform: scale(1.1); }
+.status-badge.pending { background: rgba(239,176,54,0.15); color: #EFB036; border: 1px solid rgba(239,176,54,0.3); }
+.status-badge.delivered { background: rgba(0,255,153,0.15); color: #00ff99; border: 1px solid rgba(0,255,153,0.3); }
+.status-badge.out { background: rgba(220,53,69,0.15); color: #ff6b7a; border: 1px solid rgba(220,53,69,0.3); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .dashboard-wrapper { padding: 15px; border-radius: 10px; }
+
+  .dashboard-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card { padding: 14px; }
+  .card .icon { font-size: 24px; margin-right: 10px; }
+  .card h5 { font-size: 12px; }
+  .card h3 { font-size: 20px; }
+
+  .chart-grid { grid-template-columns: 1fr; }
+  .chart-box { height: 250px; }
+
+  .section-title { font-size: 17px; }
+
+  .recent-orders-section { padding: 15px; }
+}
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 480px) {
+  .dashboard-container { grid-template-columns: repeat(2, 1fr); }
+  .card h3 { font-size: 18px; }
+  .chart-box { height: 220px; }
+}

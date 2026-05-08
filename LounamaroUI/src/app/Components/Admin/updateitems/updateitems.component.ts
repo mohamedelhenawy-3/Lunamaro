@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../../../Service/Item/item.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-update-item',
@@ -12,7 +13,7 @@ import { ItemService } from '../../../Service/Item/item.service';
   styleUrls: ['./updateitems.component.css']
 })
 export class UpdateItemComponent implements OnInit {
-
+imageBaseUrl = environment.imageUrl;
   itemId!: number;
   form!: FormGroup;
   selectedFile: File | null = null;
@@ -53,9 +54,9 @@ export class UpdateItemComponent implements OnInit {
   
       });
 
-      this.previewImage = 'http://localhost:5218' + res.imageUrl;
-    });
+this.previewImage = environment.imageUrl + res.imageUrl;    });
   }
+  
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] ?? null;
@@ -85,7 +86,6 @@ export class UpdateItemComponent implements OnInit {
     this.itemService.updateItem(this.itemId, formData).subscribe({
       next: () => {
         alert('Item updated successfully!');
-        this.router.navigateByUrl('/menu');
       },
       error: () => alert('Update failed!')
     });

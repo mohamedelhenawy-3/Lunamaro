@@ -85,3 +85,63 @@ tbody tr:hover { background: rgba(239,176,54,0.04); }
   font-style: italic;
   padding: 12px 0;
 }
+
+/* ... [Keep your existing CSS above] ... */
+
+/* Responsive Mobile Transformation */
+@media (max-width: 768px) {
+  /* 1. Turn the table into a stack of cards */
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* 2. Hide the top headers (they look bad on mobile) */
+  thead tr {
+    display: none;
+  }
+
+  /* 3. Style each row as a card */
+  tr {
+    background: rgba(26, 51, 80, 0.9);
+    border: 1px solid rgba(239, 176, 54, 0.3);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  /* 4. Layout for each data point */
+  tbody td {
+    display: flex;
+    justify-content: space-between; /* Label on left, Value on right */
+    align-items: center;
+    padding: 12px 5px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: right;
+  }
+
+  /* 5. Show the labels (Headers) for EVERY column */
+  tbody td::before {
+    content: attr(data-label); /* Pulls "ID", "Product", etc. */
+    font-weight: 800;
+    color: #EFB036;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-align: left;
+    flex: 1;
+  }
+
+  /* 6. Fix for Action Buttons */
+  .actions {
+    border-bottom: none;
+    justify-content: center;
+    padding-top: 15px !important;
+    margin-top: 5px;
+  }
+
+  .actions::before {
+    display: none; /* Don't show "Actions" label on mobile */
+  }
+}

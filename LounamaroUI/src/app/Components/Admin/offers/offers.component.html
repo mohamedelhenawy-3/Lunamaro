@@ -1,13 +1,8 @@
 <div class="offers-container">
 
-  <!-- ================= WEEKLY DEALS ================= -->
   <div class="section-header">
     <h2>🔥 Weekly Deals</h2>
     <button class="add-btn" (click)="AddWeeklyDeals()">+ Add Deal</button>
-  </div>
-
-  <div *ngIf="weeklyDeals.length === 0" class="empty-state">
-    No weekly deals available.
   </div>
 
   <table *ngIf="weeklyDeals.length > 0">
@@ -23,19 +18,15 @@
     </thead>
     <tbody>
       <tr *ngFor="let deal of weeklyDeals">
-        <td class="mono">{{ deal.id }}</td>
-        <td class="product">{{ deal.product?.name }}</td>
-        <td class="gold mono">{{ deal.discountPercentage }}%</td>
-        <td class="mono">{{ deal.expiryDate | date }}</td>
-
-        <!-- Toggle Status -->
-        <td>
-          <span [ngClass]="deal.isActive ? 'badge-active' : 'badge-inactive'" 
-                (click)="toggleWeeklyStatus(deal)">
+        <td data-label="ID" class="mono">{{ deal.id }}</td>
+        <td data-label="Product" class="product">{{ deal.product?.name }}</td>
+        <td data-label="Discount" class="gold mono">{{ deal.discountPercentage }}%</td>
+        <td data-label="Expiry" class="mono">{{ deal.expiryDate | date }}</td>
+        <td data-label="Status">
+          <span [ngClass]="deal.isActive ? 'badge-active' : 'badge-inactive'">
             {{ deal.isActive ? 'Active' : 'Inactive' }}
           </span>
         </td>
-
         <td class="actions">
           <button class="edit-btn" (click)="editDeal(deal.id)">Edit</button>
           <button class="delete-btn" (click)="deleteWeeklyDeal(deal.id)">Delete</button>
@@ -46,40 +37,31 @@
 
   <hr />
 
-  <!-- ================= DISCOUNT TIERS ================= -->
   <div class="section-header">
     <h2>💰 Discount Tiers</h2>
     <button class="add-btn" (click)="AddDiscountTier()">+ Add Tier</button>
-  </div>
-
-  <div *ngIf="discountTiers.length === 0" class="empty-state">
-    No discount tiers available.
   </div>
 
   <table *ngIf="discountTiers.length > 0">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Minimum Amount</th>
-        <th>Discount Amount</th>
+        <th>Min Amount</th>
+        <th>Discount</th>
         <th>Status</th>
         <th class="actions">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let tier of discountTiers">
-        <td class="mono">{{ tier.id }}</td>
-        <td>{{ tier.minimumAmount }}</td>
-        <td class="gold mono">{{ tier.discountAmount }}</td>
-
-        <!-- Toggle Status -->
-        <td>
-          <span [ngClass]="tier.isActive ? 'badge-active' : 'badge-inactive'" 
-                (click)="toggleDiscountStatus(tier)">
+        <td data-label="ID" class="mono">{{ tier.id }}</td>
+        <td data-label="Min Amount">{{ tier.minimumAmount }}</td>
+        <td data-label="Discount" class="gold mono">{{ tier.discountAmount }}</td>
+        <td data-label="Status">
+          <span [ngClass]="tier.isActive ? 'badge-active' : 'badge-inactive'">
             {{ tier.isActive ? 'Active' : 'Inactive' }}
           </span>
         </td>
-
         <td class="actions">
           <button class="edit-btn" (click)="editTiers(tier.id)">Edit</button>
           <button class="delete-btn" (click)="deleteTier(tier.id)">Delete</button>
@@ -90,21 +72,16 @@
 
   <hr />
 
-  <!-- ================= ADD-ON REWARDS ================= -->
   <div class="section-header">
     <h2>🎁 Add-On Rewards</h2>
     <button class="add-btn" (click)="AddAddonReward()">+ Add Reward</button>
-  </div>
-
-  <div *ngIf="addOnRewards.length === 0" class="empty-state">
-    No rewards available.
   </div>
 
   <table *ngIf="addOnRewards.length > 0">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Minimum Amount</th>
+        <th>Min Amount</th>
         <th>Free Product</th>
         <th>Status</th>
         <th class="actions">Actions</th>
@@ -112,24 +89,19 @@
     </thead>
     <tbody>
       <tr *ngFor="let reward of addOnRewards">
-        <td class="mono">{{ reward.id }}</td>
-        <td>{{ reward.minimumAmount }}</td>
-        <td class="product">{{ reward.freeProduct?.name }}</td>
-
-        <!-- Toggle Status -->
-        <td>
-          <span [ngClass]="reward.isActive ? 'badge-active' : 'badge-inactive'" 
-                (click)="toggleRewardStatus(reward)">
+        <td data-label="ID" class="mono">{{ reward.id }}</td>
+        <td data-label="Min Amount">{{ reward.minimumAmount }}</td>
+        <td data-label="Free Product" class="product">{{ reward.freeProduct?.name }}</td>
+        <td data-label="Status">
+          <span [ngClass]="reward.isActive ? 'badge-active' : 'badge-inactive'">
             {{ reward.isActive ? 'Active' : 'Inactive' }}
           </span>
         </td>
-
         <td class="actions">
           <button class="edit-btn" (click)="EditReward(reward.id)">Edit</button>
-          <button class="delete-btn" (click)="deleteReward(reward.id)" >Delete</button>
+          <button class="delete-btn" (click)="deleteReward(reward.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-
 </div>

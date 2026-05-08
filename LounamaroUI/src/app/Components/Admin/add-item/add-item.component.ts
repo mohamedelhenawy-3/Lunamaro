@@ -88,7 +88,6 @@ export class AddItemComponent implements OnInit {
         }
       });
       alert("Item Add Succefully");
-      this.router.navigate(['/menu']);
     } else {
       alert("Form is invalid or no image selected!");
     }

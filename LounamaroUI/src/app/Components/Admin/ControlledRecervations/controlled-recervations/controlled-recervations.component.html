@@ -7,13 +7,15 @@
     <div class="header-actions">
       <div class="search-bar">
         <i class="fas fa-search"></i>
-<input
-  type="text"
-  placeholder="Search by email or table..."
-  [(ngModel)]="searchTerm"
-  (input)="applyFilter()"
-/>      </div>
-<span class="total-indicator">{{ recervations.length }} Entries</span>    </div>
+        <input
+          type="text"
+          placeholder="Search by email or table..."
+          [(ngModel)]="searchTerm"
+          (input)="applyFilter()"
+        />
+      </div>
+      <span class="total-indicator">{{ recervations.length }} Entries</span>
+    </div>
   </div>
 
   <div class="data-surface">
@@ -30,18 +32,18 @@
       </thead>
       <tbody>
         <tr *ngFor="let r of recervations">
-          <td>
+          <td data-label="Reference">
             <span class="ref-id">#{{ r.id }}</span>
           </td>
 
-          <td>
+          <td data-label="Table & Guests">
             <div class="table-info">
               <span class="table-name">{{ r.tableName }}</span>
               <span class="guest-pill"><i class="fas fa-users"></i> {{ r.guests }}</span>
             </div>
           </td>
 
-          <td>
+          <td data-label="Customer">
             <div class="customer-cell">
               <div class="avatar-circle">{{ r.userEmail.charAt(0).toUpperCase() }}</div>
               <div class="customer-data">
@@ -51,7 +53,7 @@
             </div>
           </td>
 
-          <td>
+          <td data-label="Schedule">
             <div class="schedule-cell">
               <span class="date-main">{{ r.startTime | date: 'EEEE, MMM d' }}</span>
               <span class="time-range">
@@ -60,21 +62,21 @@
             </div>
           </td>
 
-          <td>
+          <td data-label="Current Status">
             <div class="status-pill" [ngClass]="'status-' + r.status.toLowerCase()">
               <span class="dot"></span> {{ r.status }}
             </div>
           </td>
 
-          <td>
-            <div class="action-cell">
-              <select class="minimal-select" [(ngModel)]="r.status" (change)="onStatusChange(r)">
-                <option value="Pending">Set Pending</option>
-                <option value="Approved">Approve</option>
-                <option value="Rejected">Reject</option>
-              </select>
-              <button class="btn-icon" [title]="r.notes"><i class="fas fa-info-circle"></i></button>
-            </div>
+          <td class="action-cell">
+            <select class="minimal-select" [(ngModel)]="r.status" (change)="onStatusChange(r)">
+              <option value="Pending">Set Pending</option>
+              <option value="Approved">Approve</option>
+              <option value="Rejected">Reject</option>
+            </select>
+            <button class="btn-icon" [title]="r.notes">
+              <i class="fas fa-info-circle"></i>
+            </button>
           </td>
         </tr>
       </tbody>
