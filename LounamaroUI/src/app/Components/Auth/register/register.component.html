@@ -1,60 +1,80 @@
 <div class="register-wrapper">
   <div class="register-card">
+
     <div class="brand-header">
       <h2 class="title">Join Lunamaro</h2>
       <p class="subtitle">Create an account to start your culinary journey</p>
     </div>
 
     <form [formGroup]="registerForm" (ngSubmit)="register()">
-      
-      <div class="form-grid">
-        <div class="form-group">
-          <label><i class="fas fa-user me-2"></i>Full Name</label>
-          <input type="text" formControlName="fullName" placeholder="John Doe" />
-          <div class="error-msg" *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
-            Full Name is required
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label><i class="fas fa-at me-2"></i>Username</label>
-          <input type="text" formControlName="userName" placeholder="johndoe123" />
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" formControlName="fullName" placeholder="John Doe"/>
+
+        <div class="error-msg" *ngIf="getError('fullName')">
+          {{ getError('fullName') }}
         </div>
       </div>
 
       <div class="form-group">
-        <label><i class="fas fa-envelope me-2"></i>Email</label>
-        <input type="email" formControlName="email" placeholder="example@mail.com" />
-        <div class="error-msg" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-          Enter a valid email address
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="example@mail.com"/>
+
+        <div class="error-msg" *ngIf="getError('email')">
+          {{ getError('email') }}
         </div>
       </div>
 
       <div class="form-grid">
-        <div class="form-group">
-          <label><i class="fas fa-lock me-2"></i>Password</label>
-          <input type="password" formControlName="password" placeholder="••••••••" />
-          <div class="error-msg" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-            Min 6 characters
+
+        <div class="form-group password-field">
+          <label>Password</label>
+
+          <div class="input-wrapper">
+            <input 
+              [type]="showPassword ? 'text' : 'password'" 
+              formControlName="password" 
+              placeholder="••••••••" />
+
+            <span (click)="togglePassword()">👁</span>
+          </div>
+
+          <div class="error-msg" *ngIf="getError('password')">
+            {{ getError('password') }}
           </div>
         </div>
 
-        <div class="form-group">
-          <label><i class="fas fa-shield-alt me-2"></i>Confirm</label>
-          <input type="password" formControlName="confirmPassword" placeholder="••••••••" />
-          <div class="error-msg" *ngIf="registerForm.errors && registerForm.get('confirmPassword')?.touched">
-            Passwords do not match
+        <div class="form-group password-field">
+          <label>Confirm Password</label>
+
+          <div class="input-wrapper">
+            <input 
+              [type]="showConfirmPassword ? 'text' : 'password'" 
+              formControlName="confirmPassword" 
+              placeholder="••••••••" />
+
+            <span (click)="toggleConfirmPassword()">👁</span>
+          </div>
+
+          <div class="error-msg" *ngIf="getError('confirmPassword') || getPasswordMatchError()">
+            {{ getError('confirmPassword') || getPasswordMatchError() }}
           </div>
         </div>
+
       </div>
 
+      <!-- Submit -->
       <button type="submit" [disabled]="registerForm.invalid" class="register-btn">
         Create Account
       </button>
 
+      <!-- Login -->
       <p class="login-hint">
-        Already have an account? <a routerLink="/login">Log in here</a>
+        Already have an account? 
+        <a routerLink="/login">Log in here</a>
       </p>
+
     </form>
   </div>
 </div>

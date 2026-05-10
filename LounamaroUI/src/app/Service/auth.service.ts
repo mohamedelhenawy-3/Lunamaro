@@ -1,33 +1,49 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { RegisterRequest } from '../Models/User/register-request';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment.prod';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtPayload } from '../Models/jwt-payload';
 import { jwtDecode } from 'jwt-decode';
 import { LoginResponse } from '../Models/User/login-response';
 import { GeneratedeviceIdService } from './DeviceId/generatedevice-id.service';
 import { tap } from 'rxjs';
-
+import { Router } from '@angular/router';
+declare var google: any;
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
+
+  private isInitialized = false;
 private accessTokenKey = 'access_token';
 private refreshTokenKey = 'refresh_token';
+
+
+
+
+ 
+
       private loggedIn = new BehaviorSubject<boolean>(this.checkIsLoggedIn());
         public isLoggedIn$ = this.loggedIn.asObservable();
- constructor(private http: HttpClient,  private deviceService: GeneratedeviceIdService
-) { }
+ constructor(private http: HttpClient,private router:Router,private deviceService: GeneratedeviceIdService,private zone: NgZone
+) { 
+}
 
-  register(data: RegisterRequest): Observable<any> {
+  register(data: any): Observable<any> {
     console.log(data)
     return this.http.post(`${environment.baseurl}/Auth/register`, data);
   }
-  setToken(access_token:string,refresh_token:string){
-    localStorage.setItem(this.accessTokenKey, access_token);
-  localStorage.setItem(this.refreshTokenKey,refresh_token);
-  }
+// FIXED — notify all subscribers including navbar
+setToken(access_token: string, refresh_token: string) {
+  localStorage.setItem(this.accessTokenKey, access_token);
+  localStorage.setItem(this.refreshTokenKey, refresh_token);
+  this.loggedIn.next(true); 
+}
+
+
+
 getAccessToken(): string | null {
   return localStorage.getItem(this.accessTokenKey);
 }
@@ -47,7 +63,6 @@ login(data: { email: string; password: string }): Observable<LoginResponse> {
   ).pipe(
     tap(response => {
       this.setToken(response.accessToken, response.refreshToken);
-      this.loggedIn.next(true);
     })
   );
 }
@@ -111,22 +126,60 @@ private clearSession() {
 }
 
 
+// loginWithSocial(provider: string, token: string): Observable<any> {
+//   return this.http.post<any>(`${environment.baseurl}/Auth/social-login`, {
+//     provider: provider,
+//     token: token
+//   }).pipe(
+//     tap(res => {
+//       if (res && res.accessToken) {
+//         this.setToken(res.accessToken, res.refreshToken || '');
+//         this.loggedIn.next(true);
+//       } else {
+//         console.error('No accessToken in response!', res);
+//       }
+//     })
+//   );
+// }
+loginWithSocial(provider: string, token: string): Observable<any> {
+  return this.http.post<any>(`${environment.baseurl}/Auth/social-login`, {
+    provider: provider,
+    token: token
+  }).pipe(
+    tap(res => {
+      if (res && res.accessToken) {
+        this.setToken(res.accessToken, res.refreshToken || '');
+        this.loggedIn.next(true);
+      }
+    })
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
   // Logout
-  logout(): void {
+// FIXED — clears instantly, tells backend in background
+logout(): void {
   const refreshToken = this.getRefreshToken();
   const deviceId = this.deviceService.getDeviceId();
+
+  this.clearSession();
+
   if (refreshToken) {
     this.http.post(
       `${environment.baseurl}/Auth/logout`,
       { refreshToken, deviceId }
-    ).subscribe({
-      next: () => this.clearSession(),
-      error: () => this.clearSession() // even if backend fails
-    });
-  } else {
-    this.clearSession();
+    ).subscribe(); // fire and forget
   }
-  }
+}
 }

@@ -45,7 +45,7 @@ namespace Lunamaroapi.Services.Implements
                 {
                     Email = info.Email,
                     UserName = info.Email,
-                    FullName = info.Name ?? "Google User", // Fallback if Name is null
+                    FullName = info.Name ?? "Google User", 
                     EmailConfirmed = true
                 };
 

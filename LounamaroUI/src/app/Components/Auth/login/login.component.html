@@ -5,6 +5,11 @@
       <p class="subtitle">Please enter your details to continue</p>
     </div>
 
+    <div *ngIf="errorMessage" class="backend-error-container">
+      <i class="fas fa-exclamation-circle"></i>
+      <span>{{ errorMessage }}</span>
+    </div>
+
     <form [formGroup]="LoginrForm" (ngSubmit)="login()">
       <div class="form-group">
         <label><i class="fas fa-envelope me-2"></i>Email</label>
@@ -25,6 +30,16 @@
       <button type="submit" [disabled]="LoginrForm.invalid" class="login-btn">
         Login
       </button>
+
+<div class="social-divider">
+  <span>OR CONTINUE WITH</span>
+</div>
+
+<div class="social-login-container">
+  <div id="google-btn"></div>
+
+</div>
+     
 
       <p class="register-hint">
         Don't have an account? <a routerLink="/register">Sign up for free</a>

@@ -12,7 +12,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
   if (role === 'Admin') {
     return true;
   }
-
+ 
   router.navigate(['/unauthorized']);
   return false;
 };
