@@ -1,47 +1,128 @@
+/* ===========================
+   THE PAGE WRAPPER 
+=========================== */
 .page-container {
+  /* Use padding instead of margin to force the gap from the fixed navbar */
+  /* padding-top: 30px !important;  */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers children horizontally */
+  align-items: center;
   width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;
+  gap: 15px;                 /* space between buttons */
+  margin: 30px 0;            /* space from top & bottom */
+}
+.pagination-wrapper button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #dfa93d;   /* match your navbar maybe */
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
+.pagination-wrapper button:hover:not(:disabled) {
+  background-color: #EFB036;
+}
+
+.pagination-wrapper button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .page-container {
+    padding-top:20px !important;
+  }
+}
 .category-bar {
   width: 100%;
-  display: flex;
-  justify-content: center; /* Centers the category list */
-  padding: 20px 0;
+  display: block; /* Change from flex to block on mobile */
+  overflow: visible;
 }
-
 .item-cards {
   width: 100%;
-  max-width: 1200px; /* Limits the width so it doesn't look stretched */
-  display: flex;
-  justify-content: center; /* Centers the internal item-list */
-  padding: 0 20px;
-}
-/* 1. The Outer Wrapper (The "Window") */
-/* --- 4. ANIMATIONS --- */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  max-width: 1200px;
+  padding: 0 15px; /* Use smaller padding for mobile */
+  box-sizing: border-box; /* Keeps padding INSIDE the 100% width */
 }
 
-/* --- 5. RESPONSIVE TWEAKS --- */
-@media (max-width: 768px) {
-  .category-bar {
-    padding: 10px 0;
-    margin-bottom: 20px;
+
+/* ===== RESERVE BANNER ===== */
+.reserve-banner {
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto 25px;
+  background: linear-gradient(135deg, #1a3350, #223b59);
+  border: 1px solid rgba(239, 176, 54, 0.3);
+  border-radius: 16px;
+  padding: 20px 30px;
+}
+
+.reserve-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.reserve-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.reserve-text {
+  flex: 1;
+}
+
+.reserve-text h3 {
+  color: #EFB036;
+  font-size: 1.1rem;
+  margin: 0 0 4px;
+  font-family: 'Playfair Display', serif;
+}
+
+.reserve-text p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.reserve-cta-btn {
+  background: #EFB036;
+  color: #1a3350;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.reserve-cta-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239,176,54,0.3);
+}
+
+@media (max-width: 600px) {
+  .reserve-banner-content {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .item-cards {
-    padding: 0 16px;
+  .reserve-cta-btn {
+    width: 100%;
+    text-align: center;
   }
+}
+* {
+  box-sizing: border-box;
 }

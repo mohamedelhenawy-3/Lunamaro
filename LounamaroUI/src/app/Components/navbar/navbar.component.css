@@ -1,5 +1,5 @@
 /* ===========================
-   MAIN NAVBAR BASE
+   MAIN NAVBAR BASE (Your Original Design)
 =========================== */
 .main-navbar {
   position: fixed;
@@ -22,18 +22,16 @@
   box-shadow: 0 4px 30px rgba(0,0,0,0.4);
 }
 
-/* THE THREE-PART CONTAINER */
 .navbar-container {
   width: 100%;
   display: flex;
-  /* This creates the Left | Middle | Right layout */
   justify-content: space-between; 
   align-items: center;
 }
 
-/* 1. LEFT SIDE: BRAND */
+/* LEFT SIDE: BRAND */
 .brand-link {
-  flex: 1; /* Takes up space on the left */
+  flex: 1;
   display: flex;
   justify-content: flex-start;
   text-decoration: none;
@@ -45,25 +43,56 @@
   font-weight: 800;
   letter-spacing: -1px;
 }
-
-/* 2. MIDDLE SIDE: LINKS */
-.nav-links {
-  flex: 2; /* Takes more space to stay centered */
+/* CART ICON (Restoring to White) */
+.cart-link {
+  color: #ffffff !important; /* Forces the icon to be white */
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
   display: flex;
-  justify-content: center; /* PERFECTLY CENTERED */
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+}
+
+.cart-link i {
+  color: #ffffff !important; /* Specifically target the FontAwesome icon */
+}
+
+.cart-link:hover i {
+  color: #EFB036 !important; /* Matches your gold theme when you hover */
+}
+
+/* CART BADGE (The little number bubble) */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -100%;
+  background-color: #EFB036; /* Gold background */
+  color: #0f1c2e; /* Dark text for contrast */
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 50%;
+  border: 2px solid #0f1c2e; /* Creates a clean gap between icon and badge */
+}
+/* MIDDLE SIDE: LINKS */
+.nav-links {
+  flex: 2;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-links ul {
   display: flex;
   list-style: none;
-  gap: 35px; /* Comfortable spacing */
+  gap: 35px;
   margin: 0;
   padding: 0;
   align-items: center;
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: #ffffff ;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
@@ -71,15 +100,24 @@
   transition: 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #EFB036;
+.nav-links a:hover { color: #EFB036; }
+/* Active nav link — matches your #efb036 gold theme */
+
+
+
+.nav-links ul li a.active-link {
+   color: #1a3350 !important;        /* force dark text over white */
+  background: #efb036 !important; 
+  border-radius: 8px; 
+  padding: 6px 14px;
 }
 
-/* 3. RIGHT SIDE: ACTIONS */
+
+/* RIGHT SIDE: ACTIONS */
 .right-actions {
-  flex: 1; /* Takes up space on the right */
+  flex: 1;
   display: flex;
-  justify-content: flex-end; /* ALIGN TO THE RIGHT */
+  justify-content: flex-end;
   align-items: center;
   gap: 20px;
   list-style: none;
@@ -87,13 +125,8 @@
   padding: 0;
 }
 
-/* ===========================
-   ADMIN DROPDOWN (VERTICAL)
-=========================== */
-.dropdown {
-  position: relative;
-}
-
+/* ADMIN DROPDOWN */
+.dropdown { position: relative; }
 .dropdown-toggle {
   color: #EFB036 !important;
   font-weight: 700 !important;
@@ -107,7 +140,7 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(15px); /* Centers menu under link */
+  transform: translateX(-50%) translateY(15px);
   background-color: #1a3350;
   min-width: 220px;
   display: flex !important;
@@ -118,8 +151,7 @@
   border: 1px solid rgba(255,255,255,0.08);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  list-style: none;
+  transition: all 0.3s ease;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -128,152 +160,155 @@
   transform: translateX(-50%) translateY(10px);
 }
 
-.dropdown-menu a {
-  padding: 12px 20px !important;
-  display: block !important;
-  font-size: 0.85rem !important;
-  border-left: 3px solid transparent;
-}
-
-.dropdown-menu a:hover {
-  background-color: rgba(239, 176, 54, 0.1) !important;
-  border-left: 3px solid #EFB036;
-  padding-left: 25px !important;
-}
-
-/* ===========================
-   BUTTONS & CART
-=========================== */
+/* BUTTONS */
 .logout-btn {
-  border: 1px solid rgba(255, 77, 77, 0.5);
   background-color: #ff4d4d !important;
   padding: 8px 18px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: 0.3s;
-  text-decoration: none;
   color: white;
-}
-
-.logout-btn:hover {
-  background: #ff4d4d;
-  /* color: #fff !important; */
+  text-decoration: none;
 }
 
 .btn-book-table {
-  background: #EFB036;
+  background: #ffffff;
   color: #1a3350 !important;
   padding: 8px 18px;
   border-radius: 8px;
   font-weight: 700 !important;
 }
-
-/* ===========================
-   BUTTONS & CART (FIXED)
-=========================== */
-
-/* Add this to ensure the badge stays attached to the link */
-.cart-link {
-  position: relative; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 5px;
-}
-
-.cart-link i {
-  font-size: 1.4rem; /* Slightly larger for better look */
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-.cart-link:hover i {
-  color: #EFB036; /* Icon turns gold on hover */
-}
-
-.cart-badge {
-  position: absolute;
-  /* Adjust these to position the badge perfectly on the corner */
-  top: -5px;
-  right: -8px;
-  background: #ff4d4d;
-  color: white;
-  font-size: 0.65rem;
-  font-weight: 700;
-  min-width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 2px solid #0f1c2e; /* Creates a clean 'gap' effect against navbar */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-/* Container for Guest Actions */
 .guest-actions {
   display: flex;
   align-items: center;
-  gap: 25px; /* Spacing between Login and Register */
+  gap: 10px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* 1. LOGIN LINK - Minimalist & Elegant */
-.login-link {
-  color: rgba(255, 255, 255, 0.8) !important;
+/* make links behave inline */
+.guest-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  position: relative;
 }
 
-.login-link:hover {
-  color: #EFB036 !important;
+/* LOGIN */
+.btn-login {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  transition: 0.3s;
 }
 
-/* Animated underline effect for Login */
-.login-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #EFB036;
-  transition: width 0.3s ease;
+.btn-login:hover {
+  border-color: #EFB036;
+  color: #EFB036;
 }
 
-.login-link:hover::after {
-  width: 100%;
-}
-
-/* 2. REGISTER BUTTON - The Star Action */
+/* REGISTER */
 .btn-register {
-  background: #EFB036; /* Your signature gold */
-  color: #0f1c2e !important; /* Dark text for contrast */
-  padding: 10px 24px;
-  border-radius: 12px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #EFB036;
+  color: #0f1c2e !important;
   font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: inline-block;
-  box-shadow: 0 4px 15px rgba(239, 176, 54, 0.2);
+  transition: 0.3s;
 }
 
 .btn-register:hover {
-  background-color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
-  color: #0f1c2e !important;
+  background: #ffbf3f;
 }
 
-/* Active state when clicked */
-.btn-register:active {
-  transform: translateY(-1px);
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 3000;
+  margin-left: 15px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #EFB036;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width: 992px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: #0f1c2e;
+    flex-direction: column;
+    padding: 100px 30px;
+    transition: 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    z-index: 2500;
+    display: flex !important; /* Ensure visibility */
+    justify-content: flex-start;
+  }
+    .nav-links ul li a.active-link {
+    padding: 12px 16px;             /* adds left/right padding on mobile */
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+  }
+  .nav-links.mobile-open { right: 0; }
+
+  .nav-links ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Admin Dropdown fix in sidebar */
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none !important;
+    background: rgba(255,255,255,0.03);
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .dropdown:hover .dropdown-menu { display: flex !important; }
+
+  .mobile-only-auth { display: block; }
+  .guest-actions { display: none; } /* Hide the top-right header buttons on phone */
+}
+
+@media (min-width: 993px) {
+  .mobile-only-auth { display: none; }
 }

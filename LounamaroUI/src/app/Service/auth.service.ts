@@ -35,12 +35,7 @@ private refreshTokenKey = 'refresh_token';
     console.log(data)
     return this.http.post(`${environment.baseurl}/Auth/register`, data);
   }
-// FIXED — notify all subscribers including navbar
-setToken(access_token: string, refresh_token: string) {
-  localStorage.setItem(this.accessTokenKey, access_token);
-  localStorage.setItem(this.refreshTokenKey, refresh_token);
-  this.loggedIn.next(true); 
-}
+
 
 
 
@@ -122,9 +117,14 @@ refreshToken(): Observable<LoginResponse> {
 private clearSession() {
   localStorage.removeItem(this.accessTokenKey);
   localStorage.removeItem(this.refreshTokenKey);
-  this.loggedIn.next(false);
+  this.zone.run(() => this.loggedIn.next(false)); // ✅ forces Angular to detect
 }
 
+setToken(access_token: string, refresh_token: string) {
+  localStorage.setItem(this.accessTokenKey, access_token);
+  localStorage.setItem(this.refreshTokenKey, refresh_token);
+  this.zone.run(() => this.loggedIn.next(true)); // ✅ same fix for login
+}
 
 // loginWithSocial(provider: string, token: string): Observable<any> {
 //   return this.http.post<any>(`${environment.baseurl}/Auth/social-login`, {

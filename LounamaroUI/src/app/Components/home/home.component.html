@@ -1,339 +1,279 @@
-<!-- ===== HERO SECTION ===== -->
+<!-- ===== HERO ===== -->
 <header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
   <div class="overlay"></div>
-<header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Welcome to Lunamaro Restaurant</h1>
-        <p>Order now for quick delivery or discover our authentic menu.</p> 
-
-        <div class="hero-actions">
-                  <a routerLink="/menu"  class="btn-hero btn-order-now">
-        Menu
-      </a>
-    </div>
-  </div>
+  <div class="hero-content">
+    <h1>Welcome to Lunamaro Restaurant</h1>
+    <p>Order now for quick delivery or discover our authentic menu.</p>
+    <div class="hero-actions">
+      <a routerLink="/menu" class="btn-hero btn-order-now">Our Menu</a>
+      <a routerLink="/reservation" class="btn-hero btn-menu">Reserve Table</a>
+    </div>
+  </div>
 </header>
-</header>
-<!-- ===== SPECIAL OFFERS SECTION ===== -->
-<!-- DROP THIS IN: replaces your old <section class="offers-section"> block -->
 
+<!-- ===== BEST SELLERS — no defer, near top ===== -->
+<section class="best-sellers" *ngIf="bestSellerItems?.length > 0">
+  <div class="section-header text-center">
+    <h2>Best Sellers</h2>
+    <p>Most loved dishes by our customers</p>
+  </div>
+  <div class="best-sellers-grid">
+    <div class="best-seller-card" *ngFor="let item of bestSellerItems; trackBy: trackById">
+      <div class="best-seller-img">
+        <img [src]="item.imageUrl" alt="{{ item.name }}" loading="lazy" decoding="async" (load)="onImageLoad($event)">
+        <span class="badge">🔥 Best</span>
+      </div>
+      <div class="best-seller-body">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <div class="bottom-row">
+          <span class="price">{{ item.price | currency:'EGP' }}</span>
+          <button (click)="addtocart(item.id)" [disabled]="item.quantity <= 0">
+            {{ item.quantity > 0 ? '+ Add to Cart' : 'Sold Out' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPECIAL OFFERS — no defer, near top ===== -->
 <section class="offers-section" *ngIf="weeklyDeals.length > 0 || discountTiers.length > 0 || rewards.length > 0">
-
-  <!-- Section Title -->
   <span class="offers-eyebrow">Exclusive For You</span>
   <h2 class="offers-title">Special <em>Offers</em></h2>
   <div class="offers-title-line"></div>
 
-  <!-- ══════════════ 1. WEEKLY DEALS ══════════════ -->
   <div class="offers-block" *ngIf="weeklyDeals.length > 0">
-
     <div class="offers-block-head">
       <span class="block-icon">🔥</span>
       <h3>Weekly <em>Deals</em></h3>
       <div class="block-line"></div>
     </div>
-
     <div class="deals-grid">
-      <div
-        class="deal-card"
-        *ngFor="let deal of weeklyDeals; let i = index"
-        [style.animation-delay]="(i * 80) + 'ms'"
-      >
-        <!-- Discount Ribbon -->
+      <div class="deal-card"
+           *ngFor="let deal of weeklyDeals; let i = index; trackBy: trackById"
+           [style.animation-delay]="(i * 80) + 'ms'">
         <div class="deal-ribbon">{{ deal.discountPercentage }}% OFF</div>
-
-        <!-- Image -->
         <div class="deal-img-wrap">
-          <img
-            [src]="'http://localhost:5218' + deal?.product?.imageUrl"
-            [alt]="deal?.product?.name"
-            onerror="this.src='assets/placeholder.jpg'"
-          />
+          <img [src]="deal?.product?.imageUrl" [alt]="deal?.product?.name"
+               onerror="this.src='assets/placeholder.jpg'"
+               loading="lazy" decoding="async" (load)="onImageLoad($event)"/>
         </div>
-
-        <!-- Body -->
         <div class="deal-body">
           <h4 class="deal-name">{{ deal?.product?.name }}</h4>
           <p class="deal-desc">{{ deal?.product?.description }}</p>
-
           <div class="deal-pricing">
             <span class="old-price">{{ deal?.product?.price | currency:'EGP ' }}</span>
-            <span class="new-price">
-              {{
-                deal?.product?.price -
-                (deal?.product?.price * deal?.discountPercentage / 100)
-                | currency:'EGP '
-              }}
-            </span>
+            <span class="new-price">{{
+              deal?.product?.price - (deal?.product?.price * deal?.discountPercentage / 100)
+              | currency:'EGP '
+            }}</span>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- ══════════════ 2. DISCOUNT TIERS ══════════════ -->
   <div class="offers-block" *ngIf="discountTiers.length > 0">
-
     <div class="offers-block-head">
       <span class="block-icon">💰</span>
       <h3>Spend <em>&amp; Save</em></h3>
       <div class="block-line"></div>
     </div>
-
     <div class="tiers-row">
-      <div
-        class="tier-card"
-        *ngFor="let tier of discountTiers; let i = index"
-        [style.animation-delay]="(i * 90) + 'ms'"
-      >
-        <div class="tier-icon-wrap">
-          <i class="fas fa-tags"></i>
-        </div>
+      <div class="tier-card"
+           *ngFor="let tier of discountTiers; let i = index; trackBy: trackById"
+           [style.animation-delay]="(i * 90) + 'ms'">
+        <div class="tier-icon-wrap"><i class="fas fa-tags"></i></div>
         <div class="tier-label">Tier {{ i + 1 }}</div>
-        <div class="tier-spend">
-          Spend <strong>{{ tier?.minimumAmount | currency:'EGP ' }}</strong>
-        </div>
+        <div class="tier-spend">Spend <strong>{{ tier?.minimumAmount | currency:'EGP ' }}</strong></div>
         <div class="tier-arrow"><i class="fas fa-arrow-down"></i></div>
-        <div class="tier-save">
-          {{ tier?.discountAmount | currency:'EGP ' }}
-        </div>
+        <div class="tier-save">{{ tier?.discountAmount | currency:'EGP ' }}</div>
         <span class="tier-save-sub">automatically deducted</span>
       </div>
     </div>
-
   </div>
 
-  <!-- ══════════════ 3. FREE REWARDS ══════════════ -->
   <div class="offers-block" *ngIf="rewards.length > 0">
-
     <div class="offers-block-head">
       <span class="block-icon">🎁</span>
       <h3>Free <em>Add-On Rewards</em></h3>
       <div class="block-line"></div>
     </div>
-
     <div class="rewards-list">
-      <div
-        class="reward-card"
-        *ngFor="let reward of rewards; let i = index"
-        [style.animation-delay]="(i * 80) + 'ms'"
-      >
+      <div class="reward-card"
+           *ngFor="let reward of rewards; let i = index; trackBy: trackById"
+           [style.animation-delay]="(i * 80) + 'ms'">
         <div class="reward-left">
-          <div class="reward-gift-icon">
-            <i class="fas fa-gift"></i>
-          </div>
+          <div class="reward-gift-icon"><i class="fas fa-gift"></i></div>
           <div class="reward-info">
-            <span class="reward-condition">
-              Orders over <strong>{{ reward?.minimumAmount | currency:'EGP ' }}</strong>
-            </span>
-            <span class="reward-product">
-              🎁 Free: <strong>{{ reward?.freeProduct?.name }}</strong>
-            </span>
+            <span class="reward-condition">Orders over <strong>{{ reward?.minimumAmount | currency:'EGP ' }}</strong></span>
+            <span class="reward-product">🎁 Free: <strong>{{ reward?.freeProduct?.name }}</strong></span>
           </div>
         </div>
         <div class="reward-right">
           <div class="reward-thumb" *ngIf="reward?.freeProduct?.imageUrl">
-            <img
-              [src]="'http://localhost:5218' + reward?.freeProduct?.imageUrl"
-              [alt]="reward?.freeProduct?.name"
-              onerror="this.src='assets/placeholder.jpg'"
-            />
+            <img [src]="reward?.freeProduct?.imageUrl" [alt]="reward?.freeProduct?.name"
+                 onerror="this.src='assets/placeholder.jpg'"
+                 loading="lazy" decoding="async" (load)="onImageLoad($event)"/>
           </div>
           <span class="reward-badge">Active</span>
         </div>
       </div>
     </div>
-
   </div>
-
 </section>
-<!-- ===== ABOUT US ===== -->
+
+<!-- ===== ABOUT — no defer, near top ===== -->
 <section class="about-section">
   <div class="about-left">
     <h2>Our Story</h2>
-    <p>
-      At Lunamaro, we blend tradition with creativity to bring you dishes prepared with the finest
+    <p>At Lunamaro, we blend tradition with creativity to bring you dishes prepared with the finest
       ingredients and crafted with love. Whether you're dining in or ordering delivery, our goal is to
-      offer you an exceptional culinary experience.
-       At Lunamaro, we blend tradition with creativity to bring you dishes prepared with the finest
-      ingredients and crafted with love. Whether you're dining in or ordering delivery, our goal is to
-      offer you an exceptional culinary experience.
-      
-    </p>
+      offer you an exceptional culinary experience.</p>
     <a routerLink="/reservation" class="btn-primary">Reserve Your Table</a>
   </div>
-
   <div class="about-right">
-    <img src="assets/aboutus/about1.jpg" alt="Lunamaro dining">
-    <img src="assets/aboutus/about2.jpg" alt="Chef preparing food">
-    <img src="assets/aboutus/about3.jpg" alt="Signature dishes">
-    <img src="assets/aboutus/about4.jpg" alt="Restaurant interior">
+    <img src="assets/aboutus/about1.jpg" loading="lazy" decoding="async" alt="Lunamaro dining">
+    <img src="assets/aboutus/about2.jpg" loading="lazy" decoding="async" alt="Chef preparing food">
+    <img src="assets/aboutus/about3.jpg" loading="lazy" decoding="async" alt="Signature dishes">
+    <img src="assets/aboutus/about4.jpg" loading="lazy" decoding="async" alt="Restaurant interior">
   </div>
 </section>
 
-<!-- ===== SPECIAL ITEMS ===== -->
-<section class="special-items" *ngIf="specialItems.length > 0">
-  <div class="container">
-    <div class="section-header text-center">
-      <h2>⭐ Chef's Specials</h2>
-      <p style="color: white;">Handpicked dishes loved by our customers</p>
-    </div>
-
-    <div class="special-items-grid">
-      <div class="special-item-card" *ngFor="let item of specialItems">
-  <div class="item-image-container">
-    <img [src]="'http://localhost:5218' + item.imageUrl" alt="{{ item.name }}">
-    <span class="special-badge">⭐ Special</span>
-   
-    <button class="quick-add-btn"  (click)="addtocart(item.id)" [disabled]="item.quantity <= 0">
-      {{ item.quantity >0 ? '+ Add to Cart' : 'Sold Out' }}
-    </button>
-  </div>
-
-  <div class="item-details">
-    <h4 class="item-title">{{ item.name }}</h4>
-    <p class="item-description">{{ item.description }}</p>
-    <p class="item-price">{{ item.price | currency:'EGP' }}</p>
-  </div>
-</div>
-
-    </div>
-  </div>
-</section>
-<section class="philosophy-parallax">
-  <div class="parallax-overlay"></div>
-  
-  <div class="parallax-content">
-    <span>The Art of Dining</span>
-    <h2>Where Passion Meets <em>Perfection</em></h2>
-    
-    <div class="divider-gold" style="width: 80px; height: 1px; background: #efb036; margin: 40px auto;"></div>
-    
-    <p style="color: rgba(255,255,255,0.7); font-style: italic; font-size: 1.2rem;">
-        An unforgettable culinary journey in the heart of Giza.
-    </p>
-  </div>
-</section>
-<section class="newsletter-concierge">
-  <div class="container">
-    <div class="concierge-box">
-      <div class="concierge-text">
-        <h3>Join the Inner Circle</h3>
-        <p>Experience seasonal reveals and priority reservation access.</p>
+<!-- ===== SPECIAL ITEMS — defer, far down ===== -->
+@defer (on viewport) {
+  <section class="special-items" *ngIf="specialItems.length > 0">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>⭐ Chef's Specials</h2>
+        <p style="color: white;">Handpicked dishes loved by our customers</p>
       </div>
-      <form class="concierge-form">
-        <input type="email" placeholder="YOUR EMAIL ADDRESS" required>
-        <button type="submit">Invite Me</button>
-      </form>
+      <div class="special-items-grid">
+        <div class="special-item-card" *ngFor="let item of specialItems; trackBy: trackById">
+          <div class="item-image-container">
+            <img [src]="item.imageUrl" alt="{{ item.name }}" loading="lazy" decoding="async" (load)="onImageLoad($event)">
+            <span class="special-badge">⭐ Special</span>
+            <button class="quick-add-btn" (click)="addtocart(item.id)" [disabled]="item.quantity <= 0">
+              {{ item.quantity > 0 ? '+ Add to Cart' : 'Sold Out' }}
+            </button>
+          </div>
+          <div class="item-details">
+            <h4 class="item-title">{{ item.name }}</h4>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="item-price">{{ item.price | currency:'EGP' }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-<!-- ===== LATEST REVIEWS ===== -->
-<section class="latest-reviews" *ngIf="reviewsData">
-  <div class="container" >
-    <div class="rating-summary">
-  ⭐⭐⭐⭐⭐ <strong>4.8</strong> / 5
-  <span>Based on 1,200+ reviews</span>
+  </section>
+} @placeholder {
+  <div class="section-skeleton"></div>
+}
+
+<!-- ===== PARALLAX — defer ===== -->
+@defer (on viewport) {
+  <section class="philosophy-parallax">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content">
+      <span>The Art of Dining</span>
+      <h2>Where Passion Meets <em>Perfection</em></h2>
+      <div class="divider-gold" style="width:80px;height:1px;background:#efb036;margin:40px auto;"></div>
+      <p style="color:rgba(255,255,255,0.7);font-style:italic;font-size:1.2rem;">
+        An unforgettable culinary journey in the heart of Giza.
+      </p>
+    </div>
+  </section>
+} @placeholder {
+  <div class="section-skeleton"></div>
+}
+
+<!-- ===== REVIEWS — defer ===== -->
+@defer (on viewport) {
+  <section class="latest-reviews" *ngIf="reviewsData">
+    <div class="container">
+      <div class="rating-summary">
+        ⭐⭐⭐⭐⭐ <strong>{{ rating | number:'1.1-1' }}</strong> / 5
+        <span>Based on {{ reviewsCount }} reviews</span>
+      </div>
+      <div class="reviews-slider">
+        <div class="review-card" *ngFor="let review of reviewsData.reviews; trackBy: trackById">
+          <div class="review-header">
+            <div class="avatar" [style.background-color]="getAvatarColor(review.name)">
+              {{ getInitials(review.name) }}
+            </div>
+            <span class="review-name">{{ review.name }}</span>
+          </div>
+          <div class="review-body">
+            <div class="stars-display">
+              <span *ngFor="let s of [1,2,3,4,5]" [class.filled]="s <= review.rating">★</span>
+            </div>
+            <p class="review-content">{{ review.content }}</p>
+            <small class="review-date">{{ review.createdAt | date:'mediumDate' }}</small>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a routerLink="/Reviews" class="btn-primary">View All Reviews</a>
+      </div>
+    </div>
+  </section>
+} @placeholder {
+  <div class="section-skeleton"></div>
+}
+
+<!-- ===== OPENING HOURS — defer ===== -->
+@defer (on viewport) {
+  <section class="opening-hours">
+    <div class="hours-content-left">
+      <h2>Hours</h2>
+      <p>We are ready to serve you <br> every day of the week.</p>
+    </div>
+    <div class="hours-grid">
+      <div class="day"><span>Monday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Tuesday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Wednesday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Thursday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Friday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Saturday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Sunday</span><span>09:00 AM - 12:00 PM</span></div>
+    </div>
+  </section>
+} @placeholder {
+  <div class="section-skeleton"></div>
+}
+
+<!-- ===== CONTACT — defer ===== -->
+@defer (on viewport) {
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <div class="contact-left">
+        <h2>Contact Us</h2>
+        <p>Reach out for reservations, feedback, or inquiries. We're here to serve you.</p>
+        <ul class="contact-info">
+          <li><strong>Address:</strong> Ahmed Oraby Street, Giza, Egypt</li>
+          <li><strong>Phone:</strong> +20 015 5660 59</li>
+          <li><strong>Email:</strong> support-lunamaro.com</li>
+        </ul>
+      </div>
+      <div class="contact-right">
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="btn-contact">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+} @placeholder {
+  <div class="section-skeleton"></div>
+}
+
+
+
+<!-- Show offline banner -->
+<div *ngIf="!(isOnline$ | async)" class="offline-banner">
+  📡 You're offline — showing cached data
 </div>
-
-    <div class="reviews-slider">
-      <div class="review-card" *ngFor="let review of reviewsData.reviews">
-  
-  <div class="review-header">
-    <div class="avatar" [style.background-color]="getAvatarColor(review.name)">
-      {{ getInitials(review.name) }}
-    </div>
-    <span class="review-name">{{ review.name }}</span>
-  </div>
-
-  <div class="review-body">
-    <div class="stars-display">
-      <span *ngFor="let s of [1,2,3,4,5]" [class.filled]="s <= review.rating">★</span>
-    </div>
-
-    <p class="review-content">
-      {{ review.content }}
-    </p>
-
-    <small class="review-date">
-      {{ review.createdAt | date:'mediumDate' }}
-    </small>
-  </div>
-</div>
-    </div>
-
-    <!-- Button -->
-    <div class="text-center mt-4">
-      <a routerLink="/Reviews" class="btn-primary">View All Reviews</a>
-    </div>
-
-  </div>
-</section>
-<!-- ================= OPENING HOURS ================= -->
-<section class="opening-hours">
-  <div class="hours-content-left">
-    <h2>Hours</h2>
-    <p>We are ready to serve you <br> every day of the week.</p>
-  </div>
-
-  <div class="hours-grid">
-    <div class="day">
-      <span>Monday</span>
-      <span>09:00 AM - 10:00 PM</span>
-    </div>
-    <div class="day">
-      <span>Tuesday</span>
-      <span>09:00 AM - 10:00 PM</span>
-    </div>
-    <div class="day">
-      <span>Wednesday</span>
-      <span>09:00 AM - 10:00 PM</span>
-    </div>
-    <div class="day">
-      <span>Thursday</span>
-      <span>09:00 AM - 10:00 PM</span>
-    </div>
-    <div class="day">
-      <span>Friday</span>
-      <span>09:00 AM - 11:00 PM</span>
-    </div>
-    <div class="day">
-      <span>Saturday</span>
-      <span>09:00 AM - 11:00 PM</span>
-    </div>
-    <div class="day">
-      <span>Sunday</span>
-      <span>09:00 AM - 10:00 PM</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT SECTION ===== -->
-<section class="contact-section" id="contact">
-  <div class="contact-container">
-    <div class="contact-left">
-      <h2>Contact Us</h2>
-      <p>Reach out for reservations, feedback, or inquiries. We're here to serve you.</p>
-      <ul class="contact-info">
-        <li><strong>Address:</strong> Ahmed Oraby Street, Giza, Egypt</li>
-        <li><strong>Phone:</strong> +20 015 5660 59</li>
-        <li><strong>Email:</strong> support-lunamaro.com</li>
-      </ul>
-    </div>
-    <div class="contact-right">
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn-contact">Send Message</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-
-
-
 

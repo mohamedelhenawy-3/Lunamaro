@@ -50,11 +50,11 @@ public class UserOrderHeader
     [Required]
     public string City { get; set; } = null!;
 
-    [Required]
-    public string State { get; set; } = null!;
+    //[Required]
+    //public string State { get; set; } = null!;
 
-    [Required]
-    public int PostalCode { get; set; }
+    //[Required]
+    //public int PostalCode { get; set; }
 
     [Required]
     public string Name { get; set; } = null!;

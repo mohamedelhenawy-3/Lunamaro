@@ -1,0 +1,66 @@
+2026-04-22 04:07:48.025 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-22 04:07:48.158 +02:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 164
+2026-04-22 04:18:30.750 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-22 04:18:30.862 +02:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 164
+2026-04-22 20:57:47.670 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-22 20:57:47.831 +02:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 164
+2026-04-22 22:40:37.022 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-22 22:40:37.269 +02:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 164
+2026-04-22 23:54:31.480 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-22 23:54:31.655 +02:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 164
+2026-04-22 23:56:16.844 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-22 23:56:16.970 +02:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 164

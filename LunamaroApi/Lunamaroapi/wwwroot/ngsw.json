@@ -1,0 +1,129 @@
+{
+  "configVersion": 1,
+  "timestamp": 1779064906798,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/chunk-4FWPS4MD.js",
+        "/chunk-AR5WJKEZ.js",
+        "/chunk-CKK6DMOL.js",
+        "/chunk-DBGZOLD5.js",
+        "/chunk-GNQ7DQJA.js",
+        "/chunk-PQKKCDW6.js",
+        "/chunk-RN7WR22H.js",
+        "/chunk-ULOLC4YC.js",
+        "/chunk-Y5VMP52C.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main-CDPNJ3D2.js",
+        "/manifest.webmanifest",
+        "/polyfills-FFHMD2TL.js",
+        "/scripts-SQ7W6IC7.js",
+        "/styles-FOXS7E45.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/Intro/Image.jfif",
+        "/assets/Intro/Item.jpg",
+        "/assets/KingMo.png",
+        "/assets/Lunamori.jpg",
+        "/assets/OurRes.jpg",
+        "/assets/aboutus/about1.jpg",
+        "/assets/aboutus/about2.jpg",
+        "/assets/aboutus/about3.jpg",
+        "/assets/aboutus/about4.jpg",
+        "/assets/foodmeanu/Food.jpg",
+        "/assets/icons/icon-16x16.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-32x32.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/reservation/Reservation.jfif"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "menu-api",
+      "patterns": [
+        "\\/api\\/Item\\/.*",
+        "\\/api\\/Category\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 50,
+      "maxAge": 600000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/assets/Intro/Image.jfif": "d97388f348d11398ca880a024c0617c729799cbf",
+    "/assets/Intro/Item.jpg": "891557553b49dd1fd63b6955334b50b1b2cdb0d6",
+    "/assets/KingMo.png": "e4bd301927aa5c99eddd3c4ec7dfed38361cbc34",
+    "/assets/Lunamori.jpg": "e3787dbca7a26f5a0ed9a88f50dd9d1356b55d0c",
+    "/assets/OurRes.jpg": "108dc062bd5570c9e6708304ef6c28c610b61a8e",
+    "/assets/aboutus/about1.jpg": "e06331989d65fe7e33f5ea42081e1e629a2df713",
+    "/assets/aboutus/about2.jpg": "7900cb1c43fb29d7a0c265a86978277ed227b53d",
+    "/assets/aboutus/about3.jpg": "674f54e62a5f027765a1cada279c90a18f7318af",
+    "/assets/aboutus/about4.jpg": "b5aeb82d4ad3d6fb1362cce750eb8d3ae65b6542",
+    "/assets/foodmeanu/Food.jpg": "239b3c41e913ade5b07d7607772560f88e06110a",
+    "/assets/icons/icon-16x16.png": "805fa9bb9dad3915785cd0ef258b7faf7283d92f",
+    "/assets/icons/icon-192x192.png": "ac73dd3b856db8dfc95b84f4b3e06fbf3fd349d9",
+    "/assets/icons/icon-32x32.png": "87ea9b54ee9a3d998cebea6c23436fa903645028",
+    "/assets/icons/icon-512x512.png": "7175ea273842ec2aca7d43c2a6f7241d015d6949",
+    "/assets/reservation/Reservation.jfif": "72179d738349f1d22ebc0761aa46676e000a10b7",
+    "/chunk-4FWPS4MD.js": "9da2cf77155709737f2404e5b6e224aef045bdb0",
+    "/chunk-AR5WJKEZ.js": "91ec2f2f0af9b4ce61622ee3d897d2836a3a59ec",
+    "/chunk-CKK6DMOL.js": "2e3993fe30359c9d0deeae24b9540f1b999d2e57",
+    "/chunk-DBGZOLD5.js": "7515f60df135ba72fb777f0e0a145c9dafe8628d",
+    "/chunk-GNQ7DQJA.js": "1a4ec5dbddb826c776a665584703120dfb05f71c",
+    "/chunk-PQKKCDW6.js": "9972d459752f6fdf86ab1d1584675b6e40b389d3",
+    "/chunk-RN7WR22H.js": "419d79ebca22461c7ac6869c1db3fb75886ad0c1",
+    "/chunk-ULOLC4YC.js": "92014c86aba481ac79374610fee31eb70e987e9b",
+    "/chunk-Y5VMP52C.js": "ad51097021439d6e054fed1d66dce31d428cc511",
+    "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/index.html": "9ec93f96bb8b6a47ec7cfefcc6e40668ea49e6e1",
+    "/main-CDPNJ3D2.js": "6806b3f765b92ae3cb8a322235ee8403ec2e81fc",
+    "/manifest.webmanifest": "5904f7d2d0f88df7fbab0928abc01770394780cf",
+    "/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/scripts-SQ7W6IC7.js": "5119cd2cbdf65456a959d73a4eb77b48941820cc",
+    "/styles-FOXS7E45.css": "86058064e82e8aac95545ec18705b97284d90e19"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

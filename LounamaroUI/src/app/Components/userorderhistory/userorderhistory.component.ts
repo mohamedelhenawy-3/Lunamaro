@@ -23,30 +23,30 @@ export class UserorderhistoryComponent implements OnInit, OnDestroy {
     private loc: Location
   ) {}
 
-  ngOnInit(): void {
-    this.loadOrderHistory();
+ ngOnInit(): void {
+  this.loadOrderHistory();
 
-    // Auto-refresh every 10 seconds
-    this.refreshInterval = setInterval(() => {
-      this.loadOrderHistory();
-    }, 10000);
-  }
+  this.refreshInterval = setInterval(() => {
+    const hasPending = this.orderhistroy.some(o => o.orderStatus === 'Pending');
+    if (hasPending) this.loadOrderHistory(); // ✅ only refresh when needed
+  }, 60000);
+}
 
   private loadOrderHistory(): void {
     this.service.orderhistory().subscribe({
       next: (data: userorderhostory[]) => {
         this.orderhistroy = data ?? [];
-        console.log(data);
+        // console.log(data);
       },
       error: (err: any) => {
-        console.error('Failed to load user order history', err);
+        // console.error('Failed to load user order history', err);
         this.orderhistroy = [];
       }
     });
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.refreshInterval);
+    // clearInterval(this.refreshInterval);
   }
 
   viewDetails(orderId: number): void {

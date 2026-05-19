@@ -12,8 +12,11 @@ import { CommonModule } from '@angular/common';
 export class CategoryListComponent {
   @Input() categories: Category[] = [];
   @Output() categorySelected = new EventEmitter<number>();
+  selectedCategoryId: number = 0; // Tracks the "All" or specific ID
+
 
   onCategoryClick(catId: number) {
+    this.selectedCategoryId = catId;
     this.categorySelected.emit(catId);
   }
 }

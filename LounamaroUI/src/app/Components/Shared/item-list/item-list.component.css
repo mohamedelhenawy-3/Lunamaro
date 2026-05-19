@@ -1,3 +1,10 @@
+
+.item-container {
+  padding: 15px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 /* --- 1. THE GRID (Professional Balance) --- */
 .item-row {
   display: grid;
@@ -5,6 +12,11 @@
   gap: 25px;
   width: 100%;
   max-width: 1200px;
+
+  display: flex;
+  flex-wrap: wrap;       /* This allows cards to drop to the next line */
+  gap: 20px;            /* Maintains perfect spacing between cards */
+  justify-content: center;
 }
 
 /* --- 2. THE RESTAURANT CARD --- */
@@ -17,6 +29,12 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
+
+
+  flex: 1 1 300px;      /* Grow and shrink, but stay around 300px wide */
+  max-width: 350px;     /* Prevents cards from getting too wide on huge screens */
+  display: flex;
+  flex-direction: column;
 }
 
 .item-card:hover {
@@ -27,17 +45,64 @@
 /* --- 3. THE IMAGE & BADGE --- */
 .image-container {
   position: relative;
-  height: 180px; /* Perfect height for food images */
+  width: 100%;
+  aspect-ratio: 4/3;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .item-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
   transition: transform 0.5s ease;
 }
 
+.item-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.img {
+  filter: blur(10px);
+  transition: filter 0.3s;
+}
+.img.loaded {
+  filter: blur(0);
+}
+.item-card {
+  background-color: #1a3350;
+  width: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  transition: 0.25s ease;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  .item-row {
+    gap: 15px;
+  }
+  
+  .item-card {
+    flex: 0 1 100%;     /* On mobile, cards take full width */
+    max-width: none;
+  }
+
+  .item-container {
+    padding: 10px;
+  }
+}
 .item-card:hover .item-image {
   transform: scale(1.1);
 }

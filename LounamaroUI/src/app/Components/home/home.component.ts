@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ImageShareService } from '../../Service/ImageService/image-share.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ExploreItem } from '../../Models/item/exploreItem';
 import { ItemService } from '../../Service/Item/item.service';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,10 @@ import { specialItem } from '../../Models/item/specialitems';
 import { OffersservicesService } from '../../Service/Offers/offersservices.service';
 import { AddToCart } from '../../Models/add-to-cart';
 import { UsercartService } from '../../Service/UserCart/usercart.service';
+import { environment } from 'src/environments/environment.prod';
+import { AuthService } from 'src/app/Service/auth.service';
+import { forkJoin } from 'rxjs';
+import { NetworkStatusServiceService } from 'src/app/Service/network-status-service.service';
 
 @Component({
   selector: 'app-home',
@@ -19,65 +23,81 @@ import { UsercartService } from '../../Service/UserCart/usercart.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  imageBaseUrl=environment.imageUrl;
   headerImage = '/assets/Intro/Item.jpg';
   newestItems: ExploreItem[] = [];
-  bestSellerItems: ExploreItem[] = [];
+  bestSellerItems: any[] = [];
   reviewsData?: ReviewResponse;
   specialItems: specialItem[] = []; // <-- NEW: Special Items
 
 weeklyDeals: any[] = [];
 discountTiers: any[] = [];
 rewards: any[] = [];
+
+
+  private network = Inject(NetworkStatusServiceService);
+  isOnline$ = this.network.online$;
+
+
+rating = 4.6 + Math.random() * 0.3;
+reviewsCount = 800 + Math.floor(Math.random() * 600);
   constructor(private offerService:OffersservicesService,private cartsrviceapi:UsercartService
-    ,private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService) {}
+    ,private imgservice: ImageShareService, private itemService: ItemService,private reviewservice:ReviewsService,private authService:AuthService,private router:Router) {}
 
   ngOnInit(): void {
     this.imgservice.updateImage(this.headerImage);
-  this.loadOffers();
+  forkJoin({
+    newest:   this.itemService.getNewestItems(),
+    best:     this.itemService.getBestSelerItems(),
+    special:  this.itemService.getSpecialItems(),
+    reviews:  this.reviewservice.getLatestReviews(),
+    deals:    this.offerService.getWeeklyDeals(),
+    tiers:    this.offerService.getDiscountTiers(),
+    rewards:  this.offerService.getAddOnRewards(),
+  }).subscribe({
+    next: (res) => {
+      this.newestItems     = res.newest;
+      this.bestSellerItems = res.best;
+      this.specialItems    = res.special;
+      this.reviewsData     = res.reviews;
+      this.weeklyDeals     = res.deals?.data   || [];
+      this.discountTiers   = res.tiers?.data   || [];
+      this.rewards         = res.rewards?.data || [];
+    },
+    error: (err) => console.error('Home load error', err)
+  });
 
-    // Load newest menu items
-    this.itemService.getNewestItems().subscribe(res => {
-      this.newestItems = res;
-      console.log(res);
-    });
 
-    // Load best seller items
-    this.itemService.getBestSelerItems().subscribe(res => {
-      this.bestSellerItems = res;
-    });
-
-     this.reviewservice.getLatestReviews().subscribe(
-    res => this.reviewsData = res,
-    err => console.error(err)
-  );
-     // Load special items
-    this.itemService.getSpecialItems().subscribe({
-      next: (res) => {
-        this.specialItems = res
-      console.log("res",res);},
-      error: (err) => console.error('Failed to load special items', err)
-    });
 
   }
 
 
 
  addtocart(itemid:number){
-  
-    const dto: AddToCart = {     // Use dynamic userId if available
+    if (!this.authService.isLoggedIn()) {
+    this.router.navigate(['/login']);
+    return;
+  }
+
+    const dto: AddToCart = {    
      itemId: itemid,
-      quantity: 1               // default quantity
+      quantity: 1              
     };
     this.cartsrviceapi.addToCart(dto).subscribe(() => {
-    this.cartsrviceapi.fetchCartCount(); // No need for userId
+    this.cartsrviceapi.fetchCartCount(); 
   });
     }
 
 
 
+trackById(index: number, item: any) {
+  return item.id;
+}
 
-
-
+onImageLoad(event: any) {
+  event.target.classList.add('loaded');
+}
 loadOffers() {
 
   this.offerService.getWeeklyDeals().subscribe(res => {

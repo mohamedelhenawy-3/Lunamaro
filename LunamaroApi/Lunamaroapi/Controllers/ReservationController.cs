@@ -12,7 +12,6 @@ namespace Lunamaroapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
 
 
     public class ReservationController : ControllerBase
@@ -22,6 +21,7 @@ namespace Lunamaroapi.Controllers
         {
             _reservationService = reservationService;
         }
+        [Authorize]
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -29,6 +29,7 @@ namespace Lunamaroapi.Controllers
             var reservations = await _reservationService.GetAllAsync();
             return Ok(reservations);
         }
+        [Authorize]
 
         [HttpGet("get/{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -37,6 +38,7 @@ namespace Lunamaroapi.Controllers
             return Ok(resarvation);
 
         }
+        [Authorize]
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ReservationDto dto)
@@ -51,6 +53,8 @@ namespace Lunamaroapi.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+        [Authorize]
+
         [HttpPut("approve/{id}")]
         public async Task<IActionResult> Approve(int id)
         {
@@ -59,6 +63,8 @@ namespace Lunamaroapi.Controllers
             return Ok(new { message = "Reservation approved successfully" });
 
         }
+        [Authorize]
+
         [HttpPut("reject/{id}")]
         public async Task<IActionResult> Reject(int id)
         {
@@ -84,6 +90,8 @@ namespace Lunamaroapi.Controllers
             }
         }
         [HttpPut("{id}/status")]
+        [Authorize]
+
         public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusDto dto)
         {
             await _reservationService.UpdateStatusAsync(dto, id);
@@ -93,6 +101,8 @@ namespace Lunamaroapi.Controllers
 
         [Authorize]
         [HttpGet("myreservations")]
+        [Authorize]
+
         public async Task<IActionResult> GetUserReservations()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -106,6 +116,8 @@ namespace Lunamaroapi.Controllers
         }
 
         [HttpDelete("cancel")]
+        [Authorize]
+
         public async Task<IActionResult> CancelReservation([FromBody] CancelReservationDTO dto)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -120,6 +132,7 @@ namespace Lunamaroapi.Controllers
 
             return Ok(new { message = "Reservation canceled successfully." });
         }
+       
         [HttpGet("available")]
         public async Task<IActionResult> GetAvailableTables(DateTime startTime, DateTime endTime, int guests)
         {

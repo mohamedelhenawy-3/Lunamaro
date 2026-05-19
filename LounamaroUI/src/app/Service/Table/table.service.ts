@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Table } from '../../Models/tables';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { updatetablestatus } from '../../Models/updatetablestatus';
 import { AvTable } from '../../Models/usersTables';
 import { UpdateTable } from '../../Models/Admin/Table/updatetable';

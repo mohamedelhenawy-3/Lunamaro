@@ -1,0 +1,218 @@
+/* ── Keyframes ─────────────────────────────────────── */
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ring-spin-rev {
+  to { transform: rotate(-360deg); }
+}
+@keyframes gold-pulse {
+  0%, 100% { opacity: 0.18; transform: scale(0.92); }
+  50%       { opacity: 0.38; transform: scale(1.06); }
+}
+@keyframes core-breathe {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(239,176,54,0); }
+  50%       { transform: scale(1.12); box-shadow: 0 0 22px 6px rgba(239,176,54,0.18); }
+}
+@keyframes shimmer-travel {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+@keyframes dots-cycle {
+  0%, 100% { content: ''; }
+  25%       { content: '.'; }
+  50%       { content: '..'; }
+  75%       { content: '...'; }
+}
+@keyframes overlay-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes eyebrow-in {
+  from { opacity: 0; letter-spacing: 0.5em; }
+  to   { opacity: 1; letter-spacing: 0.22em; }
+}
+@keyframes particle-float {
+  0%, 100% { opacity: 0.7; transform: translate(0, 0) scale(1); }
+  50%       { opacity: 0.2; transform: translate(var(--px), var(--py)) scale(0.55); }
+}
+
+/* ── Overlay ───────────────────────────────────────── */
+.sp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(22, 38, 58, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: overlay-fade 0.25s ease;
+
+  /* Ambient glow — matches your .offers-section::before */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(239,176,54,0.07) 0%, transparent 68%);
+    pointer-events: none;
+  }
+}
+
+/* ── Card ──────────────────────────────────────────── */
+.sp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 3rem 3.5rem;
+  background: rgba(26, 46, 70, 0.97);
+  border: 1px solid rgba(239, 176, 54, 0.18);
+  border-radius: 24px;
+  position: relative;
+  animation: card-rise 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s both;
+
+  /* Subtle warm tint */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: rgba(239, 176, 54, 0.025);
+    pointer-events: none;
+  }
+}
+
+/* ── Orbit system ──────────────────────────────────── */
+.sp-orbit-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(239, 176, 54, 0.10);
+  animation: gold-pulse 2.2s ease-in-out infinite;
+}
+
+.sp-ring-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: #efb036;
+  border-right-color: rgba(239, 176, 54, 0.35);
+  animation: ring-spin 1.3s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.sp-ring-mid {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(239, 176, 54, 0.55);
+  border-left-color: rgba(239, 176, 54, 0.25);
+  animation: ring-spin-rev 1.9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.sp-ring-inner {
+  position: absolute;
+  inset: 24px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(239, 176, 54, 0.4);
+  border-right-color: rgba(239, 176, 54, 0.15);
+  animation: ring-spin 2.6s linear infinite;
+}
+
+.sp-core {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #efb036;
+  z-index: 2;
+  animation: core-breathe 2.2s ease-in-out infinite;
+}
+
+/* Floating gold particles */
+.sp-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #efb036;
+  animation: particle-float 2.5s ease-in-out infinite;
+}
+.sp-particle-1 { top: 4px;   left: calc(50% - 2px); --px: -14px; --py: -18px; animation-delay: 0s; }
+.sp-particle-2 { top: calc(50% - 2px); right: 4px;  --px: 16px;  --py: -12px; animation-delay: 0.4s; }
+.sp-particle-3 { bottom: 8px; left: calc(50% - 2px); --px: 10px;  --py: 18px;  animation-delay: 0.8s; }
+.sp-particle-4 { top: calc(50% - 2px); left: 4px;   --px: -12px; --py: 14px;  animation-delay: 1.2s; }
+
+/* ── Text elements ─────────────────────────────────── */
+.sp-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(239, 176, 54, 0.55);
+  animation: eyebrow-in 0.8s ease 0.4s both;
+}
+
+.sp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #efb036;
+  margin: -8px 0 -4px;
+}
+
+.sp-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(239, 176, 54, 0.28);
+}
+
+.sp-bar-wrap {
+  width: 140px;
+  height: 2px;
+  background: rgba(239, 176, 54, 0.10);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.sp-bar-fill {
+  height: 100%;
+  width: 35%;
+  border-radius: 99px;
+  background: linear-gradient(
+    90deg,
+    rgba(239, 176, 54, 0),
+    #efb036,
+    rgba(239, 176, 54, 0)
+  );
+  animation: shimmer-travel 1.5s ease-in-out infinite;
+}
+
+.sp-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.30);
+  margin-top: -6px;
+
+  &::after {
+    content: '';
+    animation: dots-cycle 1.8s steps(1, end) infinite;
+  }
+}

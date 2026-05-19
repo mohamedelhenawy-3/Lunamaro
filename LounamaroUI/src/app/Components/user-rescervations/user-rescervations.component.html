@@ -1,5 +1,24 @@
+
+
+<!-- Reserve Table Banner -->
+
+
+
 <div class="reservations-container">
   <h2>My Reservations</h2>
+
+
+   <div class="reserve-banner">
+  <div class="reserve-banner-content">
+    <span class="reserve-icon">🍽️</span>
+    <div class="reserve-text">
+      <p>Reserve your table for the perfect experience</p>
+    </div>
+    <a routerLink="/reservation" class="reserve-cta-btn">
+      Reserve a Table
+    </a>
+  </div>
+</div>
 
   <div *ngIf="userrecervation.length > 0; else noReservations">
     <table class="reservations-table">
@@ -15,16 +34,16 @@
       </thead>
       <tbody>
         <tr *ngFor="let r of userrecervation; index as i">
-          <td>{{ i + 1 }}</td>
-          <td>{{ r.tableNumber }}</td>
-          <td>{{ r.startTime | date: 'short' }}</td>
-          <td>{{ r.endTime | date: 'short' }}</td>
-          <td>
+          <td data-label="#">{{ i + 1 }}</td>
+          <td data-label="Table Number">{{ r.tableNumber }}</td>
+          <td data-label="Start Time">{{ r.startTime | date: 'short' }}</td>
+          <td data-label="End Time">{{ r.endTime | date: 'short' }}</td>
+          <td data-label="Status">
             <span class="status" [ngClass]="'status-' + r.status.toLowerCase()">
               {{ r.status }}
             </span>
           </td>
-          <td>
+          <td data-label="Action">
             <button class="cancel-btn" (click)="cancelReservation(r.id)">
               Cancel
             </button>

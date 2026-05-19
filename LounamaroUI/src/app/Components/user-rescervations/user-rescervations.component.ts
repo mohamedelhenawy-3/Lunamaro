@@ -3,11 +3,12 @@ import { userrecervation } from '../../Models/User/userreciervation';
 import { ReservationService } from '../../Service/reservation/reservation.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user-rescervations',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,RouterLink],
   templateUrl: './user-rescervations.component.html',
   styleUrl: './user-rescervations.component.css'
 })
@@ -28,10 +29,9 @@ export class UserRescervationsComponent implements OnInit {
     // Rename `getUserReservations` if your service uses a different name.
     this.recservice.UserReservation()?.subscribe({
       next: (items) => (this.userrecervation = items ?? [] ),
-      error: (err) => {
-        console.error('Failed to load user reservations', err);
-        this.userrecervation = [];
-      },
+    error: (err) => {
+      console.error("Actual server error:", err);
+    }
     });
   }
     cancelReservation(id:number):void{

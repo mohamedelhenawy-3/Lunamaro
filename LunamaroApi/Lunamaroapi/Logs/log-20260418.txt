@@ -1,0 +1,1183 @@
+2026-04-18 20:01:56.473 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-18 20:02:00.260 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'AddOnReward'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.297 +02:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.312 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.316 +02:00 [WRN] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'WeeklyDeal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.318 +02:00 [WRN] No store type was specified for the decimal property 'ItemDiscountAmount' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.320 +02:00 [WRN] No store type was specified for the decimal property 'ItemFinalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.322 +02:00 [WRN] No store type was specified for the decimal property 'ItemOriginalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.326 +02:00 [WRN] No store type was specified for the decimal property 'FinalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.329 +02:00 [WRN] No store type was specified for the decimal property 'OfferDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.334 +02:00 [WRN] No store type was specified for the decimal property 'OriginalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.339 +02:00 [WRN] No store type was specified for the decimal property 'TierDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:00.342 +02:00 [WRN] No store type was specified for the decimal property 'TotalDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:02:03.705 +02:00 [INF] Executed DbCommand (179ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:02:04.054 +02:00 [INF] Executed DbCommand (42ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:02:04.534 +02:00 [INF] User profile is available. Using 'C:\Users\Softlaptop\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-18 20:02:04.767 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:02:04.7566014+00:00"
+2026-04-18 20:02:05.095 +02:00 [INF] Now listening on: http://localhost:5218
+2026-04-18 20:02:05.246 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:02:05.322 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-18 20:02:05.325 +02:00 [INF] Hosting environment: Development
+2026-04-18 20:02:05.327 +02:00 [INF] Content root path: D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi
+2026-04-18 20:02:05.970 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/index.html - null null
+2026-04-18 20:02:06.422 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/index.html - 200 null text/html;charset=utf-8 453.8158ms
+2026-04-18 20:02:06.503 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_vs/browserLink - null null
+2026-04-18 20:02:06.570 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-18 20:02:06.585 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 14.4309ms
+2026-04-18 20:02:06.711 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_vs/browserLink - 200 null text/javascript; charset=UTF-8 208.1311ms
+2026-04-18 20:02:06.831 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - null null
+2026-04-18 20:02:06.945 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 113.389ms
+2026-04-18 20:07:05.334 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:07:05.3346919+00:00"
+2026-04-18 20:07:05.412 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:08:42.174 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:42.215 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:42.225 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 14.5499 ms
+2026-04-18 20:08:42.229 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 54.7487ms
+2026-04-18 20:08:42.242 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:42.255 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:42.258 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-04-18 20:08:45.439 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:45.515 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:45.691 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:45.720 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:45.735 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:45.738 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 3.5242 ms
+2026-04-18 20:08:45.743 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 22.9781ms
+2026-04-18 20:08:45.752 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:45.758 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:45.761 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:45.766 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:45.863 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:45.893 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:45.908 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:45.909 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 1.3446 ms
+2026-04-18 20:08:45.914 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 20.4273ms
+2026-04-18 20:08:45.921 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:45.925 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:45.931 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:45.933 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:45.979 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:46.074 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:46.259 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:46.261 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 2.2479 ms
+2026-04-18 20:08:46.263 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 189.1261ms
+2026-04-18 20:08:46.464 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:46.629 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:46.876 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:46.883 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:46.884 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:46.886 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 3.1710 ms
+2026-04-18 20:08:46.888 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:46.890 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 935.8239ms
+2026-04-18 20:08:46.891 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 1360.2647ms
+2026-04-18 20:08:46.893 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 264.2052ms
+2026-04-18 20:08:46.923 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:46.927 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:46.924 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:46.950 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:46.947 +02:00 [INF] Executed DbCommand (44ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:46.891 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 1094.8364ms
+2026-04-18 20:08:46.957 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 1032.4963 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:46.958 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 8.2612 ms
+2026-04-18 20:08:46.957 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 4703.3491 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:46.969 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:47.351 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:47.054 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 130.3412ms
+2026-04-18 20:08:47.780 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:47.782 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 882.7875ms
+2026-04-18 20:08:47.485 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 1727.2303 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:47.862 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 5619.9844ms
+2026-04-18 20:08:47.814 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 1892.9773ms
+2026-04-18 20:08:47.867 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:48.148 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:48.155 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:48.235 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.237 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 1.2551 ms
+2026-04-18 20:08:48.233 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 2480.816ms
+2026-04-18 20:08:48.165 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:48.256 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.258 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 1.8840 ms
+2026-04-18 20:08:48.266 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 105.2703ms
+2026-04-18 20:08:48.174 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 1297.6735 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:48.240 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 84.6215ms
+2026-04-18 20:08:48.270 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:48.253 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:48.534 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:48.538 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:08:48.543 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.547 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.568 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 2153.5025ms
+2026-04-18 20:08:48.570 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.572 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 28.7537 ms
+2026-04-18 20:08:48.588 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 317.7841ms
+2026-04-18 20:08:48.580 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:48.584 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 14.1000 ms
+2026-04-18 20:08:48.574 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:48.596 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:48.601 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.604 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 66.2664ms
+2026-04-18 20:08:48.607 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:48.611 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.614 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:48.626 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:48.632 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:48.634 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:48.634 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:48.634 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:48.644 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.655 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:48.649 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.646 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 113
+2026-04-18 20:08:48.660 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:48.666 +02:00 [INF] Executed DbCommand (38ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:48.668 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:48.675 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:08:48.687 +02:00 [INF] Executed DbCommand (47ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:48.689 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:48.691 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:48.706 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:08:48.714 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:48.720 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:49.637 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 1012.6208ms
+2026-04-18 20:08:49.638 +02:00 [INF] Executed DbCommand (929ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:49.638 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 939.1829ms
+2026-04-18 20:08:49.638 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 928.0825ms
+2026-04-18 20:08:49.643 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:49.653 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:49.656 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:49.658 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 1111.1062 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:49.660 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 1011.0470 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:49.849 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:49.978 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 1324.129ms
+2026-04-18 20:08:50.198 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:50.243 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 1989.2765ms
+2026-04-18 20:08:49.662 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 987.3055 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:49.637 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 999.5497ms
+2026-04-18 20:08:50.243 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:50.267 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 1633.7784ms
+2026-04-18 20:08:50.459 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:50.378 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:50.492 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 1845.764ms
+2026-04-18 20:08:50.464 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 1852.4012 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:50.223 +02:00 [INF] Executed DbCommand (1,504ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:08:50.492 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 1891.2665 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:50.671 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:50.892 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:51.024 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 2345.8023ms
+2026-04-18 20:08:51.038 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 2442.8978ms
+2026-04-18 20:08:51.057 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 2476.5626ms
+2026-04-18 20:08:51.059 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:08:51.074 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 2430.5241 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:08:51.234 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:08:51.257 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 2623.9323ms
+2026-04-18 20:12:05.430 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:12:05.4303848+00:00"
+2026-04-18 20:12:05.458 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:17:05.479 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:17:05.4789364+00:00"
+2026-04-18 20:17:05.564 +02:00 [INF] Executed DbCommand (53ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:22:05.596 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:22:05.5963951+00:00"
+2026-04-18 20:22:05.791 +02:00 [INF] Executed DbCommand (55ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:27:05.825 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:27:05.8249343+00:00"
+2026-04-18 20:27:05.897 +02:00 [INF] Executed DbCommand (32ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:32:05.950 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:32:05.9499692+00:00"
+2026-04-18 20:32:06.024 +02:00 [INF] Executed DbCommand (36ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:45:38.010 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:45:38.0108053+00:00"
+2026-04-18 20:45:38.048 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:46:33.367 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 150
+2026-04-18 20:46:33.371 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:46:33.372 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:46:33.390 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:46:33.598 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 221.6801ms
+2026-04-18 20:46:33.600 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:46:33.603 +02:00 [ERR] HTTP POST /api/Auth/login responded 500 in 232.6341 ms
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-18 20:46:33.733 +02:00 [ERR] Unhandled exception on path /api/Auth/login
+System.Exception: Invalid credentials
+   at Lunamaroapi.Services.Implements.AuthServices.LoginAsync(LoginRequest request) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Services\Implements\AuthServices.cs:line 43
+   at Lunamaroapi.Controllers.AuthController.Login(LoginRequest loginreq) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Controllers\AuthController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Lunamaroapi.Middlwares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Middlwares\GlobalExceptionMiddleware.cs:line 19
+2026-04-18 20:46:33.756 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 500 null application/json 389.5292ms
+2026-04-18 20:47:20.901 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-18 20:48:04.295 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'AddOnReward'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.302 +02:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.304 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.306 +02:00 [WRN] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'WeeklyDeal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.308 +02:00 [WRN] No store type was specified for the decimal property 'ItemDiscountAmount' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.309 +02:00 [WRN] No store type was specified for the decimal property 'ItemFinalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.311 +02:00 [WRN] No store type was specified for the decimal property 'ItemOriginalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.313 +02:00 [WRN] No store type was specified for the decimal property 'FinalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.319 +02:00 [WRN] No store type was specified for the decimal property 'OfferDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.322 +02:00 [WRN] No store type was specified for the decimal property 'OriginalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.325 +02:00 [WRN] No store type was specified for the decimal property 'TierDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:04.328 +02:00 [WRN] No store type was specified for the decimal property 'TotalDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:48:06.061 +02:00 [INF] Executed DbCommand (133ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:48:06.178 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:48:06.399 +02:00 [INF] User profile is available. Using 'C:\Users\Softlaptop\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-18 20:48:06.460 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:48:06.4555760+00:00"
+2026-04-18 20:48:06.640 +02:00 [INF] Now listening on: http://localhost:5218
+2026-04-18 20:48:06.759 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:48:06.796 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-18 20:48:06.797 +02:00 [INF] Hosting environment: Development
+2026-04-18 20:48:06.799 +02:00 [INF] Content root path: D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi
+2026-04-18 20:48:07.215 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/index.html - null null
+2026-04-18 20:48:07.486 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/index.html - 200 null text/html;charset=utf-8 276.9549ms
+2026-04-18 20:48:07.545 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-18 20:48:07.545 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_vs/browserLink - null null
+2026-04-18 20:48:07.554 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 8.5001ms
+2026-04-18 20:48:07.636 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_vs/browserLink - 200 null text/javascript; charset=UTF-8 91.4224ms
+2026-04-18 20:48:07.691 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - null null
+2026-04-18 20:48:07.784 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 92.6286ms
+2026-04-18 20:48:10.872 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 150
+2026-04-18 20:48:10.892 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-04-18 20:48:13.347 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:48:13.380 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:48:13.472 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:48:13.950 +02:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-18 20:48:13.965 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 576.7832ms
+2026-04-18 20:48:13.967 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:48:13.974 +02:00 [INF] HTTP POST /api/Auth/login responded 400 in 3085.5178 ms
+2026-04-18 20:48:13.986 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 400 null application/json; charset=utf-8 3114.7647ms
+2026-04-18 20:49:21.495 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-18 20:49:23.927 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'AddOnReward'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.934 +02:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.935 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.937 +02:00 [WRN] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'WeeklyDeal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.939 +02:00 [WRN] No store type was specified for the decimal property 'ItemDiscountAmount' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.940 +02:00 [WRN] No store type was specified for the decimal property 'ItemFinalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.942 +02:00 [WRN] No store type was specified for the decimal property 'ItemOriginalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.947 +02:00 [WRN] No store type was specified for the decimal property 'FinalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.951 +02:00 [WRN] No store type was specified for the decimal property 'OfferDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.954 +02:00 [WRN] No store type was specified for the decimal property 'OriginalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.957 +02:00 [WRN] No store type was specified for the decimal property 'TierDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:23.963 +02:00 [WRN] No store type was specified for the decimal property 'TotalDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:49:25.134 +02:00 [INF] Executed DbCommand (62ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:49:25.234 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:49:25.509 +02:00 [INF] User profile is available. Using 'C:\Users\Softlaptop\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-18 20:49:25.584 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:49:25.5692515+00:00"
+2026-04-18 20:49:25.739 +02:00 [INF] Now listening on: http://localhost:5218
+2026-04-18 20:49:25.872 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:49:25.881 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-18 20:49:25.883 +02:00 [INF] Hosting environment: Development
+2026-04-18 20:49:25.884 +02:00 [INF] Content root path: D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi
+2026-04-18 20:49:26.326 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/index.html - null null
+2026-04-18 20:49:26.588 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/index.html - 200 null text/html;charset=utf-8 262.5564ms
+2026-04-18 20:49:26.617 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-18 20:49:26.638 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_vs/browserLink - null null
+2026-04-18 20:49:26.646 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 28.8673ms
+2026-04-18 20:49:26.692 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.0419ms
+2026-04-18 20:49:26.750 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - null null
+2026-04-18 20:49:26.809 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 59.0189ms
+2026-04-18 20:49:49.425 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 150
+2026-04-18 20:49:49.465 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-04-18 20:49:49.562 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:49:49.596 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:49:49.762 +02:00 [INF] Executed DbCommand (46ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:49:50.203 +02:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-18 20:49:50.218 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 612.9713ms
+2026-04-18 20:49:50.221 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:49:50.226 +02:00 [INF] HTTP POST /api/Auth/login responded 400 in 764.2284 ms
+2026-04-18 20:49:50.241 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 400 null application/json; charset=utf-8 816.5906ms
+2026-04-18 20:50:39.311 +02:00 [INF] Starting Lunamaro Web API...
+2026-04-18 20:50:41.555 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'AddOnReward'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.564 +02:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.566 +02:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.568 +02:00 [WRN] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'WeeklyDeal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.570 +02:00 [WRN] No store type was specified for the decimal property 'ItemDiscountAmount' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.572 +02:00 [WRN] No store type was specified for the decimal property 'ItemFinalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.575 +02:00 [WRN] No store type was specified for the decimal property 'ItemOriginalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.577 +02:00 [WRN] No store type was specified for the decimal property 'FinalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.615 +02:00 [WRN] No store type was specified for the decimal property 'OfferDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.619 +02:00 [WRN] No store type was specified for the decimal property 'OriginalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.666 +02:00 [WRN] No store type was specified for the decimal property 'TierDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:41.683 +02:00 [WRN] No store type was specified for the decimal property 'TotalDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-18 20:50:42.818 +02:00 [INF] Executed DbCommand (85ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:50:43.190 +02:00 [INF] Executed DbCommand (74ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-18 20:50:43.865 +02:00 [INF] User profile is available. Using 'C:\Users\Softlaptop\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-18 20:50:44.016 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:50:44.0116135+00:00"
+2026-04-18 20:50:44.222 +02:00 [INF] Now listening on: http://localhost:5218
+2026-04-18 20:50:44.494 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:50:44.732 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-18 20:50:45.230 +02:00 [INF] Hosting environment: Development
+2026-04-18 20:50:45.232 +02:00 [INF] Content root path: D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi
+2026-04-18 20:50:45.244 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/index.html - null null
+2026-04-18 20:50:45.634 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/index.html - 200 null text/html;charset=utf-8 394.6965ms
+2026-04-18 20:50:45.701 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-18 20:50:45.701 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_vs/browserLink - null null
+2026-04-18 20:50:45.711 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 9.7585ms
+2026-04-18 20:50:45.797 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_vs/browserLink - 200 null text/javascript; charset=UTF-8 96.0761ms
+2026-04-18 20:50:45.929 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - null null
+2026-04-18 20:50:46.093 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 164.3457ms
+2026-04-18 20:55:44.509 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T18:55:44.5090718+00:00"
+2026-04-18 20:55:44.564 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 20:56:14.067 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:56:14.111 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:14.125 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 18.3482 ms
+2026-04-18 20:56:14.130 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 62.2638ms
+2026-04-18 20:56:14.134 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 112
+2026-04-18 20:56:14.144 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:14.146 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-04-18 20:56:14.225 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:14.255 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:56:14.347 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:56:14.676 +02:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-18 20:56:14.693 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 430.3931ms
+2026-04-18 20:56:14.698 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:14.703 +02:00 [INF] HTTP POST /api/Auth/login responded 400 in 559.5685 ms
+2026-04-18 20:56:14.711 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 400 null application/json; charset=utf-8 576.6773ms
+2026-04-18 20:56:17.947 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 112
+2026-04-18 20:56:17.958 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:17.964 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:17.966 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:56:17.985 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:56:18.200 +02:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-18 20:56:18.206 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 229.5278ms
+2026-04-18 20:56:18.208 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:18.211 +02:00 [INF] HTTP POST /api/Auth/login responded 400 in 252.5909 ms
+2026-04-18 20:56:18.214 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 400 null application/json; charset=utf-8 266.8844ms
+2026-04-18 20:56:35.191 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:56:35.194 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:35.197 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 2.1321 ms
+2026-04-18 20:56:35.199 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 8.2585ms
+2026-04-18 20:56:35.212 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 114
+2026-04-18 20:56:35.216 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:35.225 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:35.227 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:56:35.253 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:56:35.437 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-04-18 20:56:35.710 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([Id], [CreatedAt], [DeviceId], [ExpiresAt], [IsRevoked], [Token], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2026-04-18 20:56:35.730 +02:00 [INF] Tokens created successfully for user mohamedelhenawi11@gmail.com
+2026-04-18 20:56:35.732 +02:00 [INF] Executing OkObjectResult, writing value of type 'Lunamaroapi.DTOs.AuthResponse.AuthResponseDto'.
+2026-04-18 20:56:35.738 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 507.7845ms
+2026-04-18 20:56:35.741 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:35.743 +02:00 [INF] HTTP POST /api/Auth/login responded 200 in 527.0997 ms
+2026-04-18 20:56:35.747 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 200 null application/json; charset=utf-8 534.3802ms
+2026-04-18 20:56:37.176 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Item/SpecialItems - null null
+2026-04-18 20:56:37.242 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:37.244 +02:00 [INF] HTTP OPTIONS /api/Item/SpecialItems responded 204 in 1.7368 ms
+2026-04-18 20:56:37.248 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Item/SpecialItems - 204 null null 71.9804ms
+2026-04-18 20:56:37.260 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/api/Item/SpecialItems - null null
+2026-04-18 20:56:37.275 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:37.406 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.ItemController.GetSpecialItems (Lunamaroapi)'
+2026-04-18 20:56:37.411 +02:00 [INF] Route matched with {action = "GetSpecialItems", controller = "Item"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Lunamaroapi.DTOs.Item.ItemDTO]]] GetSpecialItems() on controller Lunamaroapi.Controllers.ItemController (Lunamaroapi).
+2026-04-18 20:56:37.436 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [i].[Id], [i].[CategoryId], [i].[Description], [i].[ImageUrl], [i].[IsSpecial], [i].[Name], [i].[Price], [i].[quantity]
+FROM [Items] AS [i]
+WHERE [i].[IsSpecial] = CAST(1 AS bit)
+ORDER BY [i].[Name]
+2026-04-18 20:56:37.471 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[Lunamaroapi.Models.Item, Lunamaroapi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Lunamaroapi.DTOs.Item.SpecialItems, Lunamaroapi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-18 20:56:37.496 +02:00 [INF] Executed action Lunamaroapi.Controllers.ItemController.GetSpecialItems (Lunamaroapi) in 79.56ms
+2026-04-18 20:56:37.497 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.ItemController.GetSpecialItems (Lunamaroapi)'
+2026-04-18 20:56:37.500 +02:00 [INF] HTTP GET /api/Item/SpecialItems responded 200 in 225.0670 ms
+2026-04-18 20:56:37.503 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/api/Item/SpecialItems - 200 null application/json; charset=utf-8 243.1358ms
+2026-04-18 20:56:38.826 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/logout - null null
+2026-04-18 20:56:38.830 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:38.833 +02:00 [INF] HTTP OPTIONS /api/Auth/logout responded 204 in 2.4586 ms
+2026-04-18 20:56:38.836 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/logout - 204 null null 9.6846ms
+2026-04-18 20:56:38.840 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/logout - application/json 157
+2026-04-18 20:56:38.844 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:38.847 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Logout (Lunamaroapi)'
+2026-04-18 20:56:38.860 +02:00 [INF] Route matched with {action = "Logout", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout(Lunamaroapi.DTOs.RefreshRequestDto) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:56:38.896 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__token_0='?' (Size = 4000), @__deviceId_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[CreatedAt], [r].[DeviceId], [r].[ExpiresAt], [r].[IsRevoked], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[Token] = @__token_0 AND [r].[DeviceId] = @__deviceId_1 AND [r].[IsRevoked] = CAST(0 AS bit)
+2026-04-18 20:56:38.945 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@p6='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [RefreshTokens] SET [CreatedAt] = @p0, [DeviceId] = @p1, [ExpiresAt] = @p2, [IsRevoked] = @p3, [Token] = @p4, [UserId] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+2026-04-18 20:56:38.959 +02:00 [INF] Executing OkObjectResult, writing value of type 'Lunamaroapi.DTOs.AuthResponse.SuccessResponseDto'.
+2026-04-18 20:56:38.962 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Logout (Lunamaroapi) in 96.2656ms
+2026-04-18 20:56:38.964 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Logout (Lunamaroapi)'
+2026-04-18 20:56:38.966 +02:00 [INF] HTTP POST /api/Auth/logout responded 200 in 121.9606 ms
+2026-04-18 20:56:38.970 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/logout - 200 null application/json; charset=utf-8 129.5987ms
+2026-04-18 20:56:43.592 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - null null
+2026-04-18 20:56:43.595 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:43.597 +02:00 [INF] HTTP OPTIONS /api/Auth/login responded 204 in 2.2685 ms
+2026-04-18 20:56:43.608 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5218/api/Auth/login - 204 null null 15.6622ms
+2026-04-18 20:56:43.614 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5218/api/Auth/login - application/json 112
+2026-04-18 20:56:43.625 +02:00 [INF] CORS policy execution successful.
+2026-04-18 20:56:43.628 +02:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:43.629 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Lunamaroapi.DTOs.userDTO.LoginRequest) on controller Lunamaroapi.Controllers.AuthController (Lunamaroapi).
+2026-04-18 20:56:43.646 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[City], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[PostalCode], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-18 20:56:43.904 +02:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-18 20:56:43.909 +02:00 [INF] Executed action Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi) in 267.164ms
+2026-04-18 20:56:43.911 +02:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.AuthController.Login (Lunamaroapi)'
+2026-04-18 20:56:43.913 +02:00 [INF] HTTP POST /api/Auth/login responded 400 in 287.3612 ms
+2026-04-18 20:56:43.916 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5218/api/Auth/login - 400 null application/json; charset=utf-8 301.0935ms
+2026-04-18 21:00:44.576 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:00:44.5760152+00:00"
+2026-04-18 21:00:44.638 +02:00 [INF] Executed DbCommand (30ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:05:44.661 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:05:44.6613377+00:00"
+2026-04-18 21:05:44.696 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:10:44.711 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:10:44.7111342+00:00"
+2026-04-18 21:10:44.763 +02:00 [INF] Executed DbCommand (40ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:15:44.773 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:15:44.7739388+00:00"
+2026-04-18 21:15:44.820 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:20:44.847 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:20:44.8470932+00:00"
+2026-04-18 21:20:44.880 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:25:44.909 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:25:44.9090793+00:00"
+2026-04-18 21:25:44.966 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:30:44.988 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:30:44.9887829+00:00"
+2026-04-18 21:30:45.043 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:35:45.065 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:35:45.0657982+00:00"
+2026-04-18 21:35:45.125 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:40:45.140 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:40:45.1404322+00:00"
+2026-04-18 21:40:45.185 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:45:45.196 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:45:45.1966152+00:00"
+2026-04-18 21:45:45.250 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:50:45.275 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:50:45.2751121+00:00"
+2026-04-18 21:50:45.314 +02:00 [INF] Executed DbCommand (29ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 21:55:45.388 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T19:55:45.3881913+00:00"
+2026-04-18 21:55:45.415 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:00:45.440 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:00:45.4402777+00:00"
+2026-04-18 22:00:45.487 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:05:45.532 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:05:45.5326534+00:00"
+2026-04-18 22:05:45.722 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:10:45.791 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:10:45.7913662+00:00"
+2026-04-18 22:10:46.092 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:15:46.117 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:15:46.1170334+00:00"
+2026-04-18 22:15:46.142 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:20:46.179 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:20:46.1789368+00:00"
+2026-04-18 22:20:46.402 +02:00 [INF] Executed DbCommand (30ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:25:46.431 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:25:46.4309893+00:00"
+2026-04-18 22:25:46.462 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:30:46.506 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:30:46.5066531+00:00"
+2026-04-18 22:30:46.747 +02:00 [INF] Executed DbCommand (39ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:35:46.766 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:35:46.7658655+00:00"
+2026-04-18 22:35:46.812 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:40:46.861 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:40:46.8611051+00:00"
+2026-04-18 22:40:47.152 +02:00 [INF] Executed DbCommand (45ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:45:47.186 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:45:47.1865873+00:00"
+2026-04-18 22:45:47.287 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:50:47.337 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:50:47.3375624+00:00"
+2026-04-18 22:50:47.550 +02:00 [INF] Executed DbCommand (31ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 22:55:47.571 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T20:55:47.5710865+00:00"
+2026-04-18 22:55:47.630 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:00:47.684 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:00:47.6839487+00:00"
+2026-04-18 23:00:47.920 +02:00 [INF] Executed DbCommand (65ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:05:47.948 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:05:47.9482746+00:00"
+2026-04-18 23:05:47.994 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:10:48.070 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:10:48.0700480+00:00"
+2026-04-18 23:10:48.350 +02:00 [INF] Executed DbCommand (93ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:15:48.414 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:15:48.4136366+00:00"
+2026-04-18 23:15:48.439 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:20:48.481 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:20:48.4808049+00:00"
+2026-04-18 23:20:48.736 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:25:48.771 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:25:48.7714068+00:00"
+2026-04-18 23:25:48.798 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:30:48.867 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:30:48.8676000+00:00"
+2026-04-18 23:30:49.002 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:35:49.032 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:35:49.0323319+00:00"
+2026-04-18 23:35:49.089 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:40:49.158 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:40:49.1586117+00:00"
+2026-04-18 23:40:49.394 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:45:49.421 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:45:49.4209759+00:00"
+2026-04-18 23:45:49.436 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:50:49.456 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:50:49.4562105+00:00"
+2026-04-18 23:50:49.593 +02:00 [INF] Executed DbCommand (37ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-18 23:55:49.610 +02:00 [INF] Stock Cleanup Worker running at: "2026-04-18T21:55:49.6096332+00:00"
+2026-04-18 23:55:49.696 +02:00 [INF] Executed DbCommand (55ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]

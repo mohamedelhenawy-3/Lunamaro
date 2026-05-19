@@ -1,5 +1,7 @@
 ﻿using Lunamaroapi.Data.Configuration;
 using Lunamaroapi.Models;
+using Lunamaroapi.Models.Cart;
+using Lunamaroapi.Models.ItemsModel;
 using Lunamaroapi.Models.Offers;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,6 @@ namespace Lunamaroapi.Data
         {
 
         }
-       public  DbSet<ApplicationUser> Users { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<AddOnReward> AddOnRewards { get; set; }
         public DbSet<DiscountTier> DiscountTiers { get; set; }
@@ -27,9 +28,81 @@ namespace Lunamaroapi.Data
         public DbSet<Table> Tables { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<CategoryRelationship> categoryRelationships { get; set; }
+        public DbSet<UserCartAddOn> userCartAddOns { get; set; }
+        public DbSet<ItemAddOn> ItemAddOns { get; set; }
+        public DbSet<ItemRelationship> ItemRelationships { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); // important for Identity tables
+
+            modelBuilder.Entity<CategoryRelationship>()
+        .HasOne(r => r.Category)
+        .WithMany()
+        .HasForeignKey(r => r.CategoryId)
+        .OnDelete(DeleteBehavior.NoAction); // ← no cascade
+
+            modelBuilder.Entity<ItemRelationship>()
+                 .HasIndex(r => r.ItemId);      
+
+            modelBuilder.Entity<ItemRelationship>()
+                .HasIndex(r => r.RelatedItemId);
+          
+            modelBuilder.Entity<UserCart>()
+                .HasIndex(c => c.UserId)      
+                .HasDatabaseName("IX_UserCarts_UserId");
+
+            modelBuilder.Entity<UserCart>()
+                .HasIndex(c => c.ItemId)       
+                .HasDatabaseName("IX_UserCarts_ItemId");
+
+            modelBuilder.Entity<UserCartAddOn>()
+                .HasIndex(a => a.UserCartId)   
+                .HasDatabaseName("IX_UserCartAddOns_UserCartId");
+
+            modelBuilder.Entity<ItemAddOn>()
+                .HasIndex(a => a.ItemId)       
+                .HasDatabaseName("IX_ItemAddOns_ItemId");
+
+
+
+
+
+            modelBuilder.Entity<UserCartAddOn>()
+                .HasIndex(u => u.UserCartId);
+            modelBuilder.Entity<CategoryRelationship>()
+                .HasOne(r => r.RelatedCategory)
+                .WithMany()
+                .HasForeignKey(r => r.RelatedCategoryId)
+                .OnDelete(DeleteBehavior.NoAction); // ← no cascade
+
+            // Fix same issue on ItemRelationships (same problem, two FKs to Items)
+            modelBuilder.Entity<ItemRelationship>()
+                .HasOne(r => r.Item)
+                .WithMany()
+                .HasForeignKey(r => r.ItemId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<ItemRelationship>()
+                .HasOne(r => r.RelatedItem)
+                .WithMany()
+                .HasForeignKey(r => r.RelatedItemId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<UserCartAddOn>()
+    .HasOne(u => u.UserCart)
+    .WithMany(c => c.AddOns)
+    .HasForeignKey(u => u.UserCartId)
+    .OnDelete(DeleteBehavior.NoAction); // 🔥 FIX HERE
+
+            modelBuilder.Entity<UserCartAddOn>()
+                .HasOne(u => u.AddOn)
+                .WithMany()
+                .HasForeignKey(u => u.AddOnId)
+                .OnDelete(DeleteBehavior.Cascade); // OK
+              
+
+
 
             // Apply Fluent API configurations
             modelBuilder.ApplyConfiguration(new itemConfig());

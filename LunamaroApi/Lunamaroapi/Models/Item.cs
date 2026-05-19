@@ -1,4 +1,6 @@
-﻿namespace Lunamaroapi.Models
+﻿using Lunamaroapi.Models.ItemsModel;
+
+namespace Lunamaroapi.Models
 {
     public class Item
     {
@@ -11,5 +13,8 @@
         public bool IsSpecial { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public ICollection<ItemAddOn> AddOns { get; set; } = new List<ItemAddOn>();
+        public ICollection<ItemRelationship> Relationships { get; set; } = new List<ItemRelationship>();
+
     }
 }

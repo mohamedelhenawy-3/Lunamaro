@@ -28,8 +28,6 @@ export interface UserOrderHeader {
   phoneNumber: string;
   deliveryStreetAddress: string;
   city: string;
-  state: string;
-  postalCode: number;
   name: string;
   trackingNumber?: string | null;
   carrier?: string | null;

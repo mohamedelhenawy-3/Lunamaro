@@ -26,12 +26,7 @@ namespace Lunamaroapi.Validators.OrderValidator
                 .NotEmpty().WithMessage("City is required")
                 .MaximumLength(100);
 
-            RuleFor(x => x.State)
-                .NotEmpty().WithMessage("State is required")
-                .MaximumLength(100);
-
-            RuleFor(x => x.PostalCode)
-                .GreaterThan(0).WithMessage("Postal code must be greater than 0");
+       
 
         }
 

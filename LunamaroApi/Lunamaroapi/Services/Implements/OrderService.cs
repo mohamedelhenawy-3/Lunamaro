@@ -1,16 +1,17 @@
-﻿using Lunamaroapi.DTOs;
-using Lunamaroapi.DTOs.Admin;
-using Lunamaroapi.DTOs.Order;
-using Lunamaroapi.Services.Interfaces;
-using Lunamaroapi.Data;
+﻿using Lunamaroapi.Data;
+using Lunamaroapi.DTOs;
 using Lunamaroapi.DTOs;
 using Lunamaroapi.DTOs.Admin;
+using Lunamaroapi.DTOs.Admin;
+using Lunamaroapi.DTOs.Item;
+using Lunamaroapi.DTOs.Order;
 using Lunamaroapi.DTOs.Order;
 using Lunamaroapi.DTOs.UserCart;
 using Lunamaroapi.Helper;
 using Lunamaroapi.Helper.ServiceResult;
 using Lunamaroapi.Models;
 using Lunamaroapi.Queues;
+using Lunamaroapi.Services.Interfaces;
 using Lunamaroapi.Services.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -58,14 +59,16 @@ namespace Lunamaroapi.Services.Implements
             throw new NotImplementedException();
         }
 
-        public async  Task<OrderDetailsDTO> GetOrderPerview(string userId)
+        public async Task<OrderDetailsDTO> GetOrderPerview(string userId)
         {
             var userCart = await _db.UserCarts
-        .Include(uc => uc.Item)
-        .Where(uc => uc.UserId == userId)
-        .ToListAsync();
+                .Include(uc => uc.Item)
+                .Include(uc => uc.AddOns)
+                    .ThenInclude(a => a.AddOn)
+                .Where(uc => uc.UserId == userId)
+                .ToListAsync();
 
-            var userCartList = userCart.Select(uc => new UserCartDTO
+            var userCartList = userCart.Select(uc => new UserCartV2DTO
             {
                 UserCartId = uc.Id,
                 ItemId = uc.ItemId,
@@ -73,7 +76,26 @@ namespace Lunamaroapi.Services.Implements
                 price = uc.Item.Price,
                 Description = uc.Item.Description,
                 ImageUrl = uc.Item.ImageUrl,
-                Quantity = uc.Quantity
+                Quantity = uc.Quantity,
+
+                AddOns = uc.AddOns.Select(a => new AddOnDto
+                {
+                    Id = a.AddOn.Id,
+                    Name = a.AddOn.Name,
+                    Price = a.AddOn.Price
+                }).ToList(),
+
+                AvailableAddOns = uc.Item.AddOns.Select(a => new AddOnDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Price = a.Price
+                }).ToList(),
+
+                // ✅ FIXED TOTAL PRICE
+                TotalPrice =
+                    (uc.Item.Price +
+                     (uc.AddOns.Sum(a => a.AddOn.Price))) * uc.Quantity
             }).ToList();
 
             var pricingResult = await _pricingService.CalculateAsync(userCart);
@@ -92,7 +114,7 @@ namespace Lunamaroapi.Services.Implements
                 PhoneNumber = user?.PhoneNumber ?? "",
                 DeliveryStreetAddress = user?.Address ?? "",
                 City = user?.City ?? "",
-                PostalCode = user?.PostalCode ?? 0,
+                //PostalCode = user?.PostalCode ?? 0,
                 Name = user?.FullName ?? ""
             };
 
@@ -102,7 +124,7 @@ namespace Lunamaroapi.Services.Implements
                 UserCartList = userCartList,
                 UserOrderHeader = orderHeader,
             };
-        }        
+        }
 
         public async  Task<IEnumerable<ordersListDTO>> ListOfOrders()
         {
@@ -147,13 +169,20 @@ namespace Lunamaroapi.Services.Implements
 
             StripeConfiguration.ApiKey = _configuration["Stripe:Secretkey"];
 
-            var keyUsed = await _db.UserOrderHeaders.AnyAsync(o => o.TemporaryKey == dto.TemporaryKey);
+            var keyUsed = await _db.UserOrderHeaders
+                .AnyAsync(o => o.TemporaryKey == dto.TemporaryKey);
             if (keyUsed) return null;
 
-            var userCart = await _db.UserCarts.Include(c => c.Item).Where(c => c.UserId == userId).ToListAsync();
+            // FIXED — include addons in cart load
+            var userCart = await _db.UserCarts
+                .Include(c => c.Item)
+                .Include(c => c.AddOns)
+                    .ThenInclude(a => a.AddOn)
+                .Where(c => c.UserId == userId)
+                .ToListAsync();
+
             if (!userCart.Any()) return null;
 
-            // ✅ THIS IS THE FIX
             var executionStrategy = _db.Database.CreateExecutionStrategy();
 
             return await executionStrategy.ExecuteAsync(async () =>
@@ -163,16 +192,20 @@ namespace Lunamaroapi.Services.Implements
                 {
                     var pricingResult = await _pricingService.CalculateAsync(userCart);
 
+                    // Stock check
                     foreach (var cart in userCart)
                     {
                         var affected = await _db.Database.ExecuteSqlRawAsync(
-                            @"UPDATE Items SET Quantity = Quantity - @qty WHERE Id = @itemId AND Quantity >= @qty",
+                            @"UPDATE Items SET Quantity = Quantity - @qty
+                      WHERE Id = @itemId AND Quantity >= @qty",
                             new SqlParameter("@qty", cart.Quantity),
                             new SqlParameter("@itemId", cart.ItemId));
 
-                        if (affected == 0) throw new Exception($"Item {cart.Item.Name} is out of stock.");
+                        if (affected == 0)
+                            throw new Exception($"Item {cart.Item.Name} is out of stock.");
                     }
 
+                    // Build order header
                     var orderHeader = new UserOrderHeader
                     {
                         TemporaryKey = dto.TemporaryKey,
@@ -182,20 +215,25 @@ namespace Lunamaroapi.Services.Implements
                         PhoneNumber = dto.PhoneNumber,
                         DeliveryStreetAddress = dto.DeliveryStreetAddress,
                         City = dto.City,
-                        State = dto.State,
-                        PostalCode = dto.PostalCode,
+                        //State = dto.State,
+                        //PostalCode = dto.PostalCode,
                         Name = dto.Name,
                         OriginalTotalAmount = pricingResult.OriginalTotal,
                         TierDiscountAmount = pricingResult.TierDiscount,
                         TotalDiscountAmount = pricingResult.TotalDiscount,
-                        PaymentType = dto.IsPayOnDelivery ? PaymentType.Cash : PaymentType.Visa,
+                        PaymentType = dto.IsPayOnDelivery
+                                                   ? PaymentType.Cash
+                                                   : PaymentType.Visa,
                         OrderStatus = OrderStatus.Pending,
                         PaymentStatus = "Pending",
+
                         OrderItems = userCart.Select(c => new OrderItem
                         {
                             ItemId = c.ItemId,
                             Quantity = c.Quantity,
-                            UnitPrice = (pricingResult.FreeProductId == c.ItemId) ? 0 : c.Item.Price,
+                            UnitPrice = (pricingResult.FreeProductId == c.ItemId)
+                                ? 0
+                                : c.Item.Price + c.AddOns.Sum(a => a.AddOn.Price),
                             IsFreeItem = (pricingResult.FreeProductId == c.ItemId)
                         }).ToList()
                     };
@@ -203,17 +241,21 @@ namespace Lunamaroapi.Services.Implements
                     _db.UserOrderHeaders.Add(orderHeader);
                     await _db.SaveChangesAsync();
 
+                    // Stripe payment
                     string? stripeUrl = null;
 
                     if (!dto.IsPayOnDelivery)
                     {
                         var options = new SessionCreateOptions
                         {
-                            SuccessUrl = "https://lunamarofrontend.z1.web.core.windows.net/payment-success/{CHECKOUT_SESSION_ID}",
-                            CancelUrl = "https://lunamarofrontend.z1.web.core.windows.net/payment-failed",
+                            SuccessUrl = "https://lunamaro.runasp.net/payment-success/{CHECKOUT_SESSION_ID}",
+                            CancelUrl = "https://lunamaro.runasp.net/payment-failed",
                             LineItems = new List<SessionLineItemOptions>(),
                             Mode = "payment",
-                            Metadata = new Dictionary<string, string> { { "orderId", orderHeader.Id.ToString() } }
+                            Metadata = new Dictionary<string, string>
+                    {
+                        { "orderId", orderHeader.Id.ToString() }
+                    }
                         };
 
                         foreach (var item in orderHeader.OrderItems)
@@ -224,7 +266,10 @@ namespace Lunamaroapi.Services.Implements
                                 {
                                     UnitAmount = (long)(item.UnitPrice * 100),
                                     Currency = "usd",
-                                    ProductData = new SessionLineItemPriceDataProductDataOptions { Name = "Food Item" },
+                                    ProductData = new SessionLineItemPriceDataProductDataOptions
+                                    {
+                                        Name = "Food Item"
+                                    }
                                 },
                                 Quantity = item.Quantity
                             });
@@ -233,11 +278,19 @@ namespace Lunamaroapi.Services.Implements
                         var service = new SessionService();
                         var session = await service.CreateAsync(options);
                         stripeUrl = session.Url;
+
                         orderHeader.StripeSessionId = session.Id;
                         await _db.SaveChangesAsync();
                     }
 
+                    var cartIds = userCart.Select(c => c.Id).ToList();
+
+                    var addonsToDelete = _db.userCartAddOns
+                        .Where(a => cartIds.Contains(a.UserCartId));
+
+                    _db.userCartAddOns.RemoveRange(addonsToDelete);
                     _db.UserCarts.RemoveRange(userCart);
+
                     await _db.SaveChangesAsync();
 
                     await transaction.CommitAsync();
@@ -252,7 +305,11 @@ namespace Lunamaroapi.Services.Implements
                         __Loger.LogError("Email failed: {Message}", emailEx.Message);
                     }
 
-                    return new OrderResDTO { OrderId = orderHeader.Id, PaymentUrl = stripeUrl };
+                    return new OrderResDTO
+                    {
+                        OrderId = orderHeader.Id,
+                        PaymentUrl = stripeUrl
+                    };
                 }
                 catch (Exception ex)
                 {
@@ -262,7 +319,6 @@ namespace Lunamaroapi.Services.Implements
                 }
             });
         }
-
         public async Task<orderhistorydetails> OrderHistoryDetailsAd(int orderId)
         {
             var order = await _db.UserOrderHeaders
@@ -347,14 +403,17 @@ namespace Lunamaroapi.Services.Implements
 
 
 
-            return await _db.OrderItems.Include(x => x.UserOrderHeader).Where(x => x.UserOrderHeader.UserId == userId).Select(s => new UserOrdersHistory
-            {
-                OrderId = s.UserOrderHeaderId,
-                DateOfOrder = s.UserOrderHeader.DateOfOrder,
-                OrderStatus = s.UserOrderHeader.OrderStatus,
-                TotalAmount = s.UserOrderHeader.FinalTotalAmount
-
-            }).ToListAsync();
+            return await _db.UserOrderHeaders  // ✅ query the header, not the items
+             .Where(x => x.UserId == userId)
+             .Select(s => new UserOrdersHistory
+             {
+               OrderId = s.Id,
+               DateOfOrder = s.DateOfOrder,
+               OrderStatus = s.OrderStatus,
+               TotalAmount = s.FinalTotalAmount
+             })
+             .OrderByDescending(x => x.DateOfOrder) // ✅ newest first
+             .ToListAsync();
         }
 
         public async  Task<orderhistorydetails> UserOrderHistoryDetails(int orderId)

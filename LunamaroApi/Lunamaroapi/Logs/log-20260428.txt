@@ -1,0 +1,167 @@
+2026-04-28 00:23:10.252 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 00:23:10.419 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 169
+2026-04-28 20:08:50.856 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 20:08:50.977 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 169
+2026-04-28 20:41:29.460 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 20:41:29.569 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 169
+2026-04-28 20:55:16.016 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 20:55:16.122 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 169
+2026-04-28 21:03:24.433 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 21:03:24.576 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 178
+2026-04-28 21:57:08.674 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 21:57:08.807 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 178
+2026-04-28 22:09:28.499 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 22:09:28.677 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 178
+2026-04-28 22:26:31.478 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 22:26:32.753 +03:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'AddOnReward'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.763 +03:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.766 +03:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.768 +03:00 [WRN] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'WeeklyDeal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.770 +03:00 [WRN] No store type was specified for the decimal property 'ItemDiscountAmount' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.771 +03:00 [WRN] No store type was specified for the decimal property 'ItemFinalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.772 +03:00 [WRN] No store type was specified for the decimal property 'ItemOriginalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.774 +03:00 [WRN] No store type was specified for the decimal property 'FinalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.776 +03:00 [WRN] No store type was specified for the decimal property 'OfferDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.779 +03:00 [WRN] No store type was specified for the decimal property 'OriginalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.782 +03:00 [WRN] No store type was specified for the decimal property 'TierDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:32.785 +03:00 [WRN] No store type was specified for the decimal property 'TotalDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-28 22:26:35.653 +03:00 [INF] Executed DbCommand (265ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-28 22:26:35.894 +03:00 [INF] Executed DbCommand (111ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-28 22:26:36.187 +03:00 [INF] User profile is available. Using 'C:\Users\Softlaptop\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-28 22:26:36.305 +03:00 [INF] Creating key {1d2f5440-603b-45f1-be8f-47932d5fc153} with creation date 2026-04-28 19:26:36Z, activation date 2026-04-28 19:26:36Z, and expiration date 2026-07-27 19:26:36Z.
+2026-04-28 22:26:36.322 +03:00 [INF] Writing data to file 'C:\Users\Softlaptop\AppData\Local\ASP.NET\DataProtection-Keys\key-1d2f5440-603b-45f1-be8f-47932d5fc153.xml'.
+2026-04-28 22:26:36.357 +03:00 [INF] Stock Cleanup Worker running at: "2026-04-28T19:26:36.3543132+00:00"
+2026-04-28 22:26:36.461 +03:00 [INF] Now listening on: http://localhost:5218
+2026-04-28 22:26:36.631 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-28 22:26:36.634 +03:00 [INF] Hosting environment: Development
+2026-04-28 22:26:36.637 +03:00 [INF] Content root path: D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi
+2026-04-28 22:26:36.779 +03:00 [INF] Executed DbCommand (146ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[PostalCode], [u].[State], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-04-28 22:26:40.288 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger - null null
+2026-04-28 22:26:40.640 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger - 301 0 null 355.9699ms
+2026-04-28 22:26:40.658 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/index.html - null null
+2026-04-28 22:26:40.742 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/index.html - 200 null text/html;charset=utf-8 83.5258ms
+2026-04-28 22:26:40.799 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui.css - null null
+2026-04-28 22:26:40.801 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-bundle.js - null null
+2026-04-28 22:26:40.801 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-standalone-preset.js - null null
+2026-04-28 22:26:40.801 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-28 22:26:40.801 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_vs/browserLink - null null
+2026-04-28 22:26:40.820 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 19.0922ms
+2026-04-28 22:26:40.840 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-04-28 22:26:40.840 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-04-28 22:26:40.848 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 46.9447ms
+2026-04-28 22:26:40.846 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui.css - 200 143943 text/css 47.1072ms
+2026-04-28 22:26:40.854 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-04-28 22:26:40.871 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 70.029ms
+2026-04-28 22:26:41.012 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_vs/browserLink - 200 null text/javascript; charset=UTF-8 210.7649ms
+2026-04-28 22:26:41.371 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - null null
+2026-04-28 22:26:41.424 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/favicon-32x32.png - null null
+2026-04-28 22:26:41.496 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-04-28 22:26:41.503 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/favicon-32x32.png - 200 628 image/png 78.8832ms
+2026-04-28 22:26:41.582 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 210.7212ms
+2026-04-28 22:27:05.892 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 22:27:06.084 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 178
+2026-04-28 22:31:14.351 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 22:31:14.513 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 178
+2026-04-28 22:36:46.223 +03:00 [INF] Starting Lunamaro Web API...
+2026-04-28 22:36:46.349 +03:00 [FTL] The application failed to start correctly.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lunamaroapi.Program.Main(String[] args) in D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi\Program.cs:line 178

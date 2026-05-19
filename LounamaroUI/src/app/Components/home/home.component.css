@@ -1,14 +1,4 @@
-/* ======================================= */
-/* ===== GLOBAL / BASE STYLES ===== */
-/* ======================================= */
-/* =====================================================
-   SPECIAL OFFERS SECTION
-   Add this block to your home.component.css
-   Works with your existing Playfair Display / Montserrat
-   fonts and #efb036 / #1a2e46 colour system.
-   ===================================================== */
 
-/* ── Section wrapper ─────────────────────────────── */
 .offers-section {
   padding: 110px 8% 120px;
   background: #1a2e46;             /* matches your special-items bg */
@@ -102,15 +92,20 @@
   color: #efb036;
   font-style: italic;
 }
-
+.img {
+  filter: blur(10px);
+  transition: filter 0.3s;
+}
+.img.loaded {
+  filter: blur(0);
+}
 .block-line {
   flex: 1;
   height: 1px;
   background: rgba(239,176,54,0.14);
 }
 
-/* ── Shared card base ────────────────────────────── */
-/* Uses the same opacity/border style as .review-card */
+
 .deal-card,
 .tier-card,
 .reward-card {
@@ -223,7 +218,6 @@
   margin-top: auto;
 }
 
-/* Re-uses your existing .old-price / .new-price class names */
 .old-price {
   font-size: .82rem;
   color: rgba(255,255,255,0.28);
@@ -468,9 +462,7 @@
     margin-top: 40px; 
 }
 
-/* ======================================= */
-/* ===== BUTTONS (Universal) ===== */
-/* ======================================= */
+
 .btn-primary {
     background: #EFB036;
     padding: 10px 24px;
@@ -613,13 +605,10 @@
     transform: translateY(-5px);
 }
 
-/* ======================================= */
-/* ===== ABOUT SECTION ===== */
-/* ======================================= */
-/* --- Professional About Section --- */
+
 .about-section {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Asymmetric split */
+    grid-template-columns: 1fr 1.2fr;
     gap: 80px;
     padding: 120px 10%;
     align-items: center;
@@ -1147,25 +1136,23 @@
 
 .reviews-slider::-webkit-scrollbar { display: none; }
 
-/* --- The Perfect Card --- */
 .review-card {
     min-width: 400px;
     max-width: 450px;
-    /* Remove fixed height! Let the content decide, but with limits */
     min-height: 280px; 
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     padding: 30px;
     display: flex;
-    flex-direction: column; /* Changed to Column for better text containment */
+    flex-direction: column; 
     gap: 20px;
     scroll-snap-align: center;
     transition: all 0.4s ease;
-    box-sizing: border-box; /* Crucial: keeps padding inside the width */
+    box-sizing: border-box; 
 }
 
-/* User Header (Avatar + Name side by side) */
+
 .review-header {
     display: flex;
     align-items: center;
@@ -1187,9 +1174,9 @@
 
 .review-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: #ffffff;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 /* --- Content Containment --- */
@@ -1206,19 +1193,13 @@
     font-size: 0.85rem;
 }
 
+/* Text wraps fully, card grows with content */
 .review-content {
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
-    font-size: 1rem;
-    font-style: italic;
-    margin: 0 0 20px 0;
-    
-    /* THE FIX: Limits text to 4 lines then adds "..." */
-    display: -webkit-box;
-    -webkit-line-clamp: 4; 
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0 0 20px 0;
 }
 
 .review-date {
@@ -1238,17 +1219,18 @@
 
 /* --- Responsive Fix --- */
 @media (max-width: 768px) {
-    .review-card {
-        min-width: 85vw;
-        padding: 25px;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .review-content::before {
-        display: none;
-    }
+  .review-card {
+    min-width: calc(100vw - 64px);
+    max-width: calc(100vw - 64px);
+    scroll-snap-align: start;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  /* review-content — no clamp needed, just let it wrap */
+  .review-content {
+    font-size: 0.9rem;
+  }
 }
 /* ======================================= */
 /* ===== CONTACT SECTION ===== */
@@ -1413,10 +1395,7 @@
     }
 }
 
-/* ======================================= */
-/* ===== CONTACT FORM ===== */
-/* ======================================= */
-/* --- Contact Section --- */
+
 .contact-section {
     padding: 120px 8%;
     background-color: #16263a; /* Deepest Navy for high contrast */
@@ -1608,7 +1587,7 @@
 .parallax-content h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(3rem, 8vw, 6rem);
-    color: #ffffff; /* White for better legibility */
+    color: #ffffff; 
     font-style: italic;
     line-height: 1;
     margin: 0;
@@ -1620,7 +1599,6 @@
     font-style: italic;
 }
 
-/* Custom Animation for Professional Entrance */
 @keyframes tracking-in-expand {
     0% { letter-spacing: -0.5em; opacity: 0; }
     40% { opacity: 0.6; }
@@ -1716,4 +1694,226 @@
         margin-top: 30px;
         flex-direction: column;
     }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    grid-template-columns: 1fr;
+    padding: 60px 5%;
+    gap: 40px;
+  }
+
+  .about-right {
+    height: 350px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-right::before {
+    display: none;
+  }
+
+  .about-right img:nth-child(1) {
+    width: 70%;
+    height: 55%;
+    top: 0;
+    right: 0;
+  }
+
+  .about-right img:nth-child(2) {
+    width: 65%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+    border: 8px solid #223b59;
+  }
+
+  .about-left {
+    text-align: center;
+  }
+
+  .about-left p::before {
+    display: none;
+  }
+
+  .about-left h2 {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .btn-hero {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hero-actions {
+    flex-direction: column;   
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .btn-hero {
+    width: 90%;              
+    max-width: 320px;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 1rem;
+  }
+
+  .btn-order-now {
+    background: #efb036;
+    color: #1a3350;
+  }
+
+  .btn-menu {
+    border: 2px solid #efb036;
+    color: #efb036;
+  }
+}
+
+.best-sellers {
+  padding: 120px 8%;
+  background: #223b59;
+}
+
+/* Header */
+.best-sellers .section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #efb036;
+}
+
+.best-sellers .section-header p {
+  color: rgba(255,255,255,0.6);
+}
+
+/* Grid */
+.best-sellers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+/* Card */
+.best-seller-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.best-seller-card:hover {
+  transform: translateY(-10px);
+  border-color: #efb036;
+}
+
+/* Image */
+.best-seller-img {
+  position: relative;
+  height: 220px;
+}
+
+.best-seller-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #efb036;
+  color: #1a2e46;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+/* Body */
+.best-seller-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.best-seller-body h3 {
+  color: white;
+  font-family: 'Playfair Display', serif;
+}
+
+.best-seller-body p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  margin: 10px 0;
+  height: 40px;
+  overflow: hidden;
+}
+
+/* Bottom row */
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.price {
+  color: #efb036;
+  font-weight: 700;
+}
+
+/* Button */
+.best-seller-body button {
+  background: transparent;
+  border: 1px solid #efb036;
+  color: #efb036;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.best-seller-body button:hover {
+  background: #efb036;
+  color: #1a2e46;
+}
+
+
+
+
+
+
+.section-skeleton {
+  height: 400px;
+  background: linear-gradient(
+    90deg,
+    rgba(239,176,54,0.04) 25%,
+    rgba(239,176,54,0.09) 50%,
+    rgba(239,176,54,0.04) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 16px;
+  margin: 20px 0;
+}
+.offline-banner {
+  background: #EFB036;
+  color: #0f1c2e;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
 }

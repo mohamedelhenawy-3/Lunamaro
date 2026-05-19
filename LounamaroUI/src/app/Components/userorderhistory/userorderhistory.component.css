@@ -101,3 +101,64 @@
     padding: 10px 8px;
   }
 }
+
+@media (max-width: 768px) {
+  .order-history-container {
+    margin: 20px 15px;
+    padding: 15px;
+  }
+
+  /* Hide table headers */
+  .order-history-table thead {
+    display: none;
+  }
+
+  /* Make each row a card */
+  .order-history-table tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    background-color: #23486A;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* Make each cell a row with label */
+  .order-history-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    text-align: right;
+  }
+
+  .order-history-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* Add labels before each cell */
+  .order-history-table tbody td:nth-child(1)::before { content: "Order #"; }
+  .order-history-table tbody td:nth-child(2)::before { content: "Date"; }
+  .order-history-table tbody td:nth-child(3)::before { content: "Status"; }
+  .order-history-table tbody td:nth-child(4)::before { content: "Total"; }
+  .order-history-table tbody td:nth-child(5)::before { content: ""; }
+
+  /* Style the labels */
+  .order-history-table tbody td::before {
+    font-weight: 700;
+    color: #EFB036;
+    text-align: left;
+  }
+
+  .btn-view {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-history-container h2 {
+    font-size: 1.3rem;
+  }
+}

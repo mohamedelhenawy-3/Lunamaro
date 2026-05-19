@@ -72,7 +72,7 @@ namespace Lunamaroapi.Repositories.Implementations
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Item>> ExploreItemMenu()
+     public async Task<IEnumerable<Item>> ExploreItemMenu()
         {
             return await _context.Items
                 .OrderByDescending(x => x.Id)
@@ -80,7 +80,6 @@ namespace Lunamaroapi.Repositories.Implementations
                 .Include(c => c.Category)
                 .ToListAsync();
         }
-
         //public async Task<IEnumerable<Item>> ExplorePopularItems()
         //{
         //    var popularItems = await _context.OrderItems

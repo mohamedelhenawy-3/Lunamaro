@@ -1,18 +1,19 @@
 <div class="item-container" [ngClass]="ClassMenu">
   <div class="item-row">
-    <div class="item-card" *ngFor="let item of items">
+    <div class="item-card" *ngFor="let item of items; trackBy: trackById">
       
-      <div class="card-badge" *ngIf="item.price > 20">Chef's Choice</div>
+      <div class="card-badge" *ngIf="item.IsSpecial">Chef's Choice</div>
 
       <div class="image-container">
-        <img [src]="'http://localhost:5218' + item.imageUrl" class="item-image" alt="Dish Image">
+        <img [src]="item.imageUrl"   loading="lazy" (load)="onImageLoad($event)"
+        class="item-image" alt="Dish Image">
         <div class="image-overlay"></div>
       </div>
 
       <div class="item-body">
         <div class="title-row">
           <h5 class="item-title">{{ item.name }}</h5>
-          <span class="item-price">${{ item.price }}</span>
+          <span class="item-price">EGP{{ item.price }}</span>
         </div>
         
         <p class="item-description">{{ item.description }}</p>

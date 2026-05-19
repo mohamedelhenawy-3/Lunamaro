@@ -3,10 +3,12 @@
 <div class="cat-bar">
 <ul>
 
-  <li (click)="onCategoryClick(0)">All</li>
-  <li *ngFor="let cat of categories" (click)="onCategoryClick(cat.id)">
+  <li (click)="onCategoryClick(0)" [class.active]="selectedCategoryId === 0">All</li>
+<li *ngFor="let cat of categories" 
+    (click)="onCategoryClick(cat.id)" 
+    [class.active]="selectedCategoryId === cat.id">
     {{ cat.name }}
-  </li>
+</li>
 </ul>
 </div>
 

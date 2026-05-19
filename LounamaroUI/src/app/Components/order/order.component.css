@@ -19,7 +19,6 @@
   overflow: hidden;
 }
 
-/* Ambient glow behind the right panel */
 .checkout-container::before {
   content: '';
   position: absolute;
@@ -340,7 +339,6 @@ label {
   white-space: nowrap;
 }
 
-/* Gold line before final total */
 .gold-divider {
   height: 1px;
   background: linear-gradient(90deg, rgba(239, 176, 54, 0.42), transparent);

@@ -59,34 +59,10 @@
         City is required
       </div>
 
-      <label>State</label>
-      <input
-        type="text"
-        class="input-box"
-        required
-        [(ngModel)]="orderInfo.state"
-        name="state"
-        #stateModel="ngModel"
-        (ngModelChange)="formChanges = true"
-      />
-      <div class="error" *ngIf="stateModel.invalid && stateModel.touched">
-        State is required
-      </div>
+  
 
-      <label>Postal Code</label>
-      <input
-        type="number"
-        class="input-box"
-        required
-        min="1"
-        [(ngModel)]="orderInfo.postalCode"
-        name="postal"
-        #postalModel="ngModel"
-        (ngModelChange)="formChanges = true"
-      />
-      <div class="error" *ngIf="postalModel.invalid && postalModel.touched">
-        Postal code must be greater than 0
-      </div>
+ 
+    
 
       <label>Payment Method</label>
       <select
@@ -113,20 +89,44 @@
   <div class="checkout-right">
     <h2>Order Summary</h2>
 
-    <div class="order-item" *ngFor="let item of order?.userCartList">
-      <img
-        class="cart-img"
-        [src]="'http://localhost:5218' + (item.imageUrl || '/uploads/default.png')"
-        alt="{{ item.itemName }}"
-      />
-      <div class="cart-details">
-        <strong>{{ item.itemName }}</strong>
-        <p>{{ item.description }}</p>
-        <span>Qty: {{ item.quantity }}</span>
+   <div class="order-item" *ngFor="let item of order?.userCartList">
+
+  <img [src]="item.imageUrl" class="cart-img" />
+
+  <div class="cart-details">
+    <strong>{{ item.itemName }}</strong>
+    <p>{{ item.description }}</p>
+
+    <span>Qty: {{ item.quantity }}</span>
+
+    <!-- Add-ons list -->
+    <div class="addons" *ngIf="item.addOns?.length">
+      <small>Add-ons:</small>
+      <div *ngFor="let a of item.addOns">
+        + {{ a.name }} ({{ a.price | currency:'EGP' }})
       </div>
-      <div class="cart-price">{{ item.totalPrice | currency:'EGP' }}</div>
+    </div>
+  </div>
+
+  <!-- PRICE BOX -->
+  <div class="cart-price">
+
+    <div class="price-line">
+      Base: {{ item.price | currency:'EGP' }}
     </div>
 
+    <div class="price-line" *ngIf="item.addOns?.length">
+      Add-ons: {{ getAddOnsTotal(item) | currency:'EGP' }}
+    </div>
+
+    <div class="price-line">
+      Subtotal:
+      {{ getItemTotal(item) | currency:'EGP' }}
+    </div>
+
+  </div>
+
+</div>
     <hr />
 
     <div class="total-row">

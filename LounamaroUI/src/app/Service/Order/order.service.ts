@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { OrderDetails } from '../../Models/order-details';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { OrderItem } from '../../Models/order-item';
 import { OrderDto } from '../../Models/orderDto';
 import { OrderInfo } from '../../Models/User/orderUserInfo';

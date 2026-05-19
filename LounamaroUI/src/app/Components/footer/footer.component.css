@@ -1,5 +1,5 @@
 .site-footer {
-    background-color: #1a3350; /* dark blue */
+    background-color: #1a3350; 
     color: #ffffff;
     padding: 60px 10%;
     font-family: 'Poppins', sans-serif;
@@ -24,7 +24,7 @@
 
 .footer-col h5 {
     font-size: 1.5rem;
-    color: #EFB036; /* gold accent */
+    color: #EFB036; 
     margin-bottom: 15px;
     font-weight: bold;
 }
@@ -32,7 +32,7 @@
 .footer-col p,
 .footer-col ul li {
     font-size: 1rem;
-    color: #ffffffc0; /* slightly transparent white */
+    color: #ffffffc0; 
     margin-bottom: 10px;
     line-height: 1.6;
 }

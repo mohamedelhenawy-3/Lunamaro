@@ -3,30 +3,30 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../../Service/auth.service';
+import { HttpErrorResponse } from '@angular/common/http'; // ✅ add this
+import { TimeoutError } from 'rxjs';                      // ✅ add this
 
 declare var google: any;
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule,RouterLink,
-],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-loginWithFacebook() {
-throw new Error('Method not implemented.');
-}
+  loginWithFacebook() { throw new Error('Method not implemented.'); }
+
   errorMessage: string = '';
   LoginrForm: FormGroup;
-private static googleInitialized = false;
+  private static googleInitialized = false;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private auth: AuthService,
-      private route: ActivatedRoute,
-
+    private route: ActivatedRoute,
   ) {
     this.LoginrForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,61 +34,67 @@ private static googleInitialized = false;
     });
   }
 
- ngOnInit() {
-  // 1. Initialize once per application lifecycle
-  if (!LoginComponent.googleInitialized) {
-    google.accounts.id.initialize({
-      client_id: '663635706581-kp80hqsusm46eofpglum06dpmpcsnqqg.apps.googleusercontent.com',
-      callback: (response: any) => {
-        this.handleGoogleLogin(response.credential);
+  ngOnInit() {
+    if (!LoginComponent.googleInitialized) {
+      google.accounts.id.initialize({
+        client_id: '663635706581-kp80hqsusm46eofpglum06dpmpcsnqqg.apps.googleusercontent.com',
+        callback: (response: any) => {
+          this.handleGoogleLogin(response.credential);
+        }
+      });
+      LoginComponent.googleInitialized = true;
+    }
+
+    setTimeout(() => {
+      const btnElement = document.getElementById('google-btn');
+      if (btnElement) {
+        google.accounts.id.renderButton(btnElement, {
+          type: 'icon',
+          shape: 'circle',
+          theme: 'outline',
+          size: 'large'
+        });
+      }
+    }, 0);
+  }
+
+  private handleAfterLogin() {
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Home';
+    this.router.navigate([returnUrl]);
+  }
+
+  handleGoogleLogin(idToken: string) {
+    this.auth.loginWithSocial('GOOGLE', idToken).subscribe({
+      next: () => this.handleAfterLogin(),
+      error: () => {
+        this.errorMessage = 'Google login failed. Please try again.';
       }
     });
-    LoginComponent.googleInitialized = true;
   }
 
-  setTimeout(() => {
-    const btnElement = document.getElementById("google-btn");
-    if (btnElement) {
-      google.accounts.id.renderButton(btnElement, { 
-        type: 'icon',     
-        shape: 'circle',  
-        theme: 'outline', 
-        size: 'large'     
-      });
+  login() {
+    if (this.LoginrForm.invalid) {
+      this.LoginrForm.markAllAsTouched();
+      return;
     }
-  }, 0);
-}
-private handleAfterLogin() {
-  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Home';
-  this.router.navigate([returnUrl]);
-}
-handleGoogleLogin(idToken: string) {
-  this.auth.loginWithSocial('GOOGLE', idToken).subscribe({
-    next: () => {
-      this.handleAfterLogin();
-    },
-    error: (err: any) => {
-      this.errorMessage = 'Google login failed. Please try again.';
-    }
-  });
-}
 
-login() {
-  if (this.LoginrForm.invalid) {
-    this.LoginrForm.markAllAsTouched();
-    return;
+    this.errorMessage = '';
+
+    this.auth.login(this.LoginrForm.value).subscribe({
+      next: () => this.handleAfterLogin(),
+      error: (err: HttpErrorResponse | TimeoutError) => { // ✅ correct types
+        if (err instanceof TimeoutError) {
+          this.errorMessage = 'Connection is slow. Please check your internet and try again.';
+        } else if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            this.errorMessage = 'Invalid email or password.';
+          } else if (err.status === 0) {
+            this.errorMessage = 'Cannot reach server. Please check your connection.';
+          } else {
+            this.errorMessage = err.error?.message || 'Login failed. Please try again.';
+          }
+        }
+      }
+    });
   }
-
-  this.errorMessage = '';
-
-  this.auth.login(this.LoginrForm.value).subscribe({
-    next: () => {
-      this.handleAfterLogin();
-    },
-    error: (err: string) => {
-      this.errorMessage = err;
-    }
-  });
-}
-
 }

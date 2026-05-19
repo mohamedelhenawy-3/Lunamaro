@@ -4,3 +4,7 @@ import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err: any) => console.error(err));
+  
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw-custom.js').catch(() => {});
+}

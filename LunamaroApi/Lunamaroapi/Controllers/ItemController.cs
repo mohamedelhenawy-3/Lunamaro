@@ -51,7 +51,7 @@ namespace Lunamaroapi.Controllers
 
             //await validator.ValidateAsync(itemdto, options =>options.IncludeRuleSets("Create"));
 
-            return Ok(await _IItemService.CreateItemAsync(itemdto));
+            //return Ok(await _IItemService.CreateItemAsync(itemdto));
 
         }
         [HttpGet("GetItemsByCategory/{catId}")]
@@ -128,9 +128,20 @@ namespace Lunamaroapi.Controllers
             var items = await _IItemService.ExplorePopularItems();
             return Ok(items);
         }
+        [HttpGet("menu")]
+        public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 12, [FromQuery] int? categoryId = null)
+        {
+            var result = await _IItemService.GetPaginatedMenuAsync(page, pageSize, categoryId);
+            return Ok(result);
+        }
+        [HttpGet("ItemsFilters")]
+        public async Task<IActionResult> Getallitem([FromQuery] int page = 1, [FromQuery] int pageSize = 12, [FromQuery] int? categoryId = null,[FromQuery] string? search = null)
+        {
+            var result = await _IItemService.GetAdminItems(page, pageSize, categoryId,search);
+            return Ok(result);
+        }
 
 
 
-  
     }
 }

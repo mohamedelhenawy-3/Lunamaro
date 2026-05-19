@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunamaro - Offline</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1c2e;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .container { max-width: 400px; }
+    .logo-img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .logo-text { font-size: 2.5rem; font-weight: 800; color: #EFB036; margin-bottom: 20px; }
+    .icon { font-size: 4rem; margin-bottom: 20px; }
+    h1 { color: #ffffff; font-size: 1.5rem; margin-bottom: 12px; }
+    p { color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 24px; }
+    button {
+      background: #EFB036;
+      color: #0f1c2e;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Use your actual logo if it exists in assets -->
+    <img
+      src="assets/icons/icons-192x192.png"
+      alt="Lunamaro"
+      class="logo-img"
+      onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block';"
+    />
+    <div class="logo-text" style="display:none">Lunamaro</div>
+    <div class="icon">📡</div>
+    <h1>You're Offline</h1>
+    <p>It looks like you lost your internet connection. Please check your connection and try again.</p>
+    <button onclick="window.location.reload()">Try Again</button>
+  </div>
+</body>
+</html>

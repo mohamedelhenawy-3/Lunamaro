@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Reservation } from '../../Models/reservation';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { RecievedReservation } from '../../Models/Reseviedreservations';
 import { UpdateStatus } from '../../Models/updateStatus';
 import { userrecervation } from '../../Models/User/userreciervation';

@@ -1,7 +1,9 @@
+
 .reservations-container {
   max-width: 900px;
-  margin: 40px auto;
-  background-color: #1a3350; /* dark background */
+  /* Added extra top margin to clear your fixed navbar */
+  margin: 110px auto 40px; 
+  background-color: #1a3350; 
   padding: 25px;
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
@@ -10,16 +12,15 @@
 
 .reservations-container h2 {
   text-align: center;
-  color: #ffffff; /* gold accent */
+  color: #ffffff; 
   font-weight: 700;
   margin-bottom: 25px;
 }
 
-/* Table styling */
 .reservations-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #23486A; /* navy table background */
+  background-color: #23486A; /* Your navy table background */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -27,13 +28,13 @@
 .reservations-table th,
 .reservations-table td {
   padding: 12px 15px;
-  text-align: center;
+  text-align: center; /* Your centered text */
   border-bottom: 1px solid rgba(255,255,255,0.1);
   color: #fff;
 }
 
 .reservations-table th {
-  background-color: #1a3350; /* darker navy header */
+  background-color: #1a3350; 
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -47,24 +48,13 @@
   display: inline-block;
 }
 
-.status-pending {
-  background-color: #EFB036; /* gold */
-  color: #1a3350;
-}
-
-.status-approved {
-  background-color: #00ff99; /* green accent */
-  color: #1a3350;
-}
-
-.status-cancelled {
-  background-color: #dc3545; /* red */
-  color: #fff;
-}
+.status-pending { background-color: #EFB036; color: #1a3350; }
+.status-approved { background-color: #00ff99; color: #1a3350; }
+.status-cancelled { background-color: #dc3545; color: #fff; }
 
 /* Cancel button */
 .cancel-btn {
-  background-color: #EFB036; /* gold */
+  background-color: #EFB036; 
   color: #1a3350;
   border: none;
   border-radius: 8px;
@@ -80,10 +70,213 @@
   transform: translateY(-2px);
 }
 
-/* No reservations message */
 .no-reservations {
   text-align: center;
   font-size: 1.1rem;
-  color: #EFB036; /* gold accent */
+  color: #EFB036; 
   margin-top: 20px;
+}
+
+.new-reservation-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #1a3350, #223b59);
+  border: 1px solid rgba(239,176,54,0.3);
+  border-radius: 16px;
+  padding: 18px 25px;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+.new-reservation-text {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.new-reservation-text span {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+
+/* ===== RESERVE BANNER ===== */
+.reserve-banner {
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto 25px;
+  background: linear-gradient(135deg, #1a3350, #223b59);
+  border: 1px solid rgba(239, 176, 54, 0.3);
+  border-radius: 16px;
+  padding: 20px 30px;
+}
+
+.reserve-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.reserve-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.reserve-text {
+  flex: 1;
+}
+
+.reserve-text h3 {
+  color: #EFB036;
+  font-size: 1.1rem;
+  margin: 0 0 4px;
+  font-family: 'Playfair Display', serif;
+}
+
+.reserve-text p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.reserve-cta-btn {
+  background: #EFB036;
+  color: #1a3350;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.reserve-cta-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239,176,54,0.3);
+}
+
+@media (max-width: 600px) {
+  .reserve-banner-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .reserve-cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.new-reservation-text h4 {
+  color: #EFB036;
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.new-reservation-text p {
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.reserve-cta-btn {
+  background: #EFB036;
+  color: #1a3350;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.btn-new-reservation:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239,176,54,0.3);
+}
+
+@media (max-width: 600px) {
+  .new-reservation-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .new-reservation-text {
+    flex-direction: column;
+  }
+
+  .btn-new-reservation {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservations-container {
+    margin-top: 90px;
+    width: 95%;
+    padding: 15px;
+    background-color: transparent; /* Makes cards stand out more */
+    box-shadow: none;
+  }
+
+  .reservations-table thead {
+    display: none; 
+  }
+
+  .reservations-table, 
+  .reservations-table tbody, 
+  .reservations-table tr, 
+  .reservations-table td {
+    display: block;
+    width: 100%;
+  }
+
+  /* THIS IS THE SEPARATION LOGIC */
+  .reservations-table tr {
+    margin-bottom: 25px;          /* Large gap between reservations */
+    background-color: #23486A;    /* Your navy row color */
+    border-radius: 15px;          /* Rounded corners for the card */
+    padding: 20px 15px;           /* Inner breathing room */
+    border: 1px solid rgba(239, 176, 54, 0.3); /* Subtle gold border to define the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  }
+
+  .reservations-table td {
+    text-align: right; 
+    padding: 12px 5px;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .reservations-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    color: #EFB036; /* Your Gold Accent */
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  /* Remove border from the last item (the button) */
+  .reservations-table td:last-child {
+    border-bottom: none;
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+  /* Make the button full width on mobile for easier clicking */
+  .cancel-btn {
+    width: 100%;
+    padding: 12px;
+  }
 }

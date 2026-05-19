@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ReservationService } from '../../Service/reservation/reservation.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Service/auth.service';
 
 @Component({
   selector: 'app-reservation',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
-export class ReservationComponent {
+export class ReservationComponent implements OnInit {
 
   reservationForm: FormGroup;
   availableTables: any[] = [];
@@ -26,7 +27,7 @@ export class ReservationComponent {
   constructor(
     private fb: FormBuilder,
     private reservationService: ReservationService,
-    private router: Router
+    private router: Router,private auth:AuthService
   ) {
     this.reservationForm = this.fb.group({
       tableId: ['', Validators.required],
@@ -38,7 +39,32 @@ export class ReservationComponent {
       notes: ['']
     });
   }
+ngOnInit() {
+  const saved = localStorage.getItem('restoreReservation');
 
+  if (saved) {
+    const data = JSON.parse(saved);
+    localStorage.removeItem('restoreReservation');
+
+    this.reservationForm.patchValue(data);
+
+    if (data.date) {
+      this.generateTimeSlots();
+
+      setTimeout(() => {
+        this.reservationForm.patchValue({ timeSlot: data.timeSlot });
+
+        if (data.startTime && data.endTime) {
+          this.reservationForm.patchValue({
+            startTime: data.startTime,
+            endTime: data.endTime
+          });
+          this.loadAvailableTables();
+        }
+      }, 100);
+    }
+  }
+}
   // =========================
   // TIME SLOTS
   // =========================
@@ -142,51 +168,67 @@ export class ReservationComponent {
   // =========================
   // SUBMIT
   // =========================
-  onsubmit() {
-    if (this.reservationForm.invalid || this.isSubmitting) return;
+onsubmit() {
 
-    this.isSubmitting = true;
-    this.message = '';
+  if (this.reservationForm.invalid || this.isSubmitting) return;
 
-    const form = this.reservationForm.value;
+  if (!this.auth.isLoggedIn()) {
 
-    const payload = {
-      tableId: form.tableId,
-      guests: form.guests,
-      notes: form.notes,
-      startTime: form.startTime,
-      endTime: form.endTime
-    };
+    localStorage.setItem(
+      'restoreReservation',
+      JSON.stringify(this.reservationForm.value)
+    );
 
-    this.reservationService.addreservation(payload)
-      .subscribe({
-        next: () => {
-          this.isSubmitting = false;
+    this.router.navigate(['/login'], {
+      queryParams: { returnUrl: '/reservation' }
+    });
+    return;
 
-          this.messageType = 'success-text';
-          this.message = "Reservation confirmed successfully!";
-
-          this.router.navigate(['/Home']);
-        },
-
-        error: (err) => {
-          this.isSubmitting = false;
-
-          this.messageType = 'error-text';
-
-          if (typeof err?.error === 'string') {
-            this.message = err.error;
-          }
-          else if (err?.error?.message) {
-            this.message = err.error.message;
-          }
-          else if (err?.status === 400) {
-            this.message = "Invalid reservation data.";
-          }
-          else {
-            this.message = "Something went wrong. Please try again.";
-          }
-        }
-      });
   }
+
+  // ✅ LOGGED IN → CONTINUE
+  this.isSubmitting = true;
+  this.message = '';
+
+  const form = this.reservationForm.value;
+
+  const payload = {
+    tableId: form.tableId,
+    guests: form.guests,
+    notes: form.notes,
+    startTime: form.startTime,
+    endTime: form.endTime
+  };
+
+  this.reservationService.addreservation(payload)
+    .subscribe({
+      next: () => {
+        this.isSubmitting = false;
+
+        this.messageType = 'success-text';
+        this.message = "Reservation confirmed successfully!";
+
+        this.router.navigate(['/Home']);
+      },
+
+      error: (err) => {
+        this.isSubmitting = false;
+
+        this.messageType = 'error-text';
+
+        if (typeof err?.error === 'string') {
+          this.message = err.error;
+        }
+        else if (err?.error?.message) {
+          this.message = err.error.message;
+        }
+        else if (err?.status === 400) {
+          this.message = "Invalid reservation data.";
+        }
+        else {
+          this.message = "Something went wrong. Please try again.";
+        }
+      }
+    });
+}
 }

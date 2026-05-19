@@ -1,6 +1,4 @@
-﻿// ... (keep your namespaces)
-
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using Lunamaroapi.BackgroundServices;
 using Lunamaroapi.Data;
@@ -15,6 +13,7 @@ using Lunamaroapi.Services.Interfaces;
 using Lunamaroapi.Validators.ItemValidators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
@@ -34,44 +33,68 @@ namespace Lunamaroapi
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // 1. Logger Configuration
             Log.Logger = new LoggerConfiguration()
-             .MinimumLevel.Information() 
-             .WriteTo.Console()         
-             .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
-             .CreateLogger();
+                .MinimumLevel.Information()
+                .WriteTo.Console()
+                .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
 
             builder.Host.UseSerilog();
-            // CORRECT
+
             StripeConfiguration.ApiKey = builder.Configuration["Stripe:Secretkey"];
+
+      
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
                 {
                     policy.WithOrigins(
-                        "http://localhost:4200",
-                        "https://lunamarofrontend.z1.web.core.windows.net"
-                    )
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
+                            "http://localhost:4200",
+                            "https://lunamarofrontend.z1.web.core.windows.net",
+                            "http://lunamaro.runasp.net",   // Add your MonsterASP domain
+                            "https://lunamaro.runasp.net"   // Add HTTPS version just in case
+                        )
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials(); // Required since you are likely using JWT/Cookies
                 });
             });
 
+
+
+
+            builder.Services.AddMemoryCache();
+            builder.Services.AddResponseCompression(options =>
+            {
+                options.EnableForHttps = true;
+            });
+
+
+
             builder.Services.AddDbContext<AppDBContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptionsAction: sqlOptions =>
-        {
-            sqlOptions.EnableRetryOnFailure(); // Add this line
-        }));
+           options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+           sqlServerOptionsAction: sqlOptions =>
+           {
+               sqlOptions.EnableRetryOnFailure(
+                   maxRetryCount: 5,
+                   maxRetryDelay: TimeSpan.FromSeconds(30),
+                   errorNumbersToAdd: null);
+           }));
+
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 6;
             })
             .AddEntityFrameworkStores<AppDBContext>()
             .AddDefaultTokenProviders();
 
-            // Repositories & Services
+            // 5. Dependency Injection (Repositories & Services)
             builder.Services.AddScoped<IAuthServices, AuthServices>();
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
             builder.Services.AddScoped<ITokenService, TokenService>();
@@ -79,9 +102,7 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IOffersRepository, OfferRepository>();
             builder.Services.AddScoped<IPricingService, PricingService>();
             builder.Services.AddScoped<JwtTokenGenerator>();
-            builder.Services.AddScoped<IImageServices, ImageService>();
-            builder.Services.AddSingleton<IImageServices>(sp =>
-    new ImageService(builder.Configuration));
+builder.Services.AddScoped<IImageServices, ImageService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IItemRepository, ItemRepository>();
@@ -93,13 +114,15 @@ namespace Lunamaroapi
             builder.Services.AddScoped<IDashboard, DashboardServices>();
             builder.Services.AddScoped<IReview, ReviewsService>();
             builder.Services.AddScoped<IOrderNotificationService, OrderNotificationService>();
+            builder.Services.AddScoped<IRecommendationService, RecommendationService>();
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddHttpClient();
-            // MUST HAVE for Facebook calls later
-                                              // Background Services
+
+            // 6. Background Services
             builder.Services.AddHostedService<EmailBackgroundService>();
-            // If you uncomment this, make sure StockCleanupWorker uses 'await Task.Yield()' at the start
             builder.Services.AddHostedService<StockCleanupWorker>();
 
+            // 7. Middlewares & Other Helpers
             builder.Services.AddTransient<GlobalExceptionMiddleware>();
             builder.Services.AddSingleton<SmsService>();
             builder.Services.Configure<ESetting>(builder.Configuration.GetSection("EmailSettings"));
@@ -107,16 +130,18 @@ namespace Lunamaroapi
             builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
             builder.Services.AddScoped<IIdentityService, Services.Implements.IdentityService>();
 
-            // Validation
+            // 8. Validation
             builder.Services.AddFluentValidationAutoValidation();
             builder.Services.AddValidatorsFromAssemblyContaining<ItemDTOValidator>();
 
+            // 9. Controllers & JSON
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
 
+            // 10. Authentication & JWT
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -138,6 +163,7 @@ namespace Lunamaroapi
                 };
             });
 
+            // 11. Swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
@@ -162,62 +188,61 @@ namespace Lunamaroapi
                 });
             });
 
-
+            // 12. App Build and Lifecycle
             try
             {
                 Log.Information("Starting Lunamaro Web API...");
                 var app = builder.Build();
-                app.Use(async (context, next) =>
+
+                // --- MIGRATION SAFE SEEDING START ---
+                using (var scope = app.Services.CreateScope())
                 {
                     try
                     {
-                        await next();
-                    }
-                    catch (Exception ex)
-                    {
-                        context.Response.StatusCode = 500;
-                        await context.Response.WriteAsJsonAsync(new
+                        var context = scope.ServiceProvider.GetRequiredService<AppDBContext>();
+                        // Only try to seed if the DB is actually accessible
+                        if (context.Database.CanConnect())
                         {
-                            Error = ex.Message,
-                            Inner = ex.InnerException?.Message,
-                            Stack = ex.StackTrace
-                        });
+                            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                            await SeedRolesAsync(roleManager);
+                        }
                     }
-                });
-                // 3. Seed Roles (Moved after app.Build but before app.Run)
-                using (var scope = app.Services.CreateScope())
-            {
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-                await SeedRolesAsync(roleManager);
-            }
+                    catch (Exception)
+                    {
+                        Log.Warning("Seeding skipped: Database or Tables not ready yet.");
+                    }
+                }
+                // --- MIGRATION SAFE SEEDING END ---
 
-            // 4. Middleware Pipeline
-            app.UseMiddleware<GlobalExceptionMiddleware>();
+                app.UseMiddleware<GlobalExceptionMiddleware>();
 
-            //if (app.Environment.IsDevelopment())
-            //{
-            //    app.UseSwagger();
-            //    app.UseSwaggerUI();
-            //}
+                // Always Enable Swagger for MonsterASP (helpful for testing)
                 app.UseSwagger();
                 app.UseSwaggerUI();
-                app.UseSerilogRequestLogging();
-                app.Use(async (context, next) =>
-                {
-                    context.Response.Headers.Add("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
-                    await next();
-                });
+         app.UseSerilogRequestLogging();
+                app.UseResponseCompression();
+                app.MapFallbackToFile("index.html");
                 app.UseCors("AllowAll");
                 app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseAuthentication();
-            app.UseAuthorization();
-            app.MapControllers();
+                // Add this before app.UseStaticFiles()
+                var provider = new FileExtensionContentTypeProvider();
+                provider.Mappings[".webmanifest"] = "application/manifest+json";
 
-            Console.WriteLine("--> API is running and ready for requests.");
-            await app.RunAsync();
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    ContentTypeProvider = provider,
+                    OnPrepareResponse = ctx =>
+                    {
+                        ctx.Context.Response.Headers["Cache-Control"] = "public, max-age=604800, immutable";
+                    }
+                }); app.UseAuthentication();
+                app.UseAuthorization();
+                app.MapControllers();
+
+                Console.WriteLine("--> API is running and ready for requests.");
+                await app.RunAsync();
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is not HostAbortedException)
             {
                 Log.Fatal(ex, "The application failed to start correctly.");
             }
@@ -225,9 +250,8 @@ namespace Lunamaroapi
             {
                 Log.CloseAndFlush();
             }
-
-
         }
+
         private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
             string[] roles = { "Admin", "Customer" };
