@@ -21,15 +21,17 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest",
-              "src/staticwebapp.config.json"
-            ],
+           "assets": [
+  "src/favicon.ico",
+  "src/assets",
+  "src/manifest.webmanifest",
+  "src/staticwebapp.config.json",
+  "src/offline.html",
+  "src/sw-custom.js",
+    "src/_redirects"
+],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+             
               "src/styles.css"
             ],
             "scripts": [
@@ -48,10 +50,10 @@
                 "scripts": true,
                 "styles": {
                   "minify": true,
-                  "inlineCritical": false
+                  "inlineCritical": true
                 },
                 "fonts": {
-                  "inline": false
+                  "inline": true
                 }
               },
               "budgets": [
@@ -110,7 +112,7 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets", "src/_redirects"
             ],
             "styles": [
               "src/styles.css"

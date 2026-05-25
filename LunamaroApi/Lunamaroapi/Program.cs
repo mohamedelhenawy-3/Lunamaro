@@ -52,16 +52,22 @@ namespace Lunamaroapi
                     policy.WithOrigins(
                             "http://localhost:4200",
                             "https://lunamarofrontend.z1.web.core.windows.net",
-                            "http://lunamaro.runasp.net",   // Add your MonsterASP domain
-                            "https://lunamaro.runasp.net"   // Add HTTPS version just in case
+                            "http://lunamaro.runasp.net",   
+                            "https://lunamaro.runasp.net" ,
+                            "https://lunamaro.netlify.app",
+                            "https://lunamar.netlify.app" 
+
                         )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials(); // Required since you are likely using JWT/Cookies
+                        .AllowCredentials(); 
                 });
             });
 
-
+            builder.Services.AddControllers()
+    .AddJsonOptions(o =>
+        o.JsonSerializerOptions.ReferenceHandler =
+            System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 
 
             builder.Services.AddMemoryCache();
@@ -128,8 +134,8 @@ builder.Services.AddScoped<IImageServices, ImageService>();
             builder.Services.Configure<ESetting>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.AddSingleton<EmailService>();
             builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
-            builder.Services.AddScoped<IIdentityService, Services.Implements.IdentityService>();
-
+            builder.Services.AddScoped<IIdentityService, IdentityService>();
+            builder.Services.AddScoped<IAiChatService, AiChatService>();
             // 8. Validation
             builder.Services.AddFluentValidationAutoValidation();
             builder.Services.AddValidatorsFromAssemblyContaining<ItemDTOValidator>();
