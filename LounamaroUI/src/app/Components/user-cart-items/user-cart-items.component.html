@@ -25,7 +25,7 @@
 
             <!-- Name + selected addons -->
             <div class="col-8 col-md-4">
-              <h5 class="product-name">{{ item.itemName }}</h5>
+              <h3 class="product-name">{{ item.itemName }}</h3>
               <p class="product-desc text-truncate">{{ item.description }}</p>
 
               <!-- Show chosen addons as pills -->
@@ -64,9 +64,9 @@
 
             <!-- Price + remove -->
             <div class="col-6 col-md-3 text-end">
-              <h5 class="product-price">
+              <h3 class="product-price">
                 {{ item.totalPrice | currency:'EGP':'symbol':'1.0-0' }}
-              </h5>
+              </h3>
               <button class="remove-btn" (click)="remove(item.userCartId)">
                 <i class="fas fa-trash-alt"></i>
               </button>
@@ -180,7 +180,7 @@
           </div>
 
           <div class="suggestion-body">
-            <h5 class="suggestion-name">{{ item.name }}</h5>
+            <h3 class="suggestion-name">{{ item.name }}</h3>
             <p class="suggestion-desc">{{ item.description }}</p>
 
             <div class="suggestion-footer">

@@ -1,0 +1,292 @@
+2026-05-26 12:41:31.719 +03:00 [INF] Starting Lunamaro Web API...
+2026-05-26 12:41:34.037 +03:00 [WRN] The foreign key property 'ItemRelationship.ItemId1' was created in shadow state because a conflicting property with the simple name 'ItemId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-05-26 12:41:34.101 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'ItemAddOn'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.104 +03:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'AddOnReward'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.106 +03:00 [WRN] No store type was specified for the decimal property 'DiscountAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.107 +03:00 [WRN] No store type was specified for the decimal property 'MinimumAmount' on entity type 'DiscountTier'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.109 +03:00 [WRN] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'WeeklyDeal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.110 +03:00 [WRN] No store type was specified for the decimal property 'ItemDiscountAmount' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.112 +03:00 [WRN] No store type was specified for the decimal property 'ItemFinalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.115 +03:00 [WRN] No store type was specified for the decimal property 'ItemOriginalTotal' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.117 +03:00 [WRN] No store type was specified for the decimal property 'FinalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.119 +03:00 [WRN] No store type was specified for the decimal property 'OfferDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.121 +03:00 [WRN] No store type was specified for the decimal property 'OriginalTotalAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.123 +03:00 [WRN] No store type was specified for the decimal property 'TierDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:34.125 +03:00 [WRN] No store type was specified for the decimal property 'TotalDiscountAmount' on entity type 'UserOrderHeader'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-26 12:41:39.905 +03:00 [INF] Executed DbCommand (468ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-05-26 12:41:41.541 +03:00 [INF] Executed DbCommand (1,137ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-05-26 12:41:42.166 +03:00 [INF] Executed DbCommand (485ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-05-26 12:41:44.039 +03:00 [INF] User profile is available. Using 'C:\Users\Softlaptop\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 12:41:44.224 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T09:41:44.2202009+00:00"
+2026-05-26 12:41:44.480 +03:00 [INF] Now listening on: http://localhost:5218
+2026-05-26 12:41:44.750 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 12:41:44.751 +03:00 [INF] Hosting environment: Development
+2026-05-26 12:41:44.753 +03:00 [INF] Content root path: D:\FullStackProjects\Lunamaro\LunamaroApi\Lunamaroapi
+2026-05-26 12:41:45.382 +03:00 [INF] Executed DbCommand (818ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 12:41:50.052 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger - null null
+2026-05-26 12:41:50.423 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger - 301 0 null 376.7006ms
+2026-05-26 12:41:50.529 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/index.html - null null
+2026-05-26 12:41:50.638 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/index.html - 200 null text/html;charset=utf-8 109.3169ms
+2026-05-26 12:41:50.683 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui.css - null null
+2026-05-26 12:41:50.686 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-bundle.js - null null
+2026-05-26 12:41:50.689 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-standalone-preset.js - null null
+2026-05-26 12:41:50.689 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-26 12:41:50.703 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 13.7807ms
+2026-05-26 12:41:50.709 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/_vs/browserLink - null null
+2026-05-26 12:41:50.754 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-05-26 12:41:50.756 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-05-26 12:41:50.786 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-05-26 12:41:50.793 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui.css - 200 143943 text/css 110.6587ms
+2026-05-26 12:41:50.794 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 105.2941ms
+2026-05-26 12:41:50.796 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 110.4733ms
+2026-05-26 12:41:50.848 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/_vs/browserLink - 200 null text/javascript; charset=UTF-8 138.5864ms
+2026-05-26 12:41:51.170 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - null null
+2026-05-26 12:41:51.221 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/swagger/favicon-32x32.png - null null
+2026-05-26 12:41:51.226 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-05-26 12:41:51.233 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/favicon-32x32.png - 200 628 image/png 12.5458ms
+2026-05-26 12:41:51.261 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 90.5551ms
+2026-05-26 12:45:47.791 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/api/Home/home-data - null null
+2026-05-26 12:45:47.842 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-26 12:45:51.518 +03:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.HomeController.GetHomeData (Lunamaroapi)'
+2026-05-26 12:45:51.553 +03:00 [INF] Route matched with {action = "GetHomeData", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetHomeData() on controller Lunamaroapi.Controllers.HomeController (Lunamaroapi).
+2026-05-26 12:45:52.313 +03:00 [INF] Executed DbCommand (527ms) [Parameters=[@__now_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [w].[Id], [w].[ProductId], [w].[DiscountPercentage], [w].[ExpiryDate], [w].[IsActive], [i].[Id], [i].[Name], [i].[ImageUrl], [i].[Price], [i].[Price] - ([i].[Price] * [w].[DiscountPercentage]) / 100.0 AS [FinalPrice]
+FROM [WeeklyDeals] AS [w]
+INNER JOIN [Items] AS [i] ON [w].[ProductId] = [i].[Id]
+WHERE [w].[IsActive] = CAST(1 AS bit) AND [w].[ExpiryDate] > @__now_0
+2026-05-26 12:45:52.435 +03:00 [INF] Executed DbCommand (104ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[DiscountAmount], [d].[IsActive], [d].[MinimumAmount]
+FROM [DiscountTiers] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+2026-05-26 12:45:53.945 +03:00 [INF] Executed DbCommand (1,446ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FreeProductId], [a].[IsActive], [a].[MinimumAmount], [i].[Id], [i].[CategoryId], [i].[Description], [i].[ImageUrl], [i].[IsSpecial], [i].[Name], [i].[Price], [i].[quantity]
+FROM [AddOnRewards] AS [a]
+INNER JOIN [Items] AS [i] ON [a].[FreeProductId] = [i].[Id]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+2026-05-26 12:45:55.711 +03:00 [INF] Executed DbCommand (1,617ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [o].[ItemId] AS [Id], (
+    SELECT TOP(1) [i0].[Name]
+    FROM [OrderItems] AS [o1]
+    INNER JOIN [Items] AS [i0] ON [o1].[ItemId] = [i0].[Id]
+    WHERE [o].[ItemId] = [o1].[ItemId]) AS [Name], (
+    SELECT TOP(1) [i1].[Description]
+    FROM [OrderItems] AS [o2]
+    INNER JOIN [Items] AS [i1] ON [o2].[ItemId] = [i1].[Id]
+    WHERE [o].[ItemId] = [o2].[ItemId]) AS [Description], COALESCE((
+    SELECT TOP(1) [i2].[Price]
+    FROM [OrderItems] AS [o3]
+    INNER JOIN [Items] AS [i2] ON [o3].[ItemId] = [i2].[Id]
+    WHERE [o].[ItemId] = [o3].[ItemId]), 0.0) AS [Price], (
+    SELECT TOP(1) [i3].[ImageUrl]
+    FROM [OrderItems] AS [o4]
+    INNER JOIN [Items] AS [i3] ON [o4].[ItemId] = [i3].[Id]
+    WHERE [o].[ItemId] = [o4].[ItemId]) AS [ImageUrl], (
+    SELECT COALESCE(SUM([i4].[quantity]), 0)
+    FROM [OrderItems] AS [o5]
+    INNER JOIN [Items] AS [i4] ON [o5].[ItemId] = [i4].[Id]
+    WHERE [o].[ItemId] = [o5].[ItemId]) AS [quantity]
+FROM [OrderItems] AS [o]
+GROUP BY [o].[ItemId]
+ORDER BY (
+    SELECT COALESCE(SUM([i4].[quantity]), 0)
+    FROM [OrderItems] AS [o5]
+    INNER JOIN [Items] AS [i4] ON [o5].[ItemId] = [i4].[Id]
+    WHERE [o].[ItemId] = [o5].[ItemId]) DESC
+2026-05-26 12:45:56.741 +03:00 [INF] Executed DbCommand (1,004ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [i].[Id], [i].[CategoryId], [i].[Description], [i].[ImageUrl], [i].[IsSpecial], [i].[Name], [i].[Price], [i].[quantity]
+FROM [Items] AS [i]
+WHERE [i].[IsSpecial] = CAST(1 AS bit)
+ORDER BY [i].[Name]
+2026-05-26 12:45:57.793 +03:00 [INF] Executed DbCommand (963ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[Description], [t].[ImageUrl], [t].[IsSpecial], [t].[Name], [t].[Price], [t].[quantity], [c].[Id], [c].[Name]
+FROM (
+    SELECT TOP(@__p_0) [i].[Id], [i].[CategoryId], [i].[Description], [i].[ImageUrl], [i].[IsSpecial], [i].[Name], [i].[Price], [i].[quantity]
+    FROM [Items] AS [i]
+    ORDER BY [i].[Id] DESC
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+ORDER BY [t].[Id] DESC
+2026-05-26 12:45:57.962 +03:00 [INF] Executed DbCommand (107ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2026-05-26 12:45:57.971 +03:00 [INF] Retrieved 6 categories
+2026-05-26 12:46:33.034 +03:00 [ERR] Failed executing DbCommand (35,044ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [r].[Id], [r].[Content], [r].[CreatedAt], [r].[Rating], [r].[UpdatedAt], [r].[UserId]
+FROM [Reviews] AS [r]
+ORDER BY [r].[CreatedAt] DESC
+2026-05-26 12:46:33.102 +03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Lunamaroapi.Data.AppDBContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:eff22e07-98c8-4b74-9580-b1e5c4961597
+Error Number:-2,State:0,Class:11
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:eff22e07-98c8-4b74-9580-b1e5c4961597
+Error Number:-2,State:0,Class:11
+2026-05-26 12:46:33.144 +03:00 [INF] Executing OkObjectResult, writing value of type 'Lunamaroapi.Helper.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-26 12:46:33.299 +03:00 [INF] Executed action Lunamaroapi.Controllers.HomeController.GetHomeData (Lunamaroapi) in 41735.7655ms
+2026-05-26 12:46:33.302 +03:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.HomeController.GetHomeData (Lunamaroapi)'
+2026-05-26 12:46:33.313 +03:00 [INF] HTTP GET /api/Home/home-data responded 200 in 45476.4800 ms
+2026-05-26 12:46:33.324 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/api/Home/home-data - 200 null application/json; charset=utf-8 45533.3239ms
+2026-05-26 12:51:45.394 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T09:51:45.3943084+00:00"
+2026-05-26 12:52:42.838 +03:00 [INF] Executed DbCommand (784ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 13:02:42.851 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T10:02:42.8514960+00:00"
+2026-05-26 13:02:43.764 +03:00 [INF] Executed DbCommand (132ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 13:12:43.781 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T10:12:43.7811051+00:00"
+2026-05-26 13:12:45.171 +03:00 [INF] Executed DbCommand (111ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 13:22:45.179 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T10:22:45.1793225+00:00"
+2026-05-26 13:22:46.040 +03:00 [INF] Executed DbCommand (139ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 13:32:46.061 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T10:32:46.0609282+00:00"
+2026-05-26 13:32:47.174 +03:00 [INF] Executed DbCommand (183ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 13:42:47.191 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T10:42:47.1912325+00:00"
+2026-05-26 13:42:48.081 +03:00 [INF] Executed DbCommand (102ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 13:52:48.091 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T10:52:48.0914138+00:00"
+2026-05-26 13:52:48.962 +03:00 [INF] Executed DbCommand (101ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 14:02:48.971 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T11:02:48.9714855+00:00"
+2026-05-26 14:02:49.756 +03:00 [INF] Executed DbCommand (101ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 14:12:49.770 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T11:12:49.7703706+00:00"
+2026-05-26 14:12:50.563 +03:00 [INF] Executed DbCommand (94ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 14:22:50.575 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T11:22:50.5749973+00:00"
+2026-05-26 14:22:52.397 +03:00 [INF] Executed DbCommand (485ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 14:32:52.415 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T11:32:52.4158001+00:00"
+2026-05-26 14:32:55.227 +03:00 [INF] Executed DbCommand (376ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 14:40:49.089 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/api/Item/1030 - null null
+2026-05-26 14:40:49.134 +03:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.ItemController.GetItemById (Lunamaroapi)'
+2026-05-26 14:40:49.155 +03:00 [INF] Route matched with {action = "GetItemById", controller = "Item"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Lunamaroapi.DTOs.Item.ItemDTO]] GetItemById(Int32) on controller Lunamaroapi.Controllers.ItemController (Lunamaroapi).
+2026-05-26 14:40:54.228 +03:00 [INF] Executed DbCommand (1,597ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[CategoryId], [i].[Description], [i].[ImageUrl], [i].[IsSpecial], [i].[Name], [i].[Price], [i].[quantity], [c].[Id], [c].[Name]
+FROM [Items] AS [i]
+INNER JOIN [Categories] AS [c] ON [i].[CategoryId] = [c].[Id]
+WHERE [i].[Id] = @__id_0
+2026-05-26 14:40:54.239 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-05-26 14:40:54.262 +03:00 [INF] Executed action Lunamaroapi.Controllers.ItemController.GetItemById (Lunamaroapi) in 5103.4287ms
+2026-05-26 14:40:54.265 +03:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.ItemController.GetItemById (Lunamaroapi)'
+2026-05-26 14:40:54.267 +03:00 [INF] HTTP GET /api/Item/1030 responded 404 in 5135.2762 ms
+2026-05-26 14:40:54.271 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/api/Item/1030 - 404 null application/problem+json; charset=utf-8 5181.6733ms
+2026-05-26 14:42:10.870 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5218/api/Item/1059 - null null
+2026-05-26 14:42:10.879 +03:00 [INF] Executing endpoint 'Lunamaroapi.Controllers.ItemController.GetItemById (Lunamaroapi)'
+2026-05-26 14:42:10.881 +03:00 [INF] Route matched with {action = "GetItemById", controller = "Item"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Lunamaroapi.DTOs.Item.ItemDTO]] GetItemById(Int32) on controller Lunamaroapi.Controllers.ItemController (Lunamaroapi).
+2026-05-26 14:42:11.127 +03:00 [INF] Executed DbCommand (206ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[CategoryId], [i].[Description], [i].[ImageUrl], [i].[IsSpecial], [i].[Name], [i].[Price], [i].[quantity], [c].[Id], [c].[Name]
+FROM [Items] AS [i]
+INNER JOIN [Categories] AS [c] ON [i].[CategoryId] = [c].[Id]
+WHERE [i].[Id] = @__id_0
+2026-05-26 14:42:11.135 +03:00 [INF] Executing OkObjectResult, writing value of type 'Lunamaroapi.DTOs.Item.ReturnedItemDTO'.
+2026-05-26 14:42:11.138 +03:00 [INF] Executed action Lunamaroapi.Controllers.ItemController.GetItemById (Lunamaroapi) in 254.046ms
+2026-05-26 14:42:11.141 +03:00 [INF] Executed endpoint 'Lunamaroapi.Controllers.ItemController.GetItemById (Lunamaroapi)'
+2026-05-26 14:42:11.143 +03:00 [INF] HTTP GET /api/Item/1059 responded 200 in 267.0251 ms
+2026-05-26 14:42:11.146 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5218/api/Item/1059 - 200 null application/json; charset=utf-8 276.4541ms
+2026-05-26 14:43:38.160 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T11:43:38.1607888+00:00"
+2026-05-26 14:43:39.734 +03:00 [INF] Executed DbCommand (1,560ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 14:53:39.750 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T11:53:39.7502794+00:00"
+2026-05-26 14:53:56.150 +03:00 [INF] Executed DbCommand (6,981ms) [Parameters=[@__thresholdTime_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Carrier], [u].[City], [u].[DateOfOrder], [u].[DateOfShipping], [u].[DeliveryStreetAddress], [u].[FinalTotalAmount], [u].[Name], [u].[OfferDiscountAmount], [u].[OrderStatus], [u].[OriginalTotalAmount], [u].[PaymentProcessDate], [u].[PaymentStatus], [u].[PaymentType], [u].[PhoneNumber], [u].[StripePaymentIntentId], [u].[StripeSessionId], [u].[TemporaryKey], [u].[TierDiscountAmount], [u].[TotalDiscountAmount], [u].[TrackingNumber], [u].[TransactionId], [u].[UserId], [o].[OrderItemId], [o].[IsFreeItem], [o].[ItemDiscountAmount], [o].[ItemFinalTotal], [o].[ItemId], [o].[ItemOriginalTotal], [o].[OrderId], [o].[Quantity], [o].[UnitPrice], [o].[UserOrderHeaderId]
+FROM [UserOrderHeaders] AS [u]
+LEFT JOIN [OrderItems] AS [o] ON [u].[Id] = [o].[UserOrderHeaderId]
+WHERE [u].[PaymentType] = 1 AND [u].[PaymentStatus] = N'Pending' AND [u].[DateOfOrder] < @__thresholdTime_0
+ORDER BY [u].[Id]
+2026-05-26 15:03:56.157 +03:00 [INF] Stock Cleanup Worker running at: "2026-05-26T12:03:56.1577477+00:00"

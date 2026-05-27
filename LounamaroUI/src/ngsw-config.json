@@ -1,10 +1,15 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",
+  "appData": {
+    "version": "2.2.0",
+    "buildDate": "2026-05-23"
+  },
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
@@ -19,20 +24,35 @@
     {
       "name": "icons",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/assets/icons/**"]
+      }
+    },
+    {
+      "name": "critical-images",
+      "installMode": "prefetch",
+      "updateMode": "lazy",
       "resources": {
         "files": [
-          "/assets/icons/**"
+             "/assets/Intro/Item.jpg",
+      "/assets/Intro/Image.jfif",
+      "/assets/aboutus/about1.webp",
+      "/assets/aboutus/about2.webp",
+      "/assets/aboutus/about3.jpg",
+      "/assets/aboutus/about4.jpg",
+      "/assets/reservation/Reservation.jfif"
         ]
       }
     },
     {
       "name": "assets",
       "installMode": "lazy",
-      "updateMode": "prefetch",
+      "updateMode": "lazy",
       "resources": {
         "files": [
           "/assets/**",
-          "/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
+          "/*.(svg|cur|jpg|jpeg|jfif|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
         ]
       }
     }
@@ -41,31 +61,59 @@
     {
       "name": "home-api",
       "urls": [
-        "https://lunamaro.runasp.net/api/Item/popular",
-        "https://lunamaro.runasp.net/api/Item/SpecialItems",
-        "https://lunamaro.runasp.net/api/Item/menu-preview",
-        "https://lunamaro.runasp.net/api/admin/offers/weekly-deals",
-        "https://lunamaro.runasp.net/api/admin/offers/discount-tiers",
-        "https://lunamaro.runasp.net/api/admin/offers/add-on-rewards"
+        "https://lunamaro.runasp.net/api/Home/home-data"
       ],
       "cacheConfig": {
-        "maxSize": 50,
-        "maxAge": "7d",
+        "maxSize": 10,
+        "maxAge": "1h",
+        "timeout": "3s",
         "strategy": "performance"
       }
     },
     {
       "name": "menu-api",
-      "urls": [
-        "https://lunamaro.runasp.net/api/Item/menu",
-        "https://lunamaro.runasp.net/api/Item/ItemsFilters",
-        "https://lunamaro.runasp.net/api/Item/AllNote",
-        "https://lunamaro.runasp.net/api/Item/**",
-        "https://lunamaro.runasp.net/api/Category/**"
-      ],
+    "urls": [
+  "https://lunamaro.runasp.net/api/Item/menu",
+  "https://lunamaro.runasp.net/api/Item/menu?page=1&pageSize=12",
+  "https://lunamaro.runasp.net/api/Item/menu?page=2&pageSize=12",
+  "https://lunamaro.runasp.net/api/Item/popular",
+  "https://lunamaro.runasp.net/api/Item/SpecialItems",
+  "https://lunamaro.runasp.net/api/Item/menu-preview",
+  "https://lunamaro.runasp.net/api/Item/ItemsFilters",
+  "https://lunamaro.runasp.net/api/Item/AllNote",
+  "https://lunamaro.runasp.net/api/Category",
+  "https://lunamaro.runasp.net/api/Category/**"
+],
       "cacheConfig": {
         "maxSize": 200,
-        "maxAge": "7d",
+        "maxAge": "1d",
+        "timeout": "3s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "reviews-api",
+      "urls": [
+        "https://lunamaro.runasp.net/api/Review/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 50,
+        "maxAge": "1d",
+        "timeout": "3s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "offers-api",
+      "urls": [
+        "https://lunamaro.runasp.net/api/offers/weekly-deals",
+        "https://lunamaro.runasp.net/api/offers/discount-tiers",
+        "https://lunamaro.runasp.net/api/offers/add-on-rewards"
+      ],
+      "cacheConfig": {
+        "maxSize": 50,
+        "maxAge": "1d",
+        "timeout": "3s",
         "strategy": "performance"
       }
     },
@@ -77,30 +125,8 @@
       ],
       "cacheConfig": {
         "maxSize": 50,
-        "maxAge": "7d",
-        "timeout": "10s",
-        "strategy": "freshness"
-      }
-    },
-    {
-      "name": "reviews-api",
-      "urls": [
-        "https://lunamaro.runasp.net/api/Review/**"
-      ],
-      "cacheConfig": {
-        "maxSize": 50,
-        "maxAge": "7d",
-        "strategy": "performance"
-      }
-    },
-    {
-      "name": "offers-api",
-      "urls": [
-        "https://lunamaro.runasp.net/api/admin/offers/**"
-      ],
-      "cacheConfig": {
-        "maxSize": 50,
-        "maxAge": "7d",
+        "maxAge": "1h",
+        "timeout": "3s",
         "strategy": "performance"
       }
     }

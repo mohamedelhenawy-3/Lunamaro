@@ -10,10 +10,10 @@ import { provideServiceWorker } from '@angular/service-worker';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerImmediately'  // ✅ Fixed
-    }),
+  provideServiceWorker('ngsw-worker.js', {
+  enabled: !isDevMode(),
+  registrationStrategy: 'registerWhenStable:30000' // ← change this
+}),
     provideHttpClient(
       withInterceptors([tokenInterceptor, errorInterceptor, loadingInterceptor])
     )

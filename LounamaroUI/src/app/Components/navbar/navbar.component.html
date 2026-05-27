@@ -1,15 +1,26 @@
 <nav class="main-navbar" [class.scrolled]="isScrolled">
   <div class="navbar-container">
-    
-    <a class="brand-link" routerLink="/Home">
-      <span class="brand-name">Lunamaro</span>
+
+    <!-- BRAND -->
+    <a class="brand-link" routerLink="/Home" aria-label="Lunamaro — home">
+      <span class="brand-name" aria-hidden="true">Lunamaro</span>
     </a>
 
-    <div class="nav-links" [class.mobile-open]="menuOpen">
+    <!-- NAV LINKS PANEL -->
+    <div class="nav-links" id="main-nav-links" [class.mobile-open]="menuOpen">
       <ul>
         <li><a routerLink="/Home" (click)="closeMenu()" routerLinkActive="active-link">Home</a></li>
         <li><a routerLink="/menu" (click)="closeMenu()" routerLinkActive="active-link">Menu</a></li>
-        <li><a routerLink="/reservation" class="btn-book-table" *ngIf="userRole !== 'Admin'" (click)="closeMenu()" routerLinkActive="active-link">Book Table</a></li>
+        <li>
+          <a
+            routerLink="/reservation"
+            class="btn-book-table"
+            *ngIf="userRole !== 'Admin'"
+            (click)="closeMenu()"
+            routerLinkActive="active-link">
+            Book Table
+          </a>
+        </li>
 
         <ng-container *ngIf="(auth.isLoggedIn$ | async) && userRole === 'Customer'">
           <li><a routerLink="/MyReservations" (click)="closeMenu()" routerLinkActive="active-link">Reservations</a></li>
@@ -17,49 +28,76 @@
         </ng-container>
 
         <li class="dropdown" *ngIf="(auth.isLoggedIn$ | async) && userRole === 'Admin'">
-          <a class="dropdown-toggle">Admin Panel <i class="fas fa-chevron-down"></i></a>
+          <a class="dropdown-toggle" role="button" aria-haspopup="true">
+            Admin Panel <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </a>
           <ul class="dropdown-menu">
-            <li><a routerLink="/Admin/dashboard" (click)="closeMenu()">Dashboard</a></li>  <!-- ✅ added / -->
-            <li><a routerLink="/Admin/offers" (click)="closeMenu()">Offers</a></li>
-            <li><a routerLink="/Admin/category" (click)="closeMenu()">Categories</a></li>
-            <li><a routerLink="/Admin/item" (click)="closeMenu()">Items List</a></li>
-            <li><a routerLink="/Admin/additem" (click)="closeMenu()">Add New Item</a></li>
-            <li><a routerLink="/Admin/reservation" (click)="closeMenu()">All Reservations</a></li>  <!-- ✅ added / -->
-            <li><a routerLink="/Admin/table" (click)="closeMenu()">Table Management</a></li>  <!-- ✅ added / -->
-            <li><a routerLink="/Admin/ordershistory" (click)="closeMenu()">Order History</a></li>  <!-- ✅ added / -->
+            <li><a routerLink="/Admin/dashboard"    (click)="closeMenu()">Dashboard</a></li>
+            <li><a routerLink="/Admin/offers"       (click)="closeMenu()">Offers</a></li>
+            <li><a routerLink="/Admin/category"     (click)="closeMenu()">Categories</a></li>
+            <li><a routerLink="/Admin/item"         (click)="closeMenu()">Items List</a></li>
+            <li><a routerLink="/Admin/additem"      (click)="closeMenu()">Add New Item</a></li>
+            <li><a routerLink="/Admin/reservation"  (click)="closeMenu()">All Reservations</a></li>
+            <li><a routerLink="/Admin/table"        (click)="closeMenu()">Table Management</a></li>
+            <li><a routerLink="/Admin/ordershistory"(click)="closeMenu()">Order History</a></li>
           </ul>
         </li>
 
+        <!-- Mobile-only login / register links -->
         <ng-container *ngIf="!(auth.isLoggedIn$ | async)">
-          <li class="mobile-only-auth"><a routerLink="/login" (click)="closeMenu()">Login</a></li>
+          <li class="mobile-only-auth"><a routerLink="/login"    (click)="closeMenu()">Login</a></li>
           <li class="mobile-only-auth"><a routerLink="/register" (click)="closeMenu()">Register</a></li>
         </ng-container>
       </ul>
     </div>
 
+    <!-- RIGHT ACTIONS -->
     <ul class="right-actions">
+
+      <!-- Logged-in: cart + logout -->
       <ng-container *ngIf="(auth.isLoggedIn$ | async)">
         <li class="cart-item" *ngIf="userRole === 'Customer'">
-          <a routerLink="/usercartitempervew" class="cart-link">
-            <i class="fas fa-shopping-cart"></i>
-            <span *ngIf="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
+          <a routerLink="/usercartitempervew" class="cart-link" aria-label="Shopping cart">
+            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            <span
+              *ngIf="cartCount > 0"
+              class="cart-badge"
+              [attr.aria-label]="cartCount + ' items in cart'">
+              {{ cartCount }}
+            </span>
           </a>
         </li>
-        <li><a class="logout-btn" (click)="logout()">Logout</a></li>
+        <li>
+          <button class="logout-btn" (click)="logout()" type="button">Logout</button>
+        </li>
       </ng-container>
 
+      <!-- Guest: login + register -->
       <ng-container *ngIf="!(auth.isLoggedIn$ | async)">
-        <div class="guest-actions">
-          <li><a routerLink="/login" class="btn-login">Login</a></li>
-          <li><a routerLink="/register" class="btn-register">Register</a></li>
-        </div>
+        <li>
+          <ul class="guest-actions">
+            <li><a routerLink="/login"    class="btn-login">Login</a></li>
+            <li><a routerLink="/register" class="btn-register">Register</a></li>
+          </ul>
+        </li>
       </ng-container>
 
-      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- Hamburger -->
+      <li>
+        <button
+          class="hamburger"
+          (click)="toggleMenu()"
+          [class.open]="menuOpen"
+          [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'"
+          [attr.aria-expanded]="menuOpen"
+          aria-controls="main-nav-links"
+          type="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </li>
+
     </ul>
   </div>
 </nav>

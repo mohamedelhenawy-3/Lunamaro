@@ -1,19 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Preconnect to external origins FIRST -->
+  <link rel="preconnect" href="https://lunamaro.runasp.net" crossorigin>
+  <link rel="dns-prefetch" href="https://lunamaro.runasp.net">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://accounts.google.com" crossorigin>
+
   <meta charset="utf-8">
-  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#EFB036">
-  <title>LounamaroUI</title>
+  <title>Lunamaro Restaurant</title>
+   <meta name="description" content="Lunamaro Restaurant — Authentic Egyptian cuisine, fast delivery, and fine dining in Giza. Order online or reserve your table today.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lunamar.netlify.app/">
   <base href="/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <!-- ✅ Preload LCP hero image — must match exact src in hero <img> -->
+  <link rel="preload" as="image" href="assets/Intro/Item.jpg" fetchpriority="high">
+
+  <!-- ✅ Bootstrap — async non-blocking -->
+  <link rel="preload"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+  </noscript>
+
+  <!-- ✅ Font Awesome — async non-blocking -->
+  <link rel="preload"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css">
+  </noscript>
+
+<script src="https://accounts.google.com/gsi/client" defer></script>
+
 </head>
 <body>
-  
   <app-root></app-root>
 </body>
 </html>

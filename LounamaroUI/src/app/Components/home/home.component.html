@@ -1,17 +1,25 @@
-<!-- ===== HERO ===== -->
-<header class="hero-section" [style.backgroundImage]="'url(' + headerImage + ')'">
+<header class="hero-section">
+  <img
+    src="assets/Intro/Item.jpg"
+    fetchpriority="high"
+    loading="eager"
+    width="1200"
+    height="600"
+    alt=""
+    class="hero-bg-img"
+  />
   <div class="overlay"></div>
   <div class="hero-content">
     <h1>Welcome to Lunamaro Restaurant</h1>
     <p>Order now for quick delivery or discover our authentic menu.</p>
     <div class="hero-actions">
-      <a routerLink="/menu" class="btn-hero btn-order-now">Our Menu</a>
+      <a routerLink="/menu"        class="btn-hero btn-order-now">Our Menu</a>
       <a routerLink="/reservation" class="btn-hero btn-menu">Reserve Table</a>
     </div>
   </div>
 </header>
 
-<!-- ===== BEST SELLERS — no defer, near top ===== -->
+<!-- ===== BEST SELLERS — critical, no defer ===== -->
 <section class="best-sellers" *ngIf="bestSellerItems?.length > 0">
   <div class="section-header text-center">
     <h2>Best Sellers</h2>
@@ -20,7 +28,7 @@
   <div class="best-sellers-grid">
     <div class="best-seller-card" *ngFor="let item of bestSellerItems; trackBy: trackById">
       <div class="best-seller-img">
-        <img [src]="item.imageUrl" alt="{{ item.name }}" loading="lazy" decoding="async" (load)="onImageLoad($event)">
+        <img [src]="item.imageUrl" [alt]="item.name" loading="lazy" decoding="async" (load)="onImageLoad($event)">
         <span class="badge">🔥 Best</span>
       </div>
       <div class="best-seller-body">
@@ -37,12 +45,13 @@
   </div>
 </section>
 
-<!-- ===== SPECIAL OFFERS — no defer, near top ===== -->
+<!-- ===== SPECIAL OFFERS — critical, no defer ===== -->
 <section class="offers-section" *ngIf="weeklyDeals.length > 0 || discountTiers.length > 0 || rewards.length > 0">
   <span class="offers-eyebrow">Exclusive For You</span>
   <h2 class="offers-title">Special <em>Offers</em></h2>
   <div class="offers-title-line"></div>
 
+  <!-- Weekly Deals -->
   <div class="offers-block" *ngIf="weeklyDeals.length > 0">
     <div class="offers-block-head">
       <span class="block-icon">🔥</span>
@@ -74,6 +83,7 @@
     </div>
   </div>
 
+  <!-- Discount Tiers -->
   <div class="offers-block" *ngIf="discountTiers.length > 0">
     <div class="offers-block-head">
       <span class="block-icon">💰</span>
@@ -94,6 +104,7 @@
     </div>
   </div>
 
+  <!-- Add-On Rewards -->
   <div class="offers-block" *ngIf="rewards.length > 0">
     <div class="offers-block-head">
       <span class="block-icon">🎁</span>
@@ -124,7 +135,7 @@
   </div>
 </section>
 
-<!-- ===== ABOUT — no defer, near top ===== -->
+<!-- ===== ABOUT — no defer ===== -->
 <section class="about-section">
   <div class="about-left">
     <h2>Our Story</h2>
@@ -134,14 +145,15 @@
     <a routerLink="/reservation" class="btn-primary">Reserve Your Table</a>
   </div>
   <div class="about-right">
-    <img src="assets/aboutus/about1.jpg" loading="lazy" decoding="async" alt="Lunamaro dining">
-    <img src="assets/aboutus/about2.jpg" loading="lazy" decoding="async" alt="Chef preparing food">
-    <img src="assets/aboutus/about3.jpg" loading="lazy" decoding="async" alt="Signature dishes">
-    <img src="assets/aboutus/about4.jpg" loading="lazy" decoding="async" alt="Restaurant interior">
+  <!-- REPLACE with -->
+<img src="assets/aboutus/about2.webp" loading="eager" decoding="async" alt="Chef preparing food" width="600" height="400">
+<img src="assets/aboutus/about1.webp" loading="lazy"  decoding="async" alt="Lunamaro dining"      width="600" height="400">
+<img src="assets/aboutus/about3.jpg"  loading="lazy"  decoding="async" alt="Signature dishes"     width="600" height="400">
+<img src="assets/aboutus/about4.jpg"  loading="lazy"  decoding="async" alt="Restaurant interior"  width="600" height="400">
   </div>
 </section>
 
-<!-- ===== SPECIAL ITEMS — defer, far down ===== -->
+<!-- ===== SPECIAL ITEMS — defer on viewport ===== -->
 @defer (on viewport) {
   <section class="special-items" *ngIf="specialItems.length > 0">
     <div class="container">
@@ -152,7 +164,7 @@
       <div class="special-items-grid">
         <div class="special-item-card" *ngFor="let item of specialItems; trackBy: trackById">
           <div class="item-image-container">
-            <img [src]="item.imageUrl" alt="{{ item.name }}" loading="lazy" decoding="async" (load)="onImageLoad($event)">
+            <img [src]="item.imageUrl" [alt]="item.name" loading="lazy" decoding="async" (load)="onImageLoad($event)">
             <span class="special-badge">⭐ Special</span>
             <button class="quick-add-btn" (click)="addtocart(item.id)" [disabled]="item.quantity <= 0">
               {{ item.quantity > 0 ? '+ Add to Cart' : 'Sold Out' }}
@@ -171,7 +183,7 @@
   <div class="section-skeleton"></div>
 }
 
-<!-- ===== PARALLAX — defer ===== -->
+<!-- ===== PARALLAX — defer on viewport ===== -->
 @defer (on viewport) {
   <section class="philosophy-parallax">
     <div class="parallax-overlay"></div>
@@ -188,7 +200,7 @@
   <div class="section-skeleton"></div>
 }
 
-<!-- ===== REVIEWS — defer ===== -->
+<!-- ===== REVIEWS — defer on viewport ===== -->
 @defer (on viewport) {
   <section class="latest-reviews" *ngIf="reviewsData">
     <div class="container">
@@ -222,7 +234,7 @@
   <div class="section-skeleton"></div>
 }
 
-<!-- ===== OPENING HOURS — defer ===== -->
+<!-- ===== OPENING HOURS — defer on viewport ===== -->
 @defer (on viewport) {
   <section class="opening-hours">
     <div class="hours-content-left">
@@ -230,20 +242,20 @@
       <p>We are ready to serve you <br> every day of the week.</p>
     </div>
     <div class="hours-grid">
-      <div class="day"><span>Monday</span><span>09:00 AM - 12:00 PM</span></div>
-      <div class="day"><span>Tuesday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Monday</span>   <span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Tuesday</span>  <span>09:00 AM - 12:00 PM</span></div>
       <div class="day"><span>Wednesday</span><span>09:00 AM - 12:00 PM</span></div>
-      <div class="day"><span>Thursday</span><span>09:00 AM - 12:00 PM</span></div>
-      <div class="day"><span>Friday</span><span>09:00 AM - 12:00 PM</span></div>
-      <div class="day"><span>Saturday</span><span>09:00 AM - 12:00 PM</span></div>
-      <div class="day"><span>Sunday</span><span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Thursday</span> <span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Friday</span>   <span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Saturday</span> <span>09:00 AM - 12:00 PM</span></div>
+      <div class="day"><span>Sunday</span>   <span>09:00 AM - 12:00 PM</span></div>
     </div>
   </section>
 } @placeholder {
   <div class="section-skeleton"></div>
 }
 
-<!-- ===== CONTACT — defer ===== -->
+<!-- ===== CONTACT — defer on viewport ===== -->
 @defer (on viewport) {
   <section class="contact-section" id="contact">
     <div class="contact-container">
@@ -258,9 +270,9 @@
       </div>
       <div class="contact-right">
         <form class="contact-form">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <input type="text"  placeholder="Your Name"    required>
+          <input type="email" placeholder="Your Email"   required>
+          <textarea           placeholder="Your Message" rows="5" required></textarea>
           <button type="submit" class="btn-contact">Send Message</button>
         </form>
       </div>
@@ -269,11 +281,3 @@
 } @placeholder {
   <div class="section-skeleton"></div>
 }
-
-
-
-<!-- Show offline banner -->
-<div *ngIf="!(isOnline$ | async)" class="offline-banner">
-  📡 You're offline — showing cached data
-</div>
-

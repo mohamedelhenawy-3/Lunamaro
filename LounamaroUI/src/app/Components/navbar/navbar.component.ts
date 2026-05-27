@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../Service/auth.service';
 import { UsercartService } from '../../Service/UserCart/usercart.service';
 import { ImageShareService } from '../../Service/ImageService/image-share.service';
-import { Subscription } from 'rxjs';
+import { Subscription, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private subs = new Subscription();
 
   constructor(
-    private cdr: ChangeDetectorRef ,
+    private cdr: ChangeDetectorRef,
     public auth: AuthService,
     private router: Router,
     private cartService: UsercartService,
@@ -39,44 +39,47 @@ export class NavbarComponent implements OnInit, OnDestroy {
     );
 
     this.subs.add(
-      this.auth.isLoggedIn$.subscribe(isLogged => {
+      this.auth.isLoggedIn$.pipe(
+        distinctUntilChanged()  // ✅ only fires when value actually changes
+      ).subscribe(isLogged => {
         this.isLoggedIn = isLogged;
-        this.userRole = this.auth.getUserRole();
-    if (isLogged) {
-        this.userRole = this.auth.getUserRole(); // set role on login
-        setTimeout(() => this.cartService.fetchCartCount(), 0);
-      } else {
-        this.userRole = null;  
-        this.cartCount = 0;
-      }
 
-        this.cdr.detectChanges(); 
+        if (isLogged) {
+          this.userRole = this.auth.getUserRole();
+          this.cartService.fetchCartCount();  // ✅ only on actual login
+        } else {
+          this.userRole = null;
+          this.cartCount = 0;
+          this.cartService.resetCartCount();
+        }
 
+        this.cdr.detectChanges();
       })
     );
 
     this.subs.add(
       this.cartService.loadcount$.subscribe(count => {
         this.cartCount = count;
+        this.cdr.detectChanges();
       })
     );
   }
 
   ngOnDestroy(): void {
-    this.subs.unsubscribe(); // prevent memory leaks
+    this.subs.unsubscribe();
   }
 
   toggleMenu() { this.menuOpen = !this.menuOpen; }
-  closeMenu()  { this.menuOpen = false; }
+  closeMenu() { this.menuOpen = false; }
 
-logout() {
-  this.auth.logout();
-  this.router.navigateByUrl('/login');
-  this.cdr.detectChanges(); // ✅ add this
-}
+  logout() {
+    this.auth.logout();
+    this.cartService.resetCartCount();
+    this.router.navigateByUrl('/login');
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isScrolled = window.scrollY > 50; // Angular handles class binding
+    this.isScrolled = window.scrollY > 50;
   }
 }

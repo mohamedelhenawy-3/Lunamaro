@@ -1,11 +1,17 @@
-
 <app-spinner-overlay></app-spinner-overlay>
+
 <div class="page-wrapper">
   <app-navbar></app-navbar>
+
+  <div class="offline-banner-app" *ngIf="!(offlineService.isOnline$ | async)">
+    <div class="dot"></div>
+    <i class="ti ti-wifi-off"></i>
+    <span>You're offline — showing last saved data</span>
+  </div>
 
   <div class="page-content">
     <router-outlet></router-outlet>
   </div>
-
   <app-footer *ngIf="showlayout"></app-footer>
+  <app-ai-assistant></app-ai-assistant>
 </div>

@@ -43,7 +43,7 @@
 }
 
 .card:hover .icon { transform: rotate(15deg); }
-.card h5 { margin: 0; font-size: 14px; color: rgba(255,255,255,0.8); }
+.card h3 { margin: 0; font-size: 14px; color: rgba(255,255,255,0.8); }
 .card h3 { margin: 3px 0 0; font-size: 24px; font-weight: bold; color: #fff; }
 
 /* Charts */
@@ -140,7 +140,7 @@
 
   .card { padding: 14px; }
   .card .icon { font-size: 24px; margin-right: 10px; }
-  .card h5 { font-size: 12px; }
+  .card h3 { font-size: 12px; }
   .card h3 { font-size: 20px; }
 
   .chart-grid { grid-template-columns: 1fr; }

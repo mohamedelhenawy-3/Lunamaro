@@ -11,6 +11,9 @@ export class CacheWarmerService {
   warmCache(): void {
     if (!navigator.onLine) return;
 
+    const warmed = sessionStorage.getItem('cache_warmed');
+    if (warmed) return;
+
     const simpleUrls = [
       `${this.base}/Item/popular`,
       `${this.base}/Item/SpecialItems`,
@@ -18,8 +21,7 @@ export class CacheWarmerService {
       `${this.base}/admin/offers/weekly-deals`,
       `${this.base}/admin/offers/discount-tiers`,
       `${this.base}/admin/offers/add-on-rewards`,
-        `${this.base}/Category`,           // ✅ added
-
+      `${this.base}/Category`,
     ];
 
     simpleUrls.forEach(url => {
@@ -33,5 +35,7 @@ export class CacheWarmerService {
     this.http.get(`${this.base}/Item/menu`, { params: menuParams })
       .pipe(catchError(() => of(null)))
       .subscribe();
+
+    sessionStorage.setItem('cache_warmed', 'true');
   }
 }

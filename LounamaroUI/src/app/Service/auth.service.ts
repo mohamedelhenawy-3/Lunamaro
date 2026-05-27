@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { RegisterRequest } from '../Models/User/register-request';
-import { environment } from '../../environments/environment.prod';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtPayload } from '../Models/jwt-payload';
 import { jwtDecode } from 'jwt-decode';
@@ -9,6 +8,7 @@ import { LoginResponse } from '../Models/User/login-response';
 import { GeneratedeviceIdService } from './DeviceId/generatedevice-id.service';
 import { tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 declare var google: any;
 @Injectable({
   providedIn: 'root'

@@ -1,30 +1,38 @@
 <div class="item-container" [ngClass]="ClassMenu">
   <div class="item-row">
-    <div class="item-card" *ngFor="let item of items; trackBy: trackById">
-      
+    <div class="item-card"
+         [routerLink]="['/menu/item', item.id]"
+         style="cursor:pointer"
+         *ngFor="let item of items; trackBy: trackById">
+
       <div class="card-badge" *ngIf="item.IsSpecial">Chef's Choice</div>
 
       <div class="image-container">
-        <img [src]="item.imageUrl"   loading="lazy" (load)="onImageLoad($event)"
-        class="item-image" alt="Dish Image">
+        <img [src]="item.imageUrl" loading="lazy"
+             (load)="onImageLoad($event)"
+             class="item-image" alt="Dish Image">
         <div class="image-overlay"></div>
       </div>
 
       <div class="item-body">
         <div class="title-row">
-          <h5 class="item-title">{{ item.name }}</h5>
+          <h3 class="item-title">{{ item.name }}</h3>
           <span class="item-price">EGP{{ item.price }}</span>
         </div>
-        
         <p class="item-description">{{ item.description }}</p>
-        
-        <button class="add-btn" (click)="onAddToCart(item.id)" [disabled]="item.quantity <= 0">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cart-icon" viewBox="0 0 16 16">
+
+        <!-- ✅ Disabled when offline or sold out -->
+        <button class="add-btn"
+                (click)="onAddToCart(item.id); $event.stopPropagation()"
+                [disabled]="item.quantity <= 0 || isOffline"
+                [title]="isOffline ? 'No internet connection' : ''">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+               fill="currentColor" class="cart-icon" viewBox="0 0 16 16">
             <path d="M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z"/>
           </svg>
-             {{ item.quantity > 0 ? 'Add to Cart' : 'Sold Out' }}  </button>
+          {{ item.quantity <= 0 ? 'Sold Out' : isOffline ? 'Offline' : 'Add to Cart' }}
+        </button>
       </div>
-
     </div>
   </div>
 </div>

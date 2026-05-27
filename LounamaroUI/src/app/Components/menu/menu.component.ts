@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
-
 import { Category } from '../../Models/category';
 import { Item } from '../../Models/item';
 import { CategoryListComponent } from "../Shared/category-list/category-list.component";
@@ -12,67 +10,73 @@ import { UsercartService } from '../../Service/UserCart/usercart.service';
 import { AddToCart } from '../../Models/add-to-cart';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/Service/auth.service';
+import { catchError, of } from 'rxjs';
+import { OfflineService } from 'src/app/Service/OfflineSerivce/offline-service.service';
 
-
-
- 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, CategoryListComponent, ItemListComponent,RouterLink],
+  imports: [CommonModule, CategoryListComponent, ItemListComponent, RouterLink],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
-    encapsulation: ViewEncapsulation.None  // 👈 Add this line
-
+  encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent implements OnInit {
- 
-categories: Category[] = [];
-  items: Item[] = [];
-  
-  // متغيرات الـ Pagination الجديدة
-  currentPage: number = 1;
-  pageSize: number = 12;
-  totalCount: number = 0;
-  selectedCategoryId: number = 0;
-  isLoading: boolean = false; // للـ Skeleton Shimmer
+
+  categories:         Category[] = [];
+  items:              Item[]     = [];
+  currentPage:        number     = 1;
+  pageSize:           number     = 12;
+  totalCount:         number     = 0;
+  selectedCategoryId: number     = 0;
+  isLoading:          boolean    = false;
+  isOffline:          boolean    = false;
 
   constructor(
-    private categoryApi: CategoryService,
-    private itemsapi: ItemService,
-    private cartsrviceapi: UsercartService,
-    private authService: AuthService,
-    private router: Router
+    private categoryApi:    CategoryService,
+    private itemsapi:       ItemService,
+    private cartsrviceapi:  UsercartService,
+    private authService:    AuthService,
+    private router:         Router,
+    public  offlineService: OfflineService
   ) {}
 
   ngOnInit(): void {
-    this.categoryApi.getallCategories().subscribe(data => this.categories = data);
-    this.loadMenuItems(); // استدعاء دالة التحميل المركزية
+    // Track online/offline changes
+    this.offlineService.isOnline$.subscribe(online => {
+      this.isOffline = !online;
+      // Auto-refresh when coming back online
+      if (online) this.loadMenuItems();
+    });
+
+    this.categoryApi.getallCategories().pipe(
+      catchError(() => of([]))
+    ).subscribe(data => this.categories = data);
+
+    this.loadMenuItems();
   }
 
-  // دالة موحدة لجلب البيانات
   loadMenuItems(): void {
     this.isLoading = true;
     this.itemsapi.getItems(this.currentPage, this.pageSize, this.selectedCategoryId)
+      .pipe(catchError(() => of({ items: [], totalCount: 0 })))
       .subscribe(response => {
-        // لاحظ هنا: الـ response يحتوي على items و totalCount
-        this.items = response.items;
-        this.totalCount = response.totalCount;
-        this.isLoading = false;
+        this.items      = response.items      ?? [];
+        this.totalCount = response.totalCount ?? 0;
+        this.isLoading  = false;
       });
   }
 
   onCategorySelected(catId: number): void {
     this.selectedCategoryId = catId;
-    this.currentPage = 1; // إعادة التعيين للصفحة الأولى عند تغيير الفلتر
+    this.currentPage        = 1;
     this.loadMenuItems();
   }
 
-  // دالة لتغيير الصفحة (ستحتاجها في الـ HTML لاحقاً)
   onPageChange(newPage: number): void {
     this.currentPage = newPage;
     this.loadMenuItems();
-    window.scrollTo(0, 0); // للعودة لأعلى الصفحة عند التنقل
+    window.scrollTo(0, 0);
   }
 
   addtocart(itemid: number): void {
@@ -80,11 +84,10 @@ categories: Category[] = [];
       this.router.navigate(['/login']);
       return;
     }
+    if (!this.offlineService.isOnline) return; // ✅ block offline
     const dto: AddToCart = { itemId: itemid, quantity: 1 };
     this.cartsrviceapi.addToCart(dto).subscribe(() => {
       this.cartsrviceapi.fetchCartCount();
     });
   }
-
-
 }
