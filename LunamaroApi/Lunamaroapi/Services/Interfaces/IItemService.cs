@@ -15,9 +15,9 @@ namespace Lunamaroapi.Services.Interfaces
 
 
 
-            Task<IEnumerable<ItemDTO>> GetAllItemsAsync();
+         Task<IEnumerable<ItemDTO>> GetAllItemsAsync();
         Task<IEnumerable<SpecialItems>> GetSpecialItems();
-        Task<ReturnedItemDTO?> GetItemByIdAsync(int id);
+        Task<ItemDTO?> GetItemByIdAsync(int id);
         Task<SuccessResponseDto> CreateItemAsync(ItemDTO itemdto);
         Task UpdateItemAsync(UpdateItemDTO itemdto, int id);
         Task DeleteItemAsync(int id);

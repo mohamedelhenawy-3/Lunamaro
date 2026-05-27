@@ -94,13 +94,14 @@ namespace Lunamaroapi.Services.Implements
                 .ToListAsync();
         }
 
-        public async Task<ReturnedItemDTO?> GetItemByIdAsync(int id)
+        public async Task<ItemDTO?> GetItemByIdAsync(int id)
         {
             var item = await _itemRepository.GetItemByIdAsync(id);
             if (item == null) return null;
 
-            return new ReturnedItemDTO
+            return new ItemDTO
             {
+                Id=item.Id,
                 Name = item.Name,
                 Description = item.Description,
                 Price = item.Price,
