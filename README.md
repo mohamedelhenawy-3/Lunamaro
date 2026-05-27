@@ -11,10 +11,36 @@
 [![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/sql-server)
 [![Stripe](https://img.shields.io/badge/Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://stripe.com)
 [![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io)
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://lunamaro.netlify.app)
+[![Lighthouse](https://img.shields.io/badge/Lighthouse-96%2F100-brightgreen?style=for-the-badge&logo=lighthouse&logoColor=white)](https://lunamaro.netlify.app)
 
-### [Test it Now → lunamaro.runasp.net](https://lunamaro.runasp.net)
+### [🌐 Live Demo → lunamaro.netlify.app](https://lunamaro.netlify.app)
+### [🔌 API → lunamaro.runasp.net](https://lunamaro.runasp.net)
 
 </div>
+
+---
+
+## 📊 Performance
+
+Tested with Google Lighthouse — May 2026
+
+| Metric | Desktop | Mobile |
+|--------|---------|--------|
+| 🟢 Performance | **96 / 100** | 79 / 100 |
+| 🟢 Accessibility | **96 / 100** | 96 / 100 |
+| 🟢 Best Practices | **100 / 100** | 100 / 100 |
+| 🟢 SEO | **92 / 100** | 92 / 100 |
+
+**Desktop Core Web Vitals**
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| First Contentful Paint | 0.7 s | 🟢 |
+| Largest Contentful Paint | 1.2 s | 🟢 |
+| Total Blocking Time | 90 ms | 🟢 |
+| Cumulative Layout Shift | 0.036 | 🟢 |
+| Speed Index | 1.3 s | 🟢 |
 
 ---
 
@@ -38,11 +64,13 @@ The system is engineered around **reliability and automation**. Background servi
 | 🍽️ Menu Browsing | Browse items by category with images, descriptions, and prices |
 | 🔍 Search & Filter | Quickly find menu items using search and category filters |
 | 🛒 Cart Management | Add, remove, and adjust item quantities before checkout |
+| 🧾 Item Detail Page | View full item details and select quantity before adding to cart |
 | 💳 Stripe Payment | Live card payments using Stripe with full webhook support |
 | 🚚 Pay on Delivery | Order and pay when the food arrives |
 | 📅 Table Reservations | Select a date, time, and party size to book a table |
 | 📧 Email Notifications | Auto-emails for order confirmations and reservation updates |
 | 🔐 Secure Login | JWT-based authentication with token refresh |
+| 📶 Offline Support | PWA with Service Worker — browse cached menu while offline |
 
 ### 🛠️ Admin Features
 
@@ -123,11 +151,11 @@ Controllers  →  Services  →  Repositories  →  SQL Server (EF Core)
 - **FluentValidation** for structured request validation
 - **Stripe SDK** integrated as a scoped service with webhook signature verification
 
-### Frontend — Angular SPA
+### Frontend — Angular PWA
 ```
 AppModule
 ├── AuthModule        (Login, Register, JWT interceptor)
-├── MenuModule        (Browse, Search, Filter)
+├── MenuModule        (Browse, Search, Filter, Item Detail)
 ├── CartModule        (Cart state, Checkout)
 ├── OrdersModule      (Order history, Status tracking)
 ├── ReservationsModule(Date picker, Booking form)
@@ -138,6 +166,9 @@ AppModule
 - **HTTP Interceptor** — auto-attaches JWT and handles 401 globally
 - **Reactive Forms** — client-side validation before any API call
 - **Service layer** — all API calls abstracted; components stay thin and presentational
+- **PWA / Service Worker** — offline-capable with background sync and asset caching
+- **Lazy-loaded routes** — reduces initial bundle size for faster first load
+- **Cloudinary** — image hosting with on-the-fly format and quality optimization
 
 ---
 
@@ -155,15 +186,15 @@ AppModule
 ```
 Register / Login  →  JWT issued  →  Stored in Angular  →  Attached to every request
        ↓
-Browse Menu  →  Add to Cart  →  Checkout
-       ↓                             ↓                    ↓
-  (browsing)             Stripe Payment          Pay on Delivery
-                              ↓                        ↓
-                   Webhook → Order marked paid    Order confirmed
-                              ↓
-                   Background Email Service  →  Confirmation email sent
-                              ↓
-                   Admin updates order status  →  Status email sent to customer
+Browse Menu  →  Item Detail  →  Select Quantity  →  Add to Cart  →  Checkout
+       ↓                                                    ↓                    ↓
+  (browsing)                                    Stripe Payment          Pay on Delivery
+                                                      ↓                        ↓
+                                           Webhook → Order marked paid    Order confirmed
+                                                      ↓
+                                           Background Email Service  →  Confirmation email sent
+                                                      ↓
+                                           Admin updates order status  →  Status email sent to customer
 
 Table Reservation  →  API creates reservation  →  Confirmation email sent
        ↓
@@ -176,13 +207,16 @@ Admin approves / declines  →  Status email sent to customer
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | Angular (SPA, Reactive Forms, HTTP Interceptors) |
+| Frontend | Angular PWA (SPA, Reactive Forms, HTTP Interceptors, Service Worker) |
 | Backend | ASP.NET Core Web API (REST, Layered Architecture) |
 | Database | SQL Server + Entity Framework Core (Code-First) |
 | Authentication | JWT — role-based, stateless |
 | Payments | Stripe API (Payment Intents + Webhooks) |
 | Email | SMTP (HTML templates via Background Service) |
 | Background Jobs | ASP.NET Core `IHostedService` |
+| Image Hosting | Cloudinary (auto format + quality optimization) |
+| Hosting (Frontend) | Netlify |
+| Hosting (Backend) | runasp.net |
 
 ---
 
@@ -253,10 +287,10 @@ Lunamaro/
 │   ├── BackgroundServices/       # Order & Email hosted services
 │   └── Migrations/               # EF Core migrations
 │
-└── lunamaro-angular/             # Angular SPA
+└── lunamaro-angular/             # Angular PWA
     ├── src/app/
     │   ├── auth/                 # Login, Register
-    │   ├── menu/                 # Browse, Search
+    │   ├── menu/                 # Browse, Search, Item Detail
     │   ├── cart/                 # Cart, Checkout
     │   ├── orders/               # Order history
     │   ├── reservations/         # Table booking
@@ -266,13 +300,14 @@ Lunamaro/
 
 ---
 
-
-
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
 
+⭐ If you find this project useful, give it a star!
+
+**[lunamaro.netlify.app](https://lunamaro.netlify.app)**
 
 </div>
