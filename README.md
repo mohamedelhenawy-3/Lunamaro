@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌙 Lunamaro
+#  Lunamaro
 
 ### Full Stack Restaurant Management & Online Ordering System
 
