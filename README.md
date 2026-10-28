@@ -14,8 +14,10 @@
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://lunamaro.netlify.app)
 [![Lighthouse](https://img.shields.io/badge/Lighthouse-96%2F100-brightgreen?style=for-the-badge&logo=lighthouse&logoColor=white)](https://lunamaro.netlify.app)
 
+
+### [🔌 Live Demo  → lunamaro.runasp.net](https://lunamaro.runasp.net)
+
 ### [🌐 Live Demo → lunamaro.netlify.app](https://lunamaro.netlify.app)
-### [🔌 API → lunamaro.runasp.net](https://lunamaro.runasp.net)
 
 </div>
 
