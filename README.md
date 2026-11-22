@@ -15,7 +15,7 @@
 [![Lighthouse](https://img.shields.io/badge/Lighthouse-96%2F100-brightgreen?style=for-the-badge&logo=lighthouse&logoColor=white)](https://lunamaro.netlify.app)
 
 
-### [🔌 Live Demo  → [lunamaro.runasp.net](https://lunamaro.vercel.app)]([https://lunamaro.runasp.net](https://lunamaro.vercel.app))
+### [🔌 Live Demo  → [[lunamaro.runasp.ne](https://lunamaro.vercel.app/)](https://lunamaro.vercel.app)]
 
 
 </div>
